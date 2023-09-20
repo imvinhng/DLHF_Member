@@ -29,6 +29,20 @@ export const RoundButton_Color = (props) => {
         </Pressable>
     );
 }
+export const SquareButton = (props) => {
+    return (
+        <Pressable
+            style={({ pressed }) => [
+                styles.square_button,
+                { backgroundColor: pressed ? '#ddd' : props.bgColor },
+                props.style,
+            ]}
+        // onPress={() => console.log('Round Button clicked')}
+        >
+            <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
+        </Pressable>
+    );
+}
 
 export const LoginButton = (props) => {
     return (
@@ -76,7 +90,7 @@ export const LongButton_Icon = (props) => {
             onPress={props.onPressFunction}
         >
             <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
-            <Text style={styles.text_long_button}>{props.text}</Text>
+            <Text style={styles.text_long_button_icon}>{props.text}</Text>
         </Pressable>
     );
 }
@@ -93,6 +107,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    square_button: {
+        height: 50,
+        width: 50,
+        // backgroundColor: '#fff',
+        borderRadius: 10,
+        // margin: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     text: {
         color: '#000',
         fontSize: 20,
@@ -102,6 +125,12 @@ const styles = StyleSheet.create({
     text_long_button: {
         fontSize: 15,
         color: '#eb9f1c',
+        fontWeight: '600',
+        margin: 10,
+    },
+    text_long_button_icon: {
+        fontSize: 15,
+        color: '#000',
         fontWeight: '600',
         margin: 10,
     },

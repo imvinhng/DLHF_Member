@@ -69,7 +69,7 @@ const Home = (props) => {
                             iconName={'motorcycle'}
                             iconSize={40}
                             iconColor={'#eb341c'}
-                            bgColor={'#fcea81'}
+                            bgColor={'#f7f0af'}
                             style={{ height: 80, width: 80, borderRadius: 50 }}
                         />
                         <Text>Home Delivery</Text>
@@ -79,7 +79,7 @@ const Home = (props) => {
                             iconName={'store'}
                             iconSize={40}
                             iconColor={'#eb341c'}
-                            bgColor={'#fcea81'}
+                            bgColor={'#f7f0af'}
                             style={{ height: 80, width: 80, borderRadius: 50 }}
                         />
                         <Text>Store Pickup</Text>
@@ -122,15 +122,15 @@ const Home = (props) => {
                 <Text style={styles.text_large}>Explore</Text>
                 <View style={styles.row_wrapper}>
                     <LongButton
-                        buttonColor={'#fcea81'}
+                        buttonColor={'#f7f0af'}
                         text={'Special Offer'}
                     />
                     <LongButton
-                        buttonColor={'#fcea81'}
+                        buttonColor={'#f7f0af'}
                         text={'#FlowerCare'}
                     />
                     <LongButton
-                        buttonColor={'#fcea81'}
+                        buttonColor={'#f7f0af'}
                         text={'#FlowerLover'}
                     />
                 </View>
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'column',
-        backgroundColor: '#fcea81',
+        backgroundColor: '#f7f0af',
         paddingTop: Platform.OS == 'ios' ? 56 : 0,
     },
     bottom_header: {
