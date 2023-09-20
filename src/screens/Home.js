@@ -8,8 +8,13 @@
 import React from 'react';
 import { SafeAreaView, View, StyleSheet, Text, Pressable, Platform, Image, ScrollView, Dimensions } from 'react-native';
 import { RoundButton_Clear, RoundButton_Color, LoginButton, LongButton } from '../utils/CustomButton';
+import { useNavigation } from '@react-navigation/native';
+
+
 
 const Home = (props) => {
+    const navigation = useNavigation();
+
     return (
         <ScrollView style={styles.home}>
             <View style={styles.header}>
@@ -45,7 +50,9 @@ const Home = (props) => {
                 <View style={styles.bottom_header}>
                     <Text style={styles.text_subtitle}>Log In</Text>
                     <Text style={styles.text_small}>Use the app to gain points and redeem offers exclusively for Dalat Hasfarm member!</Text>
-                    <LoginButton />
+                    <LoginButton
+                        onPressFunction={() => navigation.navigate('Login')}
+                    />
 
                     <View style={styles.row_wrapper}>
                         <Text style={styles.text_small}>Not registered?</Text>

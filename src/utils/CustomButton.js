@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Pressable, Text } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export const RoundButton_Clear = (props) => {
     return (
@@ -35,12 +36,13 @@ export const LoginButton = (props) => {
             style={({ pressed }) => [
                 styles.login_button,
                 { backgroundColor: pressed ? '#ddd' : '#eb9f1c' },
+                props.style,
             ]}
             onPress={props.onPressFunction}
             hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}
             android_ripple={{ color: '#e5ed8a' }}
         >
-            <Text style={styles.text}>
+            <Text style={[styles.text, { color: props.textColor }]}>
                 Log In
             </Text>
         </Pressable>
@@ -52,12 +54,29 @@ export const LongButton = (props) => {
             style={({ pressed }) => [
                 styles.long_button,
                 { backgroundColor: pressed ? '#ddd' : props.buttonColor },
+                props.style
             ]}
             onPress={props.onPressFunction}
         >
             <Text style={styles.text_long_button}>
                 {props.text}
             </Text>
+        </Pressable>
+    );
+}
+
+export const LongButton_Icon = (props) => {
+    return (
+        <Pressable
+            style={({ pressed }) => [
+                styles.long_button,
+                { backgroundColor: pressed ? '#ddd' : props.buttonColor },
+                props.style
+            ]}
+            onPress={props.onPressFunction}
+        >
+            <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
+            <Text style={styles.text_long_button}>{props.text}</Text>
         </Pressable>
     );
 }
@@ -84,6 +103,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: '#eb9f1c',
         fontWeight: '600',
+        margin: 10,
     },
     login_button: {
         height: 50,
@@ -99,8 +119,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 5,
-        margin: 3,
-        marginTop: 0,
+        margin: 5,
+        flexDirection: 'row',
 
     },
 })
