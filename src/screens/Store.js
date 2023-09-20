@@ -6,8 +6,58 @@
  */
 
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, TextInput } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
 import { RoundButton_Color, LongButton_Icon, SquareButton } from '../utils/CustomButton';
+
+const DATA = [
+    {
+        id: 1,
+        location: 'Nơ Trang Long',
+        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
+    },
+    {
+        id: 2,
+        location: 'Nơ Trang Long',
+        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
+    },
+    {
+        id: 3,
+        location: 'Nơ Trang Long',
+        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
+    },
+    {
+        id: 4,
+        location: 'Nơ Trang Long',
+        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
+    },
+    {
+        id: 5,
+        location: 'Nơ Trang Long',
+        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
+    },
+    {
+        id: 6,
+        location: 'Nơ Trang Long',
+        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
+    },
+    {
+        id: 7,
+        location: 'Nơ Trang Long',
+        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
+    },
+];
+
+const Item = ({ location, address }) => (
+    <View style={styles.item}>
+        <Image style={styles.image} source={require('../assets/super-sale.jpg')} />
+
+        <View style={styles.column_wrapper_custom}>
+            <Text style={styles.text_smaller}>Dalat Hasfarm {location}</Text>
+            <Text style={styles.text_small_bold}>{address}</Text>
+            <Text style={styles.text_light}>0.2 km away</Text>
+        </View>
+    </View>
+);
 
 function Store(props) {
     return (
@@ -40,6 +90,12 @@ function Store(props) {
 
             <View style={styles.body}>
                 <Text style={styles.text_small}>Dalat Hasfarm's Flower Shop Locations</Text>
+
+                <FlatList
+                    data={DATA}
+                    renderItem={({ item }) => <Item location={item.location} address={item.address} />}
+                    keyExtractor={item => item.id}
+                />
             </View>
 
         </SafeAreaView>
@@ -106,8 +162,10 @@ const styles = StyleSheet.create({
     body1_top_right: {
         alignItems: 'center',
     },
-    row_wrapper: {
-        flexDirection: 'row',
+    column_wrapper_custom: {
+        flexDirection: 'column',
+        marginLeft: 20,
+        marginTop: -5,
     },
     text_large: {
         fontSize: 24,
@@ -117,36 +175,31 @@ const styles = StyleSheet.create({
     text_subtitle: {
         fontSize: 20,
         fontWeight: '600',
-        margin: 10,
-        marginBottom: -7,
         textAlign: 'center',
-    },
-    text_small_center: {
-        fontSize: 15,
-        fontWeight: '600',
-        marginLeft: 20,
     },
     text_small: {
         fontSize: 15,
         margin: 5,
         padding: 10,
     },
-    text_hyperlink: {
-        fontSize: 15,
-        margin: 5,
-        padding: 10,
-        textAlign: 'center',
-        color: '#eb9f1c',
-
+    text_smaller: {
+        fontSize: 13,
+        fontWeight: '300',
+    },
+    text_small_bold: {
+        fontSize: 13,
+        fontWeight: '600',
+    },
+    text_light: {
+        fontSize: 13,
+        fontWeight: '200',
+        marginTop: 25,
     },
     image: {
-        height: 250,
-        width: 390,
+        height: 80,
+        width: 80,
         borderRadius: 10,
-        margin: 10
-    },
-    map_btn: {
-
+        margin: -10,
     },
     searchbar: {
         backgroundColor: '#f1f1f0',
@@ -163,6 +216,15 @@ const styles = StyleSheet.create({
         height: 40,
         // margin: 10,
         marginLeft: 40,
-    }
+    },
+    item: {
+        backgroundColor: '#f8f8f6',
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+        height: 100,
+        flexDirection: 'row',
+        borderRadius: 10,
+    },
 });
 
