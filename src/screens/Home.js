@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { SafeAreaView, View, StyleSheet, Text, Pressable, Platform, Image, ScrollView } from 'react-native';
+import { SafeAreaView, View, StyleSheet, Text, Pressable, Platform, Image, ScrollView, Dimensions } from 'react-native';
 import { RoundButton_Clear, RoundButton_Color, LoginButton, LongButton } from '../utils/CustomButton';
 
 const Home = (props) => {
@@ -156,6 +156,8 @@ const Home = (props) => {
 
 export default Home;
 
+const { width } = Dimensions.get('screen')
+
 const styles = StyleSheet.create({
     home: {
         flex: 1,
@@ -254,7 +256,7 @@ const styles = StyleSheet.create({
     },
     image_grid: {
         height: 100,
-        width: 180,
+        width: ((width - 50) / 2),
         borderRadius: 10,
         margin: 10,
         borderColor: '#bfbaba',
