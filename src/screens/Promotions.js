@@ -6,13 +6,23 @@
  */
 
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
+import { RoundButton_Clear } from '../utils/CustomButton';
 
 function Promotions(props) {
     return (
-        <SafeAreaView style={styles.body}>
 
-            <Text style={styles.text}>Promotions</Text>
+        <SafeAreaView style={styles.home}>
+
+            <View style={styles.header}>
+                <RoundButton_Clear bgColor={'#fff'} iconName={'angle-left'} iconSize={25} />
+                <Text style={styles.title}>Your Promotions</Text>
+            </View>
+
+            <View style={styles.body}>
+                <Text style={styles.subtitle}>Ready-to-use</Text>
+
+            </View>
 
         </SafeAreaView>
     );
@@ -21,14 +31,46 @@ function Promotions(props) {
 export default Promotions;
 
 const styles = StyleSheet.create({
-    body: {
+    home: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: '#f8f8f6'
     },
-    text: {
-        fontSize: 24,
-        fontWeight: '600',
+    body: {
+        backgroundColor: '#d8d8d8',
+        flex: 1,
+    },
+    header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        paddingTop: Platform.OS == 'ios' ? 56 : 0,
+    },
+    title: {
+        fontSize: 25,
+        textAlign: 'center',
+        margin: 10,
+        marginLeft: '15%',
+    },
+    subtitle: {
+        fontSize: 22,
+        fontWeight: '500',
+        margin: 15,
+        // marginLeft: '15%',
+    },
+    image: {
+        height: 80,
+        width: 80,
+        borderRadius: 10,
+        margin: -10,
+    },
+    item: {
+        backgroundColor: '#f8f8f6',
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+        height: 100,
+        flexDirection: 'row',
+        borderRadius: 10,
     },
 });
 

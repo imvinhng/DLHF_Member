@@ -8,10 +8,11 @@ export const RoundButton_Clear = (props) => {
         <Pressable
             style={({ pressed }) => [
                 styles.round_button,
+                { backgroundColor: pressed ? '#ddd' : props.bgColor },
             ]}
             onPress={props.onPressFunction}
         >
-            <FontAwesome5 name={props.iconName} size={props.size} color={props.color} />
+            <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
         </Pressable>
     );
 }

@@ -44,7 +44,7 @@ const BottomTab = () => {
           <FontAwesome5 name={iconName} size={size} color={color} />
         )
       },
-      tabBarActiveTintColor: '#f0f',
+      tabBarActiveTintColor: '#eb9f1c',
       tabBarInactiveTintColor: '#555',
       tabBarActiveBackgroundColor: '#fff',
       tabBarInactiveBackgroundColor: '#999',

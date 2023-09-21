@@ -22,14 +22,14 @@ const Home = (props) => {
                     <View style={styles.sub_header_left}>
                         <RoundButton_Clear
                             iconName={'atom'}
-                            size={25}
-                            color={'#eb341c'}
+                            iconSize={25}
+                            iconColor={'#eb341c'}
                         />
                         <Text style={styles.text_small_center}>Hello friend</Text>
                         <RoundButton_Clear
                             iconName={'bus-alt'}
-                            size={25}
-                            color={'#eb341c'}
+                            iconSize={25}
+                            iconColor={'#eb341c'}
                         />
                     </View>
                     <View style={styles.sub_header_right}>

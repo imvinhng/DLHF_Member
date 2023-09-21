@@ -50,7 +50,7 @@ const DATA = [
 
 const Item = ({ location, address }) => (
     <View style={styles.item}>
-        <Image style={styles.image} source={require('../assets/super-sale.jpg')} />
+        <Image style={styles.image} source={require('../assets/storefront.png')} />
 
         <View style={styles.column_wrapper_custom}>
             <Text style={styles.text_smaller}>Dalat Hasfarm {location}</Text>

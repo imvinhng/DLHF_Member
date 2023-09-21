@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Image, View, Text, TextInput } from 'react-native';
+import { StyleSheet, Image, View, Text, TextInput, ScrollView } from 'react-native';
 import { LoginButton, LongButton_Icon } from '../../utils/CustomButton';
 
 
@@ -21,11 +21,11 @@ function Login(props) {
         <View style={styles.background}>
             <Image
                 style={styles.image}
-                source={require('../../assets/dutch-windmill.jpeg')}
+                source={require('../../assets/dutch-windmill.png')}
             />
-            <View style={styles.body}>
+            <ScrollView style={styles.body} contentContainerStyle={{ alignItems: 'center' }}>
                 <Text style={styles.title}>Welcome to</Text>
-                <Text style={styles.logo}>Dalat Hasfarm</Text>
+                <Image source={require('../../assets/DLHF-logo.png')} />
 
                 <TextInput
                     style={[
@@ -56,7 +56,7 @@ function Login(props) {
 
                 <Text style={styles.subtext}>Vietnamese</Text>
 
-            </View>
+            </ScrollView>
         </View>
 
     );
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 25,
-        margin: 10,
+        margin: 15,
     },
     text: {
         fontSize: 15,
@@ -85,10 +85,10 @@ const styles = StyleSheet.create({
         fontSize: 15,
         marginTop: 40,
     },
-    logo: {
-        fontSize: 40,
-        color: 'green',
-    },
+    // logo: {
+    //     maxHeight: '50%',
+    //     // maxWidth: '50%',
+    // },
     row_wrapper: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -96,11 +96,11 @@ const styles = StyleSheet.create({
     },
     body: {
         backgroundColor: '#fff',
-        alignItems: 'center',
+        // alignItems: 'center',
         width: '100%',
         height: '70%',
         borderRadius: 20,
-        marginTop: -40,
+        marginTop: Platform.OS == 'ios' ? -40 : -80,
     },
     text_input: {
         width: "90%",
