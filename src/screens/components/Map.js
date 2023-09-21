@@ -1,69 +1,16 @@
-/**
- * Dalat Hasfarm Member App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
-import { RoundButton_Color, LongButton_Icon, SquareButton } from '../utils/CustomButton';
+import { RoundButton_Color, LongButton_Icon, SquareButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import MapView from 'react-native-maps';
 
-const DATA = [
-    {
-        id: 1,
-        location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
-    },
-    {
-        id: 2,
-        location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
-    },
-    {
-        id: 3,
-        location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
-    },
-    {
-        id: 4,
-        location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
-    },
-    {
-        id: 5,
-        location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
-    },
-    {
-        id: 6,
-        location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
-    },
-    {
-        id: 7,
-        location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
-    },
-];
+export default function Map({ route, navigation }) {
 
-const Item = ({ location, address }) => (
-    <View style={styles.item}>
-        <Image style={styles.image} source={require('../assets/super-sale.jpg')} />
-
-        <View style={styles.column_wrapper_custom}>
-            <Text style={styles.text_smaller}>Dalat Hasfarm {location}</Text>
-            <Text style={styles.text_small_bold}>{address}</Text>
-            <Text style={styles.text_light}>0.2 km away</Text>
-        </View>
-    </View>
-);
-
-function Store(props) {
-    const navigation = useNavigation();
+    // const { city, lat, lng } = route.params;
 
     return (
+
+
         <SafeAreaView style={styles.home}>
 
             <View style={styles.top_header}>
@@ -89,30 +36,31 @@ function Store(props) {
                 <SquareButton iconName='search' style={styles.searchbar_icon} />
                 <TextInput style={styles.searchbar} placeholder={'Search'} />
                 <LongButton_Icon
-                    iconName={'map'}
+                    iconName={'bars'}
                     iconSize={23}
-                    textColor={'#000'}
                     buttonColor={'#f8f8f6'}
-                    text={'Map'}
-                    onPressFunction={() => navigation.navigate('Map')}
+                    text={'List'}
+                    onPressFunction={() => navigation.navigate('Store')}
                 />
             </View>
 
             <View style={styles.body}>
-                <Text style={styles.text_small}>Dalat Hasfarm's Flower Shop Locations</Text>
-
-                <FlatList
-                    data={DATA}
-                    renderItem={({ item }) => <Item location={item.location} address={item.address} />}
-                    keyExtractor={item => item.id}
+                <MapView
+                    style={styles.map}
+                    initialRegion={{
+                        latitude: 10.8231,
+                        longitude: 106.6297,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
                 />
             </View>
 
         </SafeAreaView>
+
     );
 }
 
-export default Store;
 
 const styles = StyleSheet.create({
     home: {
@@ -236,5 +184,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderRadius: 10,
     },
+    map: {
+        width: '100%',
+        height: '100%',
+    }
 });
-

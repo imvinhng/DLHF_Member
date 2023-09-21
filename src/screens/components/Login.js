@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, View, Text, TextInput } from 'react-native';
-import { LoginButton, LongButton_Icon } from '../utils/CustomButton';
+import { LoginButton, LongButton_Icon } from '../../utils/CustomButton';
 
 
 function Login(props) {
@@ -21,7 +21,7 @@ function Login(props) {
         <View style={styles.background}>
             <Image
                 style={styles.image}
-                source={require('../assets/dutch-windmill.jpeg')}
+                source={require('../../assets/dutch-windmill.jpeg')}
             />
             <View style={styles.body}>
                 <Text style={styles.title}>Welcome to</Text>

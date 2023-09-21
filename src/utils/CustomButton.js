@@ -90,7 +90,7 @@ export const LongButton_Icon = (props) => {
             onPress={props.onPressFunction}
         >
             <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
-            <Text style={styles.text_long_button_icon}>{props.text}</Text>
+            <Text style={[styles.text_long_button_icon, { color: props.textColor }]}>{props.text}</Text>
         </Pressable>
     );
 }

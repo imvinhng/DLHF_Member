@@ -15,7 +15,8 @@ import Orders from './src/screens/Orders';
 import Store from './src/screens/Store';
 import Promotions from './src/screens/Promotions';
 import More from './src/screens/More';
-import Login from './src/screens/Login';
+import Login from './src/screens/components/Login';
+import Map from './src/screens/components/Map';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
@@ -40,12 +41,7 @@ const BottomTab = () => {
           iconName = 'bars';
         }
         return (
-          <FontAwesome5
-            name={iconName}
-            size={size}
-            color={color}
-          />
-
+          <FontAwesome5 name={iconName} size={size} color={color} />
         )
       },
       tabBarActiveTintColor: '#f0f',
@@ -60,8 +56,6 @@ const BottomTab = () => {
       name="Home"
       component={Home}
     />
-
-
     <Tab.Screen
       name="Orders"
       component={Orders}
@@ -90,6 +84,9 @@ function App(): JSX.Element {
         <Stack.Screen
           name='Login'
           component={Login} />
+        <Stack.Screen
+          name='Map'
+          component={Map} />
         <Stack.Screen
           name='BottomTab'
           component={BottomTab} />
