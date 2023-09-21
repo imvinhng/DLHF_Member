@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { SafeAreaView, View, StyleSheet, Text, Pressable, Platform, Image, ScrollView, Dimensions } from 'react-native';
-import { RoundButton_Clear, RoundButton_Color, LoginButton, LongButton, PromotionButton } from '../utils/CustomButton';
+import { RoundButton_Clear, RoundButton_Color, RoundButton_Image, LoginButton, LongButton, PromotionButton, NotificationButton } from '../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -20,25 +20,22 @@ const Home = (props) => {
             <View style={styles.header}>
                 <View style={styles.top_header}>
                     <View style={styles.sub_header_left}>
-                        <RoundButton_Clear
-                            iconName={'atom'}
-                            iconSize={25}
-                            iconColor={'#eb341c'}
+                        <RoundButton_Image
+                            image_uri={require('../assets/icons/red-flower-icon.png')}
+                            bgColor={'#f7f0af'}
+                            iconStyle={styles.icon_image}
                         />
                         <Text style={styles.text_small_center}>Hello friend</Text>
-                        <RoundButton_Clear
-                            iconName={'bus-alt'}
-                            iconSize={25}
-                            iconColor={'#eb341c'}
+                        <RoundButton_Image
+                            image_uri={require('../assets/icons/hello-icon.png')}
+                            bgColor={'#f7f0af'}
+                            iconStyle={styles.icon_image}
                         />
                     </View>
+
                     <View style={styles.sub_header_right}>
                         <PromotionButton />
-                        <RoundButton_Color
-                            iconName={'bell'}
-                            iconSize={25}
-                            bgColor={'#fff'}
-                        />
+                        <NotificationButton />
                     </View>
                 </View>
 
@@ -60,22 +57,20 @@ const Home = (props) => {
                 {/* <Text style={styles.text_large}>Home</Text> */}
                 <View style={styles.body1_top}>
                     <View style={styles.body1_top_left}>
-                        <RoundButton_Color
-                            iconName={'motorcycle'}
-                            iconSize={40}
-                            iconColor={'#eb341c'}
+                        <RoundButton_Image
+                            image_uri={require('../assets/icons/scooter-icon.png')}
                             bgColor={'#f7f0af'}
-                            style={{ height: 80, width: 80, borderRadius: 50 }}
+                            iconStyle={styles.icon_image_large}
+                            buttonStyle={styles.roundbutton_large}
                         />
                         <Text>Home Delivery</Text>
                     </View>
                     <View style={styles.body1_top_right}>
-                        <RoundButton_Color
-                            iconName={'store'}
-                            iconSize={40}
-                            iconColor={'#eb341c'}
+                        <RoundButton_Image
+                            image_uri={require('../assets/icons/shop-icon.png')}
                             bgColor={'#f7f0af'}
-                            style={{ height: 80, width: 80, borderRadius: 50 }}
+                            iconStyle={styles.icon_image_large}
+                            buttonStyle={styles.roundbutton_large}
                         />
                         <Text>Store Pickup</Text>
                     </View>
@@ -83,31 +78,31 @@ const Home = (props) => {
 
                 <ScrollView style={styles.body1_bottom} horizontal>
                     <Image
-                        source={require('../assets/super-sale.jpg')}
+                        source={require('../assets/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.jpg')}
+                        source={require('../assets/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.jpg')}
+                        source={require('../assets/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.jpg')}
+                        source={require('../assets/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.jpg')}
+                        source={require('../assets/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.jpg')}
+                        source={require('../assets/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.jpg')}
+                        source={require('../assets/super-sale.png')}
                         style={styles.image}
                     />
                 </ScrollView>
@@ -221,7 +216,7 @@ const styles = StyleSheet.create({
     text_large: {
         fontSize: 24,
         fontWeight: '600',
-        margin: 10,
+        margin: 15,
     },
     text_subtitle: {
         fontSize: 20,
@@ -234,7 +229,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: '600',
         marginLeft: -10,
-        marginRight: -10,
+        marginRight: -6,
     },
     text_small: {
         fontSize: 15,
@@ -251,10 +246,21 @@ const styles = StyleSheet.create({
 
     },
     image: {
-        height: 250,
-        width: 390,
         borderRadius: 10,
         margin: 10
+    },
+    icon_image: {
+        height: 25,
+        width: 25,
+    },
+    icon_image_large: {
+        height: 45,
+        width: 45,
+    },
+    roundbutton_large: {
+        height: 80,
+        width: 80,
+        borderRadius: 50,
     },
     image_grid: {
         height: 100,

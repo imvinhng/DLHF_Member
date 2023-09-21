@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image, Dimensions, ScrollView } from 'react-native';
-import { RoundButton_Clear, RoundButton_Color, PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon } from '../utils/CustomButton';
+import { RoundButton_Clear, RoundButton_Color, PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton } from '../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
 function More(props) {
@@ -21,11 +21,7 @@ function More(props) {
 
                 <View style={styles.sub_header_right}>
                     <PromotionButton />
-                    <RoundButton_Color
-                        iconName={'bell'}
-                        iconSize={25}
-                        bgColor={'#fff'}
-                    />
+                    <NotificationButton />
                 </View>
             </View>
 
@@ -180,7 +176,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         backgroundColor: '#f8f8f6',
         // height: 120,
-        paddingTop: Platform.OS == 'ios' ? 56 : 0,
+        paddingTop: Platform.OS == 'ios' ? 56 : 10,
     },
     sub_header_right: {
         flexDirection: 'row',

@@ -17,6 +17,7 @@ import Promotions from './src/screens/Promotions';
 import More from './src/screens/More';
 import Login from './src/screens/components/Login';
 import Map from './src/screens/components/Map';
+import Notification from './src/screens/components/Notification';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
@@ -87,6 +88,9 @@ function App(): JSX.Element {
         <Stack.Screen
           name='Map'
           component={Map} />
+        <Stack.Screen
+          name='Notification'
+          component={Notification} />
         <Stack.Screen
           name='BottomTab'
           component={BottomTab} />

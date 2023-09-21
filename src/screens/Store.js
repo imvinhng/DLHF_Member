@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
-import { RoundButton_Color, LongButton_Icon, SquareButton } from '../utils/CustomButton';
+import { RoundButton_Color, LongButton_Icon, SquareButton, PromotionButton, NotificationButton } from '../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
 const DATA = [
@@ -71,17 +71,8 @@ function Store(props) {
                     <Text style={styles.text_large}>Store</Text>
                 </View>
                 <View style={styles.sub_header_right}>
-                    <RoundButton_Color
-                        iconName={'gift'}
-                        iconSize={25}
-                        iconColor={'#eb9f1c'}
-                        bgColor={'#fff'}
-                    />
-                    <RoundButton_Color
-                        iconName={'bell'}
-                        iconSize={25}
-                        bgColor={'#fff'}
-                    />
+                    <PromotionButton />
+                    <NotificationButton />
                 </View>
             </View>
 
