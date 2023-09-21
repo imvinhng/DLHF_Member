@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Pressable, Text } from 'react-native';
+import { StyleSheet, Pressable, Text, Image, View } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 
 export const RoundButton_Clear = (props) => {
     return (
@@ -30,6 +31,22 @@ export const RoundButton_Color = (props) => {
         </Pressable>
     );
 }
+export const PromotionButton = (props) => {
+    const navigation = useNavigation();
+    return (
+        <Pressable
+            style={({ pressed }) => [
+                styles.round_button,
+                { backgroundColor: pressed ? '#ddd' : '#fff' },
+                props.style,
+            ]}
+            onPress={() => navigation.navigate('Promotions')}
+        >
+
+            <FontAwesome5 name={'gift'} size={25} color={'#eb9f1c'} />
+        </Pressable>
+    );
+}
 export const SquareButton = (props) => {
     return (
         <Pressable
@@ -41,6 +58,23 @@ export const SquareButton = (props) => {
         // onPress={() => console.log('Round Button clicked')}
         >
             <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
+        </Pressable>
+    );
+}
+export const SquareButton_ImageIcon_Text = (props) => {
+    return (
+        <Pressable
+            style={({ pressed }) => [
+                // styles.square_button,
+                { backgroundColor: pressed ? '#ddd' : props.bgColor },
+                props.buttonStyle,
+            ]}
+            onPress={props.onPressFunction}
+        >
+            <View style={styles.image_icon_wrapper}>
+                <Image source={props.image_uri} style={props.imageStyle} />
+            </View>
+            <Text style={styles.text_square_button_image_icon}>{props.text}</Text>
         </Pressable>
     );
 }
@@ -130,10 +164,16 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     text_long_button_icon: {
+        fontSize: 16,
+        color: '#000',
+        fontWeight: '600',
+        margin: 15,
+    },
+    text_square_button_image_icon: {
         fontSize: 15,
         color: '#000',
         fontWeight: '600',
-        margin: 10,
+        marginTop: 20,
     },
     login_button: {
         height: 50,
@@ -147,10 +187,14 @@ const styles = StyleSheet.create({
         width: 130,
         backgroundColor: '#68ede9',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'left',
         borderRadius: 5,
         margin: 5,
+        paddingLeft: 10,
         flexDirection: 'row',
-
     },
+    image_icon_wrapper: {
+        paddingTop: 10,
+    },
+
 })

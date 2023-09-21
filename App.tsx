@@ -47,7 +47,7 @@ const BottomTab = () => {
       tabBarActiveTintColor: '#eb9f1c',
       tabBarInactiveTintColor: '#555',
       tabBarActiveBackgroundColor: '#fff',
-      tabBarInactiveBackgroundColor: '#999',
+      tabBarInactiveBackgroundColor: '#fff',
       tabBarShowLabel: true,
       fontSize: 14,
       headerShown: false,

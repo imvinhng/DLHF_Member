@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { SafeAreaView, View, StyleSheet, Text, Pressable, Platform, Image, ScrollView, Dimensions } from 'react-native';
-import { RoundButton_Clear, RoundButton_Color, LoginButton, LongButton } from '../utils/CustomButton';
+import { RoundButton_Clear, RoundButton_Color, LoginButton, LongButton, PromotionButton } from '../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -33,12 +33,7 @@ const Home = (props) => {
                         />
                     </View>
                     <View style={styles.sub_header_right}>
-                        <RoundButton_Color
-                            iconName={'gift'}
-                            iconSize={25}
-                            iconColor={'#eb9f1c'}
-                            bgColor={'#fff'}
-                        />
+                        <PromotionButton />
                         <RoundButton_Color
                             iconName={'bell'}
                             iconSize={25}

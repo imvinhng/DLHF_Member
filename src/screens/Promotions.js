@@ -8,6 +8,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
 import { RoundButton_Clear } from '../utils/CustomButton';
+import { useNavigation } from '@react-navigation/native';
 
 const DATA = [
     {
@@ -37,9 +38,6 @@ const DATA = [
 ];
 
 const Item = ({ description, expiration_date, image_uri }) => {
-    console.log('====================================');
-    console.log(image_uri);
-    console.log('====================================');
     return (
 
         <View style={styles.item}>
@@ -54,12 +52,19 @@ const Item = ({ description, expiration_date, image_uri }) => {
 };
 
 function Promotions(props) {
+    const navigation = useNavigation();
+
     return (
 
         <SafeAreaView style={styles.home}>
 
             <View style={styles.header}>
-                <RoundButton_Clear bgColor={'#fff'} iconName={'angle-left'} iconSize={25} />
+                <RoundButton_Clear
+                    bgColor={'#fff'}
+                    iconName={'angle-left'}
+                    iconSize={25}
+                    onPressFunction={() => navigation.navigate('Home')}
+                />
                 <Text style={styles.title}>Your Vouchers</Text>
             </View>
 
@@ -88,7 +93,7 @@ export default Promotions;
 const styles = StyleSheet.create({
     home: {
         flex: 1,
-        backgroundColor: '#f8f8f6'
+        backgroundColor: '#fff'
     },
     body: {
         backgroundColor: '#d8d8d8',
