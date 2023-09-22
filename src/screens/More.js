@@ -62,7 +62,9 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Order Review'}
-                    style={styles.longbutton_icon}
+                    buttonStyle={styles.longbutton_icon}
+                    textStyle={styles.text_longbutton_icon}
+                    iconStyle={styles.icon_longbutton}
                 />
                 <LongButton_Icon
                     iconName={'comment-alt'}
@@ -70,7 +72,9 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Contact Us'}
-                    style={styles.longbutton_icon}
+                    buttonStyle={styles.longbutton_icon}
+                    textStyle={styles.text_longbutton_icon}
+                    iconStyle={styles.icon_longbutton}
                 />
 
                 <Text style={styles.subtitle}>Account</Text>
@@ -80,7 +84,9 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Personal Information'}
-                    style={styles.longbutton_icon}
+                    buttonStyle={styles.longbutton_icon}
+                    textStyle={styles.text_longbutton_icon}
+                    iconStyle={styles.icon_longbutton}
                 />
                 <LongButton_Icon
                     iconName={'map-marker-alt'}
@@ -88,7 +94,9 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Saved Address'}
-                    style={styles.longbutton_icon}
+                    buttonStyle={styles.longbutton_icon}
+                    textStyle={styles.text_longbutton_icon}
+                    iconStyle={styles.icon_longbutton}
                 />
                 <LongButton_Icon
                     iconName={'cog'}
@@ -96,7 +104,9 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Settings'}
-                    style={styles.longbutton_icon}
+                    buttonStyle={styles.longbutton_icon}
+                    textStyle={styles.text_longbutton_icon}
+                    iconStyle={styles.icon_longbutton}
                 />
                 <LongButton_Icon
                     iconName={'door-open'}
@@ -104,7 +114,9 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Logout'}
-                    style={styles.longbutton_icon}
+                    buttonStyle={styles.longbutton_icon}
+                    textStyle={styles.text_longbutton_icon}
+                    iconStyle={styles.icon_longbutton}
                 />
 
             </View>
@@ -128,9 +140,6 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 25,
-        // textAlign: 'left',
-        textAlignVertical: 'center',
-        marginBottom: 10,
         marginLeft: '7%',
     },
     subtitle: {
@@ -175,8 +184,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         backgroundColor: '#f8f8f6',
-        // height: 120,
         paddingTop: Platform.OS == 'ios' ? 56 : 10,
+        paddingBottom: 10,
     },
     sub_header_right: {
         flexDirection: 'row',
@@ -205,6 +214,24 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         margin: 5,
         height: 50,
-        width: '90%'
+        width: '90%',
+        alignItems: 'center',
+        paddingLeft: 10,
+
+        shadowColor: '#000',
+        shadowOffset: { width: 5, height: 5 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+    },
+    text_longbutton_icon: {
+        fontSize: 16,
+        fontWeight: '600',
+        marginLeft: 5,
+    },
+    icon_longbutton: {
+        width: 30,
+        height: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 });

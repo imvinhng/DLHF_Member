@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { SafeAreaView, View, StyleSheet, Text, Pressable, Platform, Image, ScrollView, Dimensions } from 'react-native';
-import { RoundButton_Clear, RoundButton_Color, RoundButton_Image, LoginButton, LongButton, PromotionButton, NotificationButton } from '../utils/CustomButton';
+import { RoundButton_Clear, RoundButton_Color, RoundButton_Image, LoginButton, LongButton, PromotionButton, NotificationButton, LongButton_Icon } from '../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -126,22 +126,67 @@ const Home = (props) => {
                 </View>
 
                 <View style={styles.grid}>
-                    <Image
-                        source={require('../assets/crocus-flowers.jpeg')}
-                        style={styles.image_grid}
-                    />
-                    <Image
-                        source={require('../assets/white-flower.jpeg')}
-                        style={styles.image_grid}
-                    />
-                    <Image
-                        source={require('../assets/blue-flower.jpeg')}
-                        style={styles.image_grid}
-                    />
-                    <Image
-                        source={require('../assets/roses.jpeg')}
-                        style={styles.image_grid}
-                    />
+                    <View style={styles.subgrid}>
+                        <Image
+                            source={require('../assets/vouchers/voucher1-large.png')}
+                            style={styles.image_grid}
+                        />
+                        <Text style={styles.text_grid}>DISCOUNT 20,000D FOR ORDERS OVER 450,000D </Text>
+                        <LongButton_Icon
+                            iconName={'calendar'}
+                            iconSize={20}
+                            bgColor={'#fff'}
+                            text={'20/9'}
+                            buttonStyle={styles.voucher_expiration_btn}
+                            textStyle={styles.voucher_expiration_text}
+                        />
+                    </View>
+                    <View style={styles.subgrid}>
+                        <Image
+                            source={require('../assets/vouchers/voucher3-large.png')}
+                            style={styles.image_grid}
+                        />
+                        <Text style={styles.text_grid}>DISCOUNT 50,000D FOR ORDERS OVER 950,000D </Text>
+                        <LongButton_Icon
+                            iconName={'calendar'}
+                            iconSize={20}
+                            bgColor={'#fff'}
+                            text={'30/9'}
+                            buttonStyle={styles.voucher_expiration_btn}
+                            textStyle={styles.voucher_expiration_text}
+                        />
+                    </View>
+                    <View style={styles.subgrid}>
+                        <Image
+                            source={require('../assets/vouchers/voucher2-large.png')}
+                            style={styles.image_grid}
+                        />
+                        <Text style={styles.text_grid}>DISCOUNT 20,000D FOR ORDERS OVER 450,000D </Text>
+                        <LongButton_Icon
+                            iconName={'calendar'}
+                            iconSize={20}
+                            bgColor={'#fff'}
+                            text={'20/9'}
+                            buttonStyle={styles.voucher_expiration_btn}
+                            textStyle={styles.voucher_expiration_text}
+                        />
+                    </View>
+                    <View style={styles.subgrid}>
+                        <Image
+                            source={require('../assets/vouchers/voucher4-large.png')}
+                            style={styles.image_grid}
+                        />
+                        <Text style={styles.text_grid}>DISCOUNT 50,000D FOR ORDERS OVER 950,000D </Text>
+                        <LongButton_Icon
+                            iconName={'calendar'}
+                            iconSize={20}
+                            bgColor={'#fff'}
+                            text={'30/9'}
+                            buttonStyle={styles.voucher_expiration_btn}
+                            textStyle={styles.voucher_expiration_text}
+                        />
+                    </View>
+
                 </View>
             </View>
 
@@ -184,8 +229,16 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         margin: 5,
     },
+    subgrid: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        width: ((width - 50) / 2),
+        margin: 5,
+        marginBottom: -10,
+    },
     sub_header_right: {
         flexDirection: 'row',
+        marginRight: 10,
     },
     sub_header_left: {
         flexDirection: 'row',
@@ -243,7 +296,9 @@ const styles = StyleSheet.create({
         padding: 10,
         textAlign: 'center',
         color: '#eb9f1c',
-
+    },
+    text_grid: {
+        paddingLeft: 18,
     },
     image: {
         borderRadius: 10,
@@ -263,12 +318,16 @@ const styles = StyleSheet.create({
         borderRadius: 50,
     },
     image_grid: {
-        height: 100,
         width: ((width - 50) / 2),
         borderRadius: 10,
         margin: 10,
-        borderColor: '#bfbaba',
-        borderWidth: 5,
+    },
+    voucher_expiration_btn: {
+        marginLeft: -15,
+    },
+    voucher_expiration_text: {
+        color: 'gray',
+        fontWeight: '400',
     }
 });
 

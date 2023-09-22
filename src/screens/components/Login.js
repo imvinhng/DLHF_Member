@@ -50,9 +50,34 @@ function Login(props) {
                     <View style={styles.line} />
                 </View>
 
-                <LongButton_Icon style={styles.apple_btn} iconName={'apple'} iconSize={20} iconColor={'#fff'} textColor={'#fff'} buttonColor={'#000'} text={'Continue with Apple '} />
-                <LongButton_Icon style={styles.facebook_btn} iconName={'facebook'} iconSize={20} textColor={'#fff'} buttonColor={'#3856c2'} text={'Continue with Facebook'} />
-                <LongButton_Icon style={styles.google_btn} iconName={'google'} iconSize={20} textColor={'#000'} buttonColor={'#fff'} text={'Continue with Google'} />
+                <LongButton_Icon
+                    buttonStyle={styles.apple_btn}
+                    textStyle={styles.alt_login_text}
+                    iconName={'apple'}
+                    iconSize={20}
+                    iconColor={'#fff'}
+                    textColor={'#fff'}
+                    buttonColor={'#000'}
+                    text={'Continue with Apple '}
+                />
+                <LongButton_Icon
+                    buttonStyle={styles.facebook_btn}
+                    textStyle={styles.alt_login_text}
+                    iconName={'facebook'}
+                    iconSize={20}
+                    textColor={'#fff'}
+                    buttonColor={'#3856c2'}
+                    text={'Continue with Facebook'}
+                />
+                <LongButton_Icon
+                    buttonStyle={styles.google_btn}
+                    textStyle={styles.alt_login_text}
+                    iconName={'google'}
+                    iconSize={20}
+                    textColor={'#000'}
+                    buttonColor={'#fff'}
+                    text={'Continue with Google'}
+                />
 
                 <Text style={styles.subtext}>Vietnamese</Text>
 
@@ -85,10 +110,9 @@ const styles = StyleSheet.create({
         fontSize: 15,
         marginTop: 40,
     },
-    // logo: {
-    //     maxHeight: '50%',
-    //     // maxWidth: '50%',
-    // },
+    alt_login_text: {
+        paddingLeft: 10,
+    },
     row_wrapper: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -117,13 +141,19 @@ const styles = StyleSheet.create({
     },
     apple_btn: {
         width: '90%',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     facebook_btn: {
         width: '90%',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     google_btn: {
         width: '90%',
         borderWidth: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 
     line: {

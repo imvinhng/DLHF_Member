@@ -50,7 +50,7 @@ export const PromotionButton = (props) => {
     return (
         <Pressable
             style={({ pressed }) => [
-                styles.round_button,
+                styles.shadow_round_button,
                 { backgroundColor: pressed ? '#ddd' : '#fff' },
                 props.style,
             ]}
@@ -66,7 +66,7 @@ export const NotificationButton = (props) => {
     return (
         <Pressable
             style={({ pressed }) => [
-                styles.round_button,
+                styles.shadow_round_button,
                 { backgroundColor: pressed ? '#ddd' : '#fff' },
                 props.style,
             ]}
@@ -149,12 +149,14 @@ export const LongButton_Icon = (props) => {
             style={({ pressed }) => [
                 styles.long_button_icon,
                 { backgroundColor: pressed ? '#ddd' : props.buttonColor },
-                props.style
+                props.buttonStyle
             ]}
             onPress={props.onPressFunction}
         >
-            <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
-            <Text style={[styles.text_long_button_icon, { color: props.textColor }]}>{props.text}</Text>
+            <View style={props.iconStyle}>
+                <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
+            </View>
+            <Text style={[{ color: props.textColor }, props.textStyle]}>{props.text}</Text>
         </Pressable>
     );
 }
@@ -165,18 +167,27 @@ const styles = StyleSheet.create({
     round_button: {
         height: 50,
         width: 50,
-        // backgroundColor: '#fff',
         borderRadius: 25,
         margin: 5,
         alignItems: 'center',
         justifyContent: 'center',
     },
+    shadow_round_button: {
+        height: 50,
+        width: 50,
+        borderRadius: 25,
+        margin: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        shadowOffset: { width: 1, height: 7 },
+    },
     square_button: {
         height: 50,
         width: 50,
-        // backgroundColor: '#fff',
         borderRadius: 10,
-        // margin: 5,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -191,12 +202,6 @@ const styles = StyleSheet.create({
         color: '#eb9f1c',
         fontWeight: '600',
         margin: 10,
-    },
-    text_long_button_icon: {
-        fontSize: 16,
-        // color: '#000',
-        fontWeight: '600',
-        marginLeft: 10,
     },
     text_square_button_image_icon: {
         fontSize: 15,
@@ -225,12 +230,11 @@ const styles = StyleSheet.create({
     long_button_icon: {
         height: 40,
         width: 130,
-        backgroundColor: '#68ede9',
-        alignItems: 'center',
-        justifyContent: 'center',
+        // backgroundColor: '#68ede9',
+        // alignItems: 'center',
+        // justifyContent: 'center',
         borderRadius: 5,
         margin: 5,
-        // paddingLeft: 10,
         flexDirection: 'row',
     },
     image_icon_wrapper: {
