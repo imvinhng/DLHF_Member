@@ -4,12 +4,13 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 
-export const RoundButton_Clear = (props) => {
+export const RoundButton = (props) => {
     return (
         <Pressable
             style={({ pressed }) => [
                 styles.round_button,
                 { backgroundColor: pressed ? '#ddd' : props.bgColor },
+                props.buttonStyle,
             ]}
             onPress={props.onPressFunction}
         >
@@ -17,20 +18,7 @@ export const RoundButton_Clear = (props) => {
         </Pressable>
     );
 }
-export const RoundButton_Color = (props) => {
-    return (
-        <Pressable
-            style={({ pressed }) => [
-                styles.round_button,
-                { backgroundColor: pressed ? '#ddd' : props.bgColor },
-                props.style,
-            ]}
-        // onPress={() => console.log('Round Button clicked')}
-        >
-            <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
-        </Pressable>
-    );
-}
+
 export const RoundButton_Image = (props) => {
     return (
         <Pressable

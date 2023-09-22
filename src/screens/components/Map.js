@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
-import { RoundButton_Color, LongButton_Icon, SquareButton } from '../../utils/CustomButton';
+import { RoundButton, LongButton_Icon, SquareButton, PromotionButton, NotificationButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import MapView from 'react-native-maps';
 
@@ -18,17 +18,8 @@ export default function Map({ route, navigation }) {
                     <Text style={styles.text_large}>Store</Text>
                 </View>
                 <View style={styles.sub_header_right}>
-                    <RoundButton_Color
-                        iconName={'gift'}
-                        iconSize={25}
-                        iconColor={'#eb9f1c'}
-                        bgColor={'#fff'}
-                    />
-                    <RoundButton_Color
-                        iconName={'bell'}
-                        iconSize={25}
-                        bgColor={'#fff'}
-                    />
+                    <PromotionButton />
+                    <NotificationButton />
                 </View>
             </View>
 
@@ -39,6 +30,8 @@ export default function Map({ route, navigation }) {
                     iconName={'bars'}
                     iconSize={23}
                     buttonColor={'#f8f8f6'}
+                    buttonStyle={styles.map_btn}
+                    textStyle={styles.text_map}
                     text={'List'}
                     onPressFunction={() => navigation.navigate('Store')}
                 />
@@ -153,6 +146,9 @@ const styles = StyleSheet.create({
         fontWeight: '200',
         marginTop: 25,
     },
+    text_map: {
+        marginLeft: 10,
+    },
     image: {
         height: 80,
         width: 80,
@@ -187,5 +183,9 @@ const styles = StyleSheet.create({
     map: {
         width: '100%',
         height: '100%',
+    },
+    map_btn: {
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 });

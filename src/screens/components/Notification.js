@@ -7,45 +7,68 @@
 
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
-import { RoundButton_Clear } from '../../utils/CustomButton';
+import { RoundButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
 const DATA = [
     {
         id: 1,
-        description: '40% Discount for the first order over 500K',
-        expiration_date: '24/10/2023',
-        image_uri: require('../../assets/vouchers/voucher1.png'),
+        title: 'Enjoy your flowers!',
+        message: 'Check your Reward wallet to receive gifts. Hope Aad have a happy day!',
+        date: '11/12',
     },
     {
         id: 2,
-        description: '40% Discount for the first order over 500K',
-        expiration_date: '24/10/2023',
-        image_uri: require('../../assets/vouchers/voucher2.png'),
+        title: 'Congrats on your new ranking - Silver',
+        // need to find a replacement word for members (instead of florist)
+        message: 'Hey Aad! Every successful order accrue reward points. You can use it to upgrade your membership ranking.',
+        date: '11/12',
     },
     {
         id: 3,
-        description: '40% Discount for the first order over 500K',
-        expiration_date: '24/10/2023',
-        image_uri: require('../../assets/vouchers/voucher3.png'),
+        title: 'Your order has been delivered',
+        message: 'Hey Aad! Your order has been delivered to your Dalat Hasfarm office in Ho Chi Minh City Binh Thanh District',
+        date: '08/03',
     },
     {
         id: 4,
-        description: '40% Discount for the first order over 500K',
-        expiration_date: '24/10/2023',
-        image_uri: require('../../assets/vouchers/voucher4.png'),
+        title: 'Need a special gift for her on March 8?',
+        message: "Hey Aad! Only another week until International Women's Day. Have you picked out the perfect bouquet for her?",
+        date: '01/03',
+    },
+    {
+        id: 5,
+        title: 'Sweet Feburary 14',
+        message: 'Only a few more days until Valentine. Have Aad prepared Chocolate and flowers for that special someone?',
+        date: '07/02',
+    },
+    {
+        id: 6,
+        title: 'Enjoy your flowers!',
+        message: 'Check your Reward wallet to receive gifts. Hope Aad have a happy day!',
+        date: '01/02',
+    },
+    {
+        id: 7,
+        title: 'Enjoy your flowers!',
+        message: 'Check your Reward wallet to receive gifts. Hope Aad have a happy day!',
+        date: '12/01',
     },
 ];
 
-const Item = ({ description, expiration_date, image_uri }) => {
+const Item = ({ title, message, date }) => {
     return (
 
         <View style={styles.item}>
-            <Image style={styles.image} source={image_uri} />
+            <RoundButton iconName={'bell'} bgColor={'lightgray'} iconSize={25} buttonStyle={styles.bell_btn} />
 
             <View style={styles.column_wrapper_custom}>
-                <Text style={styles.text_above}>{description}</Text>
-                <Text style={styles.text_below}>Expires on {expiration_date}</Text>
+                <View style={styles.row_wrapper}>
+                    <Text style={styles.noti_title}>{title}</Text>
+                    <Text style={styles.noti_date}>{date}</Text>
+                </View>
+
+                <Text style={styles.noti_message}>{message}</Text>
             </View>
         </View>
     )
@@ -59,7 +82,7 @@ function Notification(props) {
         <SafeAreaView style={styles.home}>
 
             <View style={styles.header}>
-                <RoundButton_Clear
+                <RoundButton
                     bgColor={'#fff'}
                     iconName={'angle-left'}
                     iconSize={25}
@@ -69,15 +92,14 @@ function Notification(props) {
             </View>
 
             <View style={styles.body}>
-                <Text style={styles.subtitle}>Ready-to-use</Text>
 
                 <FlatList
                     data={DATA}
                     renderItem={({ item }) =>
                         <Item
-                            description={item.description}
-                            expiration_date={item.expiration_date}
-                            image_uri={item.image_uri}
+                            title={item.title}
+                            message={item.message}
+                            date={item.date}
                         />
                     }
                     keyExtractor={item => item.id}
@@ -110,20 +132,20 @@ const styles = StyleSheet.create({
         margin: 10,
         marginLeft: '15%',
     },
-    subtitle: {
-        fontSize: 22,
-        fontWeight: '500',
-        margin: 15,
-        // marginLeft: '15%',
+    noti_title: {
+        fontSize: 14,
+        fontWeight: '700',
     },
-    text_above: {
-        fontSize: 16,
-        fontWeight: '500',
-    },
-    text_below: {
+    noti_message: {
         fontSize: 13,
         fontWeight: '500',
         marginTop: 22,
+    },
+    noti_date: {
+        fontSize: 13,
+        fontWeight: '500',
+        position: 'absolute',
+        left: 300,
     },
     image: {
         height: 80,
@@ -134,11 +156,13 @@ const styles = StyleSheet.create({
     item: {
         backgroundColor: '#f8f8f6',
         padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
         height: 100,
+        width: '100%',
         flexDirection: 'row',
-        borderRadius: 10,
+        borderWidth: 0.5,
+        borderColor: 'lightgray',
+        justifyContent: 'left',
+        alignItems: 'center',
     },
     column_wrapper_custom: {
         flexDirection: 'column',
@@ -147,5 +171,14 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         marginTop: -5,
     },
+    row_wrapper: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    bell_btn: {
+        margin: -6,
+        // backgroundColor: 'yellow',
+    }
 });
 

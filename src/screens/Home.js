@@ -6,8 +6,8 @@
  */
 
 import React from 'react';
-import { SafeAreaView, View, StyleSheet, Text, Pressable, Platform, Image, ScrollView, Dimensions } from 'react-native';
-import { RoundButton_Clear, RoundButton_Color, RoundButton_Image, LoginButton, LongButton, PromotionButton, NotificationButton, LongButton_Icon } from '../utils/CustomButton';
+import { View, StyleSheet, Text, Platform, Image, ScrollView, Dimensions } from 'react-native';
+import { RoundButton_Image, LoginButton, LongButton, PromotionButton, NotificationButton, LongButton_Icon } from '../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
 

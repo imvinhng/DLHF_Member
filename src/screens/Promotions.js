@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
-import { RoundButton_Clear } from '../utils/CustomButton';
+import { RoundButton } from '../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
 const DATA = [
@@ -59,7 +59,7 @@ function Promotions(props) {
         <SafeAreaView style={styles.home}>
 
             <View style={styles.header}>
-                <RoundButton_Clear
+                <RoundButton
                     bgColor={'#fff'}
                     iconName={'angle-left'}
                     iconSize={25}

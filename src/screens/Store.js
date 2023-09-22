@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
-import { RoundButton_Color, LongButton_Icon, SquareButton, PromotionButton, NotificationButton } from '../utils/CustomButton';
+import { LongButton_Icon, SquareButton, PromotionButton, NotificationButton } from '../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
 const DATA = [
@@ -84,6 +84,8 @@ function Store(props) {
                     iconSize={23}
                     textColor={'#000'}
                     buttonColor={'#f8f8f6'}
+                    buttonStyle={styles.map_btn}
+                    textStyle={styles.text_map}
                     text={'Map'}
                     onPressFunction={() => navigation.navigate('Map')}
                 />
@@ -196,6 +198,9 @@ const styles = StyleSheet.create({
         fontWeight: '200',
         marginTop: 25,
     },
+    text_map: {
+        marginLeft: 10,
+    },
     image: {
         height: 80,
         width: 80,
@@ -227,5 +232,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderRadius: 10,
     },
+    map_btn: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 });
 
