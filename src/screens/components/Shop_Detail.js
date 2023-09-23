@@ -81,13 +81,13 @@ const styles = StyleSheet.create({
         // alignItems: 'center',
     },
     backdrop_top: {
-        height: Platform.OS == 'ios' ? '30%' : '8%',
-        backgroundColor: 'rgba(0,0,0,0.1)',
+        height: Platform.OS == 'ios' ? '14%' : '8%',
+        backgroundColor: 'rgba(0,0,0,0.2)',
         margin: 0,
     },
     backdrop_bottom: {
         height: Platform.OS == 'ios' ? '30%' : '8%',
-        backgroundColor: 'rgba(0,0,0,0.1)',
+        backgroundColor: 'rgba(0,0,0,0.2)',
         margin: 0,
     },
     sub_header_left: {
