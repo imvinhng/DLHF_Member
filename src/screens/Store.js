@@ -5,63 +5,81 @@
  * @format
  */
 
-import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, Modal, StyleSheet, Pressable, Text, View, TextInput, FlatList, Image, TouchableHighlight } from 'react-native';
 import { LongButton_Icon, SquareButton, PromotionButton, NotificationButton } from '../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Shop_Detail from './components/Shop_Detail';
 
 const DATA = [
     {
         id: 1,
         location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
+        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
+        full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
+        hours: '07:00 - 22:00',
     },
     {
         id: 2,
         location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
+        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
+        full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
+        hours: '07:00 - 22:00',
     },
     {
         id: 3,
         location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
+        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
+        full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
+        hours: '07:00 - 22:00',
     },
     {
         id: 4,
         location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
+        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
+        full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
+        hours: '07:00 - 22:00',
     },
     {
         id: 5,
         location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
+        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
+        full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
+        hours: '07:00 - 22:00',
     },
     {
         id: 6,
         location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
+        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
+        full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
+        hours: '07:00 - 22:00',
     },
     {
         id: 7,
         location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh'
+        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
+        full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
+        hours: '07:00 - 22:00',
     },
 ];
 
-const Item = ({ location, address }) => (
-    <View style={styles.item}>
-        <Image style={styles.image} source={require('../assets/storefront.png')} />
-
-        <View style={styles.column_wrapper_custom}>
-            <Text style={styles.text_smaller}>Dalat Hasfarm {location}</Text>
-            <Text style={styles.text_small_bold}>{address}</Text>
-            <Text style={styles.text_light}>0.2 km away</Text>
-        </View>
-    </View>
-);
 
 function Store(props) {
     const navigation = useNavigation();
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const Item = ({ location, address }) => (
+        <TouchableOpacity style={styles.item} onPress={() => setModalVisible(true)}>
+            <Image style={styles.image} source={require('../assets/storefront.png')} />
+
+            <View style={styles.column_wrapper_custom}>
+                <Text style={styles.text_smaller}>Dalat Hasfarm {location}</Text>
+                <Text style={styles.text_small_bold}>{address}</Text>
+                <Text style={styles.text_light}>0.2 km away</Text>
+            </View>
+        </TouchableOpacity>
+    );
 
     return (
         <SafeAreaView style={styles.home}>
@@ -100,6 +118,15 @@ function Store(props) {
                     keyExtractor={item => item.id}
                 />
             </View>
+
+            <Shop_Detail
+                modalVisible={modalVisible}
+                setModalVisible={setModalVisible}
+                location={DATA[0].location}
+                address={DATA[0].address}
+                full_address={DATA[0].full_address}
+                hours={DATA[0].hours}
+            />
 
         </SafeAreaView>
     );
@@ -190,8 +217,9 @@ const styles = StyleSheet.create({
         fontWeight: '300',
     },
     text_small_bold: {
-        fontSize: 13,
+        fontSize: 12,
         fontWeight: '600',
+        marginTop: 5,
     },
     text_light: {
         fontSize: 13,
@@ -235,6 +263,27 @@ const styles = StyleSheet.create({
     map_btn: {
         justifyContent: 'center',
         alignItems: 'center',
-    }
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 22,
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: 'white',
+        borderRadius: 20,
+        padding: 35,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+    },
 });
 

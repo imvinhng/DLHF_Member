@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     },
     body: {
         backgroundColor: '#d8d8d8',
-        flex: 1,
+        height: '100%',
     },
     title: {
         fontSize: 25,
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         margin: 15,
         marginLeft: '5%',
-        marginBottom: 0,
+        marginBottom: 10,
     },
     text_above: {
         fontSize: 16,
@@ -187,14 +187,14 @@ const styles = StyleSheet.create({
         paddingTop: Platform.OS == 'ios' ? 56 : 10,
         paddingBottom: 10,
     },
-    sub_header_right: {
-        flexDirection: 'row',
-    },
     sub_header_left: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
+    },
+    sub_header_right: {
+        flexDirection: 'row',
     },
     grid: {
         flexDirection: 'row',
@@ -212,11 +212,14 @@ const styles = StyleSheet.create({
     },
     longbutton_icon: {
         marginLeft: 20,
-        margin: 5,
+        margin: 0,
         height: 50,
         width: '90%',
         alignItems: 'center',
         paddingLeft: 10,
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: 'lightgray',
 
         shadowColor: '#000',
         shadowOffset: { width: 5, height: 5 },

@@ -323,11 +323,14 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     voucher_expiration_btn: {
-        marginLeft: -15,
+        marginLeft: 20,
+        marginTop: 10,
+        marginBottom: -2,
     },
     voucher_expiration_text: {
         color: 'gray',
         fontWeight: '400',
+        marginLeft: 7,
     }
 });
 

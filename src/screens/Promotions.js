@@ -143,8 +143,8 @@ const styles = StyleSheet.create({
     column_wrapper_custom: {
         flexDirection: 'column',
         // backgroundColor: 'red',
-        width: 280,
-        marginLeft: 20,
+        width: 250,
+        marginLeft: 25,
         marginTop: -5,
     },
 });
