@@ -8,68 +8,35 @@
 import React from 'react';
 import { View, StyleSheet, Text, Platform, Image, ScrollView, Dimensions } from 'react-native';
 import { RoundButton_Image, LoginButton, LongButton, PromotionButton, NotificationButton, LongButton_Icon } from '../utils/CustomButton';
-import { useNavigation } from '@react-navigation/native';
-
+import { BottomHeader, BottomHeader_LoggedIn } from '../utils/CustomComponents';
 
 
 const Home = (props) => {
-    const navigation = useNavigation();
+
+    const token = true;
 
     return (
         <ScrollView style={styles.home}>
-            <View style={styles.header}>
-                <View style={styles.top_header}>
-                    <View style={styles.sub_header_left}>
-                        <RoundButton_Image
-                            image_uri={require('../assets/icons/red-flower-icon.png')}
-                            bgColor={'#f7f0af'}
-                            iconStyle={styles.icon_image}
-                        />
-                        <Text style={styles.text_small_center}>Hello friend</Text>
-                        <RoundButton_Image
-                            image_uri={require('../assets/icons/hello-icon.png')}
-                            bgColor={'#f7f0af'}
-                            iconStyle={styles.icon_image}
-                        />
-                    </View>
 
-                    <View style={styles.sub_header_right}>
-                        <PromotionButton />
-                        <NotificationButton />
-                    </View>
-                </View>
+            {token ? <BottomHeader_LoggedIn /> : <BottomHeader />}
 
-                <View style={styles.bottom_header}>
-                    <Text style={styles.text_subtitle}>Log In</Text>
-                    <Text style={styles.text_small}>Use the app to gain points and redeem offers exclusively for Dalat Hasfarm member!</Text>
-                    <LoginButton
-                        bgColor={'#eb9f1c'}
-                        onPressFunction={() => navigation.navigate('Login')}
-                    />
 
-                    <View style={styles.row_wrapper}>
-                        <Text style={styles.text_small}>Not registered?</Text>
-                        <Text style={styles.text_hyperlink}>Register here</Text>
-                    </View>
-                </View>
-            </View>
-
-            <View style={styles.body1}>
+            <View style={styles.body}>
                 {/* <Text style={styles.text_large}>Home</Text> */}
-                <View style={styles.body1_top}>
-                    <View style={styles.body1_top_left}>
+                <View style={styles.body_top}>
+                    <View style={styles.body_top_left}>
                         <RoundButton_Image
                             image_uri={require('../assets/icons/scooter-icon.png')}
-                            bgColor={'#f7f0af'}
+                            bgColor={'#FEF7E5'}
                             iconStyle={styles.icon_image_large}
                             buttonStyle={styles.roundbutton_large}
                         />
                         <Text>Home Delivery</Text>
                     </View>
-                    <View style={styles.body1_top_right}>
+                    <View style={styles.body_top_right}>
                         <RoundButton_Image
                             image_uri={require('../assets/icons/shop-icon.png')}
-                            bgColor={'#f7f0af'}
+                            bgColor={'#FEF7E5'}
                             iconStyle={styles.icon_image_large}
                             buttonStyle={styles.roundbutton_large}
                         />
@@ -77,7 +44,7 @@ const Home = (props) => {
                     </View>
                 </View>
 
-                <ScrollView style={styles.body1_bottom} horizontal>
+                <ScrollView style={styles.body_bottom} horizontal>
                     <Image
                         source={require('../assets/super-sale.png')}
                         style={styles.image}
@@ -113,15 +80,15 @@ const Home = (props) => {
                 <Text style={styles.text_large}>Explore</Text>
                 <View style={styles.row_wrapper}>
                     <LongButton
-                        buttonColor={'#f7f0af'}
+                        buttonColor={'#FEF7E5'}
                         text={'Special Offer'}
                     />
                     <LongButton
-                        buttonColor={'#f7f0af'}
+                        buttonColor={'#FEF7E5'}
                         text={'#FlowerCare'}
                     />
                     <LongButton
-                        buttonColor={'#f7f0af'}
+                        buttonColor={'#FEF7E5'}
                         text={'#FlowerLover'}
                     />
                 </View>
@@ -204,26 +171,11 @@ const { width } = Dimensions.get('screen')
 const styles = StyleSheet.create({
     home: {
         flex: 1,
+        backgroundColor: '#fff'
     },
-    body1: {
+    body: {
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    header: {
-        flexDirection: 'column',
-        backgroundColor: '#f7f0af',
-        paddingTop: Platform.OS == 'ios' ? 56 : 0,
-    },
-    bottom_header: {
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: 15,
-        borderRadius: 10,
-    },
-    top_header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
     },
     grid: {
         flexDirection: 'row',
@@ -237,17 +189,8 @@ const styles = StyleSheet.create({
         margin: 5,
         marginBottom: -10,
     },
-    sub_header_right: {
-        flexDirection: 'row',
-        marginRight: 10,
-    },
-    sub_header_left: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-    },
-    body1_top: {
+
+    body_top: {
         height: 150,
         width: 350,
         flexDirection: 'row',
@@ -258,10 +201,10 @@ const styles = StyleSheet.create({
         borderColor: '#bfbaba',
         margin: 20,
     },
-    body1_top_left: {
+    body_top_left: {
         alignItems: 'center',
     },
-    body1_top_right: {
+    body_top_right: {
         alignItems: 'center',
     },
     row_wrapper: {
@@ -272,32 +215,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         margin: 15,
     },
-    text_subtitle: {
-        fontSize: 20,
-        fontWeight: '600',
-        margin: 10,
-        marginBottom: -7,
-        textAlign: 'center',
-    },
-    text_small_center: {
-        fontSize: 15,
-        fontWeight: '600',
-        marginLeft: -10,
-        marginRight: -6,
-    },
-    text_small: {
-        fontSize: 15,
-        margin: 5,
-        padding: 10,
-        textAlign: 'center',
-    },
-    text_hyperlink: {
-        fontSize: 15,
-        margin: 5,
-        padding: 10,
-        textAlign: 'center',
-        color: '#eb9f1c',
-    },
+
     text_grid: {
         paddingLeft: 18,
     },
@@ -305,10 +223,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         margin: 10
     },
-    icon_image: {
-        height: 25,
-        width: 25,
-    },
+
     icon_image_large: {
         height: 45,
         width: 45,

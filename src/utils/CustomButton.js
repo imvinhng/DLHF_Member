@@ -167,10 +167,15 @@ const styles = StyleSheet.create({
         margin: 5,
         alignItems: 'center',
         justifyContent: 'center',
+
+        //ios
         shadowColor: '#000',
         shadowOpacity: 0.2,
         shadowRadius: 3,
         shadowOffset: { width: 1, height: 7 },
+
+        //android
+        elevation: 7,
     },
     square_button: {
         height: 50,

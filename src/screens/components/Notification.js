@@ -14,44 +14,44 @@ const DATA = [
     {
         id: 1,
         title: 'Enjoy your flowers!',
-        message: 'Check your Reward wallet to receive gifts. Hope Aad have a happy day!',
+        message: 'Check your Reward wallet to receive gifts. Hope Dong have a happy day!',
         date: '11/12',
     },
     {
         id: 2,
         title: 'Congrats on your new ranking - Silver',
         // need to find a replacement word for members (instead of florist)
-        message: 'Hey Aad! Every successful order accrue reward points. You can use it to upgrade your membership ranking.',
+        message: 'Hey Dong! Every successful order accrue reward points. You can use it to upgrade your membership ranking.',
         date: '11/12',
     },
     {
         id: 3,
         title: 'Your order has been delivered',
-        message: 'Hey Aad! Your order has been delivered to your Dalat Hasfarm office in Ho Chi Minh City Binh Thanh District',
+        message: 'Hey Dong! Your order has been delivered to your Dalat Hasfarm office in Ho Chi Minh City Binh Thanh District',
         date: '08/03',
     },
     {
         id: 4,
         title: 'Need a special gift for her on March 8?',
-        message: "Hey Aad! Only another week until International Women's Day. Have you picked out the perfect bouquet for her?",
+        message: "Hey Dong! Only another week until International Women's Day. Have you picked out the perfect bouquet for her?",
         date: '01/03',
     },
     {
         id: 5,
         title: 'Sweet Feburary 14',
-        message: 'Only a few more days until Valentine. Have Aad prepared Chocolate and flowers for that special someone?',
+        message: 'Only a few more days until Valentine. Have Dong prepared Chocolate and flowers for that special someone?',
         date: '07/02',
     },
     {
         id: 6,
         title: 'Enjoy your flowers!',
-        message: 'Check your Reward wallet to receive gifts. Hope Aad have a happy day!',
+        message: 'Check your Reward wallet to receive gifts. Hope Dong have a happy day!',
         date: '01/02',
     },
     {
         id: 7,
         title: 'Enjoy your flowers!',
-        message: 'Check your Reward wallet to receive gifts. Hope Aad have a happy day!',
+        message: 'Check your Reward wallet to receive gifts. Hope Dong have a happy day!',
         date: '12/01',
     },
 ];
@@ -140,12 +140,13 @@ const styles = StyleSheet.create({
         fontSize: 13,
         fontWeight: '500',
         marginTop: 22,
+        lineHeight: 19,
     },
     noti_date: {
         fontSize: 13,
         fontWeight: '500',
         position: 'absolute',
-        left: 300,
+        right: -25,
     },
     image: {
         height: 80,
