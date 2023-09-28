@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '70%',
         borderRadius: 20,
-        marginTop: Platform.OS == 'ios' ? -40 : -80,
+        marginTop: -80,
     },
     text_input: {
         width: "90%",

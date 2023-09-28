@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     home: {
         // flex: 1,
         // marginTop: Platform.OS == 'ios' ? '30%' : '16%',
-        height: Platform.OS == 'ios' ? '100%' : '86.2%',
+        height: '100%',
         backgroundColor: '#fff',
     },
     body: {
