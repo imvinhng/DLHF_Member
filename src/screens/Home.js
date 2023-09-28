@@ -43,6 +43,7 @@ const Home = (props) => {
                     <Text style={styles.text_subtitle}>Log In</Text>
                     <Text style={styles.text_small}>Use the app to gain points and redeem offers exclusively for Dalat Hasfarm member!</Text>
                     <LoginButton
+                        bgColor={'#eb9f1c'}
                         onPressFunction={() => navigation.navigate('Login')}
                     />
 

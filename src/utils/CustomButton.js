@@ -101,8 +101,8 @@ export const LoginButton = (props) => {
         <Pressable
             style={({ pressed }) => [
                 styles.login_button,
-                { backgroundColor: pressed ? '#ddd' : '#eb9f1c' },
                 props.style,
+                { backgroundColor: pressed ? '#ddd' : props.bgColor },
             ]}
             onPress={props.onPressFunction}
             hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}

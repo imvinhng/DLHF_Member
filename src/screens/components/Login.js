@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, View, Text, TextInput, ScrollView } from 'react-native';
 import { LoginButton, LongButton_Icon } from '../../utils/CustomButton';
+import OTP from './OTP';
 
 
 function Login(props) {
     const [loginBtnColor, setLoginBtnColor] = useState('gray');
     const [loginBtnBorderColor, setLoginBtnBorderColor] = useState('#000');
+    const [modalVisible, setModalVisible] = useState(false);
+    const [phoneNumber, setPhoneNumber] = useState('');
 
     const login = (value) => {
         if (value != '') {
             setLoginBtnColor('#eb9f1c');
             setLoginBtnBorderColor('#eb9f1c');
+            setPhoneNumber(value);
         } else {
             setLoginBtnColor('gray');
             setLoginBtnBorderColor('#000');
@@ -37,11 +41,16 @@ function Login(props) {
                     onChangeText={login}
                 />
                 <LoginButton
-                    style={[
-                        styles.login_btn,
-                        { backgroundColor: loginBtnColor }
-                    ]}
+                    style={styles.login_btn}
+                    bgColor={loginBtnColor}
                     textColor={'#fff'}
+                    onPressFunction={() => setModalVisible(true)}
+                />
+
+                <OTP
+                    modalVisible={modalVisible}
+                    setModalVisible={setModalVisible}
+                    phone_number={phoneNumber}
                 />
 
                 <View style={styles.row_wrapper}>
