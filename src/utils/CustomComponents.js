@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, ImageBackground } from 'react-native';
-import { RoundButton_Image, LoginButton, PromotionButton, NotificationButton } from './CustomButton';
+import { StyleSheet, View, Text, Image, ImageBackground, ScrollView, Dimensions } from 'react-native';
+import { RoundButton_Image, LoginButton, PromotionButton, NotificationButton, LongButton } from './CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
-export const BottomHeader = () => {
+const BottomHeader = () => {
     const navigation = useNavigation();
 
     return (
@@ -47,7 +47,7 @@ export const BottomHeader = () => {
     )
 }
 
-export const BottomHeader_LoggedIn = () => {
+const BottomHeader_LoggedIn = () => {
     return (
         <View style={styles.header}>
 
@@ -78,6 +78,98 @@ export const BottomHeader_LoggedIn = () => {
         </View>
     )
 }
+
+export const HomeBody = () => {
+    const token = true;
+
+    return (
+        <View style={styles.home}>
+
+            {token ? <BottomHeader_LoggedIn /> : <BottomHeader />}
+
+            <View style={styles.body}>
+                {/* <Text style={styles.text_large}>Home</Text> */}
+                <View style={styles.body_top}>
+                    <View style={styles.body_top_left}>
+                        <RoundButton_Image
+                            image_uri={require('../assets/icons/scooter-icon.png')}
+                            bgColor={'#FEF7E5'}
+                            iconStyle={styles.icon_image_large}
+                            buttonStyle={styles.roundbutton_large}
+                        />
+                        <Text>Home Delivery</Text>
+                    </View>
+                    <View style={styles.body_top_right}>
+                        <RoundButton_Image
+                            image_uri={require('../assets/icons/shop-icon.png')}
+                            bgColor={'#FEF7E5'}
+                            iconStyle={styles.icon_image_large}
+                            buttonStyle={styles.roundbutton_large}
+                        />
+                        <Text>Store Pickup</Text>
+                    </View>
+                </View>
+
+                <ScrollView style={styles.body_bottom} horizontal >
+                    <Image
+                        source={require('../assets/super-sale.png')}
+                        style={styles.image}
+                    />
+                    <Image
+                        source={require('../assets/super-sale.png')}
+                        style={styles.image}
+                    />
+                    <Image
+                        source={require('../assets/super-sale.png')}
+                        style={styles.image}
+                    />
+                    <Image
+                        source={require('../assets/super-sale.png')}
+                        style={styles.image}
+                    />
+                    <Image
+                        source={require('../assets/super-sale.png')}
+                        style={styles.image}
+                    />
+                    <Image
+                        source={require('../assets/super-sale.png')}
+                        style={styles.image}
+                    />
+                    <Image
+                        source={require('../assets/super-sale.png')}
+                        style={styles.image}
+                    />
+                </ScrollView>
+            </View>
+
+            <View>
+                <Text style={styles.text_large}>Explore</Text>
+                <View style={styles.row_wrapper}>
+                    <LongButton
+                        buttonColor={'#FEF7E5'}
+                        text={'Special Offer'}
+                        buttonStyle={styles.grid_button}
+                        textStyle={styles.grid_btn_txt}
+                    />
+                    <LongButton
+                        buttonColor={'#FEF7E5'}
+                        text={'#FlowerCare'}
+                        buttonStyle={styles.grid_button}
+                        textStyle={styles.grid_btn_txt}
+                    />
+                    <LongButton
+                        buttonColor={'#FEF7E5'}
+                        text={'#FlowerLover'}
+                        buttonStyle={styles.grid_button}
+                        textStyle={styles.grid_btn_txt}
+                    />
+                </View>
+            </View>
+        </View>
+    )
+}
+
+const { width } = Dimensions.get('screen')
 
 const styles = StyleSheet.create({
     header: {
@@ -153,6 +245,91 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 15,
         left: 60,
-    }
+    },
+    home: {
+        flex: 1,
+        backgroundColor: '#fff'
+    },
+    body: {
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    grid: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        margin: 5,
+    },
+    subgrid: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        width: ((width - 50) / 2),
+        margin: 5,
+        marginBottom: -10,
+    },
 
+    body_top: {
+        height: 150,
+        width: 350,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        borderWidth: 2,
+        borderRadius: 10,
+        borderColor: '#bfbaba',
+        margin: 20,
+    },
+    body_top_left: {
+        alignItems: 'center',
+    },
+    body_top_right: {
+        alignItems: 'center',
+    },
+    row_wrapper: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    text_large: {
+        fontSize: 24,
+        fontWeight: '600',
+        margin: 15,
+    },
+    text_grid: {
+        paddingLeft: 18,
+    },
+    grid_btn_txt: {
+        fontSize: Platform.OS == 'ios' ? 12 : 14,
+    },
+    image: {
+        borderRadius: 10,
+        margin: 10,
+        width: Platform.OS == 'ios' ? 375 : 390,
+    },
+    icon_image_large: {
+        height: 45,
+        width: 45,
+    },
+    roundbutton_large: {
+        height: 80,
+        width: 80,
+        borderRadius: 50,
+    },
+    image_grid: {
+        width: ((width - 50) / 2),
+        borderRadius: 10,
+        margin: 10,
+    },
+    voucher_expiration_btn: {
+        marginLeft: 20,
+        marginTop: 10,
+        marginBottom: -2,
+    },
+    voucher_expiration_text: {
+        color: 'gray',
+        fontWeight: '400',
+        marginLeft: 7,
+    },
+    grid_button: {
+        width: '30%',
+        margin: 5,
+    }
 })

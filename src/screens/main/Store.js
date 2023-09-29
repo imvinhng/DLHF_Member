@@ -19,6 +19,8 @@ const DATA = [
         address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
         full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
         hours: '07:00 - 22:00',
+        lat: 10.807202,
+        long: 106.695134,
     },
     {
         id: 2,
@@ -26,6 +28,8 @@ const DATA = [
         address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
         full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
         hours: '07:00 - 22:00',
+        lat: 10.807202,
+        long: 106.695134,
     },
     {
         id: 3,
@@ -33,6 +37,8 @@ const DATA = [
         address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
         full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
         hours: '07:00 - 22:00',
+        lat: 10.807202,
+        long: 106.695134,
     },
     {
         id: 4,
@@ -40,6 +46,8 @@ const DATA = [
         address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
         full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
         hours: '07:00 - 22:00',
+        lat: 10.807202,
+        long: 106.695134,
     },
     {
         id: 5,
@@ -47,6 +55,8 @@ const DATA = [
         address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
         full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
         hours: '07:00 - 22:00',
+        lat: 10.807202,
+        long: 106.695134,
     },
     {
         id: 6,
@@ -54,6 +64,8 @@ const DATA = [
         address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
         full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
         hours: '07:00 - 22:00',
+        lat: 10.807202,
+        long: 106.695134,
     },
     {
         id: 7,
@@ -61,9 +73,10 @@ const DATA = [
         address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
         full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
         hours: '07:00 - 22:00',
+        lat: 10.807202,
+        long: 106.695134,
     },
 ];
-
 
 function Store(props) {
     const navigation = useNavigation();
