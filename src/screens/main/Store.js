@@ -7,12 +7,14 @@
 
 import React, { useState } from 'react';
 import { SafeAreaView, Modal, StyleSheet, Pressable, Text, View, TextInput, FlatList, Image, TouchableHighlight } from 'react-native';
-import { LongButton_Icon, SquareButton, PromotionButton, NotificationButton } from '../../utils/CustomButton';
+import { LongButton_Icon, SquareButton, PromotionButton, NotificationButton, RoundButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Shop_Detail from '../components/Shop_Detail';
+import { convertViToEn } from '../../utils/functions';
+import SearchBar from '../../utils/SearchBar';
 
-const DATA = [
+export const DATA = [
     {
         id: 1,
         location: 'Nơ Trang Long',
@@ -24,21 +26,21 @@ const DATA = [
     },
     {
         id: 2,
-        location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
-        full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
-        hours: '07:00 - 22:00',
-        lat: 10.807202,
-        long: 106.695134,
+        location: 'Hai Bà Trưng',
+        address: '371A Hai Bà Trưng, Phường 8, Quận 3',
+        full_address: '371A Hai Bà Trưng, Phường 8, Quận 3, Hồ Chí Minh, Việt Nam',
+        hours: '07:00 - 20c:00',
+        lat: 10.790067,
+        long: 106.689098,
     },
     {
         id: 3,
-        location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
-        full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
-        hours: '07:00 - 22:00',
-        lat: 10.807202,
-        long: 106.695134,
+        location: 'Quốc Hương',
+        address: '49C Đ. Quốc Hương, Thảo Điền, Quận 2',
+        full_address: '49C Đ. Quốc Hương, Thảo Điền, Quận 2, Hồ Chí Minh, Việt Nam',
+        hours: '07:00 - 20:00',
+        lat: 10.804783,
+        long: 106.731339,
     },
     {
         id: 4,
@@ -81,6 +83,8 @@ const DATA = [
 function Store(props) {
     const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
+    const [clicked, setClicked] = useState(false);
+    const [searchPhrase, setSearchPhrase] = useState('');
 
     const Item = ({ location, address }) => (
         <TouchableOpacity style={styles.item} onPress={() => setModalVisible(true)}>
@@ -108,8 +112,15 @@ function Store(props) {
             </View>
 
             <View style={styles.bottom_header}>
-                <SquareButton iconName='search' style={styles.searchbar_icon} />
-                <TextInput style={styles.searchbar} placeholder={'Search'} />
+                <SearchBar
+                    searchPhrase={searchPhrase}
+                    setSearchPhrase={setSearchPhrase}
+                    clicked={clicked}
+                    setClicked={setClicked}
+                    containerStyle={styles.search_container}
+                    closeBtnStyle={styles.search_close}
+                />
+
                 <LongButton_Icon
                     iconName={'map'}
                     iconSize={23}
@@ -118,7 +129,10 @@ function Store(props) {
                     buttonStyle={styles.map_btn}
                     textStyle={styles.text_map}
                     text={'Map'}
-                    onPressFunction={() => navigation.navigate('Map')}
+                    onPressFunction={() => navigation.navigate('Map', {
+                        lat: DATA.lat,
+                        long: DATA.long,
+                    })}
                 />
             </View>
 
@@ -127,7 +141,18 @@ function Store(props) {
 
                 <FlatList
                     data={DATA}
-                    renderItem={({ item }) => <Item location={item.location} address={item.address} />}
+                    renderItem={({ item }) => {
+                        // if no input, show all
+                        if (searchPhrase === '') {
+                            return <Item location={item.location} address={item.address} />
+                        }
+                        if (convertViToEn(item.location, true).includes(convertViToEn(searchPhrase, true))) {
+                            return <Item location={item.location} address={item.address} />
+                        }
+                        if (convertViToEn(item.address, true).includes(convertViToEn(searchPhrase, true))) {
+                            return <Item location={item.location} address={item.address} />
+                        }
+                    }}
                     keyExtractor={item => item.id}
                 />
             </View>
@@ -248,22 +273,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         margin: -10,
     },
-    searchbar: {
-        backgroundColor: '#f1f1f0',
-        width: '60%',
-        height: 40,
-        // margin: 10,
-        marginLeft: -10,
-        borderRadius: 10,
-        padding: 10,
-    },
-    searchbar_icon: {
-        backgroundColor: '#f1f1f0',
-        width: 40,
-        height: 40,
-        // margin: 10,
-        marginLeft: 40,
-    },
     item: {
         backgroundColor: '#f8f8f6',
         padding: 20,
@@ -276,6 +285,9 @@ const styles = StyleSheet.create({
     map_btn: {
         justifyContent: 'center',
         alignItems: 'center',
+        position: 'absolute',
+        right: -10,
+        width: 100,
     },
     centeredView: {
         flex: 1,
@@ -297,6 +309,15 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
+    },
+    search_container: {
+        marginLeft: -25,
+        margin: 10,
+    },
+    search_close: {
+        position: 'absolute',
+        left: 252,
+        top: 8,
     },
 });
 
