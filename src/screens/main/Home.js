@@ -7,8 +7,8 @@
 
 import React from 'react';
 import { View, StyleSheet, Text, Platform, Image, ScrollView, Dimensions } from 'react-native';
-import { RoundButton_Image, LoginButton, LongButton, PromotionButton, NotificationButton, LongButton_Icon } from '../utils/CustomButton';
-import { BottomHeader, BottomHeader_LoggedIn } from '../utils/CustomComponents';
+import { RoundButton_Image, LoginButton, LongButton, PromotionButton, NotificationButton, LongButton_Icon } from '../../utils/CustomButton';
+import { BottomHeader, BottomHeader_LoggedIn } from '../../utils/CustomComponents';
 
 
 const Home = (props) => {
@@ -26,7 +26,7 @@ const Home = (props) => {
                 <View style={styles.body_top}>
                     <View style={styles.body_top_left}>
                         <RoundButton_Image
-                            image_uri={require('../assets/icons/scooter-icon.png')}
+                            image_uri={require('../../assets/icons/scooter-icon.png')}
                             bgColor={'#FEF7E5'}
                             iconStyle={styles.icon_image_large}
                             buttonStyle={styles.roundbutton_large}
@@ -35,7 +35,7 @@ const Home = (props) => {
                     </View>
                     <View style={styles.body_top_right}>
                         <RoundButton_Image
-                            image_uri={require('../assets/icons/shop-icon.png')}
+                            image_uri={require('../../assets/icons/shop-icon.png')}
                             bgColor={'#FEF7E5'}
                             iconStyle={styles.icon_image_large}
                             buttonStyle={styles.roundbutton_large}
@@ -44,33 +44,33 @@ const Home = (props) => {
                     </View>
                 </View>
 
-                <ScrollView style={styles.body_bottom} horizontal>
+                <ScrollView style={styles.body_bottom} horizontal >
                     <Image
-                        source={require('../assets/super-sale.png')}
+                        source={require('../../assets/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.png')}
+                        source={require('../../assets/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.png')}
+                        source={require('../../assets/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.png')}
+                        source={require('../../assets/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.png')}
+                        source={require('../../assets/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.png')}
+                        source={require('../../assets/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.png')}
+                        source={require('../../assets/super-sale.png')}
                         style={styles.image}
                     />
                 </ScrollView>
@@ -82,21 +82,24 @@ const Home = (props) => {
                     <LongButton
                         buttonColor={'#FEF7E5'}
                         text={'Special Offer'}
+                        style={styles.grid_button}
                     />
                     <LongButton
                         buttonColor={'#FEF7E5'}
                         text={'#FlowerCare'}
+                        style={styles.grid_button}
                     />
                     <LongButton
                         buttonColor={'#FEF7E5'}
                         text={'#FlowerLover'}
+                        style={styles.grid_button}
                     />
                 </View>
 
                 <View style={styles.grid}>
                     <View style={styles.subgrid}>
                         <Image
-                            source={require('../assets/vouchers/voucher1-large.png')}
+                            source={require('../../assets/vouchers/voucher1-large.png')}
                             style={styles.image_grid}
                         />
                         <Text style={styles.text_grid}>DISCOUNT 20,000D FOR ORDERS OVER 450,000D </Text>
@@ -111,7 +114,7 @@ const Home = (props) => {
                     </View>
                     <View style={styles.subgrid}>
                         <Image
-                            source={require('../assets/vouchers/voucher3-large.png')}
+                            source={require('../../assets/vouchers/voucher3-large.png')}
                             style={styles.image_grid}
                         />
                         <Text style={styles.text_grid}>DISCOUNT 50,000D FOR ORDERS OVER 950,000D </Text>
@@ -126,7 +129,7 @@ const Home = (props) => {
                     </View>
                     <View style={styles.subgrid}>
                         <Image
-                            source={require('../assets/vouchers/voucher2-large.png')}
+                            source={require('../../assets/vouchers/voucher2-large.png')}
                             style={styles.image_grid}
                         />
                         <Text style={styles.text_grid}>DISCOUNT 20,000D FOR ORDERS OVER 450,000D </Text>
@@ -141,7 +144,7 @@ const Home = (props) => {
                     </View>
                     <View style={styles.subgrid}>
                         <Image
-                            source={require('../assets/vouchers/voucher4-large.png')}
+                            source={require('../../assets/vouchers/voucher4-large.png')}
                             style={styles.image_grid}
                         />
                         <Text style={styles.text_grid}>DISCOUNT 50,000D FOR ORDERS OVER 950,000D </Text>
@@ -221,7 +224,8 @@ const styles = StyleSheet.create({
     },
     image: {
         borderRadius: 10,
-        margin: 10
+        margin: 10,
+        width: Platform.OS == 'ios' ? 375 : 390,
     },
 
     icon_image_large: {
@@ -247,6 +251,10 @@ const styles = StyleSheet.create({
         color: 'gray',
         fontWeight: '400',
         marginLeft: 7,
+    },
+    grid_button: {
+        width: '30%',
+        margin: 5,
     }
 });
 

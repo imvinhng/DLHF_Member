@@ -15,7 +15,7 @@ function Shop_Detail(props) {
             }}
         >
             <TouchableOpacity style={styles.backdrop_top} onPress={() => props.setModalVisible(false)} />
-            <View style={styles.home} onStartShouldSetResponder={() => console.log('You clicked the View')}>
+            <View style={styles.home}>
                 {/* Make sure to not include header so user can click outside the View to close the Modal */}
 
                 <View style={styles.body}>

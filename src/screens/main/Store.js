@@ -7,10 +7,10 @@
 
 import React, { useState } from 'react';
 import { SafeAreaView, Modal, StyleSheet, Pressable, Text, View, TextInput, FlatList, Image, TouchableHighlight } from 'react-native';
-import { LongButton_Icon, SquareButton, PromotionButton, NotificationButton } from '../utils/CustomButton';
+import { LongButton_Icon, SquareButton, PromotionButton, NotificationButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import Shop_Detail from './components/Shop_Detail';
+import Shop_Detail from '../components/Shop_Detail';
 
 const DATA = [
     {
@@ -71,7 +71,7 @@ function Store(props) {
 
     const Item = ({ location, address }) => (
         <TouchableOpacity style={styles.item} onPress={() => setModalVisible(true)}>
-            <Image style={styles.image} source={require('../assets/storefront.png')} />
+            <Image style={styles.image} source={require('../../assets/storefront.png')} />
 
             <View style={styles.column_wrapper_custom}>
                 <Text style={styles.text_smaller}>Dalat Hasfarm {location}</Text>

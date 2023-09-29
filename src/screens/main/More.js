@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image, Dimensions, ScrollView } from 'react-native';
-import { RoundButton_Clear, RoundButton_Color, PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton } from '../utils/CustomButton';
+import { RoundButton_Clear, RoundButton_Color, PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
 function More(props) {
@@ -30,25 +30,25 @@ function More(props) {
 
                 <View style={styles.grid}>
                     <SquareButton_ImageIcon_Text
-                        image_uri={require('../assets/icons/checklist-icon.png')}
+                        image_uri={require('../../assets/icons/checklist-icon.png')}
                         text={'Order History'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
                     />
                     <SquareButton_ImageIcon_Text
-                        image_uri={require('../assets/icons/piechart-icon.png')}
+                        image_uri={require('../../assets/icons/piechart-icon.png')}
                         text={'Analytics'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
                     />
                     <SquareButton_ImageIcon_Text
-                        image_uri={require('../assets/icons/policy-icon.png')}
+                        image_uri={require('../../assets/icons/policy-icon.png')}
                         text={'Member Policy'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
                     />
                     <SquareButton_ImageIcon_Text
-                        image_uri={require('../assets/icons/red-flower-icon.png')}
+                        image_uri={require('../../assets/icons/red-flower-icon.png')}
                         text={'Flower Knowledge'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
