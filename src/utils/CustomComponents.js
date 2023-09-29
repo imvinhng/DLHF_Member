@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, ImageBackground, ScrollView, Dimensions } from 'react-native';
-import { RoundButton_Image, LoginButton, PromotionButton, NotificationButton, LongButton } from './CustomButton';
+import { StyleSheet, View, Text, Image, ImageBackground, ScrollView, Dimensions, TextInput } from 'react-native';
+import { RoundButton_Image, LoginButton, PromotionButton, NotificationButton, LongButton, SquareButton } from './CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
 const BottomHeader = () => {
@@ -169,6 +169,8 @@ export const HomeBody = () => {
     )
 }
 
+
+
 const { width } = Dimensions.get('screen')
 
 const styles = StyleSheet.create({
@@ -331,5 +333,6 @@ const styles = StyleSheet.create({
     grid_button: {
         width: '30%',
         margin: 5,
-    }
+    },
+
 })

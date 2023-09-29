@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
 import { RoundButton, LongButton_Icon, SquareButton, PromotionButton, NotificationButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
+import { DATA } from '../main/Store';
+import SearchBar from '../../utils/SearchBar';
 
 export default function Map({ route, navigation }) {
 
-    // const { city, lat, lng } = route.params;
+    const [clicked, setClicked] = useState(false);
+    const [searchPhrase, setSearchPhrase] = useState('');
 
     return (
 
@@ -24,8 +27,15 @@ export default function Map({ route, navigation }) {
             </View>
 
             <View style={styles.bottom_header}>
-                <SquareButton iconName='search' style={styles.searchbar_icon} />
-                <TextInput style={styles.searchbar} placeholder={'Search'} />
+                <SearchBar
+                    searchPhrase={searchPhrase}
+                    setSearchPhrase={setSearchPhrase}
+                    clicked={clicked}
+                    setClicked={setClicked}
+                    containerStyle={styles.search_container}
+                    closeBtnStyle={styles.search_close}
+                />
+
                 <LongButton_Icon
                     iconName={'bars'}
                     iconSize={23}
@@ -46,7 +56,16 @@ export default function Map({ route, navigation }) {
                         latitudeDelta: 0.0922,
                         longitudeDelta: 0.0421,
                     }}
-                />
+                    zoomEnabled
+                >
+                    {DATA.map((item, index) =>
+                        <Marker
+                            coordinate={{ latitude: item.lat, longitude: item.long }}
+                            pinColor={"purple"} // any color
+                            title={item.location}
+                            description={item.address}
+                        />)}
+                </MapView>
             </View>
 
         </SafeAreaView>
@@ -81,11 +100,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         flexDirection: 'row',
     },
-    grid: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        margin: 5,
-    },
     sub_header_right: {
         flexDirection: 'row',
         marginRight: 15,
@@ -95,28 +109,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
-    },
-    body1_top: {
-        height: 150,
-        width: 350,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        borderWidth: 2,
-        borderRadius: 10,
-        borderColor: '#bfbaba',
-        margin: 20,
-    },
-    body1_top_left: {
-        alignItems: 'center',
-    },
-    body1_top_right: {
-        alignItems: 'center',
-    },
-    column_wrapper_custom: {
-        flexDirection: 'column',
-        marginLeft: 20,
-        marginTop: -5,
     },
     text_large: {
         fontSize: 24,
@@ -155,22 +147,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         margin: -10,
     },
-    searchbar: {
-        backgroundColor: '#f1f1f0',
-        width: '60%',
-        height: 40,
-        // margin: 10,
-        marginLeft: -10,
-        borderRadius: 10,
-        padding: 10,
-    },
-    searchbar_icon: {
-        backgroundColor: '#f1f1f0',
-        width: 40,
-        height: 40,
-        // margin: 10,
-        marginLeft: 40,
-    },
     item: {
         backgroundColor: '#f8f8f6',
         padding: 20,
@@ -187,5 +163,17 @@ const styles = StyleSheet.create({
     map_btn: {
         justifyContent: 'center',
         alignItems: 'center',
-    }
+        position: 'absolute',
+        right: -10,
+        width: 100,
+    },
+    search_container: {
+        marginLeft: -25,
+        margin: 10,
+    },
+    search_close: {
+        position: 'absolute',
+        left: 252,
+        top: 8,
+    },
 });
