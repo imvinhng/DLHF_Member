@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
-import { RoundButton, LongButton_Icon, SquareButton, PromotionButton, NotificationButton } from '../../utils/CustomButton';
-import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { LongButton_Icon, PromotionButton, NotificationButton } from '../../utils/CustomButton';
 import MapView, { Marker } from 'react-native-maps';
-import { DATA } from '../main/Store';
+import { DATA } from '../../db/Database';
 import SearchBar from '../../utils/SearchBar';
 
 export default function Map({ route, navigation }) {
@@ -12,8 +11,6 @@ export default function Map({ route, navigation }) {
     const [searchPhrase, setSearchPhrase] = useState('');
 
     return (
-
-
         <SafeAreaView style={styles.home}>
 
             <View style={styles.top_header}>
@@ -51,12 +48,13 @@ export default function Map({ route, navigation }) {
                 <MapView
                     style={styles.map}
                     initialRegion={{
-                        latitude: 10.8231,
-                        longitude: 106.6297,
+                        latitude: 10.769671,
+                        longitude: 106.678000,
                         latitudeDelta: 0.0922,
                         longitudeDelta: 0.0421,
                     }}
                     zoomEnabled
+                    minZoomLevel={0}
                 >
                     {DATA.map((item, index) =>
                         <Marker
@@ -64,6 +62,7 @@ export default function Map({ route, navigation }) {
                             pinColor={"purple"} // any color
                             title={item.location}
                             description={item.address}
+                            key={index}
                         />)}
                 </MapView>
             </View>

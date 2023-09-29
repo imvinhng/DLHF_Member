@@ -13,72 +13,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import Shop_Detail from '../components/Shop_Detail';
 import { convertViToEn } from '../../utils/functions';
 import SearchBar from '../../utils/SearchBar';
-
-export const DATA = [
-    {
-        id: 1,
-        location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
-        full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
-        hours: '07:00 - 22:00',
-        lat: 10.807202,
-        long: 106.695134,
-    },
-    {
-        id: 2,
-        location: 'Hai Bà Trưng',
-        address: '371A Hai Bà Trưng, Phường 8, Quận 3',
-        full_address: '371A Hai Bà Trưng, Phường 8, Quận 3, Hồ Chí Minh, Việt Nam',
-        hours: '07:00 - 20c:00',
-        lat: 10.790067,
-        long: 106.689098,
-    },
-    {
-        id: 3,
-        location: 'Quốc Hương',
-        address: '49C Đ. Quốc Hương, Thảo Điền, Quận 2',
-        full_address: '49C Đ. Quốc Hương, Thảo Điền, Quận 2, Hồ Chí Minh, Việt Nam',
-        hours: '07:00 - 20:00',
-        lat: 10.804783,
-        long: 106.731339,
-    },
-    {
-        id: 4,
-        location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
-        full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
-        hours: '07:00 - 22:00',
-        lat: 10.807202,
-        long: 106.695134,
-    },
-    {
-        id: 5,
-        location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
-        full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
-        hours: '07:00 - 22:00',
-        lat: 10.807202,
-        long: 106.695134,
-    },
-    {
-        id: 6,
-        location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
-        full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
-        hours: '07:00 - 22:00',
-        lat: 10.807202,
-        long: 106.695134,
-    },
-    {
-        id: 7,
-        location: 'Nơ Trang Long',
-        address: '56 Nơ Trang Long, Phường 14, Bình Thạnh',
-        full_address: '56 Nơ Trang Long, Phường 14, Bình Thạnh, Hồ Chí Minh, Việt Nam',
-        hours: '07:00 - 22:00',
-        lat: 10.807202,
-        long: 106.695134,
-    },
-];
+import { DATA } from '../../db/Database';
 
 function Store(props) {
     const navigation = useNavigation();
@@ -129,10 +64,7 @@ function Store(props) {
                     buttonStyle={styles.map_btn}
                     textStyle={styles.text_map}
                     text={'Map'}
-                    onPressFunction={() => navigation.navigate('Map', {
-                        lat: DATA.lat,
-                        long: DATA.long,
-                    })}
+                    onPressFunction={() => navigation.navigate('Map')}
                 />
             </View>
 
@@ -258,11 +190,13 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontWeight: '600',
         marginTop: 5,
+        width: 250,
     },
     text_light: {
         fontSize: 13,
         fontWeight: '200',
-        marginTop: 25,
+        position: 'absolute',
+        top: 60,
     },
     text_map: {
         marginLeft: 10,

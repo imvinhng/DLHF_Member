@@ -5,9 +5,26 @@ import { SquareButton, RoundButton } from './CustomButton';
 function SearchBar(props) {
     return (
         <View style={[styles.row_wrapper, props.containerStyle]}>
-            <SquareButton iconName='search' style={[styles.searchbar_icon, props.searchIconStyle]} />
-            <TextInput style={[styles.searchbar, props.searchInputStyle]} placeholder={'Search'} value={props.searchPhrase} onChangeText={props.setSearchPhrase} onFocus={() => { props.setClicked(true) }} />
-            {props.clicked && (<RoundButton iconName='times' bgColor='#f1f1f0' buttonStyle={[styles.close_btn, props.closeBtnStyle]} onPressFunction={() => { props.setSearchPhrase('') }} />)}
+            <SquareButton
+                iconName='search'
+                style={[styles.searchbar_icon, props.searchIconStyle]}
+            />
+            <TextInput
+                style={[styles.searchbar, props.searchInputStyle]}
+                placeholder={'Search'}
+                value={props.searchPhrase}
+                onChangeText={props.setSearchPhrase}
+                onFocus={() => { props.setClicked(true) }}
+                onBlur={() => { props.setClicked(false) }}
+            />
+            {props.clicked
+                && (<RoundButton
+                    iconName='times'
+                    bgColor='#f1f1f0'
+                    buttonStyle={[styles.close_btn, props.closeBtnStyle]}
+                    onPressFunction={() => { props.setSearchPhrase('') }}
+                />)
+            }
         </View>
     );
 }
