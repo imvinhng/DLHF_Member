@@ -5,12 +5,15 @@
  * @format
  */
 
-import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image, Dimensions, ScrollView } from 'react-native';
-import { RoundButton_Clear, RoundButton_Color, PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton } from '../../utils/CustomButton';
+import React, { useState } from 'react';
+import { SafeAreaView, StyleSheet, Text, View, Dimensions, ScrollView } from 'react-native';
+import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import PersonalInfo from '../components/PersonalInfo';
 
 function More(props) {
+    const [modalPersonalInfoVisible, setModalPersonalInfoVisible] = useState(false);
+
     return (
         <ScrollView style={styles.home}>
 
@@ -87,6 +90,7 @@ function More(props) {
                     buttonStyle={styles.longbutton_icon}
                     textStyle={styles.text_longbutton_icon}
                     iconStyle={styles.icon_longbutton}
+                    onPressFunction={() => setModalPersonalInfoVisible(true)}
                 />
                 <LongButton_Icon
                     iconName={'map-marker-alt'}
@@ -120,6 +124,11 @@ function More(props) {
                 />
 
             </View>
+
+            <PersonalInfo
+                modalVisible={modalPersonalInfoVisible}
+                setModalVisible={setModalPersonalInfoVisible}
+            />
 
         </ScrollView>
     );
