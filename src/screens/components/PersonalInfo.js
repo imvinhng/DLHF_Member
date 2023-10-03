@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
-import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, DatePicker } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button } from 'react-native';
 import { RoundButton } from '../../utils/CustomButton';
 import { dataCity, dataWard, dataDistrict, dataGender } from '../../db/Database';
 import Dropdown from 'react-native-dropdown-picker';
+import DatePicker from 'react-native-date-picker';
 
 
 function PersonalInfo(props) {
 
     const showPassword = false;
-    const [showDatePicker, setShowDatePicker] = useState(false);
+
+    const inputEmail = useRef(null)
 
     const [showAdditionalAddress, setShowAdditionalAddress] = useState(false);
     const [editAddressIcon, setEditAddressIcon] = useState('pen');
     const [editAddressIconColor, setEditAddressIconColor] = useState('#F58831');
     const [editAddressBtnColor, setEditAddressBtnColor] = useState('#fff')
+
+    const [editableEmailInput, setEditableEmailInput] = useState(false);
+    const [editEmailIcon, setEditEmailIcon] = useState('pen');
+    const [editEmailIconColor, setEditEmailIconColor] = useState('#F58831');
+    const [editEmailBtnColor, setEditEmailBtnColor] = useState('#fff')
 
     const [addressIsFocus, setAddressIsFocus] = useState(false);
 
@@ -21,13 +28,15 @@ function PersonalInfo(props) {
     const [openDistrict, setOpenDistrict] = useState(false);
     const [openWard, setOpenWard] = useState(false);
     const [openGender, setOpenGender] = useState(false);
+    const [openBirthDate, setOpenBirthDate] = useState(false);
 
     const [valueCity, setValueCity] = useState('Hồ Chí Minh');
     const [valueStreet, setValueStreet] = useState('21 Nguyễn Văn Tráng');
     const [valueDistrict, setValueDistrict] = useState('01');
     const [valueWard, setValueWard] = useState('Bến Thành');
     const [valueGender, setValueGender] = useState('');
-    const [valueBirthDate, setValueBirthDate] = useState('05/10/2023');
+    const [valueBirthDate, setValueBirthDate] = useState(new Date());
+    const [valueEmail, setValueEmail] = useState('');
 
     const editAddress = () => {
         if (!showAdditionalAddress) {
@@ -48,6 +57,22 @@ function PersonalInfo(props) {
         }
     }
 
+    const editEmail = async () => {
+        setEditEmailIcon(!editableEmailInput ? 'check' : 'pen')
+        setEditEmailIconColor(!editableEmailInput ? '#fff' : '#F58831')
+        setEditEmailBtnColor(!editableEmailInput ? '#F58831' : '#fff')
+        setEditableEmailInput(!editableEmailInput)
+    }
+
+    useEffect(() => {
+        if (editableEmailInput) {
+            inputEmail.current.focus()
+            console.log("TextInput was focused")
+        }
+    }, [editableEmailInput])
+
+
+
     return (
         <Modal
             animationType="slide"
@@ -60,6 +85,7 @@ function PersonalInfo(props) {
         >
             <View style={styles.home}>
                 <View style={styles.header}>
+                    <RoundButton iconName='times' iconSize={15} bgColor='#F58831' buttonStyle={styles.modal_close_btn} onPressFunction={() => props.setModalVisible(false)} />
                     <View style={styles.row_wrapper}>
                         <RoundButton iconName='user' iconSize={40} bgColor='lightgray' buttonStyle={styles.icon_user} />
                         <RoundButton iconName='pen' iconSize={10} iconColor='#fff' bgColor='#000' buttonStyle={styles.profile_edit} />
@@ -77,15 +103,15 @@ function PersonalInfo(props) {
 
                 <View style={styles.body}>
                     <Text style={styles.title}>Member ID</Text>
-                    <TextInput style={styles.input} value={'L19079509'} />
+                    <TextInput style={styles.input} value={'L19079509'} editable={false} />
                     <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
 
                     <Text style={styles.title}>Full Name</Text>
-                    <TextInput style={styles.input} value={'Nguyễn Thế Đông'} />
+                    <TextInput style={styles.input} value={'Nguyễn Thế Đông'} editable={false} />
                     <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
 
                     <Text style={styles.title}>Citizenship</Text>
-                    <TextInput style={styles.input} value={'VN'} />
+                    <TextInput style={styles.input} value={'VN'} editable={false} />
                     <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
 
                     {/* Only shown when address edit icon is clicked */}
@@ -161,13 +187,19 @@ function PersonalInfo(props) {
 
                     <Text style={styles.title}>Email</Text>
                     <View style={styles.row_wrapper}>
-                        <TextInput style={styles.input} placeholder={'Add email address'} />
-                        <RoundButton iconName='pen' iconSize={10} iconColor='#F58831' bgColor='#fff' buttonStyle={styles.icon_edit} />
+                        <TextInput
+                            style={styles.input}
+                            ref={inputEmail}
+                            placeholder={'Add email address'}
+                            value={valueEmail}
+                            editable={editableEmailInput}
+                            onChangeText={(text) => setValueEmail(text.toLowerCase())} />
+                        <RoundButton iconName={editEmailIcon} iconSize={10} iconColor={editEmailIconColor} bgColor={editEmailBtnColor} buttonStyle={styles.icon_edit} onPressFunction={editEmail} />
                     </View>
                     <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
 
                     <Text style={styles.title}>Phone number</Text>
-                    <TextInput style={styles.input} value={'0989181123'} />
+                    <TextInput style={styles.input} value={'0989181123'} editable={false} />
                     <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
 
                     <Text style={styles.title}>Password</Text>
@@ -178,7 +210,7 @@ function PersonalInfo(props) {
                     <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
 
                     <Text style={styles.title}>CCCD ID</Text>
-                    <TextInput style={styles.input} value={'L19079509'} />
+                    <TextInput style={styles.input} value={'L19079509'} editable={false} />
                     <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
 
                     <View style={styles.row_wrapper}>
@@ -186,18 +218,32 @@ function PersonalInfo(props) {
                             <Text style={styles.title}>Date of Birth</Text>
                             <View style={styles.row_wrapper}>
                                 {/* TODO: onFocus open up a calendar picker */}
-                                <TextInput style={styles.input} value={valueBirthDate} />
-                                {/* {showDatePicker &&
-                                    <DatePicker
-                                        style={{ width: 200 }}
-                                        ref={(picker) => { this.datePicker = picker; }}
-                                        date={valueBirthDate}
-                                        mode="date"
-                                        placeholder="Select date"
-                                        format="DD-MM-YYYY"
-                                        onDateChange={(date) => { setValueBirthDate(date) }}
-                                    />} */}
-                                <RoundButton iconName={editAddressIcon} iconSize={10} iconColor={editAddressIconColor} bgColor={editAddressBtnColor} buttonStyle={styles.icon_edit} />
+                                <TextInput style={styles.input} value={valueBirthDate.toLocaleDateString('vi')} editable={false} />
+
+                                <RoundButton
+                                    iconName={editAddressIcon}
+                                    iconSize={10}
+                                    iconColor={editAddressIconColor}
+                                    bgColor={editAddressBtnColor}
+                                    buttonStyle={styles.icon_edit}
+                                    onPressFunction={() => setOpenBirthDate(true)}
+                                />
+
+                                <DatePicker
+                                    modal
+                                    locale={'vi'}
+                                    mode={'date'}
+                                    title={'Select your birthdate'}
+                                    open={openBirthDate}
+                                    date={valueBirthDate}
+                                    onConfirm={(date) => {
+                                        setOpenBirthDate(false)
+                                        setValueBirthDate(date)
+                                    }}
+                                    onCancel={() => {
+                                        setOpenBirthDate(false)
+                                    }}
+                                />
                             </View>
                             <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
                         </View>
@@ -239,10 +285,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     header: {
-        height: '30%',
+        height: Platform.OS == 'ios' ? '30%' : '28%',
         width: '100%',
         backgroundColor: '#F58831',
-        paddingTop: 50,
+        paddingTop: Platform.OS == 'ios' ? 50 : 20,
         justifyContent: 'center',
 
         //ios
@@ -276,7 +322,13 @@ const styles = StyleSheet.create({
         width: 20,
         borderRadius: 50,
     },
-
+    modal_close_btn: {
+        position: 'absolute',
+        left: Platform.OS == 'ios' ? 350 : 370,
+        top: Platform.OS == 'ios' ? 45 : 15,
+        height: 20,
+        width: 20,
+    },
     barcode: {
         width: '92%',
         alignSelf: 'center',
@@ -301,7 +353,7 @@ const styles = StyleSheet.create({
     gray_screen: {
         backgroundColor: 'lightgray',
         width: '95%',
-        height: 182,
+        height: 188,
         position: 'absolute',
         top: 7,
     },
@@ -322,6 +374,7 @@ const styles = StyleSheet.create({
         marginRight: -11,
         width: '90%',
         fontWeight: 'bold',
+        color: 'black',
     },
     title: {
         fontWeight: '300',
