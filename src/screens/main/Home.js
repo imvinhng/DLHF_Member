@@ -5,38 +5,12 @@
  * @format
  */
 
-import React from 'react';
-import { View, StyleSheet, Text, Platform, Image, Dimensions, FlatList, TouchableOpacity } from 'react-native';
+import React, { useRef } from 'react';
+import { View, StyleSheet, Text, Platform, Image, Dimensions, FlatList, TouchableOpacity, Animated } from 'react-native';
 import { LongButton_Icon } from '../../utils/CustomButton';
-import { HomeBody } from '../../utils/CustomComponents';
+import { HomeHeader, HomeHeader_LoggedIn, HomeBody } from '../../utils/HomeComponents';
+import { DATA_SPECIAL_OFFER } from '../../db/Database';
 
-const DATA_SPECIAL_OFFER = [
-    {
-        id: 1,
-        msg: 'DISCOUNT 20,000D FOR ORDERS OVER 450,000D',
-        image_uri: require('../../assets/vouchers/voucher1-large.png'),
-        exp_date: '20/9',
-    },
-    {
-        id: 2,
-        msg: 'DISCOUNT 50,000D FOR ORDERS OVER 950,000D',
-        image_uri: require('../../assets/vouchers/voucher3-large.png'),
-        exp_date: '30/9',
-    },
-    {
-        id: 3,
-        msg: 'DISCOUNT 20,000D FOR ORDERS OVER 450,000D',
-        image_uri: require('../../assets/vouchers/voucher2-large.png'),
-        exp_date: '20/9',
-    },
-    {
-        id: 4,
-        msg: 'DISCOUNT 50,000D FOR ORDERS OVER 950,000D',
-        image_uri: require('../../assets/vouchers/voucher4-large.png'),
-        exp_date: '30/9',
-    },
-
-];
 
 const Item = ({ msg, image_uri, exp_date }) => {
     return (
@@ -64,13 +38,36 @@ const Item = ({ msg, image_uri, exp_date }) => {
 };
 
 
+
+
 const Home = (props) => {
+
+    const loggedIn = false;
+
+    const yOffset = useRef(new Animated.Value(0)).current;
+
+    yOffset.addListener(({ value }) => {
+        console.log(value);
+    })
 
     return (
         <View style={styles.home}>
+            {loggedIn ? <HomeHeader_LoggedIn /> : <HomeHeader />}
             <FlatList
                 data={DATA_SPECIAL_OFFER}
                 numColumns={2}
+                onScroll={
+                    Animated.event(
+                        // scrollX = e.nativeEvent.contentOffset.x
+                        [{
+                            nativeEvent: {
+                                contentOffset: {
+                                    y: yOffset
+                                }
+                            }
+                        }]
+                    )
+                }
                 ListHeaderComponent={<HomeBody />}
                 renderItem={({ item }) => {
                     return <Item
