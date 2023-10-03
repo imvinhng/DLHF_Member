@@ -169,6 +169,12 @@ export const HomeBody = () => {
     )
 }
 
+export const BlackLine = () => {
+    return (
+        <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
+    )
+}
+
 
 
 const { width } = Dimensions.get('screen')

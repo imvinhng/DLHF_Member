@@ -12,7 +12,7 @@ import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Shop_Detail from '../components/Shop_Detail';
 import { convertViToEn } from '../../utils/functions';
-import SearchBar from '../../utils/SearchBar';
+import SearchBar from '../components/SearchBar';
 import { DATA } from '../../db/Database';
 
 function Store(props) {

@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { LongButton_Icon, PromotionButton, NotificationButton } from '../../utils/CustomButton';
 import MapView, { Marker } from 'react-native-maps';
 import { DATA } from '../../db/Database';
-import SearchBar from '../../utils/SearchBar';
+import SearchBar from './SearchBar';
 
 export default function Map({ route, navigation }) {
 

@@ -4,6 +4,8 @@ import { RoundButton } from '../../utils/CustomButton';
 import { dataCity, dataWard, dataDistrict, dataGender } from '../../db/Database';
 import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
+import { BlackLine } from '../../utils/CustomComponents';
+import PasswordChange from './PasswordChange';
 
 
 function PersonalInfo(props) {
@@ -37,6 +39,9 @@ function PersonalInfo(props) {
     const [valueGender, setValueGender] = useState('');
     const [valueBirthDate, setValueBirthDate] = useState(new Date());
     const [valueEmail, setValueEmail] = useState('');
+    const [valuePassword, setValuePassword] = useState('John Cena');
+
+    const [modalPWChangeVisible, setModalPWChangeVisible] = useState(false);
 
     const editAddress = () => {
         if (!showAdditionalAddress) {
@@ -67,7 +72,6 @@ function PersonalInfo(props) {
     useEffect(() => {
         if (editableEmailInput) {
             inputEmail.current.focus()
-            console.log("TextInput was focused")
         }
     }, [editableEmailInput])
 
@@ -104,15 +108,15 @@ function PersonalInfo(props) {
                 <View style={styles.body}>
                     <Text style={styles.title}>Member ID</Text>
                     <TextInput style={styles.input} value={'L19079509'} editable={false} />
-                    <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
+                    <BlackLine />
 
                     <Text style={styles.title}>Full Name</Text>
                     <TextInput style={styles.input} value={'Nguyễn Thế Đông'} editable={false} />
-                    <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
+                    <BlackLine />
 
                     <Text style={styles.title}>Citizenship</Text>
                     <TextInput style={styles.input} value={'VN'} editable={false} />
-                    <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
+                    <BlackLine />
 
                     {/* Only shown when address edit icon is clicked */}
                     {showAdditionalAddress &&
@@ -183,7 +187,7 @@ function PersonalInfo(props) {
                         <TextInput style={styles.input} value={`${valueStreet}, Phường ${valueDistrict}, Quận ${valueWard}`} />
                         <RoundButton iconName={editAddressIcon} iconSize={10} iconColor={editAddressIconColor} bgColor={editAddressBtnColor} onPressFunction={editAddress} buttonStyle={styles.icon_edit} />
                     </View>
-                    <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
+                    <BlackLine />
 
                     <Text style={styles.title}>Email</Text>
                     <View style={styles.row_wrapper}>
@@ -196,30 +200,35 @@ function PersonalInfo(props) {
                             onChangeText={(text) => setValueEmail(text.toLowerCase())} />
                         <RoundButton iconName={editEmailIcon} iconSize={10} iconColor={editEmailIconColor} bgColor={editEmailBtnColor} buttonStyle={styles.icon_edit} onPressFunction={editEmail} />
                     </View>
-                    <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
+                    <BlackLine />
 
                     <Text style={styles.title}>Phone number</Text>
                     <TextInput style={styles.input} value={'0989181123'} editable={false} />
-                    <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
+                    <BlackLine />
 
                     <Text style={styles.title}>Password</Text>
                     <View style={styles.row_wrapper}>
-                        <TextInput style={styles.input} value={'John Cena'} secureTextEntry={!showPassword} />
-                        <RoundButton iconName='pen' iconSize={10} iconColor='#F58831' bgColor='#fff' buttonStyle={styles.icon_edit} />
+                        <TextInput style={styles.input} value={valuePassword} secureTextEntry={!showPassword} editable={false} />
+                        <RoundButton iconName='pen' iconSize={10} iconColor='#F58831' bgColor='#fff' buttonStyle={styles.icon_edit} onPressFunction={() => setModalPWChangeVisible(true)} />
                     </View>
-                    <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
+                    <BlackLine />
+
+                    <PasswordChange
+                        modalVisible={modalPWChangeVisible}
+                        setModalVisible={setModalPWChangeVisible}
+                        currentPassword={valuePassword}
+                        setNewPassword={setValuePassword}
+                    />
 
                     <Text style={styles.title}>CCCD ID</Text>
                     <TextInput style={styles.input} value={'L19079509'} editable={false} />
-                    <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
+                    <BlackLine />
 
                     <View style={styles.row_wrapper}>
                         <View style={styles.column_wrapper_left}>
                             <Text style={styles.title}>Date of Birth</Text>
                             <View style={styles.row_wrapper}>
-                                {/* TODO: onFocus open up a calendar picker */}
                                 <TextInput style={styles.input} value={valueBirthDate.toLocaleDateString('vi')} editable={false} />
-
                                 <RoundButton
                                     iconName={editAddressIcon}
                                     iconSize={10}
@@ -245,7 +254,7 @@ function PersonalInfo(props) {
                                     }}
                                 />
                             </View>
-                            <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
+                            <BlackLine />
                         </View>
 
                         <View style={styles.column_wrapper_right}>
@@ -266,9 +275,11 @@ function PersonalInfo(props) {
                                 />
                                 <RoundButton iconName={editAddressIcon} iconSize={10} iconColor={editAddressIconColor} bgColor={editAddressBtnColor} buttonStyle={styles.icon_edit} />
                             </View>
-                            <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
+                            <BlackLine />
                         </View>
                     </View>
+
+
                 </View>
             </View>
         </Modal>
