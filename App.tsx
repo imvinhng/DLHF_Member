@@ -16,6 +16,7 @@ import Store from './src/screens/main/Store';
 import Promotions from './src/screens/main/Promotions';
 import More from './src/screens/main/More';
 import Login from './src/screens/components/Login';
+import Register from './src/screens/components/Register';
 import Map from './src/screens/components/Map';
 import Shop_Detail from './src/screens/components/Shop_Detail';
 import Notification from './src/screens/components/Notification';
@@ -87,6 +88,9 @@ function App(): JSX.Element {
         <Stack.Screen
           name='Login'
           component={Login} />
+        <Stack.Screen
+          name='Register'
+          component={Register} />
         <Stack.Screen
           name='Map'
           component={Map} />

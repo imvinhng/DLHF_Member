@@ -42,7 +42,7 @@ const Item = ({ msg, image_uri, exp_date }) => {
 
 const Home = (props) => {
 
-    const loggedIn = true;
+    const loggedIn = false;
 
     return (
         <View style={styles.home}>

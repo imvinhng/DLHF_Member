@@ -104,7 +104,7 @@ export const LoginButton = (props) => {
                 props.style,
                 {
                     backgroundColor: pressed ? '#ddd' : props.bgColor,
-                    borderRadius: 20,
+                    // borderRadius: 20,
                 },
             ]}
             onPress={props.onPressFunction}
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
         width: 170,
         backgroundColor: '#68ede9',
         borderRadius: 5,
-        // margin: 10,
+        margin: 10,
     },
     long_button: {
         height: 40,

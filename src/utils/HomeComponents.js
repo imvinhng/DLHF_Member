@@ -30,6 +30,8 @@ const TopHeader = () => {
 }
 
 const BottomHeader = () => {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.bottom_header}>
             <Text style={styles.text_subtitle}>Log In</Text>
@@ -37,12 +39,13 @@ const BottomHeader = () => {
             <LoginButton
                 bgColor={'#eb9f1c'}
                 textColor={'#fff'}
+                style
                 onPressFunction={() => navigation.navigate('Login')}
             />
 
             <View style={styles.row_wrapper}>
                 <Text style={styles.text_small}>Not registered?</Text>
-                <Text style={styles.text_hyperlink}>Register here</Text>
+                <Text style={styles.text_hyperlink} onPress={() => navigation.navigate('Register')}>Register here</Text>
             </View>
         </View>
     )

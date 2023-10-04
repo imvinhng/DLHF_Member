@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, View, Text, TextInput, ScrollView } from 'react-native';
-import { LoginButton, LongButton_Icon } from '../../utils/CustomButton';
+import { LoginButton, LongButton_Icon, RoundButton } from '../../utils/CustomButton';
 import OTP from './OTP';
+import { useNavigation } from '@react-navigation/native';
 
 
 function Login(props) {
@@ -9,6 +10,8 @@ function Login(props) {
     const [loginBtnBorderColor, setLoginBtnBorderColor] = useState('#000');
     const [modalVisible, setModalVisible] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState('');
+
+    const navigation = useNavigation();
 
     const login = (value) => {
         if (value != '') {
@@ -27,6 +30,7 @@ function Login(props) {
                 style={styles.image}
                 source={require('../../assets/dutch-windmill.png')}
             />
+            <RoundButton iconName='times' iconSize={15} buttonStyle={styles.close_btn} onPressFunction={() => navigation.navigate('Home')} />
             <ScrollView style={styles.body} contentContainerStyle={{ alignItems: 'center' }}>
                 <Text style={styles.title}>Welcome to</Text>
                 <Image source={require('../../assets/DLHF-logo.png')} />
@@ -164,13 +168,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-
     line: {
         borderBottomColor: 'black',
         width: '35%',
         borderWidth: 1,
         borderColor: 'grey',
     },
+    close_btn: {
+        position: 'absolute',
+        left: Platform.OS == 'ios' ? 350 : 370,
+        top: Platform.OS == 'ios' ? 45 : 15,
+        height: 20,
+        width: 20,
+    }
 })
 
 export default Login;

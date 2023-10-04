@@ -1,0 +1,93 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/DancingScript-Bold.ttf",
+      "sha1": "42858229a137c5188a859df102afff145200114d"
+    },
+    {
+      "path": "src/assets/fonts/DancingScript-Medium.ttf",
+      "sha1": "30711d9cdbed046fef8128082c6cc1a9287dbc7c"
+    },
+    {
+      "path": "src/assets/fonts/DancingScript-Regular.ttf",
+      "sha1": "b52e869bd47b6e98fd907ae00b1828916451b3b0"
+    },
+    {
+      "path": "src/assets/fonts/DancingScript-SemiBold.ttf",
+      "sha1": "b5e71ddbaca9b4d5953f0c5e45bf326fb7df35ba"
+    },
+    {
+      "path": "src/assets/fonts/Oswald-Bold.ttf",
+      "sha1": "6e78c90d65a6133d979daebc1255d2f560a97c79"
+    },
+    {
+      "path": "src/assets/fonts/Oswald-ExtraLight.ttf",
+      "sha1": "ac9323c6f3e5965bbeee4c57db7b78d8d67c9d1b"
+    },
+    {
+      "path": "src/assets/fonts/Oswald-Light.ttf",
+      "sha1": "18b6fe10677763e882985371a015bdc45ec2943c"
+    },
+    {
+      "path": "src/assets/fonts/Oswald-Medium.ttf",
+      "sha1": "70e75da33d777c839cf59cb042adf7fc5fa0235a"
+    },
+    {
+      "path": "src/assets/fonts/Oswald-Regular.ttf",
+      "sha1": "06aae8f5a28908ba8eca0d5bdc01cedc2a184a5f"
+    },
+    {
+      "path": "src/assets/fonts/Oswald-SemiBold.ttf",
+      "sha1": "10d1c319ab0685f35f3c9eb87a9524de0560345e"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-Black.ttf",
+      "sha1": "de7806872f91b97727c78796ece1365a4ccb1c1a"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-BlackItalic.ttf",
+      "sha1": "44db7ef2642b98b9807ed23962bec64432ba8d40"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-Bold.ttf",
+      "sha1": "833c2b70c742b12b1be9461480c8853ddb663991"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-BoldItalic.ttf",
+      "sha1": "a46a0db1e4a946fd622df9286149b861081ae3c8"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-ExtraBold.ttf",
+      "sha1": "a3ef318fa4be7090a26f201bbc8bfc8ebbec734b"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-ExtraBoldItalic.ttf",
+      "sha1": "038ac6ab8ecbaa24a4e2e3186ff3a17e38cbf593"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-Italic.ttf",
+      "sha1": "466021d7e599a75fadea7bc5f0d4f0cb679849aa"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-Medium.ttf",
+      "sha1": "0670023e90cdb6819b62ee4c60856e9a07bafd13"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-MediumItalic.ttf",
+      "sha1": "35616fb869f4b8a7d78469746beeba553490876b"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-Regular.ttf",
+      "sha1": "27948bdf40b983e7e7405ae9dc101abc0c455c99"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-SemiBold.ttf",
+      "sha1": "34e3b5e50340b6b1c5aff95c9202cfe662fd1d82"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplay-SemiBoldItalic.ttf",
+      "sha1": "b55f9f0b3fb199d6f5c5f3495924272ffadb70c5"
+    }
+  ]
+}
