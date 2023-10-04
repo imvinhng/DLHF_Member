@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Image, View, Text, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Image, View, Text, TextInput, ScrollView, Alert } from 'react-native';
 import { LoginButton, LongButton, LongButton_Icon, RoundButton } from '../../utils/CustomButton';
 import { OTP_Register } from './OTP';
 import { useNavigation } from '@react-navigation/native';
@@ -50,14 +50,20 @@ function Register(props) {
                     buttonColor={'#eb9f1c'}
                     buttonStyle={styles.long_btn}
                     textStyle={styles.button_text}
-                    onPressFunction={() => setModalVisible(true)}
+                    onPressFunction={() => {
+                        if (phoneNumber == '' || phoneNumber.length < 10) {
+                            Alert.alert('Your phone number is not a valid number!')
+                        } else {
+                            setModalVisible(true)
+                        }
+                    }}
                 />
             </ScrollView>
 
             <OTP_Register
                 modalVisible={modalVisible}
                 setModalVisible={setModalVisible}
-                phone_number={phoneNumber}
+                phoneNumber={phoneNumber}
             />
         </View>
 

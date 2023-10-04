@@ -99,6 +99,7 @@ export function OTP_Register(props) {
                     <Register_PasswordSet
                         modalVisible={passwordSetModalVisible}
                         setModalVisible={setPasswordSetModalVisible}
+                        phoneNumber={props.phoneNumber}
                     />
 
                 </View>

@@ -3,6 +3,11 @@ import { View } from 'react-native';
 
 export const BlackLine = () => {
     return (
-        <View style={{ width: '90%', height: 0.5, backgroundColor: '#000' }} />
+        <View style={{ width: '90%', height: 0.7, backgroundColor: '#000' }} />
+    )
+}
+export const OrangeLine = () => {
+    return (
+        <View style={{ width: '90%', height: 1, backgroundColor: '#F58831' }} />
     )
 }

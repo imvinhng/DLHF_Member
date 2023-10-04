@@ -115,6 +115,20 @@ export const dataGender = [
     { label: 'Prefer not to say', value: 'Prefer not to say' },
 ]
 
+export const dataPaperwork = [
+    { label: 'CCCD', value: 'CCCD' },
+    { label: 'CMND', value: 'CMND' },
+    { label: 'Passport', value: 'Passport' },
+    { label: "Driver's License", value: "Driver's License" },
+]
+
+export const dataCitizenship = [
+    { label: 'Vietnamese', value: 'Vietnamese' },
+    { label: 'American', value: 'American' },
+    { label: 'Dutch', value: 'Dutch' },
+    { label: "Chinese", value: "Chinese" },
+]
+
 export const DATA_SPECIAL_OFFER = [
     {
         id: 1,

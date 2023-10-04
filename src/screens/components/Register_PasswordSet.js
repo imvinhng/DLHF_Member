@@ -3,6 +3,7 @@ import { StyleSheet, Image, View, Text, TextInput, ScrollView, Modal, TouchableO
 import { LoginButton, LongButton, LongButton_Icon, RoundButton } from '../../utils/CustomButton';
 import { OTP_Register } from './OTP';
 import { useNavigation } from '@react-navigation/native';
+import Register_PersonalInfo from './Register_PersonalInfo';
 
 
 function Register_PasswordSet(props) {
@@ -10,17 +11,23 @@ function Register_PasswordSet(props) {
     const navigation = useNavigation();
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
+    const [modalPersonalInfoVisible, setModalPersonalInfoVisible] = useState(false);
 
-    const login = (value) => {
-        if (value != '') {
-            setLoginBtnColor('#eb9f1c');
-            setLoginBtnBorderColor('#eb9f1c');
-            setPhoneNumber(value);
-        } else {
-            setLoginBtnColor('gray');
-            setLoginBtnBorderColor('lightgray');
-        }
-    }
+    const AsyncAlert = (title, msg) => new Promise((resolve) => {
+        Alert.alert(
+            title,
+            msg,
+            [
+                {
+                    text: 'ok',
+                    onPress: () => {
+                        resolve('YES');
+                    },
+                },
+            ],
+            { cancelable: false },
+        );
+    });
 
     return (
         <Modal
@@ -59,7 +66,7 @@ function Register_PasswordSet(props) {
                         buttonColor={'#eb9f1c'}
                         buttonStyle={styles.long_btn}
                         textStyle={styles.button_text}
-                        onPressFunction={() => {
+                        onPressFunction={async () => {
                             if (newPassword != confirmNewPassword) {
                                 Alert.alert('Your password do not match!')
                             } else if (newPassword.length < 8) {
@@ -71,15 +78,22 @@ function Register_PasswordSet(props) {
                             } else if (!newPassword.match(/[0-9]/)) {
                                 Alert.alert('You must include at least one number in your password!')
                             } else {
-                                Alert.alert('Your password has been set successfully!')
+                                await AsyncAlert('Congrats', 'Your password has been set successfully!')
+                                setModalPersonalInfoVisible(true)
                             }
-                            // props.setModalVisible(false)
                         }}
                     />
 
                     <View style={{ width: '80%', alignItems: 'center' }}>
                         <Text style={[styles.text, { textAlign: 'center' }]}>Registering this account means you agree with DLHF's terms and conditions</Text>
                     </View>
+
+                    <Register_PersonalInfo
+                        modalVisible={modalPersonalInfoVisible}
+                        setModalVisible={setModalPersonalInfoVisible}
+                        password={newPassword}
+                        phoneNumber={props.phoneNumber}
+                    />
                 </View>
             </View>
         </Modal >
