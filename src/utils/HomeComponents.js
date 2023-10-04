@@ -3,37 +3,29 @@ import { StyleSheet, View, Text, Image, ImageBackground, ScrollView, Dimensions,
 import { RoundButton_Image, LoginButton, PromotionButton, NotificationButton, LongButton, SquareButton } from './CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
-export const HomeHeader = () => {
-    const navigation = useNavigation();
-
+const TopHeader = () => {
     return (
-        <View style={styles.header}>
-
-            <View style={styles.top_header}>
-                <View style={styles.sub_header_left}>
-                    <RoundButton_Image
-                        image_uri={require('../assets/icons/red-flower-icon.png')}
-                        bgColor={'#FEF7E5'}
-                        iconStyle={styles.icon_image}
-                    />
-                    <Text style={styles.text_small_center}>Hello friend</Text>
-                    <RoundButton_Image
-                        image_uri={require('../assets/icons/hello-icon.png')}
-                        bgColor={'#FEF7E5'}
-                        iconStyle={styles.icon_image}
-                    />
-                </View>
-
-                <View style={styles.sub_header_right}>
-                    <PromotionButton />
-                    <NotificationButton />
-                </View>
+        <View style={styles.top_header}>
+            <View style={styles.sub_header_left}>
+                <RoundButton_Image
+                    image_uri={require('../assets/icons/red-flower-icon.png')}
+                    bgColor={'#FEF7E5'}
+                    iconStyle={styles.icon_image}
+                />
+                <Text style={styles.text_small_center}>Hello friend</Text>
+                <RoundButton_Image
+                    image_uri={require('../assets/icons/hello-icon.png')}
+                    bgColor={'#FEF7E5'}
+                    iconStyle={styles.icon_image}
+                />
             </View>
 
-            <BottomHeader />
-
-
+            <View style={styles.sub_header_right}>
+                <PromotionButton />
+                <NotificationButton />
+            </View>
         </View>
+
     )
 }
 
@@ -44,6 +36,7 @@ const BottomHeader = () => {
             <Text style={styles.text_description}>Use the app to gain points and redeem offers exclusively for Dalat Hasfarm member!</Text>
             <LoginButton
                 bgColor={'#eb9f1c'}
+                textColor={'#fff'}
                 onPressFunction={() => navigation.navigate('Login')}
             />
 
@@ -55,29 +48,25 @@ const BottomHeader = () => {
     )
 }
 
-export const HomeHeader_LoggedIn = () => {
+
+const TopHeader_LoggedIn = () => {
     return (
-        <View style={styles.header}>
-
-            <View style={styles.top_header}>
-                <View style={styles.sub_header_left}>
-                    <RoundButton_Image
-                        image_uri={require('../assets/icons/red-flower-icon.png')}
-                        bgColor={'#FEF7E5'}
-                        iconStyle={styles.icon_image}
-                    />
-                    <View style={styles.welcome_title_container}>
-                        <Text style={styles.text_small_center}>Welcome back, Mr. Dong Nguyen!</Text>
-                    </View>
-                </View>
-
-                <View style={styles.sub_header_right}>
-                    <PromotionButton />
-                    <NotificationButton />
+        <View style={styles.top_header}>
+            <View style={styles.sub_header_left}>
+                <RoundButton_Image
+                    image_uri={require('../assets/icons/red-flower-icon.png')}
+                    bgColor={'#FEF7E5'}
+                    iconStyle={styles.icon_image}
+                />
+                <View style={styles.welcome_title_container}>
+                    <Text style={styles.text_small_center}>Welcome back, Mr. Dong Nguyen!</Text>
                 </View>
             </View>
 
-            <BottomHeader_LoggedIn />
+            <View style={styles.sub_header_right}>
+                <PromotionButton />
+                <NotificationButton />
+            </View>
         </View>
     )
 }
@@ -87,18 +76,42 @@ const BottomHeader_LoggedIn = () => {
         <View style={styles.bottom_header}>
             <Image style={styles.member_card_background} source={require('../assets/background/bg.png')} />
             <View style={styles.member_card_container}>
-                <Image style={styles.member_card} source={require('../assets/member-card.png')} />
+                <Image style={[styles.member_card]} source={require('../assets/member-card.png')} />
             </View>
         </View>
     )
 }
 
-export const HomeBody = () => {
+export const HomeHeader_LoggedIn = () => {
+    return (
+        <View style={styles.header}>
+
+            <TopHeader_LoggedIn />
+        </View>
+    )
+}
+
+export const HomeHeader = () => {
+    const navigation = useNavigation();
 
     return (
+        <View style={styles.header}>
+
+            <TopHeader />
+
+        </View>
+    )
+}
+
+
+export const HomeBody = (props) => {
+
+    return (
+
         <View style={styles.home}>
-
-
+            <View style={styles.header}>
+                {props.loggedIn ? <BottomHeader_LoggedIn /> : < BottomHeader />}
+            </View>
 
             <View style={styles.body}>
                 {/* <Text style={styles.text_large}>Home</Text> */}
@@ -112,6 +125,7 @@ export const HomeBody = () => {
                         />
                         <Text>Home Delivery</Text>
                     </View>
+                    <View style={{ height: 100, width: 0.5, backgroundColor: 'lightgray' }} />
                     <View style={styles.body_top_right}>
                         <RoundButton_Image
                             image_uri={require('../assets/icons/shop-icon.png')}
@@ -187,6 +201,27 @@ export const HomeBody = () => {
 const { width } = Dimensions.get('screen')
 
 const styles = StyleSheet.create({
+    home: {
+        flex: 1,
+    },
+    body: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#fff',
+        paddingTop: 5,
+        marginTop: -30,
+        borderWidth: 0.2,
+        borderColor: 'lightgray',
+
+        //ios
+        shadowColor: 'lightgray',
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        shadowOffset: { width: 0, height: -10 },
+
+        //android
+        elevation: 10,
+    },
     header: {
         flexDirection: 'column',
         backgroundColor: '#FEF7E5',
@@ -199,10 +234,23 @@ const styles = StyleSheet.create({
     bottom_header: {
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#fff',
         margin: 15,
-        borderRadius: 15,
+        marginTop: Platform.OS == 'ios' ? - 40 : 10,
         backgroundColor: '#F8F8F8',
-        paddingVertical: 25,
+        borderWidth: 0.5,
+        borderColor: 'lightgray',
+        borderRadius: 15,
+        paddingVertical: Platform.OS == 'ios' ? 25 : 20,
+
+        //ios
+        shadowColor: 'lightgray',
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        shadowOffset: { width: 0, height: 2 },
+
+        //android
+        elevation: 10, // doesn't work?
     },
     sub_header_right: {
         flexDirection: 'row',
@@ -254,10 +302,12 @@ const styles = StyleSheet.create({
     },
     member_card: {
         margin: -5,
+        marginTop: -35,
     },
     member_card_container: {
         margin: 10,
         marginBottom: 83,
+        backgroundColor: '#FEF7E5',
     },
     member_card_background: {
         marginTop: 50,
@@ -270,14 +320,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 15,
         left: 60,
-    },
-    home: {
-        flex: 1,
-        backgroundColor: '#fff'
-    },
-    body: {
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     grid: {
         flexDirection: 'row',
@@ -293,14 +335,14 @@ const styles = StyleSheet.create({
     },
 
     body_top: {
-        height: 150,
+        height: 130,
         width: 350,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         alignItems: 'center',
         borderWidth: 2,
         borderRadius: 10,
-        borderColor: '#bfbaba',
+        borderColor: 'lightgray',
         margin: 20,
     },
     body_top_left: {
@@ -327,7 +369,9 @@ const styles = StyleSheet.create({
     image: {
         borderRadius: 10,
         margin: 10,
+        marginVertical: 0,
         width: Platform.OS == 'ios' ? 375 : 390,
+        height: Platform.OS == 'ios' ? 180 : 215,
     },
     icon_image_large: {
         height: 45,

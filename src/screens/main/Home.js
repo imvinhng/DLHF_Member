@@ -42,13 +42,7 @@ const Item = ({ msg, image_uri, exp_date }) => {
 
 const Home = (props) => {
 
-    const loggedIn = false;
-
-    const yOffset = useRef(new Animated.Value(0)).current;
-
-    yOffset.addListener(({ value }) => {
-        console.log(value);
-    })
+    const loggedIn = true;
 
     return (
         <View style={styles.home}>
@@ -56,19 +50,8 @@ const Home = (props) => {
             <FlatList
                 data={DATA_SPECIAL_OFFER}
                 numColumns={2}
-                onScroll={
-                    Animated.event(
-                        // scrollX = e.nativeEvent.contentOffset.x
-                        [{
-                            nativeEvent: {
-                                contentOffset: {
-                                    y: yOffset
-                                }
-                            }
-                        }]
-                    )
-                }
-                ListHeaderComponent={<HomeBody />}
+
+                ListHeaderComponent={<HomeBody loggedIn={loggedIn} />}
                 renderItem={({ item }) => {
                     return <Item
                         msg={item.msg}

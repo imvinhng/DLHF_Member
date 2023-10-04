@@ -102,13 +102,16 @@ export const LoginButton = (props) => {
             style={({ pressed }) => [
                 styles.login_button,
                 props.style,
-                { backgroundColor: pressed ? '#ddd' : props.bgColor },
+                {
+                    backgroundColor: pressed ? '#ddd' : props.bgColor,
+                    borderRadius: 20,
+                },
             ]}
             onPress={props.onPressFunction}
             hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}
             android_ripple={{ color: '#e5ed8a' }}
         >
-            <Text style={[styles.text, { color: props.textColor }]}>
+            <Text style={[styles.text, { color: props.textColor, fontWeight: 'bold', fontSize: 20 }]}>
                 Log In
             </Text>
         </Pressable>
@@ -207,7 +210,7 @@ const styles = StyleSheet.create({
         width: 170,
         backgroundColor: '#68ede9',
         borderRadius: 5,
-        margin: 10,
+        // margin: 10,
     },
     long_button: {
         height: 40,

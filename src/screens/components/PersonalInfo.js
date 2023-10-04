@@ -273,7 +273,13 @@ function PersonalInfo(props) {
                                         width: 170,
                                     }}
                                 />
-                                <RoundButton iconName={editAddressIcon} iconSize={10} iconColor={editAddressIconColor} bgColor={editAddressBtnColor} buttonStyle={styles.icon_edit} />
+                                <RoundButton
+                                    iconName={editAddressIcon}
+                                    iconSize={10}
+                                    iconColor={editAddressIconColor}
+                                    bgColor={editAddressBtnColor}
+                                    buttonStyle={[styles.icon_edit, { marginLeft: -5 }]}
+                                />
                             </View>
                             <BlackLine />
                         </View>
