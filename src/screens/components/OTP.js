@@ -1,9 +1,11 @@
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, Modal, TouchableOpacity, Platform } from 'react-native';
 import OTPTextInput from 'react-native-otp-textinput';
+import Register_PasswordSet from './Register_PasswordSet';
 
+const otpValue = '000000';
 
-import React from 'react';
-function OTP(props) {
+export const OTP_Login = (props) => {
     return (
         <Modal
             animationType="slide"
@@ -24,21 +26,87 @@ function OTP(props) {
                         <Text style={styles.text}>A verifcation code of 6 digits has been sent to the phone number {props.phone_number}</Text>
                         <Text style={styles.text2}>Enter code to continue</Text>
                     </View>
-
                     {/* 6 square text input */}
+
                     <OTPTextInput
                         textInputStyle={{ backgroundColor: 'lightgray', borderRadius: 7 }}
                         inputCount={6}
+                        autoFocus
+                        handleTextChange={(code) => {
+                            if (code == otpValue) {
+                                console.log(`Verified, you are good to go!`);
+                            }
+                        }}
                     />
 
                     <Text style={styles.footer}>Didn't receive the code? Resend (170s)</Text>
 
                 </View>
             </View>
-            <TouchableOpacity style={styles.backdrop_bottom} onPress={() => props.setModalVisible(false)} />
         </Modal>
     );
 }
+export function OTP_Register(props) {
+    const [passwordSetModalVisible, setPasswordSetModalVisible] = useState(false);
+    return (
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={props.modalVisible}
+            onRequestClose={() => {
+                Alert.alert('Modal has been closed.');
+                props.setModalVisible(false);
+            }}
+        >
+            <TouchableOpacity style={styles.backdrop_top} onPress={() => props.setModalVisible(false)} />
+            <View style={styles.home}>
+                {/* Make sure to not include header so user can click outside the View to close the Modal */}
+
+                <View style={styles.body}>
+                    <View style={styles.container}>
+                        <Text style={styles.title}>Register new member</Text>
+                        <View style={styles.row_wrapper_custom}>
+                            <Text style={styles.text}>A verifcation code of 6 digits has been sent to the phone number</Text>
+                            <Text
+                                style={[
+                                    styles.text,
+                                    {
+                                        color: '#000',
+                                    }
+                                ]}
+                            >
+                                {props.phone_number}
+                            </Text>
+                        </View>
+                        <Text style={styles.text2}>Enter code to continue</Text>
+                    </View>
+
+                    {/* 6 square text input */}
+                    <OTPTextInput
+                        textInputStyle={{ backgroundColor: 'lightgray', borderRadius: 7 }}
+                        inputCount={6}
+                        autoFocus
+                        handleTextChange={(code) => {
+                            if (code == otpValue) {
+                                console.log(`Verified, you are good to go!`);
+                                setPasswordSetModalVisible(true);
+                            }
+                        }}
+                    />
+
+                    <Text style={styles.footer}>Didn't receive the code? Resend (170s)</Text>
+
+                    <Register_PasswordSet
+                        modalVisible={passwordSetModalVisible}
+                        setModalVisible={setPasswordSetModalVisible}
+                    />
+
+                </View>
+            </View>
+        </Modal>
+    );
+}
+
 
 const styles = StyleSheet.create({
     home: {
@@ -48,7 +116,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     body: {
-        flex: 1,
+        width: '100%',
+        height: '70%',
+        borderRadius: 20,
         alignItems: 'center',
     },
     backdrop_top: {
@@ -56,17 +126,20 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,0.2)',
         margin: 0,
     },
-    backdrop_bottom: {
-        height: Platform.OS == 'ios' ? '30%' : '8%',
-        backgroundColor: 'rgba(0,0,0,0.2)',
-        margin: 0,
+    row_wrapper_custom: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        margin: 10,
+        marginBottom: 20,
     },
     container: {
         height: 150,
         width: 300,
         justifyContent: 'flex-end',
         alignItems: 'center',
-        margin: 10,
+        marginTop: 50,
+        marginBottom: 10,
     },
     title: {
         margin: 10,
@@ -74,8 +147,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     text: {
-        margin: 10,
-        marginBottom: 20,
         fontSize: 15,
         fontWeight: 'bold',
         color: 'gray',
@@ -89,8 +160,7 @@ const styles = StyleSheet.create({
     },
     footer: {
         marginTop: 30,
-    }
+    },
 
 })
 
-export default OTP;

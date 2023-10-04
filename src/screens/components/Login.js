@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, View, Text, TextInput, ScrollView } from 'react-native';
 import { LoginButton, LongButton_Icon, RoundButton } from '../../utils/CustomButton';
-import OTP from './OTP';
+import { OTP_Login } from './OTP';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -51,7 +51,7 @@ function Login(props) {
                     onPressFunction={() => setModalVisible(true)}
                 />
 
-                <OTP
+                <OTP_Login
                     modalVisible={modalVisible}
                     setModalVisible={setModalVisible}
                     phone_number={phoneNumber}
@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 25,
         margin: 15,
+        fontFamily: 'Oswald-Regular',
     },
     text: {
         fontSize: 15,

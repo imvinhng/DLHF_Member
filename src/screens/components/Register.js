@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, View, Text, TextInput, ScrollView } from 'react-native';
 import { LoginButton, LongButton, LongButton_Icon, RoundButton } from '../../utils/CustomButton';
-import OTP from './OTP';
+import { OTP_Register } from './OTP';
 import { useNavigation } from '@react-navigation/native';
 
 
 function Register(props) {
     const [loginBtnColor, setLoginBtnColor] = useState('gray');
-    const [loginBtnBorderColor, setLoginBtnBorderColor] = useState('#000');
+    const [loginBtnBorderColor, setLoginBtnBorderColor] = useState('lightgray');
     const [modalVisible, setModalVisible] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState('');
 
@@ -20,7 +20,7 @@ function Register(props) {
             setPhoneNumber(value);
         } else {
             setLoginBtnColor('gray');
-            setLoginBtnBorderColor('#000');
+            setLoginBtnBorderColor('lightgray');
         }
     }
 
@@ -49,9 +49,16 @@ function Register(props) {
                     text='Continue'
                     buttonColor={'#eb9f1c'}
                     buttonStyle={styles.long_btn}
-                    textStyle={styles.button_text} />
-
+                    textStyle={styles.button_text}
+                    onPressFunction={() => setModalVisible(true)}
+                />
             </ScrollView>
+
+            <OTP_Register
+                modalVisible={modalVisible}
+                setModalVisible={setModalVisible}
+                phone_number={phoneNumber}
+            />
         </View>
 
     );
@@ -82,7 +89,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         margin: 15,
         color: '#1e522c',
-        fontFamily: 'DancingScript-Regular',
+        fontFamily: 'DancingScript-Bold',
     },
     text: {
         fontSize: 15,
