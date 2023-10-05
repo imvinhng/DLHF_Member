@@ -107,6 +107,13 @@ export const dataCity = [
     { label: 'Hà Nội', value: 'Hà Nội' },
 ]
 
+export const dataStreet = [
+    { label: 'Nguyễn Văn Tráng', value: 'Nguyễn Văn Tráng' },
+    { label: 'Nơ Trang Long', value: 'Nơ Trang Long' },
+    { label: 'Nguyễn Trãi', value: 'Nguyễn Trãi' },
+    { label: 'Cách Mạng Tháng 8', value: 'Cách Mạng Tháng 8' },
+]
+
 export const dataGender = [
     { label: 'Male', value: 'Male' },
     { label: 'Female', value: 'Female' },

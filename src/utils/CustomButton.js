@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Pressable, Text, Image, View } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export const RoundButton = (props) => {
     return (
@@ -153,18 +154,21 @@ export const LongButton_Icon = (props) => {
 }
 
 export function RadioButton(props) {
+    const [selected, setSelected] = useState(false);
     return (
-        <View style={[{
-            height: 24,
-            width: 24,
-            borderRadius: 12,
-            borderWidth: 2,
-            borderColor: '#eb9f1c',
-            alignItems: 'center',
-            justifyContent: 'center',
-        }, props.style]}>
+        <TouchableOpacity
+            style={[{
+                height: 24,
+                width: 24,
+                borderRadius: 12,
+                borderWidth: 2,
+                borderColor: '#eb9f1c',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }, props.style]}
+            onPress={() => setSelected(!selected)}>
             {
-                props.selected ?
+                selected ?
                     <View style={{
                         height: 12,
                         width: 12,
@@ -173,7 +177,7 @@ export function RadioButton(props) {
                     }} />
                     : null
             }
-        </View>
+        </TouchableOpacity>
     );
 }
 

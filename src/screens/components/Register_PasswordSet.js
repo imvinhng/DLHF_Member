@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, Image, View, Text, TextInput, ScrollView, Modal, TouchableOpacity, Alert } from 'react-native';
-import { LoginButton, LongButton, LongButton_Icon, RoundButton } from '../../utils/CustomButton';
-import { OTP_Register } from './OTP';
-import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, View, Text, TextInput, Modal, TouchableOpacity, Alert } from 'react-native';
+import { LongButton, RoundButton } from '../../utils/CustomButton';
 import Register_PersonalInfo from './Register_PersonalInfo';
 
 
 function Register_PasswordSet(props) {
 
-    const navigation = useNavigation();
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
     const [modalPersonalInfoVisible, setModalPersonalInfoVisible] = useState(false);

@@ -1,87 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button } from 'react-native';
-import { RoundButton } from '../../utils/CustomButton';
-import { dataCity, dataWard, dataDistrict, dataGender, dataPaperwork, dataCitizenship } from '../../db/Database';
+import { LongButton, RadioButton, RoundButton } from '../../utils/CustomButton';
+import { dataGender, dataPaperwork, dataCitizenship } from '../../db/Database';
 import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
-import { BlackLine, OrangeLine } from '../../utils/CustomComponents';
-import PasswordChange from './PasswordChange';
-
+import { BlackLine_Full, OrangeLine } from '../../utils/CustomComponents';
+import Register_Address from './Register_Address';
 
 function Register_PersonalInfo(props) {
 
-    const showPassword = false;
-
     const inputEmail = useRef(null)
 
-
-    const [showAdditionalAddress, setShowAdditionalAddress] = useState(false);
-    const [editAddressIcon, setEditAddressIcon] = useState('pen');
-    const [editAddressIconColor, setEditAddressIconColor] = useState('#F58831');
-    const [editAddressBtnColor, setEditAddressBtnColor] = useState('#fff')
-
-    const [editableEmailInput, setEditableEmailInput] = useState(false);
-    const [editEmailIcon, setEditEmailIcon] = useState('pen');
-    const [editEmailIconColor, setEditEmailIconColor] = useState('#F58831');
-    const [editEmailBtnColor, setEditEmailBtnColor] = useState('#fff')
-
-    const [addressIsFocus, setAddressIsFocus] = useState(false);
-
-    const [openCity, setOpenCity] = useState(false);
-    const [openDistrict, setOpenDistrict] = useState(false);
-    const [openWard, setOpenWard] = useState(false);
     const [openGender, setOpenGender] = useState(false);
     const [openBirthDate, setOpenBirthDate] = useState(false);
     const [openPaperwork, setOpenPaperwork] = useState(false);
     const [openCitizenship, setOpenCitizenship] = useState(false);
 
-    const [valueCity, setValueCity] = useState('');
-    const [valueStreet, setValueStreet] = useState('21 Nguyễn Văn Tráng');
-    const [valueDistrict, setValueDistrict] = useState('01');
-    const [valueWard, setValueWard] = useState('Bến Thành');
     const [valueGender, setValueGender] = useState('');
     const [valueBirthDate, setValueBirthDate] = useState(new Date());
     const [valueEmail, setValueEmail] = useState('');
-    const [valuePassword, setValuePassword] = useState(props.password);
     const [valuePaperwork, setValuePaperwork] = useState('');
     const [valueCitizenship, setValueCitizenship] = useState('');
 
-    const [modalPWChangeVisible, setModalPWChangeVisible] = useState(false);
-
-    const editAddress = () => {
-        if (!showAdditionalAddress) {
-            setShowAdditionalAddress(true)
-            setEditAddressIcon('check')
-            setEditAddressIconColor('#fff')
-            setEditAddressBtnColor('#F58831')
-        } else {
-            setShowAdditionalAddress(false)
-            setEditAddressIcon('pen')
-            setEditAddressIconColor('#F58831')
-            setEditAddressBtnColor('#fff')
-
-            setValueCity(valueCity)
-            setValueStreet(valueStreet)
-            setValueDistrict(valueDistrict)
-            setValueWard(valueWard)
-        }
-    }
-
-    const editEmail = async () => {
-        setEditEmailIcon(!editableEmailInput ? 'check' : 'pen')
-        setEditEmailIconColor(!editableEmailInput ? '#fff' : '#F58831')
-        setEditEmailBtnColor(!editableEmailInput ? '#F58831' : '#fff')
-        setEditableEmailInput(!editableEmailInput)
-        console.log(props.password);
-    }
-
-    useEffect(() => {
-        if (editableEmailInput) {
-            inputEmail.current.focus()
-        }
-    }, [editableEmailInput])
-
-
+    const [modalRegisterAddressVisible, setModalRegisterAddressVisible] = useState(false);
 
     return (
         <Modal
@@ -101,14 +42,14 @@ function Register_PersonalInfo(props) {
                 <View style={styles.body}>
                     <Text style={styles.text1}>Personal Info</Text>
                     <Text style={styles.text2}>To protect your personal right's, please enter the following fields accurately to your best knowledge</Text>
+                    <Text style={styles.page_number}>1/2</Text>
                     <OrangeLine />
 
                     <Text style={styles.title}>Full Name</Text>
                     <TextInput style={styles.input} placeholder={'Enter your full name'} editable />
 
-                    <BlackLine />
+                    <BlackLine_Full />
 
-                    {/* TODO: fix the overlay */}
                     <View style={{ zIndex: 7 }}>
                         <Text style={styles.title}>Identification Document</Text>
 
@@ -129,7 +70,7 @@ function Register_PersonalInfo(props) {
 
                             }}
                         />
-                        <BlackLine />
+                        <BlackLine_Full />
                     </View>
                     <View style={{ zIndex: 6 }}>
                         <Text style={styles.title}>Citizenship</Text>
@@ -148,12 +89,12 @@ function Register_PersonalInfo(props) {
                                 width: '90%',
                             }}
                         />
-                        <BlackLine />
+                        <BlackLine_Full />
                     </View>
 
                     <Text style={styles.title}>Phone number</Text>
                     <TextInput style={styles.input} value={props.phoneNumber} editable={false} />
-                    <BlackLine />
+                    <BlackLine_Full />
 
                     <Text style={styles.title}>Email</Text>
                     <View style={styles.row_wrapper}>
@@ -167,7 +108,7 @@ function Register_PersonalInfo(props) {
                             onChangeText={(text) => setValueEmail(text.toLowerCase())}
                         />
                     </View>
-                    <BlackLine />
+                    <BlackLine_Full />
 
                     <Text style={styles.title}>Date of Birth</Text>
                     <View style={styles.row_wrapper}>
@@ -199,29 +140,39 @@ function Register_PersonalInfo(props) {
                             }}
                         />
                     </View>
-                    <BlackLine />
+                    <BlackLine_Full />
 
-                    <View style={[styles.row_wrapper, { marginTop: 15, marginBottom: 50, zIndex: 10, alignItems: 'center' }]}>
-                        <Text style={[styles.title, { marginRight: 20 }]}>Gender</Text>
-                        <Dropdown
-                            style={styles.dropdown}
-                            textStyle={styles.input}
-                            open={openGender}
-                            value={valueGender}
-                            items={dataGender}
-                            setOpen={setOpenGender}
-                            setValue={setValueGender}
-                            placeholder={'Select.'}
-                            containerProps={{
-                                width: 200,
-                            }}
-                        />
+                    <View style={[styles.row_wrapper, styles.gender_radio]}>
+                        <Text style={[styles.title, { marginRight: 20, paddingBottom: 8, }]}>Gender</Text>
+                        <View style={styles.radio_group}>
+                            <RadioButton />
+                            <Text style={styles.radio_text}>Male</Text>
+                        </View>
 
+                        <View style={styles.radio_group}>
+                            <RadioButton />
+                            <Text style={styles.radio_text}>Female</Text>
+                        </View>
                     </View>
 
 
 
                 </View>
+
+                <View style={styles.footer}>
+                    <LongButton
+                        text={'Continue'}
+                        textStyle={{ color: '#fff' }}
+                        buttonColor={'#F58831'}
+                        buttonStyle={styles.button}
+                        onPressFunction={() => setModalRegisterAddressVisible(true)}
+                    />
+                </View>
+
+                <Register_Address
+                    modalVisible={modalRegisterAddressVisible}
+                    setModalVisible={setModalRegisterAddressVisible}
+                />
             </View>
         </Modal>
     );
@@ -259,60 +210,18 @@ const styles = StyleSheet.create({
         width: '95%',
         backgroundColor: '#fff',
         borderRadius: 10,
-    },
-    icon_user: {
-        height: 70,
-        width: 70,
-        margin: 10,
-        borderRadius: 50,
-    },
-    profile_edit: {
-        height: 20,
-        width: 20,
-        borderRadius: 50,
-        position: 'absolute',
-        top: 45,
-        left: 60,
-    },
-    icon_edit: {
-        height: 20,
-        width: 20,
-        borderRadius: 50,
-    },
-    modal_close_btn: {
-        position: 'absolute',
-        left: Platform.OS == 'ios' ? 350 : 370,
-        top: Platform.OS == 'ios' ? 45 : 15,
-        height: 20,
-        width: 20,
-    },
-    barcode: {
-        width: '92%',
-        alignSelf: 'center',
+
+        //ios
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        shadowOffset: { width: 1, height: 7 },
+
+        //android
+        elevation: 7,
     },
     row_wrapper: {
         flexDirection: 'row',
-        alignItems: 'center',
-    },
-    column_wrapper_left: {
-        flexDirection: 'column',
-        width: '50%',
-
-    },
-    column_wrapper_right: {
-        flexDirection: 'column',
-        width: '45%',
-    },
-    column_wrapper_custom: {
-        flexDirection: 'column',
-        paddingLeft: 20,
-    },
-    gray_screen: {
-        backgroundColor: 'lightgray',
-        width: '95%',
-        height: 188,
-        position: 'absolute',
-        top: 7,
     },
     dropdown: {
         minHeight: 35,
@@ -325,7 +234,12 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: '#fff',
         borderWidth: 0,
-
+    },
+    button: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '90%',
+        height: '60%',
     },
     input: {
         marginVertical: Platform.OS == 'ios' ? 7 : -10,
@@ -366,11 +280,37 @@ const styles = StyleSheet.create({
         fontWeight: '300',
         marginVertical: 10,
     },
-    membership: {
-        margin: 5,
+    page_number: {
+        position: 'absolute',
+        top: 12,
+        left: Platform.OS == 'ios' ? 335 : 350,
     },
-    footnote: {
+    footer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: Platform.OS == 'ios' ? 70 : 90,
+        height: 100,
+        width: '100%',
+        backgroundColor: '#fff',
+
+        //ios
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        shadowOffset: { width: 1, height: -7 },
+
+        //android
+        elevation: 7,
+    },
+    radio_group: {
         margin: 10,
-        marginLeft: 15,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
+    radio_text: {
+        marginLeft: 10,
+        marginRight: 30,
+    },
+    gender_radio: { marginTop: 15, marginBottom: 50, zIndex: 20, alignItems: 'center' }
 })
