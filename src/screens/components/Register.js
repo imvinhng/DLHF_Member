@@ -13,7 +13,7 @@ function Register(props) {
 
     const navigation = useNavigation();
 
-    const login = (value) => {
+    const registerStyleFn = (value) => {
         if (value != '') {
             setLoginBtnColor('#eb9f1c');
             setLoginBtnBorderColor('#eb9f1c');
@@ -43,7 +43,14 @@ function Register(props) {
                     ]}
                     keyboardType='number-pad'
                     placeholder={'Enter your phone number'}
-                    onChangeText={login}
+                    onChangeText={registerStyleFn}
+                    onSubmitEditing={() => {
+                        if (phoneNumber == '' || phoneNumber.length < 10) {
+                            Alert.alert('Your phone number is not a valid number!')
+                        } else {
+                            setModalVisible(true)
+                        }
+                    }}
                 />
                 <LongButton
                     text='Continue'
@@ -57,6 +64,7 @@ function Register(props) {
                             setModalVisible(true)
                         }
                     }}
+
                 />
             </ScrollView>
 

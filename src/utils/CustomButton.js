@@ -152,6 +152,31 @@ export const LongButton_Icon = (props) => {
     );
 }
 
+export function RadioButton(props) {
+    return (
+        <View style={[{
+            height: 24,
+            width: 24,
+            borderRadius: 12,
+            borderWidth: 2,
+            borderColor: '#eb9f1c',
+            alignItems: 'center',
+            justifyContent: 'center',
+        }, props.style]}>
+            {
+                props.selected ?
+                    <View style={{
+                        height: 12,
+                        width: 12,
+                        borderRadius: 6,
+                        backgroundColor: '#eb9f1c',
+                    }} />
+                    : null
+            }
+        </View>
+    );
+}
+
 
 
 const styles = StyleSheet.create({

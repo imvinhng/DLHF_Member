@@ -29,6 +29,23 @@ function Register_PasswordSet(props) {
         );
     });
 
+    const passwordRegister = async () => {
+        if (newPassword != confirmNewPassword) {
+            Alert.alert('Your password do not match!')
+        } else if (newPassword.length < 8) {
+            Alert.alert('Your password must be at least 8 characters!')
+        } else if (!newPassword.match(/[A-Z]/)) {
+            Alert.alert('You must include at least one uppercase letter in your password!')
+        } else if (!newPassword.match(/[a-z]/)) {
+            Alert.alert('You must include at least one lowercase letter in your password!')
+        } else if (!newPassword.match(/[0-9]/)) {
+            Alert.alert('You must include at least one number in your password!')
+        } else {
+            await AsyncAlert('Congrats', 'Your password has been set successfully!')
+            setModalPersonalInfoVisible(true)
+        }
+    }
+
     return (
         <Modal
             animationType="slide"
@@ -53,7 +70,7 @@ function Register_PasswordSet(props) {
                     <View style={{ width: '90%', height: 0.7, backgroundColor: '#eb9f1c' }} />
                     <RoundButton iconName={'eye-slash'} iconSize={15} iconColor={'#eb9f1c'} buttonStyle={styles.icon1} />
 
-                    <TextInput style={styles.text_input} secureTextEntry placeholder={'Confirm new password'} onChangeText={(text) => setConfirmNewPassword(text)} />
+                    <TextInput style={styles.text_input} secureTextEntry placeholder={'Confirm new password'} onChangeText={(text) => setConfirmNewPassword(text)} onSubmitEditing={passwordRegister} />
                     <View style={{ width: '90%', height: 0.7, backgroundColor: '#eb9f1c' }} />
                     <RoundButton iconName={'eye-slash'} iconSize={15} iconColor={'#eb9f1c'} buttonStyle={styles.icon2} />
 
@@ -66,22 +83,7 @@ function Register_PasswordSet(props) {
                         buttonColor={'#eb9f1c'}
                         buttonStyle={styles.long_btn}
                         textStyle={styles.button_text}
-                        onPressFunction={async () => {
-                            if (newPassword != confirmNewPassword) {
-                                Alert.alert('Your password do not match!')
-                            } else if (newPassword.length < 8) {
-                                Alert.alert('Your password must be at least 8 characters!')
-                            } else if (!newPassword.match(/[A-Z]/)) {
-                                Alert.alert('You must include at least one uppercase letter in your password!')
-                            } else if (!newPassword.match(/[a-z]/)) {
-                                Alert.alert('You must include at least one lowercase letter in your password!')
-                            } else if (!newPassword.match(/[0-9]/)) {
-                                Alert.alert('You must include at least one number in your password!')
-                            } else {
-                                await AsyncAlert('Congrats', 'Your password has been set successfully!')
-                                setModalPersonalInfoVisible(true)
-                            }
-                        }}
+                        onPressFunction={passwordRegister}
                     />
 
                     <View style={{ width: '80%', alignItems: 'center' }}>

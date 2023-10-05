@@ -104,115 +104,55 @@ function Register_PersonalInfo(props) {
                     <OrangeLine />
 
                     <Text style={styles.title}>Full Name</Text>
-                    <TextInput style={styles.input} placeholder={'Enter your full name'} editable={false} />
+                    <TextInput style={styles.input} placeholder={'Enter your full name'} editable />
 
                     <BlackLine />
 
-                    <Text style={styles.title}>Identification Document</Text>
-                    <Dropdown
-                        style={styles.dropdown_long}
-                        placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
-                        listItemLabelStyle={[styles.input, { paddingLeft: -10 }]}
-                        labelStyle={[styles.input, { paddingLeft: -10 }]}
-                        open={openPaperwork}
-                        value={valuePaperwork}
-                        items={dataPaperwork}
-                        setOpen={setOpenPaperwork}
-                        setValue={setValuePaperwork}
-                        placeholder={'Select the paperwork'}
-                        containerProps={{
-                            width: '90%',
-                        }}
-                    />
-                    <BlackLine />
+                    {/* TODO: fix the overlay */}
+                    <View style={{ zIndex: 7 }}>
+                        <Text style={styles.title}>Identification Document</Text>
 
-                    <Text style={styles.title}>Citizenship</Text>
-                    <Dropdown
-                        style={styles.dropdown_long}
-                        placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
-                        listItemLabelStyle={[styles.input, { paddingLeft: -10 }]}
-                        labelStyle={[styles.input, { paddingLeft: -10 }]}
-                        open={openCitizenship}
-                        value={valueCitizenship}
-                        items={dataCitizenship}
-                        setOpen={setOpenCitizenship}
-                        setValue={setValueCitizenship}
-                        placeholder={'Select the paperwork'}
-                        containerProps={{
-                            width: '90%',
-                        }}
-                    />
-                    <BlackLine />
+                        <Dropdown
+                            style={[styles.dropdown_long, { zIndex: 2 }]}
+                            placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
+                            listItemLabelStyle={[styles.input, { paddingLeft: -10, zIndex: 2 }]}
+                            labelStyle={[styles.input, { paddingLeft: -10 }]}
+                            open={openPaperwork}
+                            value={valuePaperwork}
+                            items={dataPaperwork}
+                            setOpen={setOpenPaperwork}
+                            setValue={setValuePaperwork}
+                            placeholder={'Select the paperwork'}
+                            containerProps={{
+                                width: '90%',
+                                backgroundColor: '#fff'
 
-                    {/* Only shown when address edit icon is clicked */}
-                    {showAdditionalAddress &&
-                        <View style={{ zIndex: 4 }}>
-                            <View style={styles.gray_screen} />
-                            <Text style={styles.title}>City</Text>
-                            <Dropdown
-                                style={styles.dropdown_long}
-                                textStyle={styles.input}
-                                open={openCity}
-                                value={valueCity}
-                                items={dataCity}
-                                setOpen={setOpenCity}
-                                setValue={setValueCity}
-                                placeholder={'Select.'}
-                                containerProps={{
-                                    width: 360,
-                                }}
-                            />
-                            <View style={{ width: '90%', height: 0.5, backgroundColor: '#fff' }} />
-
-                            <View style={[styles.row_wrapper, { zIndex: 3 }]}>
-                                <View style={styles.column_wrapper_left}>
-                                    <Text style={styles.title}>District</Text>
-                                    <Dropdown
-                                        style={styles.dropdown}
-                                        textStyle={styles.input}
-                                        open={openDistrict}
-                                        value={valueDistrict}
-                                        items={dataDistrict}
-                                        setOpen={setOpenDistrict}
-                                        setValue={setValueDistrict}
-                                        placeholder={'Select.'}
-                                        containerProps={{
-                                            width: 170,
-                                        }}
-                                    />
-                                    <View style={{ width: '90%', height: 0.5, backgroundColor: '#fff' }} />
-                                </View>
-
-                                <View style={styles.column_wrapper_right}>
-                                    <Text style={styles.title}>Ward</Text>
-                                    <Dropdown
-                                        style={styles.dropdown}
-                                        textStyle={styles.input}
-                                        open={openWard}
-                                        value={valueWard}
-                                        items={dataWard}
-                                        setOpen={setOpenWard}
-                                        setValue={setValueWard}
-                                        placeholder={'Select.'}
-                                        containerProps={{
-                                            width: 170,
-                                        }}
-                                    />
-                                    <View style={{ width: '90%', height: 0.5, backgroundColor: '#ffff' }} />
-                                </View>
-                            </View>
-
-                            <Text style={styles.title}>Your address</Text>
-                            <TextInput style={styles.input} value={valueStreet} onFocus={() => setValueStreet('')} onChangeText={(input) => setValueStreet(input)} />
-                            <View style={{ width: '90%', height: 0.5, backgroundColor: '#fff' }} />
-                        </View>
-                    }
-
-                    <Text style={styles.title}>Address</Text>
-                    <View style={styles.row_wrapper}>
-                        <TextInput style={styles.input} value={`${valueStreet}, Phường ${valueDistrict}, Quận ${valueWard}`} />
-                        <RoundButton iconName={editAddressIcon} iconSize={10} iconColor={editAddressIconColor} bgColor={editAddressBtnColor} onPressFunction={editAddress} buttonStyle={styles.icon_edit} />
+                            }}
+                        />
+                        <BlackLine />
                     </View>
+                    <View style={{ zIndex: 6 }}>
+                        <Text style={styles.title}>Citizenship</Text>
+                        <Dropdown
+                            style={styles.dropdown_long}
+                            placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
+                            listItemLabelStyle={[styles.input, { paddingLeft: -10 }]}
+                            labelStyle={[styles.input, { paddingLeft: -10 }]}
+                            open={openCitizenship}
+                            value={valueCitizenship}
+                            items={dataCitizenship}
+                            setOpen={setOpenCitizenship}
+                            setValue={setValueCitizenship}
+                            placeholder={'Select your citizenship'}
+                            containerProps={{
+                                width: '90%',
+                            }}
+                        />
+                        <BlackLine />
+                    </View>
+
+                    <Text style={styles.title}>Phone number</Text>
+                    <TextInput style={styles.input} value={props.phoneNumber} editable={false} />
                     <BlackLine />
 
                     <Text style={styles.title}>Email</Text>
@@ -222,91 +162,63 @@ function Register_PersonalInfo(props) {
                             ref={inputEmail}
                             placeholder={'Add email address'}
                             value={valueEmail}
-                            editable={editableEmailInput}
-                            onChangeText={(text) => setValueEmail(text.toLowerCase())} />
-                        <RoundButton iconName={editEmailIcon} iconSize={10} iconColor={editEmailIconColor} bgColor={editEmailBtnColor} buttonStyle={styles.icon_edit} onPressFunction={editEmail} />
+                            editable
+                            autoCorrect={false}
+                            onChangeText={(text) => setValueEmail(text.toLowerCase())}
+                        />
                     </View>
                     <BlackLine />
 
-                    <Text style={styles.title}>Phone number</Text>
-                    <TextInput style={styles.input} value={props.phoneNumber} editable={false} />
-                    <BlackLine />
-
-                    <Text style={styles.title}>Password</Text>
+                    <Text style={styles.title}>Date of Birth</Text>
                     <View style={styles.row_wrapper}>
-                        <TextInput style={styles.input} value={valuePassword} secureTextEntry={!showPassword} editable={false} />
-                        <RoundButton iconName='pen' iconSize={10} iconColor='#F58831' bgColor='#fff' buttonStyle={styles.icon_edit} onPressFunction={() => setModalPWChangeVisible(true)} />
+                        <TextInput
+                            style={styles.input}
+                            value={valueBirthDate.toLocaleDateString('vi')}
+                            ref={e => this.birthDateInput = e}
+                            editable
+                            onFocus={() => {
+                                setOpenBirthDate(true)
+                                this.birthDateInput.blur();
+                            }}
+
+                        />
+
+                        <DatePicker
+                            modal
+                            locale={'vi'}
+                            mode={'date'}
+                            title={'Select your birthdate'}
+                            open={openBirthDate}
+                            date={valueBirthDate}
+                            onConfirm={(date) => {
+                                setValueBirthDate(date)
+                                setOpenBirthDate(false)
+                            }}
+                            onCancel={() => {
+                                setOpenBirthDate(false)
+                            }}
+                        />
                     </View>
                     <BlackLine />
 
+                    <View style={[styles.row_wrapper, { marginTop: 15, marginBottom: 50, zIndex: 10, alignItems: 'center' }]}>
+                        <Text style={[styles.title, { marginRight: 20 }]}>Gender</Text>
+                        <Dropdown
+                            style={styles.dropdown}
+                            textStyle={styles.input}
+                            open={openGender}
+                            value={valueGender}
+                            items={dataGender}
+                            setOpen={setOpenGender}
+                            setValue={setValueGender}
+                            placeholder={'Select.'}
+                            containerProps={{
+                                width: 200,
+                            }}
+                        />
 
-                    <PasswordChange
-                        modalVisible={modalPWChangeVisible}
-                        setModalVisible={setModalPWChangeVisible}
-                        currentPassword={valuePassword}
-                        setNewPassword={setValuePassword}
-                    />
-
-                    <View style={styles.row_wrapper}>
-                        <View style={styles.column_wrapper_left}>
-                            <Text style={styles.title}>Date of Birth</Text>
-                            <View style={styles.row_wrapper}>
-                                <TextInput style={styles.input} value={valueBirthDate.toLocaleDateString('vi')} editable={false} />
-                                <RoundButton
-                                    iconName={editAddressIcon}
-                                    iconSize={10}
-                                    iconColor={editAddressIconColor}
-                                    bgColor={editAddressBtnColor}
-                                    buttonStyle={styles.icon_edit}
-                                    onPressFunction={() => setOpenBirthDate(true)}
-                                />
-
-                                <DatePicker
-                                    modal
-                                    locale={'vi'}
-                                    mode={'date'}
-                                    title={'Select your birthdate'}
-                                    open={openBirthDate}
-                                    date={valueBirthDate}
-                                    onConfirm={(date) => {
-                                        setOpenBirthDate(false)
-                                        setValueBirthDate(date)
-                                    }}
-                                    onCancel={() => {
-                                        setOpenBirthDate(false)
-                                    }}
-                                />
-                            </View>
-                            <BlackLine />
-                        </View>
-
-                        <View style={styles.column_wrapper_right}>
-                            <Text style={styles.title}>Gender</Text>
-                            <View style={styles.row_wrapper}>
-                                <Dropdown
-                                    style={[styles.dropdown, { backgroundColor: '#fff' }]}
-                                    textStyle={styles.input}
-                                    open={openGender}
-                                    value={valueGender}
-                                    items={dataGender}
-                                    setOpen={setOpenGender}
-                                    setValue={setValueGender}
-                                    placeholder={'Select.'}
-                                    containerProps={{
-                                        width: 170,
-                                    }}
-                                />
-                                <RoundButton
-                                    iconName={editAddressIcon}
-                                    iconSize={10}
-                                    iconColor={editAddressIconColor}
-                                    bgColor={editAddressBtnColor}
-                                    buttonStyle={[styles.icon_edit, { marginLeft: -5 }]}
-                                />
-                            </View>
-                            <BlackLine />
-                        </View>
                     </View>
+
 
 
                 </View>
@@ -404,8 +316,8 @@ const styles = StyleSheet.create({
     },
     dropdown: {
         minHeight: 35,
-        width: 170,
-        backgroundColor: 'lightgray',
+        width: 200,
+        backgroundColor: '#fff',
         borderWidth: 0,
     },
     dropdown_long: {
@@ -413,6 +325,7 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: '#fff',
         borderWidth: 0,
+
     },
     input: {
         marginVertical: Platform.OS == 'ios' ? 7 : -10,
