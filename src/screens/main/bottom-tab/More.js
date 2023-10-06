@@ -7,12 +7,14 @@
 
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View, Dimensions, ScrollView } from 'react-native';
-import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton } from '../../utils/CustomButton';
-import { useNavigation } from '@react-navigation/native';
-import PersonalInfo from '../components/PersonalInfo';
+import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton } from '../../../utils/CustomButton';
+import { CommonActions, useNavigation } from '@react-navigation/native';
+import PersonalInfo from '../PersonalInfo';
 
 function More(props) {
     const [modalPersonalInfoVisible, setModalPersonalInfoVisible] = useState(false);
+    const navigation = useNavigation();
+
 
     return (
         <ScrollView style={styles.home}>
@@ -33,25 +35,25 @@ function More(props) {
 
                 <View style={styles.grid}>
                     <SquareButton_ImageIcon_Text
-                        image_uri={require('../../assets/icons/checklist-icon.png')}
+                        image_uri={require('../../../assets/icons/checklist-icon.png')}
                         text={'Order History'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
                     />
                     <SquareButton_ImageIcon_Text
-                        image_uri={require('../../assets/icons/piechart-icon.png')}
+                        image_uri={require('../../../assets/icons/piechart-icon.png')}
                         text={'Analytics'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
                     />
                     <SquareButton_ImageIcon_Text
-                        image_uri={require('../../assets/icons/policy-icon.png')}
+                        image_uri={require('../../../assets/icons/policy-icon.png')}
                         text={'Member Policy'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
                     />
                     <SquareButton_ImageIcon_Text
-                        image_uri={require('../../assets/icons/red-flower-icon.png')}
+                        image_uri={require('../../../assets/icons/red-flower-icon.png')}
                         text={'Flower Knowledge'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
@@ -121,6 +123,10 @@ function More(props) {
                     buttonStyle={styles.longbutton_icon}
                     textStyle={styles.text_longbutton_icon}
                     iconStyle={styles.icon_longbutton}
+                    onPressFunction={() =>
+                        navigation.navigate('Home')
+
+                    }
                 />
 
             </View>

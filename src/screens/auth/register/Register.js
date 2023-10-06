@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, View, Text, TextInput, ScrollView, Alert } from 'react-native';
-import { LoginButton, LongButton, LongButton_Icon, RoundButton } from '../../utils/CustomButton';
-import { OTP_Register } from './OTP';
+import { LoginButton, LongButton, LongButton_Icon, RoundButton } from '../../../utils/CustomButton';
+import { OTP_Register } from '../OTP';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -28,7 +28,7 @@ function Register(props) {
         <View style={styles.background}>
             <Image
                 style={styles.image}
-                source={require('../../assets/dutch-windmill.png')}
+                source={require('../../../assets/dutch-windmill.png')}
             />
             <RoundButton iconName='times' iconSize={15} buttonStyle={styles.close_btn} onPressFunction={() => navigation.navigate('Home')} />
             <ScrollView style={styles.body} contentContainerStyle={{ alignItems: 'center' }}>
@@ -54,7 +54,7 @@ function Register(props) {
                 />
                 <LongButton
                     text='Continue'
-                    buttonColor={'#eb9f1c'}
+                    buttonColor={loginBtnColor}
                     buttonStyle={styles.long_btn}
                     textStyle={styles.button_text}
                     onPressFunction={() => {

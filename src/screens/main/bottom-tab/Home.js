@@ -7,9 +7,9 @@
 
 import React, { useRef } from 'react';
 import { View, StyleSheet, Text, Platform, Image, Dimensions, FlatList, TouchableOpacity, Animated } from 'react-native';
-import { LongButton_Icon } from '../../utils/CustomButton';
-import { HomeHeader, HomeHeader_LoggedIn, HomeBody } from '../../utils/HomeComponents';
-import { DATA_SPECIAL_OFFER } from '../../db/Database';
+import { LongButton_Icon } from '../../../utils/CustomButton';
+import { HomeHeader, HomeHeader_LoggedIn, HomeBody } from '../../../utils/HomeComponents';
+import { DATA_SPECIAL_OFFER } from '../../../db/Database';
 
 
 const Item = ({ msg, image_uri, exp_date }) => {
@@ -40,9 +40,10 @@ const Item = ({ msg, image_uri, exp_date }) => {
 
 
 
-const Home = (props) => {
+const Home = ({ route }) => {
 
-    const loggedIn = false;
+    const loggedIn = route.params;
+
 
     return (
         <View style={styles.home}>

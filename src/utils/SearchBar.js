@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
-import { SquareButton, RoundButton } from '../../utils/CustomButton';
+import { SquareButton, RoundButton } from './CustomButton';
 
 function SearchBar(props) {
     return (

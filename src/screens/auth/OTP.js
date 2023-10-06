@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, Modal, TouchableOpacity, Platform } from 'react-native';
 import OTPTextInput from 'react-native-otp-textinput';
-import Register_PasswordSet from './Register_PasswordSet';
+import Register_PasswordSet from './register/Register_PasswordSet';
+import { useNavigation } from '@react-navigation/native';
 
 const otpValue = '000000';
 
 export const OTP_Login = (props) => {
+    const navigation = useNavigation();
+
     return (
         <Modal
             animationType="slide"
@@ -35,6 +38,8 @@ export const OTP_Login = (props) => {
                         handleTextChange={(code) => {
                             if (code == otpValue) {
                                 console.log(`Verified, you are good to go!`);
+                                props.setModalVisible(false);
+                                navigation.navigate('Home', { loggedIn: true })
                             }
                         }}
                     />

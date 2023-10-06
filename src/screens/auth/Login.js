@@ -43,6 +43,7 @@ function Login(props) {
                     keyboardType='number-pad'
                     placeholder={'Enter your phone number'}
                     onChangeText={login}
+                    onSubmitEditing={() => setModalVisible(true)}
                 />
                 <LoginButton
                     style={styles.login_btn}

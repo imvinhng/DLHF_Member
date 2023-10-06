@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button } from 'react-native';
-import { LongButton, RoundButton } from '../../utils/CustomButton';
-import { dataCity, dataDistrict, dataWard, dataStreet } from '../../db/Database';
+import { LongButton, RoundButton } from '../../../utils/CustomButton';
+import { dataCity, dataDistrict, dataWard, dataStreet } from '../../../db/Database';
+import { BlackLine_Full, OrangeLine_Full } from '../../../utils/CustomComponents';
+import Register_Complete from './Register_Complete';
 import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
-import { BlackLine_Full, OrangeLine_Full } from '../../utils/CustomComponents';
-import Register_Complete from './Register_Complete';
 
 function Register_Address(props) {
 
@@ -132,7 +132,12 @@ function Register_Address(props) {
                         textStyle={{ color: '#fff' }}
                         buttonColor={'#F58831'}
                         buttonStyle={styles.button}
-                        onPressFunction={() => setModalRegisterCompleteVisible(true)}
+                        onPressFunction={() => {
+                            // props.setModalVisible(false)
+                            // console.log('Register_Address visible: ' + props.modalVisible)
+                            setModalRegisterCompleteVisible(true)
+                            props.setModalVisible(false)
+                        }}
                     />
                 </View>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, Modal, TouchableOpacity, Alert } from 'react-native';
-import { LongButton, RoundButton } from '../../utils/CustomButton';
+import { LongButton, RoundButton } from '../../../utils/CustomButton';
 import Register_PersonalInfo from './Register_PersonalInfo';
 
 
@@ -39,6 +39,8 @@ function Register_PasswordSet(props) {
             Alert.alert('You must include at least one number in your password!')
         } else {
             await AsyncAlert('Congrats', 'Your password has been set successfully!')
+            // props.setModalVisible(false)
+            // console.log('Register_PasswordSet visible: ' + props.modalVisible)
             setModalPersonalInfoVisible(true)
         }
     }

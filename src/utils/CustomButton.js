@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Pressable, Text, Image, View } from 'react-native';
+import { StyleSheet, Pressable, Text, Image, View, TouchableOpacity } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export const RoundButton = (props) => {
     return (
@@ -166,7 +165,10 @@ export function RadioButton(props) {
                 alignItems: 'center',
                 justifyContent: 'center',
             }, props.style]}
-            onPress={() => setSelected(!selected)}>
+            onPress={() => {
+                setSelected(!selected)
+                console.log('Gender selected!')
+            }}>
             {
                 selected ?
                     <View style={{
