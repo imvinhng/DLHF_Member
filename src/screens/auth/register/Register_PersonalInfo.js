@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button } from 'react-native';
-import { LongButton, RadioButton, RoundButton } from '../../../utils/CustomButton';
+import { LongButton, RadioButton, RoundButton, RoundButton_Ionicons } from '../../../utils/CustomButton';
 import { dataGender, dataPaperwork, dataCitizenship } from '../../../db/Database';
 import { GrayLine_Full, OrangeLine_Full } from '../../../utils/CustomComponents';
 import Register_Address from './Register_Address';
@@ -23,6 +23,8 @@ const Register_PersonalInfo = (props) => {
     const [valuePaperwork, setValuePaperwork] = useState('');
     const [valueCitizenship, setValueCitizenship] = useState('');
 
+    const [hiddenInfo, setHiddenInfo] = useState(false);
+
     return (
         <View style={styles.home}>
             <View style={styles.header}>
@@ -39,7 +41,7 @@ const Register_PersonalInfo = (props) => {
                     <Text style={styles.title}>Full Name</Text>
                     <Text style={{ color: 'red' }}>*</Text>
                 </View>
-                <TextInput style={styles.input} placeholder={'Enter your full name'} editable />
+                <TextInput style={styles.input} placeholder={'Enter your full name'} editable autoCorrect={false} />
 
                 <GrayLine_Full />
 
@@ -47,9 +49,16 @@ const Register_PersonalInfo = (props) => {
                     <View style={[styles.row_wrapper, { alignItems: 'flex-end' }]}>
                         <View style={styles.column_wrapper}>
 
-                            <View style={[styles.row_wrapper, { alignItems: 'center' }]}>
+                            <View style={[styles.row_wrapper, { alignItems: 'center', zIndex: 999 }]}>
                                 <Text style={styles.title}>Identification Document</Text>
                                 <Text style={{ color: 'red' }}>*</Text>
+                                <RoundButton_Ionicons
+                                    iconName={'information-circle-outline'}
+                                    iconSize={15}
+                                    buttonStyle={{ position: 'absolute', left: 155, height: 20, width: 20 }}
+                                    // TODO: Add in onPressFunction
+                                    onPressFunction={() => setHiddenInfo(!hiddenInfo)}
+                                />
                             </View>
 
                             <Dropdown
@@ -71,6 +80,10 @@ const Register_PersonalInfo = (props) => {
                             />
                             <GrayLine_Full />
                         </View>
+
+                        {hiddenInfo && <View style={styles.hidden_info}>
+                            <Text>Identification Document help us identify you when you need to change your personal information later</Text>
+                        </View>}
 
                         <View style={[styles.column_wrapper, { marginLeft: Platform.OS == 'ios' ? 15 : 35, width: 145 }]}>
 
@@ -324,5 +337,19 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 30,
     },
-    gender_radio: { marginTop: 15, marginBottom: 50, zIndex: 20, alignItems: 'center' }
+    gender_radio: {
+        marginTop: 15,
+        marginBottom: 50,
+        zIndex: 20,
+        alignItems: 'center'
+    },
+    hidden_info: {
+        backgroundColor: 'lightgray',
+        position: 'absolute',
+        top: 30,
+        width: 200,
+        zIndex: 999,
+
+    }
+
 })

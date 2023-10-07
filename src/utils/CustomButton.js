@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { StyleSheet, Pressable, Text, Image, View, TouchableOpacity } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Octicons from 'react-native-vector-icons/Octicons'
+import Octicons from 'react-native-vector-icons/Octicons';
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native';
 
 export const RoundButton = (props) => {
@@ -30,6 +31,20 @@ export const RoundButton_Octicons = (props) => {
             onPress={props.onPressFunction}
         >
             <Octicons name={props.iconName} size={props.iconSize} color={props.iconColor} />
+        </Pressable>
+    );
+}
+export const RoundButton_Ionicons = (props) => {
+    return (
+        <Pressable
+            style={({ pressed }) => [
+                styles.round_button,
+                { backgroundColor: pressed ? '#ddd' : props.bgColor },
+                props.buttonStyle,
+            ]}
+            onPress={props.onPressFunction}
+        >
+            <Ionicons name={props.iconName} size={props.iconSize} color={props.iconColor} />
         </Pressable>
     );
 }
