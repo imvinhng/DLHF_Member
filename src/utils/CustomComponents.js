@@ -21,3 +21,8 @@ export const OrangeLine_Full = () => {
         <View style={{ width: '100%', height: 1, backgroundColor: '#F58831' }} />
     )
 }
+export const GrayLine_Full = () => {
+    return (
+        <View style={{ width: '100%', height: 1, backgroundColor: 'lightgray' }} />
+    )
+}

@@ -111,7 +111,7 @@ function BottomTab(): JSX.Element {
 
 function Auth(): JSX.Element {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name="Login"
         component={Login}
@@ -156,16 +156,20 @@ function App(): JSX.Element {
         {/* Main: Map, Shop, Notification, ShopDetails */}
         <Stack.Screen
           name='Main'
-          component={Main} />
+          component={Main}
+        />
 
         {/* Auth: Register, LogIn, ChangePassword, OTP*/}
         <Stack.Screen
           name='Auth'
-          component={Auth} />
+          component={Auth}
+        />
 
+        {/* BottomTab: Home, Orders, Store, Promotions, More */}
         <Stack.Screen
           name='BottomTab'
-          component={BottomTab} />
+          component={BottomTab}
+        />
 
 
       </Stack.Navigator>

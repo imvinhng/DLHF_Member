@@ -2,114 +2,98 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, Modal, TouchableOpacity, Platform } from 'react-native';
 import OTPTextInput from 'react-native-otp-textinput';
 import Register_PasswordSet from './register/Register_PasswordSet';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const otpValue = '000000';
 
-export const OTP_Login = (props) => {
-    const navigation = useNavigation();
+export const OTP_Login = ({ navigation, route }) => {
+
+    const phone_number = route.params;
 
     return (
-        <Modal
-            animationType="slide"
-            transparent={true}
-            visible={props.modalVisible}
-            onRequestClose={() => {
-                Alert.alert('Modal has been closed.');
-                props.setModalVisible(false);
-            }}
-        >
-            <TouchableOpacity style={styles.backdrop_top} onPress={() => props.setModalVisible(false)} />
-            <View style={styles.home}>
-                {/* Make sure to not include header so user can click outside the View to close the Modal */}
-
-                <View style={styles.body}>
-                    <View style={styles.container}>
-                        <Text style={styles.title}>OTP Verification</Text>
-                        <Text style={styles.text}>A verifcation code of 6 digits has been sent to the phone number {props.phone_number}</Text>
-                        <Text style={styles.text2}>Enter code to continue</Text>
-                    </View>
-                    {/* 6 square text input */}
-
-                    <OTPTextInput
-                        textInputStyle={{ backgroundColor: 'lightgray', borderRadius: 7 }}
-                        inputCount={6}
-                        autoFocus
-                        handleTextChange={(code) => {
-                            if (code == otpValue) {
-                                console.log(`Verified, you are good to go!`);
-                                props.setModalVisible(false);
-                                navigation.navigate('Home', { loggedIn: true })
-                            }
-                        }}
-                    />
-
-                    <Text style={styles.footer}>Didn't receive the code? Resend (170s)</Text>
-
-                </View>
+        <View style={styles.home}>
+            <View>
+                <Image style={styles.image} source={require('../../assets/background/dutch-windmill.png')} />
             </View>
-        </Modal>
+            <View style={styles.body}>
+                <View style={styles.container}>
+                    <Text style={styles.title}>OTP Verification</Text>
+                    <View style={styles.row_wrapper_custom}>
+                        <Text style={styles.text}>A verifcation code of 6 digits has been sent to the phone number </Text>
+                        <Text
+                            style={[
+                                styles.text,
+                                {
+                                    color: '#000',
+                                }
+                            ]}
+                        >
+                            {phone_number}
+                        </Text>
+                    </View>
+                    <Text style={styles.text2}>Enter code to continue</Text>
+                </View>
+
+                {/* 6 square text input */}
+                <OTPTextInput
+                    textInputStyle={{ backgroundColor: 'lightgray', borderRadius: 7 }}
+                    inputCount={6}
+                    autoFocus
+                    handleTextChange={(code) => {
+                        if (code == otpValue) {
+                            navigation.navigate('Register_PasswordSet')
+                        }
+                    }}
+                />
+
+                <Text style={styles.footer}>Didn't receive the code? Resend (170s)</Text>
+            </View>
+        </View>
     );
 }
-export function OTP_Register(props) {
-    const [passwordSetModalVisible, setPasswordSetModalVisible] = useState(false);
+export function OTP_Register({ navigation, route }) {
+
+    const phone_number = route.params;
+
     return (
-        <Modal
-            animationType="slide"
-            transparent={true}
-            visible={props.modalVisible}
-            onRequestClose={() => {
-                Alert.alert('Modal has been closed.');
-                props.setModalVisible(false);
-            }}
-        >
-            <TouchableOpacity style={styles.backdrop_top} onPress={() => props.setModalVisible(false)} />
-            <View style={styles.home}>
-                {/* Make sure to not include header so user can click outside the View to close the Modal */}
-
-                <View style={styles.body}>
-                    <View style={styles.container}>
-                        <Text style={styles.title}>Register new member</Text>
-                        <View style={styles.row_wrapper_custom}>
-                            <Text style={styles.text}>A verifcation code of 6 digits has been sent to the phone number</Text>
-                            <Text
-                                style={[
-                                    styles.text,
-                                    {
-                                        color: '#000',
-                                    }
-                                ]}
-                            >
-                                {props.phone_number}
-                            </Text>
-                        </View>
-                        <Text style={styles.text2}>Enter code to continue</Text>
-                    </View>
-
-                    {/* 6 square text input */}
-                    <OTPTextInput
-                        textInputStyle={{ backgroundColor: 'lightgray', borderRadius: 7 }}
-                        inputCount={6}
-                        autoFocus
-                        handleTextChange={(code) => {
-                            if (code == otpValue) {
-                                console.log(`Verified, you are good to go!`);
-                                setPasswordSetModalVisible(true);
-                            }
-                        }}
-                    />
-
-                    <Text style={styles.footer}>Didn't receive the code? Resend (170s)</Text>
-
-                    <Register_PasswordSet
-                        modalVisible={passwordSetModalVisible}
-                        setModalVisible={setPasswordSetModalVisible}
-                        phoneNumber={props.phoneNumber}
-                    />
-
-                </View>
+        <View style={styles.home}>
+            <View>
+                <Image style={styles.image} source={require('../../assets/background/dutch-windmill.png')} />
             </View>
-        </Modal>
+            <View style={styles.body}>
+                <View style={styles.container}>
+                    <Text style={styles.title}>Register new member</Text>
+                    <View style={styles.row_wrapper_custom}>
+                        <Text style={styles.text}>A verifcation code of 6 digits has been sent to the phone number</Text>
+                        <Text
+                            style={[
+                                styles.text,
+                                {
+                                    color: '#000',
+                                }
+                            ]}
+                        >
+                            {phone_number}
+                        </Text>
+                    </View>
+                    <Text style={styles.text2}>Enter code to continue</Text>
+                </View>
+
+                {/* 6 square text input */}
+                <OTPTextInput
+                    textInputStyle={{ backgroundColor: 'lightgray', borderRadius: 7 }}
+                    inputCount={6}
+                    autoFocus
+                    handleTextChange={(code) => {
+                        if (code == otpValue) {
+                            navigation.navigate('Register_PasswordSet')
+                        }
+                    }}
+                />
+
+                <Text style={styles.footer}>Didn't receive the code? Resend (170s)</Text>
+            </View>
+        </View>
     );
 }
 
@@ -123,14 +107,12 @@ const styles = StyleSheet.create({
     },
     body: {
         width: '100%',
-        height: '70%',
+        height: '80%',
+        backgroundColor: '#fff',
+        marginTop: '20%',
+        paddingTop: 50,
         borderRadius: 20,
         alignItems: 'center',
-    },
-    backdrop_top: {
-        height: Platform.OS == 'ios' ? '14%' : '8%',
-        backgroundColor: 'rgba(0,0,0,0.2)',
-        margin: 0,
     },
     row_wrapper_custom: {
         flexDirection: 'row',
@@ -166,6 +148,11 @@ const styles = StyleSheet.create({
     },
     footer: {
         marginTop: 30,
+    },
+    image: {
+        width: '100%',
+        position: 'absolute'
+        // height: '100%',
     },
 
 })

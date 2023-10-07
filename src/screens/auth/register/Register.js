@@ -24,11 +24,19 @@ function Register(props) {
         }
     }
 
+    const submitInput = () => {
+        if (phoneNumber == '' || phoneNumber.length < 10) {
+            Alert.alert('Your phone number is not a valid number!')
+        } else {
+            navigation.navigate('OTP_Register')
+        }
+    }
+
     return (
         <View style={styles.background}>
             <Image
                 style={styles.image}
-                source={require('../../../assets/dutch-windmill.png')}
+                source={require('../../../assets/background/dutch-windmill.png')}
             />
             <RoundButton iconName='times' iconSize={15} buttonStyle={styles.close_btn} onPressFunction={() => navigation.navigate('Home')} />
             <ScrollView style={styles.body} contentContainerStyle={{ alignItems: 'center' }}>
@@ -44,35 +52,18 @@ function Register(props) {
                     keyboardType='number-pad'
                     placeholder={'Enter your phone number'}
                     onChangeText={registerStyleFn}
-                    onSubmitEditing={() => {
-                        if (phoneNumber == '' || phoneNumber.length < 10) {
-                            Alert.alert('Your phone number is not a valid number!')
-                        } else {
-                            setModalVisible(true)
-                        }
-                    }}
+                    onSubmitEditing={submitInput}
                 />
                 <LongButton
                     text='Continue'
                     buttonColor={loginBtnColor}
                     buttonStyle={styles.long_btn}
                     textStyle={styles.button_text}
-                    onPressFunction={() => {
-                        if (phoneNumber == '' || phoneNumber.length < 10) {
-                            Alert.alert('Your phone number is not a valid number!')
-                        } else {
-                            setModalVisible(true)
-                        }
-                    }}
+                    onPressFunction={submitInput}
 
                 />
             </ScrollView>
 
-            <OTP_Register
-                modalVisible={modalVisible}
-                setModalVisible={setModalVisible}
-                phoneNumber={phoneNumber}
-            />
         </View>
 
     );

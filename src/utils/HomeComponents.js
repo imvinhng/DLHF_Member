@@ -40,12 +40,12 @@ const BottomHeader = () => {
                 bgColor={'#eb9f1c'}
                 textColor={'#fff'}
                 style
-                onPressFunction={() => navigation.navigate('Login')}
+                onPressFunction={() => navigation.navigate('Auth', { screen: 'Login' })}
             />
 
             <View style={styles.row_wrapper}>
                 <Text style={styles.text_small}>Not registered?</Text>
-                <Text style={styles.text_hyperlink} onPress={() => navigation.navigate('Register')}>Register here</Text>
+                <Text style={styles.text_hyperlink} onPress={() => navigation.navigate('Auth', { screen: 'Register_PersonalInfo' })}>Register here</Text>
             </View>
         </View>
     )

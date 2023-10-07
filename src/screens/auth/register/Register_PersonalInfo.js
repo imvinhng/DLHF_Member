@@ -2,10 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button } from 'react-native';
 import { LongButton, RadioButton, RoundButton } from '../../../utils/CustomButton';
 import { dataGender, dataPaperwork, dataCitizenship } from '../../../db/Database';
-import { BlackLine_Full, OrangeLine } from '../../../utils/CustomComponents';
+import { GrayLine_Full, OrangeLine_Full } from '../../../utils/CustomComponents';
 import Register_Address from './Register_Address';
 import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
+import moment from 'moment';
 
 const Register_PersonalInfo = (props) => {
 
@@ -22,8 +23,6 @@ const Register_PersonalInfo = (props) => {
     const [valuePaperwork, setValuePaperwork] = useState('');
     const [valueCitizenship, setValueCitizenship] = useState('');
 
-    const [modalRegisterAddressVisible, setModalRegisterAddressVisible] = useState(false);
-
     return (
         <View style={styles.home}>
             <View style={styles.header}>
@@ -34,37 +33,62 @@ const Register_PersonalInfo = (props) => {
                 <Text style={styles.text1}>Personal Info</Text>
                 <Text style={styles.text2}>To protect your personal right's, please enter the following fields accurately to your best knowledge</Text>
                 <Text style={styles.page_number}>1/2</Text>
-                <OrangeLine />
+                <OrangeLine_Full />
 
-                <Text style={styles.title}>Full Name</Text>
+                <View style={[styles.row_wrapper, { alignItems: 'center' }]}>
+                    <Text style={styles.title}>Full Name</Text>
+                    <Text style={{ color: 'red' }}>*</Text>
+                </View>
                 <TextInput style={styles.input} placeholder={'Enter your full name'} editable />
 
-                <BlackLine_Full />
+                <GrayLine_Full />
 
-                <View style={{ zIndex: 7 }}>
-                    <Text style={styles.title}>Identification Document</Text>
+                <View style={{ zIndex: 51 }}>
+                    <View style={[styles.row_wrapper, { alignItems: 'flex-end' }]}>
+                        <View style={styles.column_wrapper}>
 
-                    <Dropdown
-                        style={[styles.dropdown_long, { zIndex: 2 }]}
-                        placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
-                        listItemLabelStyle={[styles.input, { paddingLeft: -10, zIndex: 2 }]}
-                        labelStyle={[styles.input, { paddingLeft: -10 }]}
-                        open={openPaperwork}
-                        value={valuePaperwork}
-                        items={dataPaperwork}
-                        setOpen={setOpenPaperwork}
-                        setValue={setValuePaperwork}
-                        placeholder={'Select the paperwork'}
-                        containerProps={{
-                            width: '90%',
-                            backgroundColor: '#fff'
+                            <View style={[styles.row_wrapper, { alignItems: 'center' }]}>
+                                <Text style={styles.title}>Identification Document</Text>
+                                <Text style={{ color: 'red' }}>*</Text>
+                            </View>
 
-                        }}
-                    />
-                    <BlackLine_Full />
+                            <Dropdown
+                                style={[styles.dropdown, { zIndex: 2 }]}
+                                placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
+                                listItemLabelStyle={[styles.input, { paddingLeft: -10, zIndex: 2 }]}
+                                labelStyle={[styles.input, { paddingLeft: -10 }]}
+                                open={openPaperwork}
+                                value={valuePaperwork}
+                                items={dataPaperwork}
+                                setOpen={setOpenPaperwork}
+                                setValue={setValuePaperwork}
+                                placeholder={'Select the paperwork'}
+                                containerProps={{
+                                    width: '100%',
+                                    backgroundColor: '#fff'
+
+                                }}
+                            />
+                            <GrayLine_Full />
+                        </View>
+
+                        <View style={[styles.column_wrapper, { marginLeft: Platform.OS == 'ios' ? 15 : 35, width: 145 }]}>
+
+                            <View style={[styles.row_wrapper, { alignItems: 'center' }]}>
+                                <Text style={styles.title}>Paperwork Number</Text>
+                                <Text style={{ color: 'red' }}>*</Text>
+                            </View>
+
+                            <TextInput style={[styles.input, { height: Platform.OS == 'ios' ? 23 : 56 }]} placeholder='No.' />
+                            <GrayLine_Full />
+                        </View>
+                    </View>
                 </View>
-                <View style={{ zIndex: 6 }}>
-                    <Text style={styles.title}>Citizenship</Text>
+                <View style={{ zIndex: 50 }}>
+                    <View style={[styles.row_wrapper, { alignItems: 'center' }]}>
+                        <Text style={styles.title}>Citizenship</Text>
+                        <Text style={{ color: 'red' }}>*</Text>
+                    </View>
                     <Dropdown
                         style={styles.dropdown_long}
                         placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
@@ -80,12 +104,8 @@ const Register_PersonalInfo = (props) => {
                             width: '90%',
                         }}
                     />
-                    <BlackLine_Full />
+                    <GrayLine_Full />
                 </View>
-
-                <Text style={styles.title}>Phone number</Text>
-                <TextInput style={styles.input} value={props.phoneNumber} editable={false} />
-                <BlackLine_Full />
 
                 <Text style={styles.title}>Email</Text>
                 <View style={styles.row_wrapper}>
@@ -99,20 +119,20 @@ const Register_PersonalInfo = (props) => {
                         onChangeText={(text) => setValueEmail(text.toLowerCase())}
                     />
                 </View>
-                <BlackLine_Full />
+                <GrayLine_Full />
 
                 <Text style={styles.title}>Date of Birth</Text>
                 <View style={styles.row_wrapper}>
                     <TextInput
                         style={styles.input}
                         value={valueBirthDate.toLocaleDateString('vi')}
+                        placeholder={'Enter your birthdate'}
                         ref={e => this.birthDateInput = e}
                         editable
                         onFocus={() => {
                             setOpenBirthDate(true)
                             this.birthDateInput.blur();
                         }}
-
                     />
 
                     <DatePicker
@@ -131,7 +151,7 @@ const Register_PersonalInfo = (props) => {
                         }}
                     />
                 </View>
-                <BlackLine_Full />
+                <GrayLine_Full />
 
                 <View style={[styles.row_wrapper, styles.gender_radio]}>
                     <Text style={[styles.title, { marginRight: 20, paddingBottom: 8, }]}>Gender</Text>
@@ -159,7 +179,7 @@ const Register_PersonalInfo = (props) => {
                     onPressFunction={() => {
                         // props.setModalVisible(false)
                         // console.log('Register_PersonalInfo visible: ' + props.modalVisible)
-                        setModalRegisterAddressVisible(true)
+                        // setModalRegisterAddressVisible(true)
                     }}
                 />
             </View>
@@ -211,6 +231,9 @@ const styles = StyleSheet.create({
     },
     row_wrapper: {
         flexDirection: 'row',
+    },
+    column_wrapper: {
+        flexDirection: 'column'
     },
     dropdown: {
         minHeight: 35,

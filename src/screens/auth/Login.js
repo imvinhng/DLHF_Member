@@ -28,7 +28,7 @@ function Login(props) {
         <View style={styles.background}>
             <Image
                 style={styles.image}
-                source={require('../../assets/dutch-windmill.png')}
+                source={require('../../assets/background/dutch-windmill.png')}
             />
             <RoundButton iconName='times' iconSize={15} buttonStyle={styles.close_btn} onPressFunction={() => navigation.navigate('Home')} />
             <ScrollView style={styles.body} contentContainerStyle={{ alignItems: 'center' }}>
