@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button } from 'react-native';
 import { LongButton, RadioButton, RoundButton, RoundButton_Ionicons } from '../../../utils/CustomButton';
 import { dataGender, dataPaperwork, dataCitizenship } from '../../../db/Database';
-import { GrayLine_Full, OrangeLine_Full } from '../../../utils/CustomComponents';
+import { GrayLine_Full, OrangeLine_Full, Triangle } from '../../../utils/CustomComponents';
 import Register_Address from './Register_Address';
 import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
@@ -82,7 +82,12 @@ const Register_PersonalInfo = (props) => {
                         </View>
 
                         {hiddenInfo && <View style={styles.hidden_info}>
-                            <Text>Identification Document help us identify you when you need to change your personal information later</Text>
+                            <Triangle style={{ borderBottomColor: 'lightgray', position: 'absolute', top: -10, left: 160 }} />
+                            <Text
+                                style={{ padding: 7 }}
+                            >
+                                Identification Document help us identify you when you need to change your personal information later.
+                            </Text>
                         </View>}
 
                         <View style={[styles.column_wrapper, { marginLeft: Platform.OS == 'ios' ? 15 : 35, width: 145 }]}>
@@ -313,7 +318,7 @@ const styles = StyleSheet.create({
     footer: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: Platform.OS == 'ios' ? 70 : 90,
+        marginTop: Platform.OS == 'ios' ? 120 : 135,
         height: 100,
         width: '100%',
         backgroundColor: '#fff',
@@ -346,10 +351,11 @@ const styles = StyleSheet.create({
     hidden_info: {
         backgroundColor: 'lightgray',
         position: 'absolute',
-        top: 30,
+        top: 35,
         width: 200,
         zIndex: 999,
 
-    }
+    },
+
 
 })
