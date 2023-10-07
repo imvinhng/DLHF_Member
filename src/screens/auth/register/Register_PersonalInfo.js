@@ -7,8 +7,11 @@ import Register_Address from './Register_Address';
 import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
 import moment from 'moment';
+import { useNavigation } from '@react-navigation/native';
 
 const Register_PersonalInfo = (props) => {
+
+    const navigation = useNavigation();
 
     const inputEmail = useRef(null)
 
@@ -195,9 +198,7 @@ const Register_PersonalInfo = (props) => {
                     buttonColor={'#F58831'}
                     buttonStyle={styles.button}
                     onPressFunction={() => {
-                        // props.setModalVisible(false)
-                        // console.log('Register_PersonalInfo visible: ' + props.modalVisible)
-                        // setModalRegisterAddressVisible(true)
+                        navigation.navigate('Register_Address');
                     }}
                 />
             </View>

@@ -24,9 +24,7 @@ function Register_Complete(props) {
                     buttonColor={'#F58831'}
                     buttonStyle={styles.button}
                     onPressFunction={() => {
-                        props.setModalVisible(false)
                         navigation.navigate('Home', { loggedIn: true })
-                        console.log('User was sent Home after completing registration!')
                     }}
                 />
             </View>

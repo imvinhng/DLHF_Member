@@ -6,8 +6,11 @@ import { BlackLine_Full, OrangeLine_Full } from '../../../utils/CustomComponents
 import Register_Complete from './Register_Complete';
 import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
+import { useNavigation } from '@react-navigation/native';
 
 function Register_Address(props) {
+
+    const navigation = useNavigation();
 
     const [openCity, setOpenCity] = useState(false);
     const [openDistrict, setOpenDistrict] = useState(false);
@@ -22,131 +25,113 @@ function Register_Address(props) {
 
     const valueHomeAddress = valueHouseNumber + ', ' + 'Đường ' + valueStreet + ', ' + 'Phường ' + valueWard + ', ' + 'Quận ' + valueDistrict + ', ' + valueCity;
 
-    const [modalRegisterCompleteVisible, setModalRegisterCompleteVisible] = useState(false);
 
     return (
-        <Modal
-            animationType="slide"
-            transparent={true}
-            visible={props.modalVisible}
-            onRequestClose={() => {
-                Alert.alert('Modal has been closed.');
-                props.setModalVisible(false);
-            }}
-        >
-            <View style={styles.home}>
-                <View style={styles.header}>
-                    <Text style={styles.header_title}>Register new member</Text>
-                </View>
+        <View style={styles.home}>
+            <View style={styles.header}>
+                <Text style={styles.header_title}>Register new member</Text>
+            </View>
 
-                <View style={styles.body}>
-                    <Text style={styles.text1}>Home Address</Text>
-                    <Text style={styles.text2}>To receive our promotions based on your area, we are going to need your current location.</Text>
-                    <Text style={styles.page_number}>2/2</Text>
-                    <OrangeLine_Full />
+            <View style={styles.body}>
+                <Text style={styles.text1}>Home Address</Text>
+                <Text style={styles.text2}>To receive our promotions based on your area, we are going to need your current location.</Text>
+                <Text style={styles.page_number}>2/2</Text>
+                <OrangeLine_Full />
 
-                    <View style={{ zIndex: 7 }}>
-                        <Text style={styles.title}>City</Text>
+                <View style={{ zIndex: 7 }}>
+                    <Text style={styles.title}>City</Text>
 
-                        <Dropdown
-                            style={[styles.dropdown_long, { zIndex: 2 }]}
-                            placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
-                            listItemLabelStyle={[styles.input, { paddingLeft: -10, zIndex: 2 }]}
-                            labelStyle={[styles.input, { paddingLeft: -10 }]}
-                            open={openCity}
-                            value={valueCity}
-                            items={dataCity}
-                            setOpen={setOpenCity}
-                            setValue={setValueCity}
-                            placeholder={'Select the city'}
-                            containerProps={{ width: '100%' }}
-                        />
-                        <BlackLine_Full />
-                    </View>
-                    <View style={{ zIndex: 6 }}>
-                        <Text style={styles.title}>District</Text>
-                        <Dropdown
-                            style={styles.dropdown_long}
-                            placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
-                            listItemLabelStyle={[styles.input, { paddingLeft: -10 }]}
-                            labelStyle={[styles.input, { paddingLeft: -10 }]}
-                            open={openDistrict}
-                            value={valueDistrict}
-                            items={dataDistrict}
-                            setOpen={setOpenDistrict}
-                            setValue={setValueDistrict}
-                            placeholder={'Select your district'}
-                            containerProps={{ width: '100%' }}
-                        />
-                        <BlackLine_Full />
-                    </View>
-                    <View style={{ zIndex: 5 }}>
-                        <Text style={styles.title}>Ward</Text>
-                        <Dropdown
-                            style={styles.dropdown_long}
-                            placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
-                            listItemLabelStyle={[styles.input, { paddingLeft: -10 }]}
-                            labelStyle={[styles.input, { paddingLeft: -10 }]}
-                            open={openWard}
-                            value={valueWard}
-                            items={dataWard}
-                            setOpen={setOpenWard}
-                            setValue={setValueWard}
-                            placeholder={'Select your ward'}
-                            containerProps={{ width: '100%' }}
-                        />
-                        <BlackLine_Full />
-                    </View>
-
-                    <View style={{ zIndex: 4 }}>
-                        <Text style={styles.title}>Street</Text>
-                        <Dropdown
-                            style={styles.dropdown_long}
-                            placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
-                            listItemLabelStyle={[styles.input, { paddingLeft: -10 }]}
-                            labelStyle={[styles.input, { paddingLeft: -10 }]}
-                            open={openStreet}
-                            value={valueStreet}
-                            items={dataStreet}
-                            setOpen={setOpenStreet}
-                            setValue={setValueStreet}
-                            placeholder={'Select your street'}
-                            containerProps={{ width: '100%' }}
-                        />
-                        <BlackLine_Full />
-                    </View>
-
-                    <Text style={styles.title}>House Number</Text>
-                    <TextInput style={styles.input} placeholder={'Enter your house no.'} value={valueHouseNumber} onChangeText={(text) => setValueHouseNumber(text)} editable />
-                    <BlackLine_Full />
-
-                    <Text style={styles.title}>Home Address</Text>
-                    <TextInput style={styles.input} value={valueHomeAddress} editable multiline numberOfLines={2} />
-                    <BlackLine_Full />
-
-                </View>
-
-                <View style={styles.footer}>
-                    <LongButton
-                        text={'Continue'}
-                        textStyle={{ color: '#fff' }}
-                        buttonColor={'#F58831'}
-                        buttonStyle={styles.button}
-                        onPressFunction={() => {
-                            // props.setModalVisible(false)
-                            // console.log('Register_Address visible: ' + props.modalVisible)
-                            setModalRegisterCompleteVisible(true)
-                            props.setModalVisible(false)
-                        }}
+                    <Dropdown
+                        style={[styles.dropdown_long, { zIndex: 2 }]}
+                        placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
+                        listItemLabelStyle={[styles.input, { paddingLeft: -10, zIndex: 2 }]}
+                        labelStyle={[styles.input, { paddingLeft: -10 }]}
+                        open={openCity}
+                        value={valueCity}
+                        items={dataCity}
+                        setOpen={setOpenCity}
+                        setValue={setValueCity}
+                        placeholder={'Select the city'}
+                        containerProps={{ width: '100%' }}
                     />
+                    <BlackLine_Full />
+                </View>
+                <View style={{ zIndex: 6 }}>
+                    <Text style={styles.title}>District</Text>
+                    <Dropdown
+                        style={styles.dropdown_long}
+                        placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
+                        listItemLabelStyle={[styles.input, { paddingLeft: -10 }]}
+                        labelStyle={[styles.input, { paddingLeft: -10 }]}
+                        open={openDistrict}
+                        value={valueDistrict}
+                        items={dataDistrict}
+                        setOpen={setOpenDistrict}
+                        setValue={setValueDistrict}
+                        placeholder={'Select your district'}
+                        containerProps={{ width: '100%' }}
+                    />
+                    <BlackLine_Full />
+                </View>
+                <View style={{ zIndex: 5 }}>
+                    <Text style={styles.title}>Ward</Text>
+                    <Dropdown
+                        style={styles.dropdown_long}
+                        placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
+                        listItemLabelStyle={[styles.input, { paddingLeft: -10 }]}
+                        labelStyle={[styles.input, { paddingLeft: -10 }]}
+                        open={openWard}
+                        value={valueWard}
+                        items={dataWard}
+                        setOpen={setOpenWard}
+                        setValue={setValueWard}
+                        placeholder={'Select your ward'}
+                        containerProps={{ width: '100%' }}
+                    />
+                    <BlackLine_Full />
                 </View>
 
-                <Register_Complete
-                    modalVisible={modalRegisterCompleteVisible}
-                    setModalVisible={setModalRegisterCompleteVisible}
+                <View style={{ zIndex: 4 }}>
+                    <Text style={styles.title}>Street</Text>
+                    <Dropdown
+                        style={styles.dropdown_long}
+                        placeholderStyle={[styles.placeholder, { paddingLeft: -10 }]}
+                        listItemLabelStyle={[styles.input, { paddingLeft: -10 }]}
+                        labelStyle={[styles.input, { paddingLeft: -10 }]}
+                        open={openStreet}
+                        value={valueStreet}
+                        items={dataStreet}
+                        setOpen={setOpenStreet}
+                        setValue={setValueStreet}
+                        placeholder={'Select your street'}
+                        containerProps={{ width: '100%' }}
+                    />
+                    <BlackLine_Full />
+                </View>
+
+                <Text style={styles.title}>House Number</Text>
+                <TextInput style={styles.input} placeholder={'Enter your house no.'} value={valueHouseNumber} onChangeText={(text) => setValueHouseNumber(text)} editable />
+                <BlackLine_Full />
+
+                <Text style={styles.title}>Home Address</Text>
+                <TextInput style={styles.input} value={valueHomeAddress} editable multiline numberOfLines={2} />
+                <BlackLine_Full />
+
+            </View>
+
+            <View style={styles.footer}>
+                <LongButton
+                    text={'Continue'}
+                    textStyle={{ color: '#fff' }}
+                    buttonColor={'#F58831'}
+                    buttonStyle={styles.button}
+                    onPressFunction={() => {
+                        navigation.navigate('Register_Complete')
+                    }}
                 />
             </View>
-        </Modal>
+
+        </View>
     );
 }
 
@@ -261,7 +246,7 @@ const styles = StyleSheet.create({
     footer: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: Platform.OS == 'ios' ? 70 : 90,
+        marginTop: Platform.OS == 'ios' ? 155 : 170,
         height: 100,
         width: '100%',
         backgroundColor: '#fff',
