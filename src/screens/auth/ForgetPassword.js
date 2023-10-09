@@ -5,15 +5,23 @@ import { OTP_Login } from './OTP';
 import { useNavigation } from '@react-navigation/native';
 
 
-function Login(props) {
-    const [loginBtnColor, setLoginBtnColor] = useState('#eb9f1c');
+function ForgetPassword(props) {
+    const [loginBtnColor, setLoginBtnColor] = useState('gray');
     const [loginBtnBorderColor, setLoginBtnBorderColor] = useState('#000');
+    const [modalVisible, setModalVisible] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState('');
 
     const navigation = useNavigation();
 
-    const passwordCheck = () => {
-        navigation.navigate('BottomTab', { screen: 'Home', params: { loggedIn: true } })
+    const login = (value) => {
+        if (value != '') {
+            setLoginBtnColor('#eb9f1c');
+            setLoginBtnBorderColor('#eb9f1c');
+            setPhoneNumber(value);
+        } else {
+            setLoginBtnColor('gray');
+            setLoginBtnBorderColor('#000');
+        }
     }
 
     return (
@@ -23,7 +31,7 @@ function Login(props) {
                 source={require('../../assets/images/background/dutch-windmill.png')}
             />
             <RoundButton iconName='times' iconSize={15} buttonStyle={styles.close_btn} onPressFunction={() => navigation.navigate('Home')} />
-            <ScrollView style={styles.body} contentContainerStyle={{ alignItems: 'center' }}>
+            <View style={[styles.body, { alignItems: 'center' }]}>
                 <Text style={styles.title}>Welcome to</Text>
                 <Image source={require('../../assets/images/extras/DLHF-logo.png')} />
 
@@ -34,36 +42,17 @@ function Login(props) {
                     ]}
                     keyboardType='number-pad'
                     placeholder={'Enter your phone number'}
-                />
-                <TextInput
-                    style={[
-                        styles.text_input,
-                        { borderColor: loginBtnBorderColor }
-                    ]}
-                    secureTextEntry
-                    placeholder={'Enter password'}
-                    onSubmitEditing={passwordCheck}
+                    onChangeText={login}
+                    onSubmitEditing={() => navigation.navigate('OTP_Login', { phone_number: phoneNumber })}
                 />
                 <LoginButton
                     style={styles.login_btn}
                     bgColor={loginBtnColor}
                     textColor={'#fff'}
-                    onPressFunction={passwordCheck}
+                    onPressFunction={() => navigation.navigate('OTP_Login', { phone_number: phoneNumber })}
                 />
 
-                <Text style={styles.text_small} onPress={() => navigation.navigate('Auth', { screen: 'ForgetPassword' })}> Forget password?</Text>
-                <View style={{ height: 50 }} />
-
-                <View style={styles.row_wrapper}>
-                    <Text style={styles.text_small}>Not registered?</Text>
-                    <Text style={styles.text_hyperlink} onPress={() => navigation.navigate('Auth', { screen: 'Register' })}>Register here</Text>
-                </View>
-
-
-                <View style={{ height: 30 }} />
-                <Text style={styles.subtext}>Vietnamese</Text>
-
-            </ScrollView>
+            </View>
         </View>
 
     );
@@ -150,25 +139,7 @@ const styles = StyleSheet.create({
         top: Platform.OS == 'ios' ? 45 : 15,
         height: 20,
         width: 20,
-    },
-    text_small: {
-        fontSize: 15,
-        margin: 5,
-        paddingTop: 10,
-        fontWeight: '600',
-        textAlign: 'center',
-    },
-    text_hyperlink: {
-        fontSize: 15,
-        margin: 5,
-        paddingTop: 10,
-        textAlign: 'center',
-        color: '#eb9f1c',
-        textDecorationLine: 'underline',
-    },
-    row_wrapper: {
-        flexDirection: 'row',
-    },
+    }
 })
 
-export default Login;
+export default ForgetPassword;

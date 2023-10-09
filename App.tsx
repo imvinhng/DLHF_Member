@@ -24,7 +24,7 @@ import Register_Address from './src/screens/auth/register/Register_Address';
 import Register_Complete from './src/screens/auth/register/Register_Complete';
 import { OTP_Login, OTP_Register } from './src/screens/auth/OTP';
 import Map from './src/screens/main/Map';
-import Shop_Detail from './src/screens/main/Shop_Detail';
+import ForgetPassword from './src/screens/auth/ForgetPassword';
 import Notification from './src/screens/main/Notification';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
@@ -111,6 +111,10 @@ function Auth(): JSX.Element {
       <Stack.Screen
         name="Login"
         component={Login}
+      />
+      <Stack.Screen
+        name="ForgetPassword"
+        component={ForgetPassword}
       />
       <Stack.Screen
         name="Register"

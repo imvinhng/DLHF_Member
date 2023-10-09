@@ -6,9 +6,9 @@
  */
 
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, Text, View, Dimensions, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, ScrollView } from 'react-native';
 import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton } from '../../../utils/CustomButton';
-import { CommonActions, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import PersonalInfo from '../PersonalInfo';
 
 function More(props) {
@@ -54,7 +54,7 @@ function More(props) {
                     />
                     <SquareButton_ImageIcon_Text
                         image_uri={require('../../../assets/images/icons/red-flower-icon.png')}
-                        text={'Flower Knowledge'}
+                        text={"DLHF News"}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
                     />
