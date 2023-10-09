@@ -20,9 +20,16 @@ function Store(props) {
     const [modalVisible, setModalVisible] = useState(false);
     const [clicked, setClicked] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState('');
+    const [clickedID, setClickedID] = useState(0);
 
-    const Item = ({ location, address }) => (
-        <TouchableOpacity style={styles.item} onPress={() => setModalVisible(true)}>
+    const Item = ({ id, location, address }) => (
+        <TouchableOpacity
+            style={styles.item}
+            onPress={() => {
+                setModalVisible(true)
+                setClickedID(id)
+                console.log(id)
+            }}>
             <Image style={styles.image} source={require('../../../assets/storefront.png')} />
 
             <View style={styles.column_wrapper_custom}>
@@ -64,7 +71,7 @@ function Store(props) {
                     buttonStyle={styles.map_btn}
                     textStyle={styles.text_map}
                     text={'Map'}
-                    onPressFunction={() => navigation.navigate('Map')}
+                    onPressFunction={() => navigation.navigate('Main', { screen: 'Map' })}
                 />
             </View>
 
@@ -76,13 +83,13 @@ function Store(props) {
                     renderItem={({ item }) => {
                         // if no input, show all
                         if (searchPhrase === '') {
-                            return <Item location={item.location} address={item.address} />
+                            return <Item id={item.id} location={item.location} address={item.address} />
                         }
                         if (convertViToEn(item.location, true).includes(convertViToEn(searchPhrase, true))) {
-                            return <Item location={item.location} address={item.address} />
+                            return <Item id={item.id} location={item.location} address={item.address} />
                         }
                         if (convertViToEn(item.address, true).includes(convertViToEn(searchPhrase, true))) {
-                            return <Item location={item.location} address={item.address} />
+                            return <Item id={item.id} location={item.location} address={item.address} />
                         }
                     }}
                     keyExtractor={item => item.id}
@@ -92,10 +99,7 @@ function Store(props) {
             <Shop_Detail
                 modalVisible={modalVisible}
                 setModalVisible={setModalVisible}
-                location={DATA[0].location}
-                address={DATA[0].address}
-                full_address={DATA[0].full_address}
-                hours={DATA[0].hours}
+                id={clickedID}
             />
 
         </SafeAreaView>

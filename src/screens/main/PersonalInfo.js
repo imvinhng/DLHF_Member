@@ -83,7 +83,7 @@ function PersonalInfo(props) {
     return (
         <View style={styles.home}>
             <View style={styles.header}>
-                <RoundButton iconName='times' iconSize={15} bgColor='#F58831' buttonStyle={styles.close_btn} onPressFunction={() => navigation.navigate('More')} />
+                <RoundButton iconName='times' iconSize={15} bgColor='#F58831' buttonStyle={styles.close_btn} onPressFunction={() => navigation.navigate('BottomTab', { screen: 'More' })} />
                 <View style={styles.row_wrapper}>
                     <RoundButton iconName='user' iconSize={40} bgColor='lightgray' buttonStyle={styles.icon_user} />
                     <RoundButton iconName='pen' iconSize={10} iconColor='#fff' bgColor='#000' buttonStyle={styles.profile_edit} />
@@ -334,7 +334,7 @@ const styles = StyleSheet.create({
     },
     close_btn: {
         position: 'absolute',
-        left: Platform.OS == 'ios' ? 350 : 370,
+        left: Platform.OS == 'ios' ? 370 : 370,
         top: Platform.OS == 'ios' ? 45 : 15,
         height: 20,
         width: 20,

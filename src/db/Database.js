@@ -20,8 +20,8 @@ export const DATA = [
     {
         id: 3,
         location: 'Quốc Hương',
-        address: '49C Đ. Quốc Hương, Thảo Điền, Quận 2',
-        full_address: '49C Đ. Quốc Hương, Thảo Điền, Quận 2, Hồ Chí Minh, Việt Nam',
+        address: '49C Quốc Hương, Thảo Điền, Quận 2',
+        full_address: '49C Quốc Hương, Thảo Điền, Quận 2, Hồ Chí Minh, Việt Nam',
         hours: '07:00 - 20:00',
         lat: 10.804783,
         long: 106.731339,
@@ -29,8 +29,8 @@ export const DATA = [
     {
         id: 4,
         location: 'Nguyễn Thiện Thuật',
-        address: '268 Đ. Nguyễn Thiện Thuật, Phường 3, Quận 3',
-        full_address: '268 Đ. Nguyễn Thiện Thuật, Phường 3, Quận 3, Hồ Chí Minh, Việt Nam',
+        address: '268 Nguyễn Thiện Thuật, Phường 3, Quận 3',
+        full_address: '268 Nguyễn Thiện Thuật, Phường 3, Quận 3, Hồ Chí Minh, Việt Nam',
         hours: '07:00 - 20:00',
         lat: 10.769671,
         long: 106.678000,
@@ -47,8 +47,8 @@ export const DATA = [
     {
         id: 6,
         location: 'Phan Văn Trị',
-        address: '620 Đ. Phan Văn Trị, Phường 7, Gò Vấp',
-        full_address: '620 Đ. Phan Văn Trị, Phường 7, Gò Vấp, Hồ Chí Minh, Việt Nam',
+        address: '620 Phan Văn Trị, Phường 7, Gò Vấp',
+        full_address: '620 Phan Văn Trị, Phường 7, Gò Vấp, Hồ Chí Minh, Việt Nam',
         hours: '07:00 - 20:00',
         lat: 10.830603,
         long: 106.678686,

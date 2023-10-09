@@ -1,9 +1,12 @@
 import { StyleSheet, View, Text, Image, Modal, TouchableOpacity, Platform } from 'react-native';
 import { PromotionButton, NotificationButton, RoundButton } from '../../utils/CustomButton';
 import { LongButton_Icon } from '../../utils/CustomButton';
+import { DATA } from '../../db/Database';
 
 import React from 'react';
 function Shop_Detail(props) {
+    const id = props.id - 1;
+
     return (
         <Modal
             animationType="slide"
@@ -27,15 +30,15 @@ function Shop_Detail(props) {
                         onPressFunction={() => props.setModalVisible(!props.modalVisible)}
                     />
 
-                    <Text style={styles.location}>Dalat Hasfarm {props.location}</Text>
-                    <Text style={styles.address}>{props.address}</Text>
-                    <Text style={styles.hours}>Operation Hours: {props.hours}</Text>
+                    <Text style={styles.location}>Dalat Hasfarm {DATA[id].location}</Text>
+                    <Text style={styles.address}>{DATA[id].address}</Text>
+                    <Text style={styles.hours}>Operation Hours: {DATA[id].hours}</Text>
 
                     <View style={styles.center_wrapper_custom}>
                         <LongButton_Icon
                             iconName='location-arrow'
                             iconSize={15}
-                            text={props.full_address}
+                            text={DATA[id].full_address}
                             buttonStyle={styles.longbutton}
                             textStyle={styles.text_button}
                         />
@@ -72,7 +75,7 @@ const styles = StyleSheet.create({
     home: {
         // flex: 1,
         // marginTop: Platform.OS == 'ios' ? '30%' : '16%',
-        height: Platform.OS == 'ios' ? '77%' : '86.2%',
+        height: Platform.OS == 'ios' ? '78.5%' : '86.2%',
         backgroundColor: '#fff',
     },
     body: {
@@ -81,13 +84,13 @@ const styles = StyleSheet.create({
         // alignItems: 'center',
     },
     backdrop_top: {
-        height: Platform.OS == 'ios' ? '14%' : '8%',
-        backgroundColor: 'rgba(0,0,0,0.2)',
+        height: Platform.OS == 'ios' ? '13%' : '8%',
+        // backgroundColor: 'rgba(0,0,0,0.2)',
         margin: 0,
     },
     backdrop_bottom: {
-        height: Platform.OS == 'ios' ? '30%' : '8%',
-        backgroundColor: 'rgba(0,0,0,0.2)',
+        height: Platform.OS == 'ios' ? '28%' : '8%',
+        // backgroundColor: 'rgba(0,0,0,0.2)',
         margin: 0,
     },
     sub_header_left: {
@@ -138,7 +141,7 @@ const styles = StyleSheet.create({
     roundbutton: {
         position: 'absolute',
         top: -10,
-        left: Platform.OS == 'ios' ? 340 : 365,
+        left: Platform.OS == 'ios' ? 370 : 360,
     },
 })
 

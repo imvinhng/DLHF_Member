@@ -43,10 +43,6 @@ function Main(): JSX.Element {
         component={PersonalInfo}
       />
       <Stack.Screen
-        name='Shop_Detail'
-        component={Shop_Detail}
-      />
-      <Stack.Screen
         name='Map'
         component={Map}
       />
@@ -153,7 +149,7 @@ function App(): JSX.Element {
   return (
     <NavigationContainer >
       <Stack.Navigator initialRouteName='BottomTab' screenOptions={{ headerShown: false }}>
-        {/* Main: Map, Shop, Notification, ShopDetails */}
+        {/* Main: Map, PersonalInfo, Notification */}
         <Stack.Screen
           name='Main'
           component={Main}

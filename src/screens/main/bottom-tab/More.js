@@ -92,7 +92,7 @@ function More(props) {
                     buttonStyle={styles.longbutton_icon}
                     textStyle={styles.text_longbutton_icon}
                     iconStyle={styles.icon_longbutton}
-                    onPressFunction={() => navigation.navigate('Auth', { screen: 'PersonalInfo' })}
+                    onPressFunction={() => navigation.navigate('Main', { screen: 'PersonalInfo' })}
                 />
                 <LongButton_Icon
                     iconName={'map-marker-alt'}
