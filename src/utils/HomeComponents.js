@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, ImageBackground, ScrollView, Dimensions, TextInput } from 'react-native';
-import { RoundButton_Image, LoginButton, PromotionButton, NotificationButton, LongButton, SquareButton } from './CustomButton';
+import { RoundButton_Image, LoginButton, PromotionButton, NotificationButton, RadioHeaderCustom } from './CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
 const TopHeader = () => {
@@ -128,7 +128,7 @@ export const HomeBody = (props) => {
                         />
                         <Text>Home Delivery</Text>
                     </View>
-                    <View style={{ height: 100, width: 0.5, backgroundColor: 'lightgray' }} />
+                    <View style={{ height: 100, width: 2, backgroundColor: 'lightgray' }} />
                     <View style={styles.body_top_right}>
                         <RoundButton_Image
                             image_uri={require('../assets/images/icons/shop-icon.png')}
@@ -140,60 +140,56 @@ export const HomeBody = (props) => {
                     </View>
                 </View>
 
-                <ScrollView style={styles.body_bottom} horizontal >
-                    <Image
-                        source={require('../assets/images/extras/super-sale.png')}
-                        style={styles.image}
-                    />
-                    <Image
-                        source={require('../assets/images/extras/super-sale.png')}
-                        style={styles.image}
-                    />
-                    <Image
-                        source={require('../assets/images/extras/super-sale.png')}
-                        style={styles.image}
-                    />
-                    <Image
-                        source={require('../assets/images/extras/super-sale.png')}
-                        style={styles.image}
-                    />
-                    <Image
-                        source={require('../assets/images/extras/super-sale.png')}
-                        style={styles.image}
-                    />
-                    <Image
-                        source={require('../assets/images/extras/super-sale.png')}
-                        style={styles.image}
-                    />
-                    <Image
-                        source={require('../assets/images/extras/super-sale.png')}
-                        style={styles.image}
-                    />
+                <ScrollView contentContainerStyle={styles.scrollViewContainerStyle} horizontal pagingEnabled showsHorizontalScrollIndicator>
+                    <View style={{ width: ScreenWidth }}>
+                        <Image
+                            source={require('../assets/images/extras/super-sale.png')}
+                            style={styles.image}
+                        />
+                    </View>
+                    <View style={{ width: ScreenWidth }}>
+                        <Image
+                            source={require('../assets/images/extras/super-sale.png')}
+                            style={styles.image}
+                        />
+                    </View>
+                    <View style={{ width: ScreenWidth }}>
+                        <Image
+                            source={require('../assets/images/extras/super-sale.png')}
+                            style={styles.image}
+                        />
+                    </View>
+                    <View style={{ width: ScreenWidth }}>
+                        <Image
+                            source={require('../assets/images/extras/super-sale.png')}
+                            style={styles.image}
+                        />
+                    </View>
+                    <View style={{ width: ScreenWidth }}>
+                        <Image
+                            source={require('../assets/images/extras/super-sale.png')}
+                            style={styles.image}
+                        />
+                    </View>
+                    <View style={{ width: ScreenWidth }}>
+                        <Image
+                            source={require('../assets/images/extras/super-sale.png')}
+                            style={styles.image}
+                        />
+                    </View>
+                    <View style={{ width: ScreenWidth }}>
+                        <Image
+                            source={require('../assets/images/extras/super-sale.png')}
+                            style={styles.image}
+                        />
+                    </View>
+
                 </ScrollView>
             </View>
 
             <View>
                 <Text style={styles.text_large}>Explore</Text>
-                <View style={styles.row_wrapper}>
-                    <LongButton
-                        buttonColor={'#FEF7E5'}
-                        text={'Special Offer'}
-                        buttonStyle={styles.grid_button}
-                        textStyle={styles.grid_btn_txt}
-                    />
-                    <LongButton
-                        buttonColor={'#FEF7E5'}
-                        text={'#FlowerCare'}
-                        buttonStyle={styles.grid_button}
-                        textStyle={styles.grid_btn_txt}
-                    />
-                    <LongButton
-                        buttonColor={'#FEF7E5'}
-                        text={'#FlowerLover'}
-                        buttonStyle={styles.grid_button}
-                        textStyle={styles.grid_btn_txt}
-                    />
-                </View>
+                <RadioHeaderCustom />
             </View>
         </View>
     )
@@ -201,7 +197,8 @@ export const HomeBody = (props) => {
 
 
 
-const { width } = Dimensions.get('screen')
+const { width: ScreenWidth, height: screenHeight } = Dimensions.get('screen')
+const imageWidth = ScreenWidth - 20
 
 const styles = StyleSheet.create({
     home: {
@@ -306,11 +303,12 @@ const styles = StyleSheet.create({
     member_card: {
         margin: -5,
         marginTop: -35,
+        width: 405,
     },
     member_card_container: {
         margin: 10,
         marginBottom: 83,
-        backgroundColor: '#FEF7E5',
+        // backgroundColor: '#FEF7E5',
     },
     member_card_background: {
         marginTop: 50,
@@ -332,7 +330,7 @@ const styles = StyleSheet.create({
     subgrid: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        width: ((width - 50) / 2),
+        width: ((ScreenWidth - 50) / 2),
         margin: 5,
         marginBottom: -10,
     },
@@ -371,10 +369,8 @@ const styles = StyleSheet.create({
     },
     image: {
         borderRadius: 10,
-        margin: 10,
-        marginVertical: 0,
-        width: Platform.OS == 'ios' ? 375 : 390,
-        height: Platform.OS == 'ios' ? 180 : 215,
+        marginHorizontal: 10,
+        width: imageWidth,
     },
     icon_image_large: {
         height: 45,
@@ -386,7 +382,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
     },
     image_grid: {
-        width: ((width - 50) / 2),
+        width: ((ScreenWidth - 50) / 2),
         borderRadius: 10,
         margin: 10,
     },
@@ -402,7 +398,12 @@ const styles = StyleSheet.create({
     },
     grid_button: {
         width: '30%',
+        justifyContent: 'center',
         margin: 5,
     },
+    scrollViewContainerStyle: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 
 })

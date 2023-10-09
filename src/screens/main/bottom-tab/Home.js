@@ -16,7 +16,7 @@ const Item = ({ msg, image_uri, exp_date }) => {
     return (
         <View style={styles.grid}>
             <View style={styles.subgrid}>
-                <TouchableOpacity>
+                <TouchableOpacity style={{ marginTop: 10 }}>
                     <Image
                         source={image_uri}
                         style={styles.image_grid}
@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
 
     text_grid: {
         paddingLeft: 8,
+        marginTop: 5,
     },
     grid_btn_txt: {
         fontSize: Platform.OS == 'ios' ? 12 : 14,
@@ -103,6 +104,7 @@ const styles = StyleSheet.create({
     },
     image_grid: {
         width: ((width) / 2) - 10,
+        height: ((width) / 2) - 10,
         borderRadius: 10,
         // margin: 10,
     },

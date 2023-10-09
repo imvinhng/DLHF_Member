@@ -156,6 +156,7 @@ export const LongButton = (props) => {
                 props.buttonStyle
             ]}
             onPress={props.onPressFunction}
+            onFocus={props.onFocusFunction}
         >
             <Text style={[styles.text_long_button, props.textStyle]}>
                 {props.text}
@@ -211,6 +212,56 @@ export function RadioButton(props) {
             }
         </TouchableOpacity>
     );
+}
+
+export const RadioHeaderCustom = () => {
+    const [focusedOne, setFocusedOne] = useState(true);
+    const [focusedTwo, setFocusedTwo] = useState(false);
+    const [focusedThree, setFocusedThree] = useState(false);
+
+    const onFocusRadio = (focusedID) => {
+        if (focusedID == '1') {
+            setFocusedOne(true)
+            setFocusedTwo(false)
+            setFocusedThree(false)
+        }
+        if (focusedID == '2') {
+            setFocusedOne(false)
+            setFocusedTwo(true)
+            setFocusedThree(false)
+        }
+        if (focusedID == '3') {
+            setFocusedOne(false)
+            setFocusedTwo(false)
+            setFocusedThree(true)
+        }
+    }
+
+    return (
+        <View style={styles.row_wrapper}>
+            <LongButton
+                buttonColor={focusedOne ? '#FEF7E5' : '#fff'}
+                text={'Special Offer'}
+                buttonStyle={styles.grid_button}
+                textStyle={styles.grid_btn_txt}
+                onPressFunction={() => onFocusRadio('1')}
+            />
+            <LongButton
+                buttonColor={focusedTwo ? '#FEF7E5' : '#fff'}
+                text={'#FlowerCare'}
+                buttonStyle={styles.grid_button}
+                textStyle={styles.grid_btn_txt}
+                onPressFunction={() => onFocusRadio('2')}
+            />
+            <LongButton
+                buttonColor={focusedThree ? '#FEF7E5' : '#fff'}
+                text={'#FlowerLover'}
+                buttonStyle={styles.grid_button}
+                textStyle={styles.grid_btn_txt}
+                onPressFunction={() => onFocusRadio('3')}
+            />
+        </View>
+    )
 }
 
 
@@ -296,6 +347,9 @@ const styles = StyleSheet.create({
     },
     image_icon_wrapper: {
         paddingTop: 10,
+    },
+    row_wrapper: {
+        flexDirection: 'row',
     },
 
 })
