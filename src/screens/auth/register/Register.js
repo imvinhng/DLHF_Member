@@ -8,7 +8,6 @@ import { useNavigation } from '@react-navigation/native';
 function Register(props) {
     const [loginBtnColor, setLoginBtnColor] = useState('gray');
     const [loginBtnBorderColor, setLoginBtnBorderColor] = useState('lightgray');
-    const [modalVisible, setModalVisible] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState('');
 
     const navigation = useNavigation();
@@ -28,7 +27,8 @@ function Register(props) {
         if (phoneNumber == '' || phoneNumber.length < 10) {
             Alert.alert('Your phone number is not a valid number!')
         } else {
-            navigation.navigate('OTP_Register')
+            // console.log(phoneNumber)
+            navigation.navigate('OTP_Register', { phone_number: phoneNumber })
         }
     }
 

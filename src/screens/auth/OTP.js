@@ -8,8 +8,6 @@ const otpValue = '000000';
 
 export const OTP_Login = ({ navigation, route }) => {
 
-    const phone_number = route.params;
-
     return (
         <View style={styles.home}>
             <View>
@@ -28,7 +26,7 @@ export const OTP_Login = ({ navigation, route }) => {
                                 }
                             ]}
                         >
-                            {phone_number}
+                            {route.params.phone_number}
                         </Text>
                     </View>
                     <Text style={styles.text2}>Enter code to continue</Text>
@@ -41,7 +39,7 @@ export const OTP_Login = ({ navigation, route }) => {
                     autoFocus
                     handleTextChange={(code) => {
                         if (code == otpValue) {
-                            navigation.navigate('Register_PasswordSet')
+                            navigation.navigate('BottomTab', { screen: 'Home', params: { loggedIn: true } })
                         }
                     }}
                 />
@@ -52,8 +50,6 @@ export const OTP_Login = ({ navigation, route }) => {
     );
 }
 export function OTP_Register({ navigation, route }) {
-
-    const phone_number = route.params;
 
     return (
         <View style={styles.home}>
@@ -73,7 +69,7 @@ export function OTP_Register({ navigation, route }) {
                                 }
                             ]}
                         >
-                            {phone_number}
+                            {route.params.phone_number}
                         </Text>
                     </View>
                     <Text style={styles.text2}>Enter code to continue</Text>

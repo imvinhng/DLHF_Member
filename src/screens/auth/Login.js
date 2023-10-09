@@ -43,19 +43,13 @@ function Login(props) {
                     keyboardType='number-pad'
                     placeholder={'Enter your phone number'}
                     onChangeText={login}
-                    onSubmitEditing={() => setModalVisible(true)}
+                    onSubmitEditing={() => navigation.navigate('OTP_Login', { phone_number: phoneNumber })}
                 />
                 <LoginButton
                     style={styles.login_btn}
                     bgColor={loginBtnColor}
                     textColor={'#fff'}
-                    onPressFunction={() => setModalVisible(true)}
-                />
-
-                <OTP_Login
-                    modalVisible={modalVisible}
-                    setModalVisible={setModalVisible}
-                    phone_number={phoneNumber}
+                    onPressFunction={() => navigation.navigate('OTP_Login', { phone_number: phoneNumber })}
                 />
 
                 <View style={styles.row_wrapper}>

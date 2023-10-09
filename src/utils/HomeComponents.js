@@ -45,7 +45,7 @@ const BottomHeader = () => {
 
             <View style={styles.row_wrapper}>
                 <Text style={styles.text_small}>Not registered?</Text>
-                <Text style={styles.text_hyperlink} onPress={() => navigation.navigate('Auth', { screen: 'Register_PersonalInfo' })}>Register here</Text>
+                <Text style={styles.text_hyperlink} onPress={() => navigation.navigate('Auth', { screen: 'Register' })}>Register here</Text>
             </View>
         </View>
     )

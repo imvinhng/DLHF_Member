@@ -44,7 +44,6 @@ const Home = ({ route }) => {
 
     const loggedIn = route.params;
 
-
     return (
         <View style={styles.home}>
             {loggedIn ? <HomeHeader_LoggedIn /> : <HomeHeader />}

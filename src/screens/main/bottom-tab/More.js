@@ -92,7 +92,7 @@ function More(props) {
                     buttonStyle={styles.longbutton_icon}
                     textStyle={styles.text_longbutton_icon}
                     iconStyle={styles.icon_longbutton}
-                    onPressFunction={() => setModalPersonalInfoVisible(true)}
+                    onPressFunction={() => navigation.navigate('Auth', { screen: 'PersonalInfo' })}
                 />
                 <LongButton_Icon
                     iconName={'map-marker-alt'}
