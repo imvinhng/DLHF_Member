@@ -95,7 +95,7 @@ function PersonalInfo(props) {
                 </View>
 
 
-                <Image source={require('../../assets/barcode_personal_info.png')} style={styles.barcode} />
+                <Image source={require('../../assets/images/extras/barcode_personal_info.png')} style={styles.barcode} />
                 <Text style={styles.footnote}>The date of your membership ranking evaluation is on 24/12/2023.</Text>
             </View>
 

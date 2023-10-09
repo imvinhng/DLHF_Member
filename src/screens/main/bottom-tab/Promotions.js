@@ -15,25 +15,25 @@ const DATA = [
         id: 1,
         description: '40% Discount for the first order over 500K',
         expiration_date: '24/10/2023',
-        image_uri: require('../../../assets/vouchers/voucher1.png'),
+        image_uri: require('../../../assets/images/vouchers/voucher1.png'),
     },
     {
         id: 2,
         description: '40% Discount for the first order over 500K',
         expiration_date: '24/10/2023',
-        image_uri: require('../../../assets/vouchers/voucher2.png'),
+        image_uri: require('../../../assets/images/vouchers/voucher2.png'),
     },
     {
         id: 3,
         description: '40% Discount for the first order over 500K',
         expiration_date: '24/10/2023',
-        image_uri: require('../../../assets/vouchers/voucher3.png'),
+        image_uri: require('../../../assets/images/vouchers/voucher3.png'),
     },
     {
         id: 4,
         description: '40% Discount for the first order over 500K',
         expiration_date: '24/10/2023',
-        image_uri: require('../../../assets/vouchers/voucher4.png'),
+        image_uri: require('../../../assets/images/vouchers/voucher4.png'),
     },
 ];
 

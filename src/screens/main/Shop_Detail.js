@@ -22,7 +22,7 @@ function Shop_Detail(props) {
                 {/* Make sure to not include header so user can click outside the View to close the Modal */}
 
                 <View style={styles.body}>
-                    <Image source={require('../../assets/storefront-large.png')} />
+                    <Image source={require('../../assets/images/extras/storefront-large.png')} />
                     <RoundButton
                         buttonStyle={styles.roundbutton}
                         iconName={'times-circle'}

@@ -97,7 +97,7 @@ function Register_PasswordSet(props) {
 
         <View style={styles.home}>
             <View>
-                <Image style={styles.image} source={require('../../../assets/background/dutch-windmill.png')} />
+                <Image style={styles.image} source={require('../../../assets/images/background/dutch-windmill.png')} />
             </View>
             <View style={styles.body}>
                 <Text style={styles.title}>Register new member</Text>

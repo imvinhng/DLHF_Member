@@ -11,7 +11,7 @@ export const OTP_Login = ({ navigation, route }) => {
     return (
         <View style={styles.home}>
             <View>
-                <Image style={styles.image} source={require('../../assets/background/dutch-windmill.png')} />
+                <Image style={styles.image} source={require('../../assets/images/background/dutch-windmill.png')} />
             </View>
             <View style={styles.body}>
                 <View style={styles.container}>
@@ -54,7 +54,7 @@ export function OTP_Register({ navigation, route }) {
     return (
         <View style={styles.home}>
             <View>
-                <Image style={styles.image} source={require('../../assets/background/dutch-windmill.png')} />
+                <Image style={styles.image} source={require('../../assets/images/background/dutch-windmill.png')} />
             </View>
             <View style={styles.body}>
                 <View style={styles.container}>

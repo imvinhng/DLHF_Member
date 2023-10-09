@@ -8,13 +8,13 @@ const TopHeader = () => {
         <View style={styles.top_header}>
             <View style={styles.sub_header_left}>
                 <RoundButton_Image
-                    image_uri={require('../assets/icons/red-flower-icon.png')}
+                    image_uri={require('../assets/images/icons/red-flower-icon.png')}
                     bgColor={'#FEF7E5'}
                     iconStyle={styles.icon_image}
                 />
                 <Text style={styles.text_small_center}>Hello friend</Text>
                 <RoundButton_Image
-                    image_uri={require('../assets/icons/hello-icon.png')}
+                    image_uri={require('../assets/images/icons/hello-icon.png')}
                     bgColor={'#FEF7E5'}
                     iconStyle={styles.icon_image}
                 />
@@ -57,7 +57,7 @@ const TopHeader_LoggedIn = () => {
         <View style={styles.top_header}>
             <View style={styles.sub_header_left}>
                 <RoundButton_Image
-                    image_uri={require('../assets/icons/red-flower-icon.png')}
+                    image_uri={require('../assets/images/icons/red-flower-icon.png')}
                     bgColor={'#FEF7E5'}
                     iconStyle={styles.icon_image}
                 />
@@ -77,9 +77,9 @@ const TopHeader_LoggedIn = () => {
 const BottomHeader_LoggedIn = () => {
     return (
         <View style={styles.bottom_header}>
-            <Image style={styles.member_card_background} source={require('../assets/background/bg.png')} />
+            <Image style={styles.member_card_background} source={require('../assets/images/background/bg.png')} />
             <View style={styles.member_card_container}>
-                <Image style={[styles.member_card]} source={require('../assets/member-card.png')} />
+                <Image style={[styles.member_card]} source={require('../assets/images/extras/member-card.png')} />
             </View>
         </View>
     )
@@ -121,7 +121,7 @@ export const HomeBody = (props) => {
                 <View style={styles.body_top}>
                     <View style={styles.body_top_left}>
                         <RoundButton_Image
-                            image_uri={require('../assets/icons/scooter-icon.png')}
+                            image_uri={require('../assets/images/icons/scooter-icon.png')}
                             bgColor={'#FEF7E5'}
                             iconStyle={styles.icon_image_large}
                             buttonStyle={styles.roundbutton_large}
@@ -131,7 +131,7 @@ export const HomeBody = (props) => {
                     <View style={{ height: 100, width: 0.5, backgroundColor: 'lightgray' }} />
                     <View style={styles.body_top_right}>
                         <RoundButton_Image
-                            image_uri={require('../assets/icons/shop-icon.png')}
+                            image_uri={require('../assets/images/icons/shop-icon.png')}
                             bgColor={'#FEF7E5'}
                             iconStyle={styles.icon_image_large}
                             buttonStyle={styles.roundbutton_large}
@@ -142,31 +142,31 @@ export const HomeBody = (props) => {
 
                 <ScrollView style={styles.body_bottom} horizontal >
                     <Image
-                        source={require('../assets/super-sale.png')}
+                        source={require('../assets/images/extras/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.png')}
+                        source={require('../assets/images/extras/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.png')}
+                        source={require('../assets/images/extras/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.png')}
+                        source={require('../assets/images/extras/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.png')}
+                        source={require('../assets/images/extras/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.png')}
+                        source={require('../assets/images/extras/super-sale.png')}
                         style={styles.image}
                     />
                     <Image
-                        source={require('../assets/super-sale.png')}
+                        source={require('../assets/images/extras/super-sale.png')}
                         style={styles.image}
                     />
                 </ScrollView>

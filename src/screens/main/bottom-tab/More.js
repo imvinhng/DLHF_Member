@@ -35,25 +35,25 @@ function More(props) {
 
                 <View style={styles.grid}>
                     <SquareButton_ImageIcon_Text
-                        image_uri={require('../../../assets/icons/checklist-icon.png')}
+                        image_uri={require('../../../assets/images/icons/checklist-icon.png')}
                         text={'Order History'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
                     />
                     <SquareButton_ImageIcon_Text
-                        image_uri={require('../../../assets/icons/piechart-icon.png')}
+                        image_uri={require('../../../assets/images/icons/piechart-icon.png')}
                         text={'Analytics'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
                     />
                     <SquareButton_ImageIcon_Text
-                        image_uri={require('../../../assets/icons/policy-icon.png')}
+                        image_uri={require('../../../assets/images/icons/policy-icon.png')}
                         text={'Member Policy'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
                     />
                     <SquareButton_ImageIcon_Text
-                        image_uri={require('../../../assets/icons/red-flower-icon.png')}
+                        image_uri={require('../../../assets/images/icons/red-flower-icon.png')}
                         text={'Flower Knowledge'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}

@@ -10,9 +10,9 @@ function Register_Complete(props) {
         <Modal visible={props.modalVisible}>
             <View style={styles.home}>
                 <View style={{ justifyContent: 'flex-start', alignItems: 'center', position: 'absolute' }}>
-                    <Image source={require('../../../assets/icons/Top_Orange_Ellipse.png')} />
-                    <Image style={{ position: 'absolute' }} source={require('../../../assets/icons/Party_Confettis.png')} />
-                    <Image source={require('../../../assets/icons/Party_Illustration.png')} />
+                    <Image source={require('../../../assets/images/icons/Top_Orange_Ellipse.png')} />
+                    <Image style={{ position: 'absolute' }} source={require('../../../assets/images/icons/Party_Confettis.png')} />
+                    <Image source={require('../../../assets/images/icons/Party_Illustration.png')} />
                 </View>
 
                 <View style={{ flex: 1, marginTop: 100, justifyContent: 'center' }}>

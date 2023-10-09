@@ -20,7 +20,7 @@ function Store(props) {
     const [modalVisible, setModalVisible] = useState(false);
     const [clicked, setClicked] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState('');
-    const [clickedID, setClickedID] = useState(0);
+    const [clickedID, setClickedID] = useState(1);
 
     const Item = ({ id, location, address }) => (
         <TouchableOpacity
@@ -30,7 +30,7 @@ function Store(props) {
                 setClickedID(id)
                 console.log(id)
             }}>
-            <Image style={styles.image} source={require('../../../assets/storefront.png')} />
+            <Image style={styles.image} source={require('../../../assets/images/extras/storefront.png')} />
 
             <View style={styles.column_wrapper_custom}>
                 <Text style={styles.text_smaller}>Dalat Hasfarm {location}</Text>
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontWeight: '600',
         marginTop: 5,
-        width: 250,
+        width: 260,
     },
     text_light: {
         fontSize: 13,

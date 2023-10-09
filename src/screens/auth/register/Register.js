@@ -36,7 +36,7 @@ function Register(props) {
         <View style={styles.background}>
             <Image
                 style={styles.image}
-                source={require('../../../assets/background/dutch-windmill.png')}
+                source={require('../../../assets/images/background/dutch-windmill.png')}
             />
             <RoundButton iconName='times' iconSize={15} buttonStyle={styles.close_btn} onPressFunction={() => navigation.navigate('Home')} />
             <ScrollView style={styles.body} contentContainerStyle={{ alignItems: 'center' }}>
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     },
     close_btn: {
         position: 'absolute',
-        left: Platform.OS == 'ios' ? 350 : 370,
+        left: Platform.OS == 'ios' ? 370 : 370,
         top: Platform.OS == 'ios' ? 45 : 15,
         height: 20,
         width: 20,

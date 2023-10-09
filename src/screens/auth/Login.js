@@ -28,12 +28,12 @@ function Login(props) {
         <View style={styles.background}>
             <Image
                 style={styles.image}
-                source={require('../../assets/background/dutch-windmill.png')}
+                source={require('../../assets/images/background/dutch-windmill.png')}
             />
             <RoundButton iconName='times' iconSize={15} buttonStyle={styles.close_btn} onPressFunction={() => navigation.navigate('Home')} />
             <ScrollView style={styles.body} contentContainerStyle={{ alignItems: 'center' }}>
                 <Text style={styles.title}>Welcome to</Text>
-                <Image source={require('../../assets/DLHF-logo.png')} />
+                <Image source={require('../../assets/images/extras/DLHF-logo.png')} />
 
                 <TextInput
                     style={[

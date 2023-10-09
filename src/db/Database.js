@@ -140,25 +140,25 @@ export const DATA_SPECIAL_OFFER = [
     {
         id: 1,
         msg: 'DISCOUNT 20,000D FOR ORDERS OVER 450,000D',
-        image_uri: require('../assets/vouchers/voucher1-large.png'),
+        image_uri: require('../assets/images/vouchers/voucher1-large.png'),
         exp_date: '20/9',
     },
     {
         id: 2,
         msg: 'DISCOUNT 50,000D FOR ORDERS OVER 950,000D',
-        image_uri: require('../assets/vouchers/voucher3-large.png'),
+        image_uri: require('../assets/images/vouchers/voucher3-large.png'),
         exp_date: '30/9',
     },
     {
         id: 3,
         msg: 'DISCOUNT 20,000D FOR ORDERS OVER 450,000D',
-        image_uri: require('../assets/vouchers/voucher2-large.png'),
+        image_uri: require('../assets/images/vouchers/voucher2-large.png'),
         exp_date: '20/9',
     },
     {
         id: 4,
         msg: 'DISCOUNT 50,000D FOR ORDERS OVER 950,000D',
-        image_uri: require('../assets/vouchers/voucher4-large.png'),
+        image_uri: require('../assets/images/vouchers/voucher4-large.png'),
         exp_date: '30/9',
     },
 
