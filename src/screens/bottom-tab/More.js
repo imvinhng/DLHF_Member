@@ -12,7 +12,6 @@ import { useNavigation } from '@react-navigation/native';
 import PersonalInfo from '../main/PersonalInfo';
 
 function More(props) {
-    const [modalPersonalInfoVisible, setModalPersonalInfoVisible] = useState(false);
     const navigation = useNavigation();
 
 
@@ -39,12 +38,14 @@ function More(props) {
                         text={'Order History'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
+                        onPressFunction={() => navigation.navigate('Main', { screen: 'OrderHistory' })}
                     />
                     <SquareButton_ImageIcon_Text
                         image_uri={require('../../assets/images/icons/piechart-icon.png')}
                         text={'Analytics'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
+                        onPressFunction={() => navigation.navigate('Main', { screen: 'Analytics' })}
                     />
                     <SquareButton_ImageIcon_Text
                         image_uri={require('../../assets/images/icons/policy-icon.png')}
@@ -130,11 +131,6 @@ function More(props) {
                 />
 
             </View>
-
-            <PersonalInfo
-                modalVisible={modalPersonalInfoVisible}
-                setModalVisible={setModalPersonalInfoVisible}
-            />
 
         </ScrollView>
     );

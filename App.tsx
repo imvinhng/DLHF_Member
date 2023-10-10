@@ -18,6 +18,8 @@ import More from './src/screens/bottom-tab/More';
 import Login from './src/screens/auth/Login';
 import Register from './src/screens/auth/register/Register';
 import PersonalInfo from './src/screens/main/PersonalInfo';
+import OrderHistory from './src/screens/main/OrderHistory';
+import Analytics from './src/screens/main/Analytics';
 import Register_PasswordSet from './src/screens/auth/register/Register_PasswordSet';
 import Register_PersonalInfo from './src/screens/auth/register/Register_PersonalInfo';
 import Register_Address from './src/screens/auth/register/Register_Address';
@@ -43,10 +45,17 @@ function Main(): JSX.Element {
         component={PersonalInfo}
       />
       <Stack.Screen
+        name='OrderHistory'
+        component={OrderHistory}
+      />
+      <Stack.Screen
+        name='Analytics'
+        component={Analytics}
+      />
+      <Stack.Screen
         name='Map'
         component={Map}
       />
-
     </Stack.Navigator>
   )
 }
