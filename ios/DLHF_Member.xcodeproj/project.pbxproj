@@ -11,6 +11,8 @@
 		1125DA12A9674EF2B0887C8A /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D80E856D45524C7DA98FD819 /* Oswald-Light.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1F62BC952AD4F6A700E39C44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		1F62BC962AD4F6B300E39C44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		1FBF95AB2ACD268A00BFCAF7 /* DancingScript-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 770B15F81DC343D4A579EC0F /* DancingScript-Bold.ttf */; };
 		1FBF95AC2ACD268A00BFCAF7 /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1297FD5F630478588A7307A /* DancingScript-Medium.ttf */; };
 		1FBF95AD2ACD268A00BFCAF7 /* DancingScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39499A3B0E8E4B11915D8410 /* DancingScript-Regular.ttf */; };
@@ -332,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD692AD756FE42038B87AF5E /* DancingScript-Bold.ttf in Resources */,
+				1F62BC962AD4F6B300E39C44 /* Images.xcassets in Resources */,
 				F712AD66805740878CFAE5A1 /* DancingScript-Medium.ttf in Resources */,
 				6582FA70F7D94AE8A325066F /* DancingScript-Regular.ttf in Resources */,
 				AE29F8206C6B4FD8BA1EC4AF /* DancingScript-SemiBold.ttf in Resources */,
@@ -361,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FBF95AB2ACD268A00BFCAF7 /* DancingScript-Bold.ttf in Resources */,
+				1F62BC952AD4F6A700E39C44 /* Images.xcassets in Resources */,
 				1FBF95AC2ACD268A00BFCAF7 /* DancingScript-Medium.ttf in Resources */,
 				1FBF95AD2ACD268A00BFCAF7 /* DancingScript-Regular.ttf in Resources */,
 				1FBF95AE2ACD268A00BFCAF7 /* DancingScript-SemiBold.ttf in Resources */,
