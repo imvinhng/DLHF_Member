@@ -2,6 +2,7 @@ import { StyleSheet, View, Text, Image, Modal, TouchableOpacity, Platform } from
 import { PromotionButton, NotificationButton, RoundButton } from '../../utils/CustomButton';
 import { LongButton_Icon } from '../../utils/CustomButton';
 import { DATA } from '../../db/Database';
+import { WAREHOUSE_REPORT } from '../../db/ttp_report_warehouse';
 
 import React from 'react';
 function Shop_Detail(props) {
@@ -30,15 +31,15 @@ function Shop_Detail(props) {
                         onPressFunction={() => props.setModalVisible(!props.modalVisible)}
                     />
 
-                    <Text style={styles.location}>Dalat Hasfarm {DATA[id].location}</Text>
-                    <Text style={styles.address}>{DATA[id].address}</Text>
-                    <Text style={styles.hours}>Operation Hours: {DATA[id].hours}</Text>
+                    <Text style={styles.location}>Dalat Hasfarm {WAREHOUSE_REPORT[id].Title}</Text>
+                    <Text style={styles.address}>{WAREHOUSE_REPORT[id].Address}</Text>
+                    <Text style={styles.hours}>Operation Hours: {WAREHOUSE_REPORT[id].Open}</Text>
 
                     <View style={styles.center_wrapper_custom}>
                         <LongButton_Icon
                             iconName='location-arrow'
                             iconSize={15}
-                            text={DATA[id].full_address}
+                            text={WAREHOUSE_REPORT[id].Address}
                             buttonStyle={styles.longbutton}
                             textStyle={styles.text_button}
                         />
@@ -132,9 +133,10 @@ const styles = StyleSheet.create({
         fontSize: 13,
     },
     longbutton: {
-        height: 43,
+        height: 'auto',
         width: 250,
-        marginBottom: Platform.OS == 'ios' ? 0 : 15,
+        marginVertical: 12,
+        // marginBottom: Platform.OS == 'ios' ? 0 : 15,
         alignItems: 'center',
         // backgroundColor: 'yellow'
     },

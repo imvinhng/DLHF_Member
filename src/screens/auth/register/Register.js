@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Image, View, Text, TextInput, ScrollView, Alert } from 'react-native';
+import { StyleSheet, Image, View, Text, TextInput, ScrollView, Alert, Dimensions } from 'react-native';
 import { LoginButton, LongButton, LongButton_Icon, RoundButton } from '../../../utils/CustomButton';
 import { OTP_Register } from '../OTP';
 import { useNavigation } from '@react-navigation/native';
@@ -71,6 +71,8 @@ function Register(props) {
 
 export default Register;
 
+const { width: screenWidth } = Dimensions.get('screen');
+
 const styles = StyleSheet.create({
     background: {
         flex: 1,
@@ -126,7 +128,7 @@ const styles = StyleSheet.create({
     },
     close_btn: {
         position: 'absolute',
-        left: Platform.OS == 'ios' ? 370 : 370,
+        left: screenWidth - 40,
         top: Platform.OS == 'ios' ? 45 : 15,
         height: 20,
         width: 20,

@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { LongButton_Icon, PromotionButton, NotificationButton } from '../../utils/CustomButton';
 import MapView, { Marker } from 'react-native-maps';
 import { DATA } from '../../db/Database';
+import { WAREHOUSE_REPORT } from '../../db/ttp_report_warehouse';
 import SearchBar from '../../utils/SearchBar';
 
 export default function Map({ route, navigation }) {
@@ -56,12 +57,12 @@ export default function Map({ route, navigation }) {
                     zoomEnabled
                     minZoomLevel={0}
                 >
-                    {DATA.map((item, index) =>
+                    {WAREHOUSE_REPORT.map((item, index) =>
                         <Marker
-                            coordinate={{ latitude: item.lat, longitude: item.long }}
-                            pinColor={"purple"} // any color
-                            title={item.location}
-                            description={item.address}
+                            coordinate={{ latitude: item.Lat, longitude: item.Long }}
+                            pinColor={item.Color} // any color
+                            title={item.Title}
+                            description={item.Address}
                             key={index}
                         />)}
                 </MapView>
