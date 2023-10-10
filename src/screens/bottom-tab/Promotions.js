@@ -51,7 +51,7 @@ const Item = ({ description, expiration_date, image_uri }) => {
                 dashGap={3}
                 dashColor={'#ccc'}
                 dashThickness={4}
-                dashStyle={{ borderRadius: 100, overflow: 'hidden' }}
+                dashStyle={{ borderRadius: 100 }}
             />
             <Dash
                 style={styles.vertical_dashed_line_inner}
@@ -59,7 +59,7 @@ const Item = ({ description, expiration_date, image_uri }) => {
                 dashColor={'#f0f0f0'}
                 dashThickness={3}
                 dashLength={2}
-                dashStyle={{ borderRadius: 100, overflow: 'hidden' }}
+                dashStyle={{ borderRadius: 100 }}
             />
 
             <View style={styles.column_wrapper_custom}>
