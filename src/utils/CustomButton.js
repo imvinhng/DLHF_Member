@@ -88,7 +88,7 @@ export const NotificationButton = (props) => {
                 { backgroundColor: pressed ? '#ddd' : '#fff' },
                 props.style,
             ]}
-            onPress={() => navigation.navigate('Notification')}
+            onPress={() => navigation.navigate('Main', { screen: 'Notification' })}
         >
             <FontAwesome5 name={'bell'} size={25} />
         </Pressable>

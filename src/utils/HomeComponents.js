@@ -230,6 +230,7 @@ const styles = StyleSheet.create({
     top_header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        marginBottom: 10,
     },
     bottom_header: {
         justifyContent: 'center',
@@ -303,7 +304,6 @@ const styles = StyleSheet.create({
     member_card: {
         margin: -5,
         marginTop: -35,
-        width: 405,
     },
     member_card_container: {
         margin: 10,
