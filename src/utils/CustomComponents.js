@@ -27,6 +27,12 @@ export const GrayLine_Full = () => {
     )
 }
 
+export const GrayLine_Full_Thick = () => {
+    return (
+        <View style={{ width: '100%', height: 3, backgroundColor: 'lightgray' }} />
+    )
+}
+
 export const Triangle = (props) => {
     return (
         <View style={[styles.triangle, props.style]} />

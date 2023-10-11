@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, ScrollView } from 'react-native';
 import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
-import PersonalInfo from '../main/PersonalInfo';
+import GlobalStyle from '../../assets/style/GlobalStyle';
 
 function More(props) {
     const navigation = useNavigation();
@@ -68,7 +68,7 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Order Review'}
-                    buttonStyle={styles.longbutton_icon}
+                    buttonStyle={[styles.longbutton_icon, GlobalStyle.box_shadow]}
                     textStyle={styles.text_longbutton_icon}
                     iconStyle={styles.icon_longbutton}
                 />
@@ -78,7 +78,7 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Contact Us'}
-                    buttonStyle={styles.longbutton_icon}
+                    buttonStyle={[styles.longbutton_icon, GlobalStyle.box_shadow]}
                     textStyle={styles.text_longbutton_icon}
                     iconStyle={styles.icon_longbutton}
                 />
@@ -90,7 +90,7 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Personal Information'}
-                    buttonStyle={styles.longbutton_icon}
+                    buttonStyle={[styles.longbutton_icon, GlobalStyle.box_shadow]}
                     textStyle={styles.text_longbutton_icon}
                     iconStyle={styles.icon_longbutton}
                     onPressFunction={() => navigation.navigate('Main', { screen: 'PersonalInfo' })}
@@ -101,7 +101,7 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Saved Address'}
-                    buttonStyle={styles.longbutton_icon}
+                    buttonStyle={[styles.longbutton_icon, GlobalStyle.box_shadow]}
                     textStyle={styles.text_longbutton_icon}
                     iconStyle={styles.icon_longbutton}
                 />
@@ -111,7 +111,7 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Settings'}
-                    buttonStyle={styles.longbutton_icon}
+                    buttonStyle={[styles.longbutton_icon, GlobalStyle.box_shadow]}
                     textStyle={styles.text_longbutton_icon}
                     iconStyle={styles.icon_longbutton}
                 />
@@ -121,7 +121,7 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Logout'}
-                    buttonStyle={styles.longbutton_icon}
+                    buttonStyle={[styles.longbutton_icon, GlobalStyle.box_shadow]}
                     textStyle={styles.text_longbutton_icon}
                     iconStyle={styles.icon_longbutton}
                     onPressFunction={() =>
@@ -232,10 +232,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'lightgray',
 
-        shadowColor: '#000',
-        shadowOffset: { width: 5, height: 5 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
     },
     text_longbutton_icon: {
         fontSize: 16,

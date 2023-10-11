@@ -158,7 +158,7 @@ export const LongButton = (props) => {
             onPress={props.onPressFunction}
             onFocus={props.onFocusFunction}
         >
-            <Text style={[styles.text_long_button, props.textStyle]}>
+            <Text style={[styles.text_long_button, props.textStyle, { color: props.textColor }]}>
                 {props.text}
             </Text>
         </Pressable>

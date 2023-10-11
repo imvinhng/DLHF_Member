@@ -163,3 +163,82 @@ export const DATA_SPECIAL_OFFER = [
     },
 
 ];
+
+export const DATA_VOUCHERS = [
+    {
+        id: 1,
+        description: '40% Discount for the first order over 500K',
+        expiration_date: '24/10/2023',
+        image_uri: require('../assets/images/vouchers/voucher1.png'),
+    },
+    {
+        id: 2,
+        description: '40% Discount for the first order over 500K',
+        expiration_date: '24/10/2023',
+        image_uri: require('../assets/images/vouchers/voucher2.png'),
+    },
+    {
+        id: 3,
+        description: '40% Discount for the first order over 500K',
+        expiration_date: '24/10/2023',
+        image_uri: require('../assets/images/vouchers/voucher3.png'),
+    },
+    {
+        id: 4,
+        description: '40% Discount for the first order over 500K',
+        expiration_date: '24/10/2023',
+        image_uri: require('../assets/images/vouchers/voucher4.png'),
+    },
+];
+
+export const DATA_ORDER_HISTORY = [
+    {
+        id: 1,
+        store: 'Nguyễn Thái Học Q.1',
+        delivery_date: new Date(2023, 8, 29),
+        order_id: 'POS-NT23-0030-002',
+        amount: '273.602'
+    },
+    {
+        id: 2,
+        store: 'Nơ Trang Long Q.BT',
+        delivery_date: new Date(2023, 7, 13),
+        order_id: 'POS-NT23-002180',
+        amount: '551.000'
+    },
+    {
+        id: 3,
+        store: 'Nguyễn Thái Học Q.1',
+        delivery_date: new Date(2023, 6, 21),
+        order_id: 'POS-NT23-0030-003643',
+        amount: '247.950'
+    },
+    {
+        id: 4,
+        store: 'Nguyễn Thái Học Q.1',
+        delivery_date: new Date(2023, 8, 29),
+        order_id: 'POS-NT23-0030-002',
+        amount: '273.602'
+    },
+    {
+        id: 5,
+        store: 'Nguyễn Thái Học Q.1',
+        delivery_date: new Date(2023, 8, 29),
+        order_id: 'POS-NT23-0030-002',
+        amount: '273.602'
+    },
+    {
+        id: 6,
+        store: 'Nguyễn Thái Học Q.1',
+        delivery_date: new Date(2023, 8, 29),
+        order_id: 'POS-NT23-0030-002',
+        amount: '273.602'
+    },
+    {
+        id: 7,
+        store: 'Nguyễn Thái Học Q.1',
+        delivery_date: new Date(2023, 8, 29),
+        order_id: 'POS-NT23-0030-002',
+        amount: '273.602'
+    },
+]

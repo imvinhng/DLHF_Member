@@ -11,34 +11,11 @@ import { RoundButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import Dash from 'react-native-dash';
 import LinearGradient from 'react-native-linear-gradient';
+import { DATA_VOUCHERS } from '../../db/Database';
 
 
-const DATA = [
-    {
-        id: 1,
-        description: '40% Discount for the first order over 500K',
-        expiration_date: '24/10/2023',
-        image_uri: require('../../assets/images/vouchers/voucher1.png'),
-    },
-    {
-        id: 2,
-        description: '40% Discount for the first order over 500K',
-        expiration_date: '24/10/2023',
-        image_uri: require('../../assets/images/vouchers/voucher2.png'),
-    },
-    {
-        id: 3,
-        description: '40% Discount for the first order over 500K',
-        expiration_date: '24/10/2023',
-        image_uri: require('../../assets/images/vouchers/voucher3.png'),
-    },
-    {
-        id: 4,
-        description: '40% Discount for the first order over 500K',
-        expiration_date: '24/10/2023',
-        image_uri: require('../../assets/images/vouchers/voucher4.png'),
-    },
-];
+
+
 
 const Item = ({ description, expiration_date, image_uri }) => {
     return (
@@ -49,16 +26,8 @@ const Item = ({ description, expiration_date, image_uri }) => {
             <Dash
                 style={styles.vertical_dashed_line}
                 dashGap={3}
-                dashColor={'#ccc'}
+                dashColor={'#efefef'}
                 dashThickness={4}
-                dashStyle={{ borderRadius: 100 }}
-            />
-            <Dash
-                style={styles.vertical_dashed_line_inner}
-                dashGap={4}
-                dashColor={'#f0f0f0'}
-                dashThickness={3}
-                dashLength={2}
                 dashStyle={{ borderRadius: 100 }}
             />
 
@@ -92,7 +61,7 @@ function Promotions(props) {
                 <Text style={styles.subtitle}>Ready-to-use</Text>
 
                 <FlatList
-                    data={DATA}
+                    data={DATA_VOUCHERS}
                     renderItem={({ item }) =>
                         <Item
                             description={item.description}

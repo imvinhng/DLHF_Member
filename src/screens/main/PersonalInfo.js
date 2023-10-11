@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button } from 'react-native';
+import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button, Dimensions } from 'react-native';
 import { RoundButton } from '../../utils/CustomButton';
 import { dataCity, dataWard, dataDistrict, dataGender } from '../../db/Database';
 import { BlackLine } from '../../utils/CustomComponents';
@@ -7,6 +7,7 @@ import PasswordChange from '../auth/PasswordChange';
 import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
 import { useNavigation } from '@react-navigation/native';
+import { darkorange, white } from '../../assets/style/Colors';
 
 
 function PersonalInfo(props) {
@@ -19,12 +20,12 @@ function PersonalInfo(props) {
 
     const [showAdditionalAddress, setShowAdditionalAddress] = useState(false);
     const [editAddressIcon, setEditAddressIcon] = useState('pen');
-    const [editAddressIconColor, setEditAddressIconColor] = useState('#F58831');
+    const [editAddressIconColor, setEditAddressIconColor] = useState(darkorange);
     const [editAddressBtnColor, setEditAddressBtnColor] = useState('#fff')
 
     const [editableEmailInput, setEditableEmailInput] = useState(false);
     const [editEmailIcon, setEditEmailIcon] = useState('pen');
-    const [editEmailIconColor, setEditEmailIconColor] = useState('#F58831');
+    const [editEmailIconColor, setEditEmailIconColor] = useState(darkorange);
     const [editEmailBtnColor, setEditEmailBtnColor] = useState('#fff')
 
     const [addressIsFocus, setAddressIsFocus] = useState(false);
@@ -51,11 +52,11 @@ function PersonalInfo(props) {
             setShowAdditionalAddress(true)
             setEditAddressIcon('check')
             setEditAddressIconColor('#fff')
-            setEditAddressBtnColor('#F58831')
+            setEditAddressBtnColor(darkorange)
         } else {
             setShowAdditionalAddress(false)
             setEditAddressIcon('pen')
-            setEditAddressIconColor('#F58831')
+            setEditAddressIconColor(darkorange)
             setEditAddressBtnColor('#fff')
 
             setValueCity(valueCity)
@@ -67,8 +68,8 @@ function PersonalInfo(props) {
 
     const editEmail = async () => {
         setEditEmailIcon(!editableEmailInput ? 'check' : 'pen')
-        setEditEmailIconColor(!editableEmailInput ? '#fff' : '#F58831')
-        setEditEmailBtnColor(!editableEmailInput ? '#F58831' : '#fff')
+        setEditEmailIconColor(!editableEmailInput ? '#fff' : darkorange)
+        setEditEmailBtnColor(!editableEmailInput ? darkorange : '#fff')
         setEditableEmailInput(!editableEmailInput)
     }
 
@@ -83,7 +84,13 @@ function PersonalInfo(props) {
     return (
         <View style={styles.home}>
             <View style={styles.header}>
-                <RoundButton iconName='times' iconSize={15} bgColor='#F58831' buttonStyle={styles.close_btn} onPressFunction={() => navigation.navigate('BottomTab', { screen: 'More' })} />
+                <RoundButton
+                    iconName='times'
+                    iconSize={15}
+                    bgColor={darkorange}
+                    buttonStyle={styles.close_btn}
+                    onPressFunction={() => navigation.navigate('BottomTab', { screen: 'More' })}
+                />
                 <View style={styles.row_wrapper}>
                     <RoundButton iconName='user' iconSize={40} bgColor='lightgray' buttonStyle={styles.icon_user} />
                     <RoundButton iconName='pen' iconSize={10} iconColor='#fff' bgColor='#000' buttonStyle={styles.profile_edit} />
@@ -203,7 +210,7 @@ function PersonalInfo(props) {
                 <Text style={styles.title}>Password</Text>
                 <View style={styles.row_wrapper}>
                     <TextInput style={styles.input} value={valuePassword} secureTextEntry={!showPassword} editable={false} />
-                    <RoundButton iconName='pen' iconSize={10} iconColor='#F58831' bgColor='#fff' buttonStyle={styles.icon_edit} onPressFunction={() => setModalPWChangeVisible(true)} />
+                    <RoundButton iconName='pen' iconSize={10} iconColor={darkorange} bgColor='#fff' buttonStyle={styles.icon_edit} onPressFunction={() => setModalPWChangeVisible(true)} />
                 </View>
                 <BlackLine />
 
@@ -287,6 +294,8 @@ function PersonalInfo(props) {
 
 export default PersonalInfo;
 
+const { width: ScreenWidth } = Dimensions.get('screen');
+
 const styles = StyleSheet.create({
     home: {
         flex: 1,
@@ -297,7 +306,7 @@ const styles = StyleSheet.create({
     header: {
         height: Platform.OS == 'ios' ? '30%' : '28%',
         width: '100%',
-        backgroundColor: '#F58831',
+        backgroundColor: darkorange,
         paddingTop: Platform.OS == 'ios' ? 50 : 20,
         justifyContent: 'center',
 
@@ -334,7 +343,7 @@ const styles = StyleSheet.create({
     },
     close_btn: {
         position: 'absolute',
-        left: Platform.OS == 'ios' ? 370 : 370,
+        left: ScreenWidth - 40,
         top: Platform.OS == 'ios' ? 45 : 15,
         height: 20,
         width: 20,

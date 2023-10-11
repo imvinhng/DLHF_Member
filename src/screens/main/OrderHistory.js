@@ -6,17 +6,51 @@
  */
 
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Dimensions, ScrollView } from 'react-native';
-import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton } from '../../utils/CustomButton';
+import { StyleSheet, Text, View, Dimensions, ScrollView, FlatList } from 'react-native';
+import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton, LongButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import PersonalInfo from '../main/PersonalInfo';
+import GlobalStyle from '../../assets/style/GlobalStyle';
+import { darkorange, white, backgroundGray } from '../../assets/style/Colors';
+import { GrayLine_Full, GrayLine_Full_Thick } from '../../utils/CustomComponents';
+import { DATA_ORDER_HISTORY } from '../../db/Database';
+import DatePicker from 'react-native-date-picker';
+
+const Item = ({ store, delivery_date, order_id, amount }) => {
+    return (
+        <View>
+            <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginVertical: 10 }]}>
+                <Text style={styles.item}>{store}</Text>
+                <Text style={styles.item}>{delivery_date}</Text>
+                <Text style={styles.item}>{order_id}</Text>
+                <Text style={styles.item}>{amount}</Text>
+            </View>
+            <GrayLine_Full />
+        </View>
+    )
+}
 
 function OrderHistory(props) {
     const navigation = useNavigation();
 
+    const today = new Date();
+    const lastYear = today.getFullYear() - 1;
+    const thisMonth = today.getMonth();
+    const thisDay = today.getDate();
+
+    const [valueStartDate, setValueStartDate] = useState(new Date(lastYear, thisMonth, thisDay));
+    const [valueEndDate, setValueEndDate] = useState(today);
+    const [openStartDate, setOpenStartDate] = useState(false);
+    const [openEndDate, setOpenEndDate] = useState(false);
+
+    const [data, setData] = useState(DATA_ORDER_HISTORY);
+
+    function filterItems() {
+        setData(DATA_ORDER_HISTORY.filter(item => item.delivery_date >= valueStartDate && item.delivery_date <= valueEndDate))
+    }
 
     return (
-        <ScrollView style={styles.home}>
+        <View style={styles.home}>
 
             <View style={styles.header}>
                 <View style={styles.sub_header_left}>
@@ -30,30 +64,122 @@ function OrderHistory(props) {
             </View>
 
             <View style={styles.body}>
-                <Text>40/10/2022</Text>
-                <Text>40/10/2023</Text>
-                <Text>Attention: You can view your Order History within 1 year from today</Text>
-                <Text>Search</Text>
+                <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginTop: 15 }]}>
+                    <LongButton_Icon
+                        text={valueStartDate.toLocaleDateString('vi')}
+                        iconSize={18}
+                        iconName={'calendar'}
+                        buttonColor={white}
+                        buttonStyle={[styles.calendar_btn, GlobalStyle.box_shadow]}
+                        iconStyle={styles.calendar_btn_icon}
+                        textStyle={{ marginLeft: -20 }}
+                        onPressFunction={() => setOpenStartDate(!openStartDate)}
+                    />
+                    <DatePicker
+                        modal
+                        locale={'vi'}
+                        mode={'date'}
+                        title={'Select your start date'}
+                        open={openStartDate}
+                        date={valueStartDate}
+                        minimumDate={new Date(lastYear, thisMonth, thisDay)}
+                        maximumDate={today}
+                        onConfirm={(date) => {
+                            setOpenStartDate(false)
+                            setValueStartDate(date)
+                        }}
+                        onCancel={() => {
+                            setOpenStartDate(false)
+                        }}
+                    />
+
+                    <LongButton_Icon
+                        text={valueEndDate.toLocaleDateString('vi')}
+                        iconSize={18}
+                        iconName={'calendar'}
+                        buttonColor={white}
+                        buttonStyle={[styles.calendar_btn, GlobalStyle.box_shadow]}
+                        iconStyle={styles.calendar_btn_icon}
+                        textStyle={{ marginLeft: -20 }}
+                        onPressFunction={() => setOpenEndDate(!openEndDate)}
+                    />
+                    <DatePicker
+                        modal
+                        locale={'vi'}
+                        mode={'date'}
+                        title={'Select your end date'}
+                        open={openEndDate}
+                        date={valueEndDate}
+                        minimumDate={new Date(lastYear, thisMonth, thisDay)}
+                        maximumDate={today}
+                        onConfirm={(date) => {
+                            setOpenEndDate(false)
+                            setValueEndDate(date)
+                        }}
+                        onCancel={() => {
+                            setOpenEndDate(false)
+                        }}
+                    />
+                </View>
+
+                <Text style={{ margin: 12 }}>Attention: You can view your transaction history up to 1 year from today</Text>
+                <LongButton
+                    text={'Search'}
+                    buttonColor={darkorange}
+                    textColor={white}
+                    buttonStyle={styles.search_btn}
+                    textStyle={{ fontWeight: '400' }}
+                    onPressFunction={filterItems}
+                />
 
                 {/* Insert chart */}
+                <View style={GlobalStyle.column_wrapper}>
+                    {/* header */}
+                    <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginVertical: 10 }]}>
+                        <Text style={styles.heading}>Store</Text>
+                        <Text style={styles.heading}>Delivery Date</Text>
+                        <Text style={styles.heading}>Order ID</Text>
+                        <Text style={styles.heading}>Amount</Text>
+                    </View>
+                    <GrayLine_Full_Thick />
+
+                    <FlatList
+                        data={data}
+                        keyExtractor={item => item.id}
+                        renderItem={({ item }) => {
+                            // console.log('Is delivery date between the timeframe: ', item.delivery_date >= valueStartDate && item.delivery_date <= valueEndDate)
+
+                            return <Item
+                                store={item.store}
+                                delivery_date={item.delivery_date.toLocaleDateString('vi')}
+                                order_id={item.order_id}
+                                amount={item.amount}
+                            />
+
+                        }}
+                    />
+
+                </View>
 
             </View>
 
-        </ScrollView>
+        </View>
     );
 }
 
 export default OrderHistory;
 
-const { width } = Dimensions.get('screen')
+const { width: ScreenWidth } = Dimensions.get('screen');
+const calendarBtnWidth = (ScreenWidth / 2) - 20;
+const headingWidth = (ScreenWidth / 4) - 10;
 
 const styles = StyleSheet.create({
     home: {
         flex: 1,
-        // backgroundColor: '#fff'
+        // backgroundColor: white
     },
     body: {
-        backgroundColor: '#efefef',
+        backgroundColor: backgroundGray,
         flex: 1,
         height: '100%',
     },
@@ -68,41 +194,23 @@ const styles = StyleSheet.create({
         marginLeft: '5%',
         marginBottom: 10,
     },
-    text_above: {
-        fontSize: 16,
+    heading: {
+        fontSize: 15,
         fontWeight: '500',
-    },
-    text_below: {
-        fontSize: 13,
-        fontWeight: '500',
-        marginTop: 22,
-    },
-    image: {
-        height: 80,
-        width: 80,
-        borderRadius: 10,
-        margin: -10,
+        width: headingWidth,
+        // backgroundColor: 'yellow',
     },
     item: {
-        backgroundColor: '#f8f8f6',
-        padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
-        height: 100,
-        flexDirection: 'row',
-        borderRadius: 10,
-    },
-    column_wrapper_custom: {
-        flexDirection: 'column',
+        fontSize: 15,
+        fontWeight: '300',
+        width: headingWidth,
+        paddingRight: 5,
         // backgroundColor: 'red',
-        width: 280,
-        marginLeft: 20,
-        marginTop: -5,
     },
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#fff',
+        backgroundColor: white,
         paddingTop: Platform.OS == 'ios' ? 56 : 10,
         paddingBottom: 10,
     },
@@ -115,45 +223,20 @@ const styles = StyleSheet.create({
     sub_header_right: {
         flexDirection: 'row',
     },
-    grid: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        margin: 5,
-    },
-    image_grid: {
-        height: 100,
-        width: ((width - 50) / 2),
-        borderRadius: 10,
-        margin: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: 10,
-    },
-    longbutton_icon: {
-        marginLeft: 20,
-        margin: 0,
-        height: 50,
-        width: '90%',
-        alignItems: 'center',
-        paddingLeft: 10,
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: 'lightgray',
 
-        shadowColor: '#000',
-        shadowOffset: { width: 5, height: 5 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-    },
-    text_longbutton_icon: {
-        fontSize: 16,
-        fontWeight: '600',
-        marginLeft: 5,
-    },
-    icon_longbutton: {
-        width: 30,
-        height: 30,
+    calendar_btn: {
         justifyContent: 'center',
         alignItems: 'center',
+        width: calendarBtnWidth,
+        elevation: 10,
+        borderWidth: 0.5,
+    },
+    calendar_btn_icon: {
+        position: 'absolute',
+        left: calendarBtnWidth - 30,
+    },
+    search_btn: {
+        width: ScreenWidth - 20,  // 10 margin each side
+        justifyContent: 'center',
     }
 });
