@@ -10,17 +10,9 @@ import { SafeAreaView, StyleSheet, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from './src/screens/bottom-tab/Home';
-import Orders from './src/screens/bottom-tab/Orders';
-import Store from './src/screens/bottom-tab/Store';
-import Promotions from './src/screens/bottom-tab/Promotions';
-import More from './src/screens/bottom-tab/More';
+import Main from './src/navigation/Main';
 import Login from './src/screens/auth/Login';
 import Register from './src/screens/auth/register/Register';
-import PersonalInfo from './src/screens/main/PersonalInfo';
-import OrderHistory from './src/screens/main/OrderHistory';
-import OrderDetail from './src/screens/main/OrderDetail';
-import Analytics from './src/screens/main/Analytics';
 import Register_PasswordSet from './src/screens/auth/register/Register_PasswordSet';
 import Register_PersonalInfo from './src/screens/auth/register/Register_PersonalInfo';
 import Register_Address from './src/screens/auth/register/Register_Address';
@@ -34,90 +26,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-function Main(): JSX.Element {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen
-        name='Notification'
-        component={Notification}
-      />
-      <Stack.Screen
-        name='PersonalInfo'
-        component={PersonalInfo}
-      />
-      <Stack.Screen
-        name='OrderHistory'
-        component={OrderHistory}
-      />
-      <Stack.Screen
-        name='OrderDetail'
-        component={OrderDetail}
-      />
-      <Stack.Screen
-        name='Analytics'
-        component={Analytics}
-      />
-      <Stack.Screen
-        name='Map'
-        component={Map}
-      />
-    </Stack.Navigator>
-  )
-}
 
-function BottomTab(): JSX.Element {
-  return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, size, color }) => {
-          let iconName = '';
-          size = focused ? 25 : 20;
-          if (route.name === 'Home') {
-            iconName = 'home';
-          } else if (route.name === 'Orders') {
-            iconName = 'shopping-cart';
-          } else if (route.name === 'Store') {
-            iconName = 'map-marker-alt';
-          } else if (route.name === 'Promotions') {
-            iconName = 'gift';
-          } else if (route.name === 'More') {
-            iconName = 'bars';
-          }
-          return (
-            <FontAwesome5 name={iconName} size={size} color={color} />
-          )
-        },
-        tabBarActiveTintColor: '#eb9f1c',
-        tabBarInactiveTintColor: '#555',
-        tabBarActiveBackgroundColor: '#fff',
-        tabBarInactiveBackgroundColor: '#fff',
-        tabBarShowLabel: true,
-        fontSize: 14,
-        headerShown: false,
-      })}>
-      <Tab.Screen
-        name="Home"
-        component={Home}
-      />
-      <Tab.Screen
-        name="Orders"
-        component={Orders}
-      />
-      <Tab.Screen
-        name="Store"
-        component={Store}
-      />
-
-      <Tab.Screen
-        name="Promotions"
-        component={Promotions}
-      />
-      <Tab.Screen
-        name="More"
-        component={More}
-      />
-    </Tab.Navigator>)
-}
 
 function Auth(): JSX.Element {
   return (
@@ -167,7 +76,7 @@ function App(): JSX.Element {
   return (
     <NavigationContainer >
       <Stack.Navigator initialRouteName='BottomTab' screenOptions={{ headerShown: false }}>
-        {/* Main: Map, PersonalInfo, Notification, ...*/}
+        {/* Main: BottomTab, Map, PersonalInfo, Notification, ...*/}
         <Stack.Screen
           name='Main'
           component={Main}
@@ -177,12 +86,6 @@ function App(): JSX.Element {
         <Stack.Screen
           name='Auth'
           component={Auth}
-        />
-
-        {/* BottomTab: Home, Orders, Store, Promotions, More */}
-        <Stack.Screen
-          name='BottomTab'
-          component={BottomTab}
         />
 
 

@@ -1,0 +1,71 @@
+import React from 'react';
+import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { lightorange, white } from '../assets/style/Colors';
+
+import HomeTab from './main/Home';
+import OrdersTab from './main/Orders';
+import StoreTab from './main/Store';
+import PromotionsTab from './main/Promotions';
+import MoreTab from './main/More';
+
+const Tab = createBottomTabNavigator();
+
+function Main(): JSX.Element {
+    return (
+        <Tab.Navigator
+            screenOptions={({ route }) => ({
+                tabBarIcon: ({ focused, size, color }) => {
+                    let iconName = '';
+                    size = focused ? 25 : 20;
+                    if (route.name === 'Home') {
+                        iconName = 'home';
+                    } else if (route.name === 'Orders') {
+                        iconName = 'shopping-cart';
+                    } else if (route.name === 'Store') {
+                        iconName = 'map-marker-alt';
+                    } else if (route.name === 'Promotions') {
+                        iconName = 'gift';
+                    } else if (route.name === 'More') {
+                        iconName = 'bars';
+                    }
+                    return (
+                        <FontAwesome5 name={iconName} size={size} color={color} />
+                    )
+                },
+                tabBarActiveTintColor: lightorange,
+                tabBarInactiveTintColor: '#555',
+                tabBarActiveBackgroundColor: white,
+                tabBarInactiveBackgroundColor: white,
+                tabBarShowLabel: true,
+                fontSize: 14,
+                headerShown: false,
+            })}>
+            <Tab.Screen
+                name="Home"
+                component={HomeTab}
+            />
+            <Tab.Screen
+                name="Orders"
+                component={OrdersTab}
+            />
+            <Tab.Screen
+                name="Store"
+                component={StoreTab}
+            />
+
+            <Tab.Screen
+                name="Promotions"
+                component={PromotionsTab}
+            />
+            <Tab.Screen
+                name="More"
+                component={MoreTab}
+            />
+        </Tab.Navigator>)
+}
+
+export default Main; 
