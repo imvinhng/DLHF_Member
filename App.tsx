@@ -19,6 +19,7 @@ import Login from './src/screens/auth/Login';
 import Register from './src/screens/auth/register/Register';
 import PersonalInfo from './src/screens/main/PersonalInfo';
 import OrderHistory from './src/screens/main/OrderHistory';
+import OrderDetail from './src/screens/main/OrderDetail';
 import Analytics from './src/screens/main/Analytics';
 import Register_PasswordSet from './src/screens/auth/register/Register_PasswordSet';
 import Register_PersonalInfo from './src/screens/auth/register/Register_PersonalInfo';
@@ -47,6 +48,10 @@ function Main(): JSX.Element {
       <Stack.Screen
         name='OrderHistory'
         component={OrderHistory}
+      />
+      <Stack.Screen
+        name='OrderDetail'
+        component={OrderDetail}
       />
       <Stack.Screen
         name='Analytics'
@@ -162,13 +167,13 @@ function App(): JSX.Element {
   return (
     <NavigationContainer >
       <Stack.Navigator initialRouteName='BottomTab' screenOptions={{ headerShown: false }}>
-        {/* Main: Map, PersonalInfo, Notification */}
+        {/* Main: Map, PersonalInfo, Notification, ...*/}
         <Stack.Screen
           name='Main'
           component={Main}
         />
 
-        {/* Auth: Register, LogIn, ChangePassword, OTP*/}
+        {/* Auth: Register, Login, ChangePassword, OTP*/}
         <Stack.Screen
           name='Auth'
           component={Auth}

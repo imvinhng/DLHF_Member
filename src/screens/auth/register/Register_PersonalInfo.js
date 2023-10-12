@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button } from 'react-native';
-import { LongButton, RadioButton, RoundButton, RoundButton_Ionicons } from '../../../utils/CustomButton';
+import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button, Dimensions } from 'react-native';
+import { LongButton, GenderRadioButton, RoundButton, RoundButton_Ionicons } from '../../../utils/CustomButton';
 import { dataGender, dataPaperwork, dataCitizenship } from '../../../db/Database';
 import { GrayLine_Full, OrangeLine_Full, Triangle } from '../../../utils/CustomComponents';
 import Register_Address from './Register_Address';
@@ -176,15 +176,8 @@ const Register_PersonalInfo = (props) => {
 
                 <View style={[styles.row_wrapper, styles.gender_radio]}>
                     <Text style={[styles.title, { marginRight: 20, paddingBottom: 8, }]}>Gender</Text>
-                    <View style={styles.radio_group}>
-                        <RadioButton />
-                        <Text style={styles.radio_text}>Male</Text>
-                    </View>
 
-                    <View style={styles.radio_group}>
-                        <RadioButton />
-                        <Text style={styles.radio_text}>Female</Text>
-                    </View>
+                    <GenderRadioButton />
                 </View>
 
 
@@ -207,6 +200,10 @@ const Register_PersonalInfo = (props) => {
 }
 
 export default Register_PersonalInfo;
+
+const { width: screenWidth, height: screenHeight } = Dimensions.get('screen');
+
+const bodyWidth = .95 * screenWidth;
 
 const styles = StyleSheet.create({
     home: {
@@ -235,7 +232,7 @@ const styles = StyleSheet.create({
     body: {
         paddingLeft: 10,
         marginTop: -150,
-        width: '95%',
+        width: bodyWidth,
         backgroundColor: '#fff',
         borderRadius: 10,
 
@@ -314,12 +311,13 @@ const styles = StyleSheet.create({
     page_number: {
         position: 'absolute',
         top: 12,
-        left: Platform.OS == 'ios' ? 335 : 350,
+        left: bodyWidth - 40,
     },
     footer: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: Platform.OS == 'ios' ? 120 : 135,
+        position: 'absolute',
+        top: Platform.OS == 'ios' ? screenHeight - 100 : screenHeight - 150,
         height: 100,
         width: '100%',
         backgroundColor: '#fff',
@@ -333,29 +331,19 @@ const styles = StyleSheet.create({
         //android
         elevation: 7,
     },
-    radio_group: {
-        margin: 10,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    radio_text: {
-        marginLeft: 10,
-        marginRight: 30,
-    },
-    gender_radio: {
-        marginTop: 15,
-        marginBottom: 50,
-        zIndex: 20,
-        alignItems: 'center'
-    },
+
     hidden_info: {
         backgroundColor: 'lightgray',
         position: 'absolute',
         top: 35,
         width: 200,
         zIndex: 999,
-
+    },
+    gender_radio: {
+        marginTop: 15,
+        marginBottom: 50,
+        zIndex: 20,
+        alignItems: 'center'
     },
 
 

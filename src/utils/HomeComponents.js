@@ -79,7 +79,7 @@ const BottomHeader_LoggedIn = () => {
         <View style={styles.bottom_header}>
             <Image style={styles.member_card_background} source={require('../assets/images/background/bg.png')} />
             <View style={styles.member_card_container}>
-                <Image style={[styles.member_card]} source={require('../assets/images/extras/member-card.png')} />
+                <Image style={styles.member_card} source={require('../assets/images/extras/member-card.png')} />
             </View>
         </View>
     )
@@ -141,43 +141,43 @@ export const HomeBody = (props) => {
                 </View>
 
                 <ScrollView contentContainerStyle={styles.scrollViewContainerStyle} horizontal pagingEnabled showsHorizontalScrollIndicator>
-                    <View style={{ width: ScreenWidth }}>
+                    <View style={{ width: screenWidth }}>
                         <Image
                             source={require('../assets/images/extras/super-sale.png')}
                             style={styles.image}
                         />
                     </View>
-                    <View style={{ width: ScreenWidth }}>
+                    <View style={{ width: screenWidth }}>
                         <Image
                             source={require('../assets/images/extras/super-sale.png')}
                             style={styles.image}
                         />
                     </View>
-                    <View style={{ width: ScreenWidth }}>
+                    <View style={{ width: screenWidth }}>
                         <Image
                             source={require('../assets/images/extras/super-sale.png')}
                             style={styles.image}
                         />
                     </View>
-                    <View style={{ width: ScreenWidth }}>
+                    <View style={{ width: screenWidth }}>
                         <Image
                             source={require('../assets/images/extras/super-sale.png')}
                             style={styles.image}
                         />
                     </View>
-                    <View style={{ width: ScreenWidth }}>
+                    <View style={{ width: screenWidth }}>
                         <Image
                             source={require('../assets/images/extras/super-sale.png')}
                             style={styles.image}
                         />
                     </View>
-                    <View style={{ width: ScreenWidth }}>
+                    <View style={{ width: screenWidth }}>
                         <Image
                             source={require('../assets/images/extras/super-sale.png')}
                             style={styles.image}
                         />
                     </View>
-                    <View style={{ width: ScreenWidth }}>
+                    <View style={{ width: screenWidth }}>
                         <Image
                             source={require('../assets/images/extras/super-sale.png')}
                             style={styles.image}
@@ -197,8 +197,8 @@ export const HomeBody = (props) => {
 
 
 
-const { width: ScreenWidth, height: screenHeight } = Dimensions.get('screen')
-const imageWidth = ScreenWidth - 20
+const { width: screenWidth, height: screenHeight } = Dimensions.get('screen');
+const imageWidth = screenWidth - 20;
 
 const styles = StyleSheet.create({
     home: {
@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
 
         //android
-        elevation: 10, // doesn't work?
+        elevation: 10,
     },
     sub_header_right: {
         flexDirection: 'row',
@@ -302,8 +302,8 @@ const styles = StyleSheet.create({
         width: 25,
     },
     member_card: {
-        margin: -5,
         marginTop: -35,
+        width: screenWidth - 20
     },
     member_card_container: {
         margin: 10,
@@ -330,7 +330,7 @@ const styles = StyleSheet.create({
     subgrid: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        width: ((ScreenWidth - 50) / 2),
+        width: ((screenWidth - 50) / 2),
         margin: 5,
         marginBottom: -10,
     },
@@ -382,7 +382,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
     },
     image_grid: {
-        width: ((ScreenWidth - 50) / 2),
+        width: ((screenWidth - 50) / 2),
         borderRadius: 10,
         margin: 10,
     },

@@ -135,7 +135,8 @@ const styles = StyleSheet.create({
     longbutton: {
         height: 'auto',
         width: 250,
-        marginVertical: 12,
+        paddingVertical: 12,
+        paddingHorizontal: 5,
         // marginBottom: Platform.OS == 'ios' ? 0 : 15,
         alignItems: 'center',
         // backgroundColor: 'yellow'

@@ -5,6 +5,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native';
+import { black, lightorange } from '../assets/style/Colors';
 
 export const RoundButton = (props) => {
     return (
@@ -183,34 +184,65 @@ export const LongButton_Icon = (props) => {
     );
 }
 
-export function RadioButton(props) {
-    const [selected, setSelected] = useState(false);
+export const GenderRadioButton = (props) => {
+    const [maleSelected, setMaleSelected] = useState(false);
+    const [femaleSelected, setFemaleSelected] = useState(false);
     return (
-        <TouchableOpacity
-            style={[{
-                height: 24,
-                width: 24,
-                borderRadius: 12,
-                borderWidth: 2,
-                borderColor: '#eb9f1c',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }, props.style]}
-            onPress={() => {
-                setSelected(!selected)
-                console.log('Gender selected!')
-            }}>
-            {
-                selected ?
-                    <View style={{
-                        height: 12,
-                        width: 12,
-                        borderRadius: 6,
-                        backgroundColor: '#eb9f1c',
-                    }} />
-                    : null
-            }
-        </TouchableOpacity>
+        <View style={styles.radio_group}>
+            <TouchableOpacity
+                style={[{
+                    height: 24,
+                    width: 24,
+                    borderRadius: 12,
+                    borderWidth: 2,
+                    borderColor: lightorange,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }, props.style]}
+                onPress={() => {
+                    setMaleSelected(true)
+                    setFemaleSelected(false)
+                }}>
+                {
+                    maleSelected ?
+                        <View style={{
+                            height: 12,
+                            width: 12,
+                            borderRadius: 6,
+                            backgroundColor: lightorange,
+                        }} />
+                        : null
+                }
+            </TouchableOpacity>
+            <Text style={styles.radio_text}>Male</Text>
+
+            <TouchableOpacity
+                style={[{
+                    height: 24,
+                    width: 24,
+                    borderRadius: 12,
+                    borderWidth: 2,
+                    borderColor: lightorange,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }, props.style]}
+                onPress={() => {
+                    setMaleSelected(false)
+                    setFemaleSelected(true)
+                }}>
+                {
+                    femaleSelected ?
+                        <View style={{
+                            height: 12,
+                            width: 12,
+                            borderRadius: 6,
+                            backgroundColor: lightorange,
+                        }} />
+                        : null
+                }
+            </TouchableOpacity>
+            <Text style={styles.radio_text}>Female</Text>
+        </View>
     );
 }
 
@@ -219,21 +251,37 @@ export const RadioHeaderCustom = () => {
     const [focusedTwo, setFocusedTwo] = useState(false);
     const [focusedThree, setFocusedThree] = useState(false);
 
+    const [textOneColor, setTextOneColor] = useState(lightorange);
+    const [textTwoColor, setTextTwoColor] = useState('#000');
+    const [textThreeColor, setTextThreeColor] = useState('#000');
+
     const onFocusRadio = (focusedID) => {
         if (focusedID == '1') {
             setFocusedOne(true)
             setFocusedTwo(false)
             setFocusedThree(false)
+
+            setTextOneColor(lightorange)
+            setTextTwoColor(black)
+            setTextThreeColor(black)
         }
         if (focusedID == '2') {
             setFocusedOne(false)
             setFocusedTwo(true)
             setFocusedThree(false)
+
+            setTextOneColor(black)
+            setTextTwoColor(lightorange)
+            setTextThreeColor(black)
         }
         if (focusedID == '3') {
             setFocusedOne(false)
             setFocusedTwo(false)
             setFocusedThree(true)
+
+            setTextOneColor(black)
+            setTextTwoColor(black)
+            setTextThreeColor(lightorange)
         }
     }
 
@@ -241,6 +289,7 @@ export const RadioHeaderCustom = () => {
         <View style={styles.row_wrapper}>
             <LongButton
                 buttonColor={focusedOne ? '#FEF7E5' : '#fff'}
+                textColor={textOneColor}
                 text={'Special Offer'}
                 buttonStyle={styles.grid_button}
                 textStyle={styles.grid_btn_txt}
@@ -248,6 +297,7 @@ export const RadioHeaderCustom = () => {
             />
             <LongButton
                 buttonColor={focusedTwo ? '#FEF7E5' : '#fff'}
+                textColor={textTwoColor}
                 text={'#FlowerCare'}
                 buttonStyle={styles.grid_button}
                 textStyle={styles.grid_btn_txt}
@@ -255,6 +305,7 @@ export const RadioHeaderCustom = () => {
             />
             <LongButton
                 buttonColor={focusedThree ? '#FEF7E5' : '#fff'}
+                textColor={textThreeColor}
                 text={'#FlowerLover'}
                 buttonStyle={styles.grid_button}
                 textStyle={styles.grid_btn_txt}
@@ -350,6 +401,16 @@ const styles = StyleSheet.create({
     },
     row_wrapper: {
         flexDirection: 'row',
+    },
+    radio_group: {
+        margin: 10,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    radio_text: {
+        marginLeft: 10,
+        marginRight: 30,
     },
 
 })

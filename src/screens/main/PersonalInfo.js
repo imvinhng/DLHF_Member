@@ -185,7 +185,7 @@ function PersonalInfo(props) {
 
                 <Text style={styles.title}>Address</Text>
                 <View style={styles.row_wrapper}>
-                    <TextInput style={styles.input} value={`${valueStreet}, Phường ${valueDistrict}, Quận ${valueWard}`} />
+                    <TextInput style={styles.input} value={`${valueStreet}, Phường ${valueWard}, Quận ${valueDistrict}`} />
                     <RoundButton iconName={editAddressIcon} iconSize={10} iconColor={editAddressIconColor} bgColor={editAddressBtnColor} onPressFunction={editAddress} buttonStyle={styles.icon_edit} />
                 </View>
                 <BlackLine />

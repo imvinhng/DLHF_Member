@@ -15,20 +15,8 @@ import { darkorange, white, backgroundGray } from '../../assets/style/Colors';
 import { GrayLine_Full, GrayLine_Full_Thick } from '../../utils/CustomComponents';
 import { DATA_ORDER_HISTORY } from '../../db/Database';
 import DatePicker from 'react-native-date-picker';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Item = ({ store, delivery_date, order_id, amount }) => {
-    return (
-        <View>
-            <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginVertical: 10 }]}>
-                <Text style={styles.item}>{store}</Text>
-                <Text style={styles.item}>{delivery_date}</Text>
-                <Text style={styles.item}>{order_id}</Text>
-                <Text style={styles.item}>{amount}</Text>
-            </View>
-            <GrayLine_Full />
-        </View>
-    )
-}
 
 function OrderHistory(props) {
     const navigation = useNavigation();
@@ -47,6 +35,20 @@ function OrderHistory(props) {
 
     function filterItems() {
         setData(DATA_ORDER_HISTORY.filter(item => item.delivery_date >= valueStartDate && item.delivery_date <= valueEndDate))
+    }
+
+    const Item = ({ id, store, delivery_date, order_id, amount }) => {
+        return (
+            <TouchableOpacity onPress={() => navigation.navigate('OrderDetail', { id: id })}>
+                <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginVertical: 10 }]}>
+                    <Text style={styles.item}>{store}</Text>
+                    <Text style={styles.item}>{delivery_date}</Text>
+                    <Text style={styles.item}>{order_id}</Text>
+                    <Text style={styles.item}>{amount}</Text>
+                </View>
+                <GrayLine_Full />
+            </TouchableOpacity>
+        )
     }
 
     return (
@@ -132,7 +134,6 @@ function OrderHistory(props) {
                     onPressFunction={filterItems}
                 />
 
-                {/* Insert chart */}
                 <View style={GlobalStyle.column_wrapper}>
                     {/* header */}
                     <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginVertical: 10 }]}>
@@ -147,15 +148,14 @@ function OrderHistory(props) {
                         data={data}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => {
-                            // console.log('Is delivery date between the timeframe: ', item.delivery_date >= valueStartDate && item.delivery_date <= valueEndDate)
 
                             return <Item
+                                id={item.id}
                                 store={item.store}
                                 delivery_date={item.delivery_date.toLocaleDateString('vi')}
                                 order_id={item.order_id}
                                 amount={item.amount}
                             />
-
                         }}
                     />
 
