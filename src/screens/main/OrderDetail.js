@@ -23,57 +23,56 @@ function OrderDetail(props) {
     const route = useRoute();
 
     const { id } = route.params;
-    const storeIndex = id - 1;
-    const orderIndex = 1 - 1;
+    const orderIndex = id - 1;
+    const orderData = DATA_ORDER_HISTORY[orderIndex];
 
     const Item = ({ image, product_name, product_code, product_price, quantity, amount }) => {
         return (
-            <TouchableOpacity>
-                <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginVertical: 10 }]}>
-                    <Image style={styles.item} source={image} />
+            // <TouchableOpacity>
+            //     <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginVertical: 10 }]}>
+            //         {/* <Image style={styles.item} source={image} /> */}
 
-                    <View style={[GlobalStyle.column_wrapper, styles.item]}>
-                        <Text style={styles.item}>{product_name}</Text>
-                        <Text style={styles.item}>{product_code}</Text>
-                    </View>
+            //         <View style={[GlobalStyle.column_wrapper, styles.item]}>
+            //             <Text style={styles.item}>{product_name}</Text>
+            //             <Text style={styles.item}>{product_code}</Text>
+            //         </View>
 
-                    <View style={[GlobalStyle.column_wrapper, styles.item]}>
-                        <Text>{product_price}</Text>
-                        <Text> SL: {quantity}</Text>
-                    </View>
+            //         <View style={[GlobalStyle.column_wrapper, styles.item]}>
+            //             <Text>{product_price}</Text>
+            //             <Text> SL: {quantity}</Text>
+            //         </View>
 
-                    <Text style={styles.item}>{amount}</Text>
+            //         <Text style={styles.item}>{amount}</Text>
+            //     </View>
+            //     <GrayLine_Full />
+            // </TouchableOpacity>
+            <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-between', marginVertical: 5 }]}>
+                <View style={[styles.item, { borderWidth: 0.5, borderRadius: 5, width: columnOneWidth, alignItems: 'center' }]}>
+                    <Image
+                        style={[styles.flower_img]}
+                        source={require('../../assets/images/icons/red-flower-icon.png')}
+                    />
                 </View>
-                <GrayLine_Full />
-            </TouchableOpacity>
-        )
-    }
-    const ItemMock = ({ id, image, product_name, product_code, product_price, quantity, amount }) => {
-        console.log(image)
-        console.log(product_name)
-        console.log(product_code)
-        console.log(product_price)
-        console.log(quantity)
-        console.log(amount)
-        console.log('=======================')
 
-        return (
-            <View style={GlobalStyle.row_wrapper}>
-                <Text>{id}</Text>
-                <Text>{product_name}</Text>
-                <Text>{product_code}</Text>
-                <Text>{product_name}</Text>
-                <Text>{product_price}</Text>
-                <Text>{quantity}</Text>
-                <Text>{amount}</Text>
+                <View style={[GlobalStyle.column_wrapper, styles.item, { width: columnTwoWidth, alignItems: 'flex-start' }]}>
+                    <Text style={styles.item_text}>{product_name}</Text>
+                    <Text style={styles.item_text}>{product_code}</Text>
+                </View>
 
+                <View style={[GlobalStyle.column_wrapper, styles.item, { width: columnThreeWidth, alignItems: 'center' }]}>
+                    <Text style={styles.item_text}>{product_price}</Text>
+                    <Text style={styles.item_text}>SL: {quantity}</Text>
+                </View>
+
+                <View style={[styles.item, { width: columnFourWidth, alignItems: 'flex-end' }]}>
+                    <Text style={styles.item_text}>{amount}</Text>
+                </View>
             </View>
         )
     }
 
     return (
-        <View style={styles.home}>
-
+        <View style={styles.home} >
             <View style={styles.header}>
                 <RoundButton
                     bgColor={'#fff'}
@@ -88,95 +87,115 @@ function OrderDetail(props) {
                 </View>
             </View>
 
-            <View style={styles.body}>
-                <Text style={styles.title}>Order Detail</Text>
+            <ScrollView horizontal={false}>
+                <ScrollView horizontal={true}>
+                    <View style={styles.body}>
+                        <Text style={styles.title}>Order Detail</Text>
 
-                <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
-                    <Text style={styles.text}>Order ID: </Text>
-                    <TextInput value={DATA_ORDER_HISTORY[storeIndex].order_id} style={styles.input} />
-                </View>
-                <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
-                    <Text style={styles.text}>Purchase Location: </Text>
-                    <TextInput value={DATA_ORDER_HISTORY[storeIndex].store} style={styles.input} />
-                </View>
-                <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
-                    <Text style={styles.text}>Delivery Address: </Text>
-                    <TextInput value={DATA_ORDER_HISTORY[storeIndex].delivery_address} style={styles.input} />
-                </View>
-                <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
-                    <Text style={styles.text}>Receiver Name: </Text>
-                    <TextInput value={DATA_ORDER_HISTORY[storeIndex].receiver_name} style={styles.input} />
-                </View>
-                <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
-                    <Text style={styles.text}>Delivery Date: </Text>
-                    <TextInput value={DATA_ORDER_HISTORY[storeIndex].delivery_date.toLocaleString('utc')} style={styles.input} />
-                </View>
-                <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
-                    <Text style={styles.text}>Note: </Text>
-                    <TextInput value={DATA_ORDER_HISTORY[storeIndex].note} style={styles.input} />
-                </View>
-
-                <View style={styles.status_container}>
-                    <View style={{ marginHorizontal: 10 }}>
-                        <Text style={styles.text}>Status:</Text>
-                        <GrayLine_Full_Thick />
-
-                        {/* Insert order status updates */}
-                    </View>
-
-                </View>
-
-                <View style={[GlobalStyle.column_wrapper, styles.order_detail_container]}>
-                    <View style={{ marginHorizontal: 10 }}>
-                        {/* header */}
-                        <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-between', marginVertical: 10 }]}>
-                            <Text style={styles.heading}>Image</Text>
-                            <Text style={styles.heading}>Product Name / Product ID</Text>
-                            <Text style={styles.heading}>Product Price (VND) / Quantity</Text>
-                            <Text style={styles.heading}>Amount (VND)</Text>
+                        <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
+                            <Text style={styles.text}>Order ID: </Text>
+                            <TextInput value={DATA_ORDER_HISTORY[orderIndex].order_id} style={styles.input} />
                         </View>
-                        <GrayLine_Full_Thick />
+                        <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
+                            <Text style={styles.text}>Purchase Location: </Text>
+                            <TextInput value={DATA_ORDER_HISTORY[orderIndex].store} style={styles.input} />
+                        </View>
+                        <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
+                            <Text style={styles.text}>Delivery Address: </Text>
+                            <TextInput value={DATA_ORDER_HISTORY[orderIndex].delivery_address} style={styles.input} />
+                        </View>
+                        <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
+                            <Text style={styles.text}>Receiver Name: </Text>
+                            <TextInput value={DATA_ORDER_HISTORY[orderIndex].receiver_name} style={styles.input} />
+                        </View>
+                        <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
+                            <Text style={styles.text}>Delivery Date: </Text>
+                            <TextInput value={DATA_ORDER_HISTORY[orderIndex].delivery_date.toLocaleString('utc')} style={styles.input} />
+                        </View>
+                        <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
+                            <Text style={styles.text}>Note: </Text>
+                            <TextInput value={DATA_ORDER_HISTORY[orderIndex].note} style={styles.input} />
+                        </View>
 
-                        {/* item list */}
-                        <FlatList
-                            data={DATA_ORDER_DETAIL}
-                            keyExtractor={item => item[orderIndex].order_id}
-                            renderItem={({ item, index }) => {
-                                console.log(item[0])
-                                console.log(item[1])
-                                console.log(item[2])
-                                console.log(item[3])
-                                console.log(item[4])
-                                console.log('++++++++++++++++++++')
-                                console.log('++++++++++++++++++++')
+                        <View style={styles.status_container}>
+                            <View style={{ marginHorizontal: 10 }}>
+                                <Text style={styles.text}>Status:</Text>
+                                <GrayLine_Full_Thick />
 
-                                // return <ItemMock
-                                //     id={item[index].id}
-                                //     image={item[index].image}
-                                //     product_name={item[index].product_name}
-                                //     product_code={item[index].product_code}
-                                //     product_price={item[index].product_price}
-                                //     quantity={item[index].quantity}
-                                //     amount={item[index].amount}
-                                // />
-                            }}
-                        />
+                                {/* Insert order status updates */}
+                                <View style={styles.status_textbox}>
+                                    <Text>02-09-2023</Text>
+                                    <Text>Delivery successful</Text>
+                                </View>
 
+                                <View style={styles.status_textbox}>
+                                    <Text>01-10-2023</Text>
+                                    <Text>Order is being delivered</Text>
+                                </View>
 
+                                <View style={styles.status_textbox}>
+                                    <Text>30-09-2023</Text>
+                                    <Text>Delivery pending</Text>
+                                </View>
+
+                                <View style={styles.status_textbox}>
+                                    <Text>29-09-2023</Text>
+                                    <Text>Order verified</Text>
+                                </View>
+                            </View>
+
+                        </View>
+
+                        <View style={[GlobalStyle.column_wrapper, styles.order_detail_container]}>
+                            <View style={{ marginHorizontal: 10 }}>
+                                {/* header */}
+                                <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-between', marginVertical: 10 }]}>
+                                    <Text style={[styles.heading, { width: columnOneWidth }]}>Image</Text>
+                                    <Text style={[styles.heading, { width: columnTwoWidth }]}>Product Name / Product ID</Text>
+                                    <Text style={[styles.heading, { width: columnThreeWidth }]}>Product Price (VND) / Quantity</Text>
+                                    <Text style={[styles.heading, { width: columnFourWidth }]}>Amount (VND)</Text>
+                                </View>
+                                <GrayLine_Full_Thick />
+
+                                {/* item list */}
+                                <FlatList
+                                    data={DATA_ORDER_DETAIL[orderIndex]}
+                                    keyExtractor={item => item.id}
+                                    renderItem={({ item }) => {
+                                        return (
+                                            <Item
+                                                image={item.image}
+                                                product_name={item.product_name}
+                                                product_code={item.product_code}
+                                                product_price={item.product_price}
+                                                quantity={item.quantity}
+                                                amount={item.amount}
+                                            />
+                                        )
+
+                                    }}
+                                />
+                            </View>
+                        </View>
                     </View>
-                </View>
-
-            </View>
-
+                </ScrollView>
+            </ScrollView>
         </View>
+
     );
 }
 
 export default OrderDetail;
 
-const { width: ScreenWidth } = Dimensions.get('screen');
+const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 const calendarBtnWidth = (ScreenWidth / 2) - 20;
 const headingWidth = (ScreenWidth / 4) - 20;
+const flowerWidth = 30; const flowerHeight = 30;
+
+const columnOneWidth = flowerWidth + 40;
+const columnTwoWidth = (ScreenWidth / 4) + 10;
+const columnThreeWidth = (ScreenWidth / 4) - 10;
+const columnFourWidth = flowerWidth + 40;
 
 const styles = StyleSheet.create({
     home: {
@@ -185,8 +204,8 @@ const styles = StyleSheet.create({
     },
     body: {
         backgroundColor: backgroundGray,
-        flex: 1,
-        height: '100%',
+        height: ScreenHeight,
+        width: ScreenWidth,
     },
     title: {
         fontSize: 20,
@@ -207,16 +226,16 @@ const styles = StyleSheet.create({
         // backgroundColor: 'yellow',
         textAlign: 'center'
     },
+    item: {
+        width: headingWidth,
+        height: flowerHeight + 20,
+        // alignItems: 'center',
+        justifyContent: 'center',
+        // backgroundColor: 'red',
+    },
     text: {
         fontSize: 15,
         margin: 10,
-    },
-    item: {
-        fontSize: 15,
-        fontWeight: '300',
-        width: headingWidth,
-        paddingRight: 5,
-        // backgroundColor: 'red',
     },
     header: {
         flexDirection: 'row',
@@ -266,22 +285,30 @@ const styles = StyleSheet.create({
     status_container: {
         marginVertical: 10,
         height: '30%',
-        width: '90%',
+        width: '95%',
         backgroundColor: '#fff',
         alignSelf: 'center',
     },
-    item: {
-        fontSize: 15,
+    item_text: {
+        fontSize: 12,
         fontWeight: '300',
-        width: headingWidth,
-        paddingRight: 5,
-        // backgroundColor: 'red',
+        paddingHorizontal: 10,
+        marginLeft: 10,
+        textAlign: 'left'
     },
     order_detail_container: {
         marginVertical: 10,
-        height: '30%',
-        width: '90%',
+        height: '40%',
+        width: '95%',
         backgroundColor: '#fff',
         alignSelf: 'center',
+    },
+    flower_img: {
+        height: flowerWidth,
+        width: flowerHeight,
+    },
+    status_textbox: {
+        marginVertical: 10,
+        marginLeft: 15,
     },
 });

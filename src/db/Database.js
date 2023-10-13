@@ -275,7 +275,7 @@ export const DATA_ORDER_DETAIL = [
         {
             id: 1,
             order_id: 'POS-NT23-0030-002',
-            image: require('../assets/images/icons/red-flower-icon.png'),
+            image: '../assets/images/icons/red-flower-icon.png',
             product_name: 'Sp. Car Mix',
             product_code: 'T04_MIX01',
             product_price: '4,800',
@@ -285,7 +285,7 @@ export const DATA_ORDER_DETAIL = [
         {
             id: 2,
             order_id: 'POS-NT23-0030-002',
-            image: require('../assets/images/icons/red-flower-icon.png'),
+            image: '../assets/images/icons/red-flower-icon.png',
             product_name: 'St. Chrys Ana Dark Bronze',
             product_code: 'F0201810',
             product_price: '8,700',
@@ -295,7 +295,7 @@ export const DATA_ORDER_DETAIL = [
         {
             id: 3,
             order_id: 'POS-NT23-0030-002',
-            image: require('../assets/images/icons/red-flower-icon.png'),
+            image: '../assets/images/icons/red-flower-icon.png',
             product_name: 'St. Chrys Ana Dark Bronze',
             product_code: 'F0201810',
             product_price: '8,700',
@@ -305,7 +305,7 @@ export const DATA_ORDER_DETAIL = [
         {
             id: 4,
             order_id: 'POS-NT23-0030-002',
-            image: require('../assets/images/icons/red-flower-icon.png'),
+            image: '../assets/images/icons/red-flower-icon.png',
             product_name: 'St. Chrys Ana Dark Bronze',
             product_code: 'F0201810',
             product_price: '8,700',
@@ -315,7 +315,7 @@ export const DATA_ORDER_DETAIL = [
         {
             id: 5,
             order_id: 'POS-NT23-0030-002',
-            image: require('../assets/images/icons/red-flower-icon.png'),
+            image: '../assets/images/icons/red-flower-icon.png',
             product_name: 'St. Chrys Ana Dark Bronze',
             product_code: 'F0201810',
             product_price: '8,700',
