@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, Image, View, Text, TextInput, ScrollView } from 'react-native';
-import { LoginButton, LongButton_Icon, RoundButton } from '../../utils/CustomButton';
-import { OTP_Login } from './OTP';
+import { StyleSheet, Image, View, Text, TextInput, ScrollView, Dimensions } from 'react-native';
+import { LoginButton, LongButton_Icon, RoundButton } from '../../../utils/CustomButton';
+import { OTP_Login } from '../OTP';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -13,19 +13,19 @@ function Login(props) {
     const navigation = useNavigation();
 
     const passwordCheck = () => {
-        navigation.navigate('BottomTab', { screen: 'Home', params: { loggedIn: true } })
+        navigation.navigate('Home', { screen: 'HomeScreen', params: { loggedIn: true } })
     }
 
     return (
         <View style={styles.background}>
             <Image
                 style={styles.image}
-                source={require('../../assets/images/background/dutch-windmill.png')}
+                source={require('../../../assets/images/background/dutch-windmill.png')}
             />
             <RoundButton iconName='times' iconSize={15} buttonStyle={styles.close_btn} onPressFunction={() => navigation.navigate('Home')} />
             <ScrollView style={styles.body} contentContainerStyle={{ alignItems: 'center' }}>
                 <Text style={styles.title}>Welcome to</Text>
-                <Image source={require('../../assets/images/extras/DLHF-logo.png')} />
+                <Image source={require('../../../assets/images/extras/DLHF-logo.png')} />
 
                 <TextInput
                     style={[
@@ -68,6 +68,8 @@ function Login(props) {
 
     );
 }
+
+const { width: screenWidth } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
     background: {
@@ -146,7 +148,7 @@ const styles = StyleSheet.create({
     },
     close_btn: {
         position: 'absolute',
-        left: Platform.OS == 'ios' ? 350 : 370,
+        left: screenWidth - 40,
         top: Platform.OS == 'ios' ? 45 : 15,
         height: 20,
         width: 20,

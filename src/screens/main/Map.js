@@ -41,7 +41,7 @@ export default function Map({ route, navigation }) {
                     buttonStyle={styles.map_btn}
                     textStyle={styles.text_map}
                     text={'List'}
-                    onPressFunction={() => navigation.navigate('Store')}
+                    onPressFunction={() => navigation.navigate('Store', { screen: 'StoreScreen' })}
                 />
             </View>
 
@@ -59,7 +59,7 @@ export default function Map({ route, navigation }) {
                 >
                     {WAREHOUSE_REPORT.map((item, index) =>
                         <Marker
-                            coordinate={{ latitude: item.Lat, longitude: item.Long }}
+                            coordinate={{ latitude: parseFloat(item.Lat), longitude: parseFloat(item.Long) }}
                             pinColor={item.Color} // any color
                             title={item.Title}
                             description={item.Address}

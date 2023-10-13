@@ -10,7 +10,6 @@ import { SafeAreaView, Modal, StyleSheet, Pressable, Text, View, TextInput, Flat
 import { LongButton_Icon, SquareButton, PromotionButton, NotificationButton, RoundButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import Shop_Detail from '../main/Shop_Detail';
 import { convertViToEn } from '../../utils/functions';
 import SearchBar from '../../utils/SearchBar';
 import { DATA } from '../../db/Database';
@@ -27,9 +26,8 @@ function Store(props) {
         <TouchableOpacity
             style={styles.item}
             onPress={() => {
-                setModalVisible(true)
                 setClickedID(id)
-                console.log(id)
+                navigation.navigate('Store', { screen: 'ShopDetailScreen', params: { clicked_id: id } })
             }}>
             <Image style={styles.image} source={require('../../assets/images/extras/storefront.png')} />
 
@@ -40,6 +38,7 @@ function Store(props) {
             </View>
         </TouchableOpacity>
     );
+
 
     return (
         <SafeAreaView style={styles.home}>
@@ -72,7 +71,7 @@ function Store(props) {
                         buttonStyle={styles.map_btn}
                         textStyle={styles.text_map}
                         text={'Map'}
-                        onPressFunction={() => navigation.navigate('Main', { screen: 'Map' })}
+                        onPressFunction={() => navigation.navigate('Store', { screen: 'MapScreen' })}
                     />
                 </View>
             </View>
@@ -97,13 +96,6 @@ function Store(props) {
                     keyExtractor={item => item.ID}
                 />
             </View>
-
-            <Shop_Detail
-                modalVisible={modalVisible}
-                setModalVisible={setModalVisible}
-                id={clickedID}
-            />
-
         </SafeAreaView>
     );
 }
@@ -139,15 +131,15 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         margin: 5,
     },
-    sub_header_right: {
-        flexDirection: 'row',
-        marginRight: 15,
-    },
     sub_header_left: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
+    },
+    sub_header_right: {
+        flexDirection: 'row',
+        marginRight: 15,
     },
     body1_top: {
         height: 150,

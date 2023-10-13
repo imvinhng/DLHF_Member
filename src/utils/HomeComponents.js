@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, ImageBackground, ScrollView, Dimensions, TextInput } from 'react-native';
 import { RoundButton_Image, LoginButton, PromotionButton, NotificationButton, RadioHeaderCustom } from './CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import { lightorange } from '../assets/style/Colors';
 
 const TopHeader = () => {
     return (
@@ -294,7 +295,7 @@ const styles = StyleSheet.create({
         margin: 5,
         paddingTop: 10,
         textAlign: 'center',
-        color: '#eb9f1c',
+        color: lightorange,
         textDecorationLine: 'underline',
     },
     icon_image: {

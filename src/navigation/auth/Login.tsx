@@ -13,7 +13,7 @@ import RegisterPersonalInfoScreen from '../../screens/auth/register/Register_Per
 
 const Stack = createStackNavigator();
 
-import LoginScreen from '../../screens/auth/Login';
+import LoginScreen from '../../screens/auth/login/Login';
 import { OTP_Login } from '../../screens/auth/OTP';
 
 function Login(): JSX.Element {

@@ -38,14 +38,14 @@ function More(props) {
                         text={'Order History'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
-                        onPressFunction={() => navigation.navigate('Main', { screen: 'OrderHistory' })}
+                        onPressFunction={() => navigation.navigate('More', { screen: 'OrderHistoryScreen' })}
                     />
                     <SquareButton_ImageIcon_Text
                         image_uri={require('../../assets/images/icons/piechart-icon.png')}
                         text={'Analytics'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
-                        onPressFunction={() => navigation.navigate('Main', { screen: 'Analytics' })}
+                        onPressFunction={() => navigation.navigate('More', { screen: 'AnalyticsScreen' })}
                     />
                     <SquareButton_ImageIcon_Text
                         image_uri={require('../../assets/images/icons/policy-icon.png')}
@@ -93,7 +93,7 @@ function More(props) {
                     buttonStyle={[styles.longbutton_icon, GlobalStyle.box_shadow]}
                     textStyle={styles.text_longbutton_icon}
                     iconStyle={styles.icon_longbutton}
-                    onPressFunction={() => navigation.navigate('Main', { screen: 'PersonalInfo' })}
+                    onPressFunction={() => navigation.navigate('More', { screen: 'PersonalInfoScreen' })}
                 />
                 <LongButton_Icon
                     iconName={'map-marker-alt'}
@@ -125,8 +125,7 @@ function More(props) {
                     textStyle={styles.text_longbutton_icon}
                     iconStyle={styles.icon_longbutton}
                     onPressFunction={() =>
-                        navigation.navigate('Home')
-
+                        navigation.navigate('Home', { screen: 'HomeScreen' })
                     }
                 />
 

@@ -39,7 +39,7 @@ function OrderHistory(props) {
 
     const Item = ({ id, store, delivery_date, order_id, amount }) => {
         return (
-            <TouchableOpacity onPress={() => navigation.navigate('OrderDetail', { id: id })}>
+            <TouchableOpacity onPress={() => navigation.navigate('More', { screen: 'OrderDetailScreen', params: { id: id } })}>
                 <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginVertical: 10 }]}>
                     <Text style={styles.item}>{store}</Text>
                     <Text style={styles.item}>{delivery_date}</Text>

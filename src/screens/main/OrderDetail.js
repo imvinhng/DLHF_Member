@@ -79,7 +79,7 @@ function OrderDetail(props) {
                     bgColor={'#fff'}
                     iconName={'angle-left'}
                     iconSize={25}
-                    onPressFunction={() => navigation.navigate('OrderHistory')}
+                    onPressFunction={() => navigation.navigate('More', { screen: 'OrderHistoryScreen' })}
                 />
 
                 <View style={styles.sub_header_right}>
@@ -138,28 +138,29 @@ function OrderDetail(props) {
                         <GrayLine_Full_Thick />
 
                         {/* item list */}
-                        {/* <FlatList
+                        <FlatList
                             data={DATA_ORDER_DETAIL}
                             keyExtractor={item => item[orderIndex].order_id}
-                            renderItem={({ item }) => {
-                                // console.log("List length", item.length);
-                                // for (let i = 0; i < item.length; i++) {
+                            renderItem={({ item, index }) => {
                                 console.log(item[0])
-                                console.log('============================================')
-                                // }
-                                // return <ItemMock
-                                //     id={item[2].id}
-                                //     image={item[2].image}
-                                //     product_name={item[2].product_name}
-                                //     product_code={item[2].product_code}
-                                //     product_price={item[2].product_price}
-                                //     quantity={item[2].quantity}
-                                //     amount={item[2].amount}
-                                // />
+                                console.log(item[1])
+                                console.log(item[2])
+                                console.log(item[3])
+                                console.log(item[4])
+                                console.log('++++++++++++++++++++')
+                                console.log('++++++++++++++++++++')
 
-                                // }
+                                // return <ItemMock
+                                //     id={item[index].id}
+                                //     image={item[index].image}
+                                //     product_name={item[index].product_name}
+                                //     product_code={item[index].product_code}
+                                //     product_price={item[index].product_price}
+                                //     quantity={item[index].quantity}
+                                //     amount={item[index].amount}
+                                // />
                             }}
-                        /> */}
+                        />
 
 
                     </View>
