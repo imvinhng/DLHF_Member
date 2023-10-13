@@ -24,7 +24,12 @@ function OrderDetail(props) {
 
     const { id } = route.params;
     const orderIndex = id - 1;
-    const orderData = DATA_ORDER_HISTORY[orderIndex];
+
+    const subtotal = DATA_ORDER_HISTORY[orderIndex].subtotal;
+    const discount = DATA_ORDER_HISTORY[orderIndex].discount;
+    const deliveryFee = DATA_ORDER_HISTORY[orderIndex].delivery_fee;
+    const total = DATA_ORDER_HISTORY[orderIndex].total;
+    const status = DATA_ORDER_HISTORY[orderIndex].status;
 
     const Item = ({ image, product_name, product_code, product_price, quantity, amount }) => {
         return (
@@ -143,7 +148,6 @@ function OrderDetail(props) {
                                     <Text>Order verified</Text>
                                 </View>
                             </View>
-
                         </View>
 
                         <View style={[GlobalStyle.column_wrapper, styles.order_detail_container]}>
@@ -162,6 +166,7 @@ function OrderDetail(props) {
                                     data={DATA_ORDER_DETAIL[orderIndex]}
                                     keyExtractor={item => item.id}
                                     renderItem={({ item }) => {
+
                                         return (
                                             <Item
                                                 image={item.image}
@@ -172,11 +177,38 @@ function OrderDetail(props) {
                                                 amount={item.amount}
                                             />
                                         )
-
                                     }}
                                 />
+
+                            </View>
+
+                            <View>
+                                <GrayLine_Full_Thick />
+                                <View style={GlobalStyle.row_wrapper}>
+                                    <Text>Subtotal: </Text>
+                                    <Text>{subtotal}</Text>
+                                </View>
+                                <View style={GlobalStyle.row_wrapper}>
+                                    <Text>Total Discount: </Text>
+                                    <Text>{discount}</Text>
+                                </View>
+                                <View style={GlobalStyle.row_wrapper}>
+                                    <Text>Delivery Fee: </Text>
+                                    <Text>{deliveryFee}</Text>
+                                </View>
+                                <View style={GlobalStyle.row_wrapper}>
+                                    <Text>Total: </Text>
+                                    <Text>{total}</Text>
+                                </View>
+                                <View style={GlobalStyle.row_wrapper}>
+                                    <Text>Status: </Text>
+                                    <Text>{DATA_ORDER_HISTORY[orderIndex].status}</Text>
+                                </View>
+                                <GrayLine_Full_Thick />
                             </View>
                         </View>
+
+
                     </View>
                 </ScrollView>
             </ScrollView>
@@ -207,6 +239,13 @@ const styles = StyleSheet.create({
         height: ScreenHeight,
         width: ScreenWidth,
     },
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        backgroundColor: white,
+        paddingTop: Platform.OS == 'ios' ? 56 : 10,
+        paddingBottom: 10,
+    },
     title: {
         fontSize: 20,
         margin: 10,
@@ -236,13 +275,6 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 15,
         margin: 10,
-    },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: white,
-        paddingTop: Platform.OS == 'ios' ? 56 : 10,
-        paddingBottom: 10,
     },
     sub_header_left: {
         flexDirection: 'row',
@@ -298,7 +330,7 @@ const styles = StyleSheet.create({
     },
     order_detail_container: {
         marginVertical: 10,
-        height: '40%',
+        height: 150, // original: '60%'
         width: '95%',
         backgroundColor: '#fff',
         alignSelf: 'center',

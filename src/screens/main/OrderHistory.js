@@ -6,7 +6,7 @@
  */
 
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Dimensions, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, ScrollView, FlatList, TouchableOpacity } from 'react-native';
 import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton, LongButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import PersonalInfo from '../main/PersonalInfo';
@@ -15,7 +15,6 @@ import { darkorange, white, backgroundGray } from '../../assets/style/Colors';
 import { GrayLine_Full, GrayLine_Full_Thick } from '../../utils/CustomComponents';
 import { DATA_ORDER_HISTORY } from '../../db/Database';
 import DatePicker from 'react-native-date-picker';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 function OrderHistory(props) {
@@ -146,23 +145,21 @@ function OrderHistory(props) {
 
                     <FlatList
                         data={data}
-                        keyExtractor={item => item.id}
+                        keyExtractor={(item, index) => `generateExtractorOrder${index}`}
                         renderItem={({ item }) => {
-
-                            return <Item
-                                id={item.id}
-                                store={item.store}
-                                delivery_date={item.delivery_date.toLocaleDateString('vi')}
-                                order_id={item.order_id}
-                                amount={item.amount}
-                            />
+                            return (
+                                <Item
+                                    id={item.id}
+                                    store={item.store}
+                                    delivery_date={item.delivery_date.toLocaleDateString('vi')}
+                                    order_id={item.order_id}
+                                    amount={item.total}
+                                />
+                            )
                         }}
                     />
-
                 </View>
-
             </View>
-
         </View>
     );
 }
