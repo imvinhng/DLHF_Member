@@ -182,27 +182,29 @@ function OrderDetail(props) {
 
                             </View>
 
-                            <View>
+                            <View style={styles.summary_container}>
                                 <GrayLine_Full_Thick />
-                                <View style={GlobalStyle.row_wrapper}>
-                                    <Text>Subtotal: </Text>
-                                    <Text>{subtotal}</Text>
-                                </View>
-                                <View style={GlobalStyle.row_wrapper}>
-                                    <Text>Total Discount: </Text>
-                                    <Text>{discount}</Text>
-                                </View>
-                                <View style={GlobalStyle.row_wrapper}>
-                                    <Text>Delivery Fee: </Text>
-                                    <Text>{deliveryFee}</Text>
-                                </View>
-                                <View style={GlobalStyle.row_wrapper}>
-                                    <Text>Total: </Text>
-                                    <Text>{total}</Text>
-                                </View>
-                                <View style={GlobalStyle.row_wrapper}>
-                                    <Text>Status: </Text>
-                                    <Text>{DATA_ORDER_HISTORY[orderIndex].status}</Text>
+                                <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
+                                    <View style={{ alignItems: 'flex-end', marginRight: 30 }}>
+
+                                        <Text style={styles.summary_text}>Subtotal: </Text>
+                                        <Text style={styles.summary_text}>Total Discount: </Text>
+                                        <Text style={styles.summary_text}>Delivery Fee: </Text>
+                                        <Text style={styles.summary_text}>Total: </Text>
+                                        <Text style={styles.summary_text}>Status: </Text>
+
+                                    </View>
+
+                                    <View style={{ alignItems: 'flex-end', marginRight: 10 }}>
+
+                                        <Text style={styles.summary_text}>{subtotal}</Text>
+                                        <Text style={styles.summary_text}>{discount}</Text>
+                                        <Text style={styles.summary_text}>{deliveryFee} </Text>
+                                        <Text style={styles.summary_text}>{total}</Text>
+                                        <Text style={styles.summary_text}>{status}</Text>
+
+                                    </View>
+
                                 </View>
                                 <GrayLine_Full_Thick />
                             </View>
@@ -236,7 +238,7 @@ const styles = StyleSheet.create({
     },
     body: {
         backgroundColor: backgroundGray,
-        height: ScreenHeight,
+        height: ScreenHeight * 1.5,  // to be changed
         width: ScreenWidth,
     },
     header: {
@@ -316,7 +318,7 @@ const styles = StyleSheet.create({
     },
     status_container: {
         marginVertical: 10,
-        height: '30%',
+        height: '20%',
         width: '95%',
         backgroundColor: '#fff',
         alignSelf: 'center',
@@ -330,7 +332,7 @@ const styles = StyleSheet.create({
     },
     order_detail_container: {
         marginVertical: 10,
-        height: 150, // original: '60%'
+        height: '38%', // original: '60%'
         width: '95%',
         backgroundColor: '#fff',
         alignSelf: 'center',
@@ -343,4 +345,15 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         marginLeft: 15,
     },
+    summary_text: {
+        marginVertical: 5,
+        fontSize: 13,
+        fontWeight: '300',
+    },
+    summary_container: {
+        width: ScreenWidth * .5,
+        alignItems: 'flex-end',
+        alignSelf: 'flex-end',
+        marginTop: 10,
+    }
 });

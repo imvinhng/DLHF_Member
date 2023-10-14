@@ -43,7 +43,7 @@ function OrderHistory(props) {
                     <Text style={styles.item}>{store}</Text>
                     <Text style={styles.item}>{delivery_date}</Text>
                     <Text style={styles.item}>{order_id}</Text>
-                    <Text style={styles.item}>{amount}</Text>
+                    <Text style={[styles.item, { paddingLeft: 20 }]}>{amount}</Text>
                 </View>
                 <GrayLine_Full />
             </TouchableOpacity>
@@ -139,7 +139,7 @@ function OrderHistory(props) {
                         <Text style={styles.heading}>Store</Text>
                         <Text style={styles.heading}>Delivery Date</Text>
                         <Text style={styles.heading}>Order ID</Text>
-                        <Text style={styles.heading}>Amount</Text>
+                        <Text style={[styles.heading, { paddingLeft: 20 }]}>Amount</Text>
                     </View>
                     <GrayLine_Full_Thick />
 
