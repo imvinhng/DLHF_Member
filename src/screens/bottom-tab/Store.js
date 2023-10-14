@@ -6,21 +6,18 @@
  */
 
 import React, { useState } from 'react';
-import { SafeAreaView, Modal, StyleSheet, Pressable, Text, View, TextInput, FlatList, Image, TouchableHighlight } from 'react-native';
-import { LongButton_Icon, SquareButton, PromotionButton, NotificationButton, RoundButton } from '../../utils/CustomButton';
+import { SafeAreaView, StyleSheet, Text, View, FlatList, Image } from 'react-native';
+import { LongButton_Icon, PromotionButton, NotificationButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { convertViToEn } from '../../utils/functions';
 import SearchBar from '../../utils/SearchBar';
-import { DATA } from '../../db/Database';
 import { WAREHOUSE_REPORT } from '../../db/ttp_report_warehouse';
 
 function Store(props) {
     const navigation = useNavigation();
-    const [modalVisible, setModalVisible] = useState(false);
-    const [clicked, setClicked] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState('');
-    const [clickedID, setClickedID] = useState(1);
+
 
     const Item = ({ id, location, address }) => (
         <TouchableOpacity
@@ -57,8 +54,6 @@ function Store(props) {
                     <SearchBar
                         searchPhrase={searchPhrase}
                         setSearchPhrase={setSearchPhrase}
-                        clicked={clicked}
-                        setClicked={setClicked}
                         containerStyle={styles.search_container}
                         closeBtnStyle={styles.search_close}
                     />
@@ -85,11 +80,9 @@ function Store(props) {
                         // if no input, show all
                         if (searchPhrase === '') {
                             return <Item id={item.ID} location={item.Title} address={item.Address} />
-                        }
-                        if (convertViToEn(item.name_nps, true).includes(convertViToEn(searchPhrase, true))) {
+                        } else if (convertViToEn(item.name_nps, true).includes(convertViToEn(searchPhrase, true))) {
                             return <Item id={item.ID} location={item.Title} address={item.Address} />
-                        }
-                        if (convertViToEn(item.Address, true).includes(convertViToEn(searchPhrase, true))) {
+                        } else if (convertViToEn(item.Address, true).includes(convertViToEn(searchPhrase, true))) {
                             return <Item id={item.ID} location={item.Title} address={item.Address} />
                         }
                     }}
@@ -250,8 +243,9 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     search_container: {
-        marginLeft: -25,
+        // position: 'absolute',
         margin: 10,
+        marginLeft: -80,
     },
     search_close: {
         position: 'absolute',

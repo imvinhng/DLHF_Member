@@ -168,8 +168,9 @@ const styles = StyleSheet.create({
         width: 100,
     },
     search_container: {
-        marginLeft: -25,
+        // position: 'absolute',
         margin: 10,
+        marginLeft: -80,
     },
     search_close: {
         position: 'absolute',

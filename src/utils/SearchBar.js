@@ -1,8 +1,10 @@
-import React from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, TextInput, Dimensions } from 'react-native';
 import { SquareButton, RoundButton } from './CustomButton';
 
 function SearchBar(props) {
+    const [clicked, setClicked] = useState(false);
+
     return (
         <View style={[styles.row_wrapper, props.containerStyle]}>
             <SquareButton
@@ -14,10 +16,14 @@ function SearchBar(props) {
                 placeholder={'Search'}
                 value={props.searchPhrase}
                 onChangeText={props.setSearchPhrase}
-                onFocus={() => { props.setClicked(true) }}
-                onBlur={() => { props.setClicked(false) }}
+                onFocus={() => setClicked(true)}
+                onBlur={() => {
+                    console.log('User clicked outside of the textbox')
+                    setClicked(false)
+                }}
+
             />
-            {props.clicked
+            {clicked
                 && (<RoundButton
                     iconName='times'
                     bgColor='#f1f1f0'
@@ -31,13 +37,17 @@ function SearchBar(props) {
 
 export default SearchBar;
 
+const { width: screenWidth } = Dimensions.get('screen');
+const searchbarWidth = .60 * screenWidth;
+
 const styles = StyleSheet.create({
     searchbar: {
         backgroundColor: '#f1f1f0',
-        width: '75%',
+        width: searchbarWidth,
         height: 40,
         borderRadius: 10,
         padding: 10,
+        // position: 'absolute',
         marginLeft: -12,
     },
     searchbar_icon: {

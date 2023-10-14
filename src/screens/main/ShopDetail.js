@@ -1,11 +1,12 @@
+import React from 'react';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { StyleSheet, View, Text, Image, Modal, TouchableOpacity, Platform, Dimensions } from 'react-native';
 import { PromotionButton, NotificationButton, RoundButton } from '../../utils/CustomButton';
 import { LongButton_Icon } from '../../utils/CustomButton';
 import { DATA } from '../../db/Database';
 import { WAREHOUSE_REPORT } from '../../db/ttp_report_warehouse';
 
-import React from 'react';
-import { useNavigation, useRoute } from '@react-navigation/native';
+
 function Shop_Detail(props) {
     const route = useRoute();
     const navigation = useNavigation();
