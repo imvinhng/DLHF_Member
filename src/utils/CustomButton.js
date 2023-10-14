@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Pressable, Text, Image, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Pressable, Text, Image, View, TouchableOpacity, Dimensions } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Octicons from 'react-native-vector-icons/Octicons';
@@ -315,7 +315,72 @@ export const RadioHeaderCustom = () => {
     )
 }
 
+export const RadioPeriodCustom = () => {
+    const [focusedOne, setFocusedOne] = useState(true);
+    const [focusedTwo, setFocusedTwo] = useState(false);
+    const [focusedThree, setFocusedThree] = useState(false);
+    const [focusedFour, setFocusedFour] = useState(false);
 
+
+    const onFocusRadio = (focusedID) => {
+        if (focusedID == '1') {
+            setFocusedOne(true)
+            setFocusedTwo(false)
+            setFocusedThree(false)
+            setFocusedFour(false)
+        } else if (focusedID == '2') {
+            setFocusedOne(false)
+            setFocusedTwo(true)
+            setFocusedThree(false)
+            setFocusedFour(false)
+        } else if (focusedID == '3') {
+            setFocusedOne(false)
+            setFocusedTwo(false)
+            setFocusedThree(true)
+            setFocusedFour(false)
+        } else if (focusedID == '4') {
+            setFocusedOne(false)
+            setFocusedTwo(false)
+            setFocusedThree(false)
+            setFocusedFour(true)
+        }
+    }
+
+    return (
+        <View style={styles.row_wrapper}>
+            <LongButton
+                buttonColor={focusedOne ? '#fff' : 'lightgray'}
+                text={'Year'}
+                buttonStyle={styles.grid4_button}
+                textStyle={styles.grid_btn_txt}
+                onPressFunction={() => onFocusRadio('1')}
+            />
+            <LongButton
+                buttonColor={focusedTwo ? '#fff' : 'lightgray'}
+                text={'Month'}
+                buttonStyle={styles.grid4_button}
+                textStyle={styles.grid_btn_txt}
+                onPressFunction={() => onFocusRadio('2')}
+            />
+            <LongButton
+                buttonColor={focusedThree ? '#fff' : 'lightgray'}
+                text={'Week'}
+                buttonStyle={styles.grid4_button}
+                textStyle={styles.grid_btn_txt}
+                onPressFunction={() => onFocusRadio('3')}
+            />
+            <LongButton
+                buttonColor={focusedFour ? '#fff' : 'lightgray'}
+                text={'Day'}
+                buttonStyle={styles.grid4_button}
+                textStyle={styles.grid_btn_txt}
+                onPressFunction={() => onFocusRadio('4')}
+            />
+        </View>
+    )
+}
+
+const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
     round_button: {
@@ -412,5 +477,9 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 30,
     },
+    grid4_button: {
+        width: (ScreenWidth - 10) / 4 - 20,
+        borderRadius: 10,
+    }
 
 })

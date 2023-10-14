@@ -6,14 +6,71 @@
  */
 
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Dimensions, ScrollView } from 'react-native';
-import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton } from '../../utils/CustomButton';
+import { StyleSheet, Text, View, Dimensions, ScrollView, FlatList, TouchableOpacity, Image } from 'react-native';
+import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton, LongButton, RadioPeriodCustom } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
-import PersonalInfo from './PersonalInfo';
+import PersonalInfo from '../main/PersonalInfo';
+import GlobalStyle from '../../assets/style/GlobalStyle';
+import { darkorange, white, backgroundGray } from '../../assets/style/Colors';
+import { GrayLine_Full, GrayLine_Full_Thick } from '../../utils/CustomComponents';
+import { DATA_ORDER_HISTORY } from '../../db/Database';
+import DatePicker from 'react-native-date-picker';
+import { BarChart, PieChart } from 'react-native-chart-kit';
+
 
 function Analytics(props) {
     const navigation = useNavigation();
 
+    const today = new Date();
+    const lastYear = today.getFullYear() - 1;
+    const thisMonth = today.getMonth();
+    const thisDay = today.getDate();
+
+    const [valueStartDate, setValueStartDate] = useState(new Date(lastYear, thisMonth, thisDay));
+    const [valueEndDate, setValueEndDate] = useState(today);
+    const [openStartDate, setOpenStartDate] = useState(false);
+    const [openEndDate, setOpenEndDate] = useState(false);
+
+    const [data, setData] = useState(DATA_ORDER_HISTORY);
+
+    const chartConfig = {
+        backgroundGradientFrom: "#1E2923",
+        backgroundGradientFromOpacity: 0,
+        backgroundGradientTo: "#08130D",
+        backgroundGradientToOpacity: 0.1,
+        // height: 500,
+        color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+        strokeWidth: 2, // optional, default 3
+        barPercentage: 1,
+        useShadowColorFromDataset: false // optional
+    };
+
+    const barChartData = {
+        labels: ["2020", '2021', '2022', '2023'],
+        datasets: [
+            {
+                data: [1.5, 2, 3, 0]
+            }
+        ]
+    };
+
+    function filterItems() {
+        setData(DATA_ORDER_HISTORY.filter(item => item.delivery_date >= valueStartDate && item.delivery_date <= valueEndDate))
+    }
+
+    const Item = ({ id, store, delivery_date, order_id, amount }) => {
+        return (
+            <TouchableOpacity onPress={() => navigation.navigate('More', { screen: 'OrderDetailScreen', params: { id: id } })}>
+                <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginVertical: 10 }]}>
+                    <Text style={styles.item}>{store}</Text>
+                    <Text style={styles.item}>{delivery_date}</Text>
+                    <Text style={styles.item}>{order_id}</Text>
+                    <Text style={[styles.item, { paddingLeft: 20 }]}>{amount}</Text>
+                </View>
+                <GrayLine_Full />
+            </TouchableOpacity>
+        )
+    }
 
     return (
         <ScrollView style={styles.home}>
@@ -30,32 +87,148 @@ function Analytics(props) {
             </View>
 
             <View style={styles.body}>
-                <Text>40/10/2022</Text>
-                <Text>40/10/2023</Text>
-                <Text>Attention: You can view your Order History within 1 year from today</Text>
-                <Text>Search</Text>
+                <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginTop: 15 }]}>
+                    <LongButton_Icon
+                        text={valueStartDate.toLocaleDateString('vi')}
+                        iconSize={18}
+                        iconName={'calendar'}
+                        buttonColor={white}
+                        buttonStyle={[styles.calendar_btn, GlobalStyle.box_shadow]}
+                        iconStyle={styles.calendar_btn_icon}
+                        textStyle={{ marginLeft: -20 }}
+                        onPressFunction={() => setOpenStartDate(!openStartDate)}
+                    />
+                    <DatePicker
+                        modal
+                        locale={'vi'}
+                        mode={'date'}
+                        title={'Select your start date'}
+                        open={openStartDate}
+                        date={valueStartDate}
+                        minimumDate={new Date(lastYear, thisMonth, thisDay)}
+                        maximumDate={today}
+                        onConfirm={(date) => {
+                            setOpenStartDate(false)
+                            setValueStartDate(date)
+                        }}
+                        onCancel={() => {
+                            setOpenStartDate(false)
+                        }}
+                    />
 
-                {/* Insert chart */}
+                    <LongButton_Icon
+                        text={valueEndDate.toLocaleDateString('vi')}
+                        iconSize={18}
+                        iconName={'calendar'}
+                        buttonColor={white}
+                        buttonStyle={[styles.calendar_btn, GlobalStyle.box_shadow]}
+                        iconStyle={styles.calendar_btn_icon}
+                        textStyle={{ marginLeft: -20 }}
+                        onPressFunction={() => setOpenEndDate(!openEndDate)}
+                    />
+                    <DatePicker
+                        modal
+                        locale={'vi'}
+                        mode={'date'}
+                        title={'Select your end date'}
+                        open={openEndDate}
+                        date={valueEndDate}
+                        minimumDate={new Date(lastYear, thisMonth, thisDay)}
+                        maximumDate={today}
+                        onConfirm={(date) => {
+                            setOpenEndDate(false)
+                            setValueEndDate(date)
+                        }}
+                        onCancel={() => {
+                            setOpenEndDate(false)
+                        }}
+                    />
+                </View>
 
+                {/* insert 4 rectangles statistics */}
+                <View style={styles.summary_container}>
+                    <View style={styles.summary_item}>
+                        <Text style={styles.summary_text}>10</Text>
+                        <Text style={styles.summary_subtext}>Orders</Text>
+                    </View>
+                    <View style={styles.summary_item}>
+                        <Text style={styles.summary_text}>4.3 mil</Text>
+                        <Text style={styles.summary_subtext}>Total spent</Text>
+                    </View>
+                    <View style={styles.summary_item}>
+                        <Text style={styles.summary_text}>431K</Text>
+                        <Text style={styles.summary_subtext}>Average price / order</Text>
+                    </View>
+                    <View style={styles.summary_item}>
+                        <Text style={styles.summary_text}>5%</Text>
+                        <Text style={styles.summary_subtext}>Average discount rate</Text>
+                    </View>
+                </View>
+
+                {/* insert pie chart */}
+                <View style={styles.piechart_container}>
+                    <Text style={styles.container_title}>Products purchased</Text>
+
+
+                    {/* need to change this to dynamic image */}
+                    <Image style={styles.piechart} source={require('../../assets/images/extras/piechart.png')} />
+
+                    {/* pie chart details */}
+                    <View style={styles.piechart_description}>
+                        <View style={[GlobalStyle.row_wrapper, styles.piechart_description_item]}>
+                            <View style={[styles.piechart_square, { backgroundColor: 'blue' }]} />
+                            <Text style={{ fontSize: 15 }}>ARR</Text>
+                        </View>
+                        <View style={[GlobalStyle.row_wrapper, styles.piechart_description_item]}>
+                            <View style={[styles.piechart_square, { backgroundColor: 'yellow' }]} />
+                            <Text style={{ fontSize: 15 }}>Cut Flower</Text>
+                        </View>
+                        <View style={[GlobalStyle.row_wrapper, styles.piechart_description_item]}>
+                            <View style={[styles.piechart_square, { backgroundColor: 'green' }]} />
+                            <Text style={{ fontSize: 15 }}>Pot Plant</Text>
+                        </View>
+                    </View>
+                </View>
+
+                {/* insert graphs */}
+                <View style={styles.graph_container}>
+                    <Text style={styles.container_title}>Spending Analytics</Text>
+                    <RadioPeriodCustom />
+
+                    <BarChart
+                        style={styles.graphStyle}
+                        data={barChartData}
+                        width={graphContainerWidth}
+                        height={170}
+                        yAxisLabel="$"
+                        chartConfig={chartConfig}
+                    // verticalLabelRotation={30}
+                    />
+                </View>
             </View>
-
         </ScrollView>
     );
 }
 
 export default Analytics;
 
-const { width } = Dimensions.get('screen')
+const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
+const calendarBtnWidth = (ScreenWidth / 2) - 20;
+const headingWidth = (ScreenWidth / 4) - 10;
+const summaryContainerHeight = 240;
+const piechartContainerHeight = 240;
+const graphContainerHeight = 240;
+const graphContainerWidth = ScreenWidth - 10;
 
 const styles = StyleSheet.create({
     home: {
         flex: 1,
-        // backgroundColor: '#fff'
+        // backgroundColor: white
     },
     body: {
-        backgroundColor: '#efefef',
+        backgroundColor: backgroundGray,
         flex: 1,
-        height: '100%',
+        height: ScreenHeight + 20,
     },
     title: {
         fontSize: 25,
@@ -68,41 +241,32 @@ const styles = StyleSheet.create({
         marginLeft: '5%',
         marginBottom: 10,
     },
-    text_above: {
-        fontSize: 16,
+    heading: {
+        fontSize: 15,
         fontWeight: '500',
-    },
-    text_below: {
-        fontSize: 13,
-        fontWeight: '500',
-        marginTop: 22,
-    },
-    image: {
-        height: 80,
-        width: 80,
-        borderRadius: 10,
-        margin: -10,
+        width: headingWidth,
+        // backgroundColor: 'yellow',
     },
     item: {
-        backgroundColor: '#f8f8f6',
-        padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
-        height: 100,
-        flexDirection: 'row',
-        borderRadius: 10,
-    },
-    column_wrapper_custom: {
-        flexDirection: 'column',
+        fontSize: 15,
+        fontWeight: '300',
+        width: headingWidth,
+        paddingRight: 5,
         // backgroundColor: 'red',
-        width: 280,
-        marginLeft: 20,
-        marginTop: -5,
+    },
+    summary_text: {
+        color: 'green',
+        fontSize: 30,
+        fontWeight: '500',
+    },
+    summary_subtext: {
+        position: 'absolute',
+        top: 80,
     },
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#fff',
+        backgroundColor: white,
         paddingTop: Platform.OS == 'ios' ? 56 : 10,
         paddingBottom: 10,
     },
@@ -115,45 +279,76 @@ const styles = StyleSheet.create({
     sub_header_right: {
         flexDirection: 'row',
     },
-    grid: {
+
+    calendar_btn: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: calendarBtnWidth,
+        elevation: 10,
+        borderWidth: 0.5,
+    },
+    calendar_btn_icon: {
+        position: 'absolute',
+        left: calendarBtnWidth - 30,
+    },
+    search_btn: {
+        width: ScreenWidth - 20,  // 10 margin each side
+        justifyContent: 'center',
+    },
+    summary_container: {
+        width: ScreenWidth,
+        height: summaryContainerHeight,
         flexDirection: 'row',
         flexWrap: 'wrap',
+        marginVertical: 10,
+    },
+    piechart_container: {
+        width: ScreenWidth - 10,
+        height: piechartContainerHeight,
+        marginVertical: 10,
+        backgroundColor: 'lightgray',
         margin: 5,
     },
-    image_grid: {
-        height: 100,
-        width: ((width - 50) / 2),
-        borderRadius: 10,
-        margin: 10,
+    graph_container: {
+        width: ScreenWidth - 10,
+        height: graphContainerHeight,
+        marginVertical: 10,
+        backgroundColor: 'lightgray',
+        margin: 5,
+    },
+    summary_item: {
+        width: (ScreenWidth / 2) - 10,
+        height: (summaryContainerHeight / 2) - 10,
+        backgroundColor: 'lightgray',
+        margin: 5,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: 10,
     },
-    longbutton_icon: {
-        marginLeft: 20,
-        margin: 0,
-        height: 50,
-        width: '90%',
+    piechart: {
+        height: ScreenWidth / 2 - 20,
+        width: ScreenWidth / 2 - 20,
+        position: 'absolute',
+        top: 30,
+        left: 30,
+    },
+    piechart_description: {
+        position: 'absolute',
+        left: ScreenWidth - 150,
+        top: '30%',
+        height: piechartContainerHeight / 2,
+        justifyContent: 'space-between'
+    },
+    piechart_description_item: {
         alignItems: 'center',
-        paddingLeft: 10,
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: 'lightgray',
-
-        shadowColor: '#000',
-        shadowOffset: { width: 5, height: 5 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
     },
-    text_longbutton_icon: {
-        fontSize: 16,
-        fontWeight: '600',
-        marginLeft: 5,
+    piechart_square: {
+        width: 15,
+        height: 15,
+        marginRight: 10,
+        borderWidth: 0.5,
+        borderColor: '#fff',
     },
-    icon_longbutton: {
-        width: 30,
-        height: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
+    container_title: {
+        color: 'green', fontWeight: '500', textAlign: 'center', marginTop: 5,
     }
 });
