@@ -30,7 +30,7 @@ function More(props) {
             </View>
 
             <View style={styles.body}>
-                <Text style={styles.subtitle}>Utilities</Text>
+                <Text style={[styles.heading_margin, GlobalStyle.heading]}>Utilities</Text>
 
                 <View style={styles.grid}>
                     <SquareButton_ImageIcon_Text
@@ -61,7 +61,7 @@ function More(props) {
                     />
                 </View>
 
-                <Text style={styles.subtitle}>Support</Text>
+                <Text style={[styles.heading_margin, GlobalStyle.heading]}>Support</Text>
                 <LongButton_Icon
                     iconName={'star'}
                     iconSize={20}
@@ -83,7 +83,7 @@ function More(props) {
                     iconStyle={styles.icon_longbutton}
                 />
 
-                <Text style={styles.subtitle}>Account</Text>
+                <Text style={[styles.heading_margin, GlobalStyle.heading]}>Account</Text>
                 <LongButton_Icon
                     iconName={'user'}
                     iconSize={20}
@@ -151,9 +151,7 @@ const styles = StyleSheet.create({
     title_margin: {
         marginLeft: '7%',
     },
-    subtitle: {
-        fontSize: 22,
-        fontWeight: '500',
+    heading_margin: {
         margin: 15,
         marginLeft: '5%',
         marginBottom: 10,

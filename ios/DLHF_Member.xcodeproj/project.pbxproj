@@ -58,6 +58,16 @@
 		EFD1CB9A93C844A1ADDE09CA /* PlayfairDisplay-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6372B6D132C74AD4A8E63E54 /* PlayfairDisplay-BlackItalic.ttf */; };
 		F712AD66805740878CFAE5A1 /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1297FD5F630478588A7307A /* DancingScript-Medium.ttf */; };
 		FE24599800D145D9AF2209C6 /* PlayfairDisplay-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF48A09D6BF64D818E03C0A3 /* PlayfairDisplay-ExtraBold.ttf */; };
+		1197CD2AF5394382872A7DA9 /* Mohave-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AECD547BB66349CC9986824E /* Mohave-Bold.ttf */; };
+		F40B756A2F3D4E55A389B6A1 /* Mohave-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE45D46B82C049EBADB6FCAB /* Mohave-BoldItalic.ttf */; };
+		6D962A32258A48DF9C16E55F /* Mohave-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07B4D350E5C34ADCBDC6515C /* Mohave-Italic.ttf */; };
+		C949C9E567104B8DADA4D4B0 /* Mohave-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44D060B2E5BD4CDFAE707A1A /* Mohave-Light.ttf */; };
+		E59D53E0936346449A0B135A /* Mohave-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92F2983EC01947F9B6BD97B7 /* Mohave-LightItalic.ttf */; };
+		6DE18D88C06E44EFA8538B96 /* Mohave-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F23B03DDF96498084091A72 /* Mohave-Medium.ttf */; };
+		091DC34C2AB0419F85BFF815 /* Mohave-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DCEA328AD19490D83C16439 /* Mohave-MediumItalic.ttf */; };
+		6E7458AA236E4B8197990573 /* Mohave-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2E4AB07C1DD45EFB5E1642E /* Mohave-Regular.ttf */; };
+		534D197F96434257BE21306D /* Mohave-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DF396D62F5E44E949791BCEB /* Mohave-SemiBold.ttf */; };
+		45D90679C03E4078A2AE6796 /* Mohave-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90E8C3DB6ADB40C89E723D23 /* Mohave-SemiBoldItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +121,16 @@
 		EEF420D56BE64B90827DDBA5 /* PlayfairDisplay-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-SemiBold.ttf"; path = "../src/assets/fonts/PlayfairDisplay-SemiBold.ttf"; sourceTree = "<group>"; };
 		EF48A09D6BF64D818E03C0A3 /* PlayfairDisplay-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-ExtraBold.ttf"; path = "../src/assets/fonts/PlayfairDisplay-ExtraBold.ttf"; sourceTree = "<group>"; };
 		FD791BE50CEA4286A26DAB87 /* PlayfairDisplay-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-Black.ttf"; path = "../src/assets/fonts/PlayfairDisplay-Black.ttf"; sourceTree = "<group>"; };
+		AECD547BB66349CC9986824E /* Mohave-Bold.ttf */ = {isa = PBXFileReference; name = "Mohave-Bold.ttf"; path = "../src/assets/fonts/Mohave-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DE45D46B82C049EBADB6FCAB /* Mohave-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Mohave-BoldItalic.ttf"; path = "../src/assets/fonts/Mohave-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		07B4D350E5C34ADCBDC6515C /* Mohave-Italic.ttf */ = {isa = PBXFileReference; name = "Mohave-Italic.ttf"; path = "../src/assets/fonts/Mohave-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		44D060B2E5BD4CDFAE707A1A /* Mohave-Light.ttf */ = {isa = PBXFileReference; name = "Mohave-Light.ttf"; path = "../src/assets/fonts/Mohave-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		92F2983EC01947F9B6BD97B7 /* Mohave-LightItalic.ttf */ = {isa = PBXFileReference; name = "Mohave-LightItalic.ttf"; path = "../src/assets/fonts/Mohave-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3F23B03DDF96498084091A72 /* Mohave-Medium.ttf */ = {isa = PBXFileReference; name = "Mohave-Medium.ttf"; path = "../src/assets/fonts/Mohave-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9DCEA328AD19490D83C16439 /* Mohave-MediumItalic.ttf */ = {isa = PBXFileReference; name = "Mohave-MediumItalic.ttf"; path = "../src/assets/fonts/Mohave-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A2E4AB07C1DD45EFB5E1642E /* Mohave-Regular.ttf */ = {isa = PBXFileReference; name = "Mohave-Regular.ttf"; path = "../src/assets/fonts/Mohave-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DF396D62F5E44E949791BCEB /* Mohave-SemiBold.ttf */ = {isa = PBXFileReference; name = "Mohave-SemiBold.ttf"; path = "../src/assets/fonts/Mohave-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		90E8C3DB6ADB40C89E723D23 /* Mohave-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "Mohave-SemiBoldItalic.ttf"; path = "../src/assets/fonts/Mohave-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +262,16 @@
 				D99B9183340E4FBEA1BF69D2 /* PlayfairDisplay-Regular.ttf */,
 				EEF420D56BE64B90827DDBA5 /* PlayfairDisplay-SemiBold.ttf */,
 				46B476B5954645A0A63D2975 /* PlayfairDisplay-SemiBoldItalic.ttf */,
+				AECD547BB66349CC9986824E /* Mohave-Bold.ttf */,
+				DE45D46B82C049EBADB6FCAB /* Mohave-BoldItalic.ttf */,
+				07B4D350E5C34ADCBDC6515C /* Mohave-Italic.ttf */,
+				44D060B2E5BD4CDFAE707A1A /* Mohave-Light.ttf */,
+				92F2983EC01947F9B6BD97B7 /* Mohave-LightItalic.ttf */,
+				3F23B03DDF96498084091A72 /* Mohave-Medium.ttf */,
+				9DCEA328AD19490D83C16439 /* Mohave-MediumItalic.ttf */,
+				A2E4AB07C1DD45EFB5E1642E /* Mohave-Regular.ttf */,
+				DF396D62F5E44E949791BCEB /* Mohave-SemiBold.ttf */,
+				90E8C3DB6ADB40C89E723D23 /* Mohave-SemiBoldItalic.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -386,6 +416,16 @@
 				1FBF95BE2ACD268A00BFCAF7 /* PlayfairDisplay-Regular.ttf in Resources */,
 				1FBF95BF2ACD268A00BFCAF7 /* PlayfairDisplay-SemiBold.ttf in Resources */,
 				1FBF95C02ACD268A00BFCAF7 /* PlayfairDisplay-SemiBoldItalic.ttf in Resources */,
+				1197CD2AF5394382872A7DA9 /* Mohave-Bold.ttf in Resources */,
+				F40B756A2F3D4E55A389B6A1 /* Mohave-BoldItalic.ttf in Resources */,
+				6D962A32258A48DF9C16E55F /* Mohave-Italic.ttf in Resources */,
+				C949C9E567104B8DADA4D4B0 /* Mohave-Light.ttf in Resources */,
+				E59D53E0936346449A0B135A /* Mohave-LightItalic.ttf in Resources */,
+				6DE18D88C06E44EFA8538B96 /* Mohave-Medium.ttf in Resources */,
+				091DC34C2AB0419F85BFF815 /* Mohave-MediumItalic.ttf in Resources */,
+				6E7458AA236E4B8197990573 /* Mohave-Regular.ttf in Resources */,
+				534D197F96434257BE21306D /* Mohave-SemiBold.ttf in Resources */,
+				45D90679C03E4078A2AE6796 /* Mohave-SemiBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

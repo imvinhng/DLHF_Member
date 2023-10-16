@@ -20,6 +20,10 @@ const GlobalStyle = StyleSheet.create({
         fontSize: 25,
         fontWeight: '500',
         fontFamily: 'PlayfairDisplay-SemiBold',
+    },
+    heading: {
+        fontSize: 22,
+        fontFamily: 'Mohave-Light'
     }
 })
 

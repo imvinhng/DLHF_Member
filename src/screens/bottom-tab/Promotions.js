@@ -47,7 +47,7 @@ export function Promotions_Main(props) {
             </View>
 
             <View style={styles.body}>
-                <Text style={styles.subtitle}>Ready-to-use</Text>
+                <Text style={[styles.heading_margin, GlobalStyle.heading]}>Ready-to-use</Text>
 
                 <FlatList
                     data={DATA_VOUCHERS}
@@ -81,7 +81,7 @@ export function Promotions_PopUp(props) {
             </View>
 
             <View style={styles.body}>
-                <Text style={styles.subtitle}>Ready-to-use</Text>
+                <Text style={[styles.heading_margin, GlobalStyle.heading]}>Ready-to-use</Text>
 
                 <FlatList
                     data={DATA_VOUCHERS}
@@ -116,11 +116,8 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: '#fff',
     },
-    subtitle: {
-        fontSize: 22,
-        fontWeight: '300',
+    heading_margin: {
         margin: 15,
-        // marginLeft: '15%',
     },
     text_above: {
         fontSize: 15,

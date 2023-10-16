@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     header: {
-
+        paddingTop: Platform.OS == 'ios' ? 0 : 10,
     },
     grid: {
         flexDirection: 'row',

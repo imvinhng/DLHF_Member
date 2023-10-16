@@ -18,6 +18,46 @@
       "sha1": "b5e71ddbaca9b4d5953f0c5e45bf326fb7df35ba"
     },
     {
+      "path": "src/assets/fonts/Mohave-Bold.ttf",
+      "sha1": "96c96bb57686a831649315fd443781f08e622e30"
+    },
+    {
+      "path": "src/assets/fonts/Mohave-BoldItalic.ttf",
+      "sha1": "6217cd398b1254ea1cf798c59c30580ea2b3f280"
+    },
+    {
+      "path": "src/assets/fonts/Mohave-Italic.ttf",
+      "sha1": "c0d9c22f537f54314ec455fd798b8c4bd1d6043e"
+    },
+    {
+      "path": "src/assets/fonts/Mohave-Light.ttf",
+      "sha1": "2be8f0fb61aaac79153d7f607f6779ccf5d09b10"
+    },
+    {
+      "path": "src/assets/fonts/Mohave-LightItalic.ttf",
+      "sha1": "a3a204e9b7af5a9de2f9dc1dc234e0fa0376dcff"
+    },
+    {
+      "path": "src/assets/fonts/Mohave-Medium.ttf",
+      "sha1": "aa4a687dd3243ad30aecfc9e5a340756ffe96c50"
+    },
+    {
+      "path": "src/assets/fonts/Mohave-MediumItalic.ttf",
+      "sha1": "c61b8008c982a004ee08e6b7c89a627d38d330a1"
+    },
+    {
+      "path": "src/assets/fonts/Mohave-Regular.ttf",
+      "sha1": "33d799ca2a0203c16f3e06195873732d9e7221d3"
+    },
+    {
+      "path": "src/assets/fonts/Mohave-SemiBold.ttf",
+      "sha1": "3041f0a272b8c56b5aff356892c20f25f356babc"
+    },
+    {
+      "path": "src/assets/fonts/Mohave-SemiBoldItalic.ttf",
+      "sha1": "b5d3e5eba13f5dc8343c047743faabd378ce044d"
+    },
+    {
       "path": "src/assets/fonts/Oswald-Bold.ttf",
       "sha1": "6e78c90d65a6133d979daebc1255d2f560a97c79"
     },

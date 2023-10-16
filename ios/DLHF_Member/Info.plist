@@ -36,7 +36,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -80,6 +80,16 @@
 		<string>PlayfairDisplay-Regular.ttf</string>
 		<string>PlayfairDisplay-SemiBold.ttf</string>
 		<string>PlayfairDisplay-SemiBoldItalic.ttf</string>
+		<string>Mohave-Bold.ttf</string>
+		<string>Mohave-BoldItalic.ttf</string>
+		<string>Mohave-Italic.ttf</string>
+		<string>Mohave-Light.ttf</string>
+		<string>Mohave-LightItalic.ttf</string>
+		<string>Mohave-Medium.ttf</string>
+		<string>Mohave-MediumItalic.ttf</string>
+		<string>Mohave-Regular.ttf</string>
+		<string>Mohave-SemiBold.ttf</string>
+		<string>Mohave-SemiBoldItalic.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
