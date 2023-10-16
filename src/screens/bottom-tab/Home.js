@@ -42,7 +42,8 @@ const Item = ({ msg, image_uri, exp_date }) => {
 
 const Home = ({ route }) => {
 
-    const loggedIn = route.params;
+    const { loggedIn } = route.params;
+    // console.log('loggedIn: ', loggedIn)
 
     return (
         <View style={styles.home}>

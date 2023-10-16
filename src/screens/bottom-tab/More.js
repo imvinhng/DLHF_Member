@@ -20,7 +20,7 @@ function More(props) {
 
             <View style={styles.header}>
                 <View style={styles.sub_header_left}>
-                    <Text style={styles.title}>More</Text>
+                    <Text style={[styles.title_margin, GlobalStyle.screen_title]}>More</Text>
                 </View>
 
                 <View style={styles.sub_header_right}>
@@ -125,7 +125,7 @@ function More(props) {
                     textStyle={styles.text_longbutton_icon}
                     iconStyle={styles.icon_longbutton}
                     onPressFunction={() =>
-                        navigation.navigate('Home', { screen: 'HomeScreen' })
+                        navigation.navigate('Home', { screen: 'HomeScreen', params: { loggedIn: false } })
                     }
                 />
 
@@ -148,8 +148,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#efefef',
         height: '100%',
     },
-    title: {
-        fontSize: 25,
+    title_margin: {
         marginLeft: '7%',
     },
     subtitle: {

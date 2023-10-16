@@ -24,7 +24,7 @@ function Register_Complete(props) {
                     buttonColor={'#F58831'}
                     buttonStyle={styles.button}
                     onPressFunction={() => {
-                        navigation.navigate('Home', { loggedIn: true })
+                        navigation.navigate('Home', { screen: 'HomeScreen', params: { loggedIn: true } })
                     }}
                 />
             </View>

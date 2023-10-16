@@ -12,10 +12,7 @@ import { useNavigation } from '@react-navigation/native';
 import Dash from 'react-native-dash';
 import LinearGradient from 'react-native-linear-gradient';
 import { DATA_VOUCHERS } from '../../db/Database';
-
-
-
-
+import GlobalStyle from '../../assets/style/GlobalStyle';
 
 const Item = ({ description, expiration_date, image_uri }) => {
     return (
@@ -40,11 +37,37 @@ const Item = ({ description, expiration_date, image_uri }) => {
     )
 };
 
-function Promotions(props) {
+export function Promotions_Main(props) {
     const navigation = useNavigation();
-
     return (
+        <SafeAreaView style={styles.home}>
 
+            <View style={styles.header}>
+                <Text style={GlobalStyle.screen_title}>Your Vouchers</Text>
+            </View>
+
+            <View style={styles.body}>
+                <Text style={styles.subtitle}>Ready-to-use</Text>
+
+                <FlatList
+                    data={DATA_VOUCHERS}
+                    renderItem={({ item }) =>
+                        <Item
+                            description={item.description}
+                            expiration_date={item.expiration_date}
+                            image_uri={item.image_uri}
+                        />
+                    }
+                    keyExtractor={item => item.id}
+                />
+            </View>
+
+        </SafeAreaView>
+    );
+}
+export function Promotions_PopUp(props) {
+    const navigation = useNavigation();
+    return (
         <SafeAreaView style={styles.home}>
 
             <View style={styles.header}>
@@ -77,7 +100,6 @@ function Promotions(props) {
     );
 }
 
-export default Promotions;
 
 const styles = StyleSheet.create({
     home: {
@@ -90,18 +112,13 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        alignItems: 'center',
+        // alignSelf: 'center',
+        padding: 20,
         backgroundColor: '#fff',
-    },
-    title: {
-        fontSize: 25,
-        textAlign: 'center',
-        margin: 10,
-        marginLeft: '15%',
     },
     subtitle: {
         fontSize: 22,
-        fontWeight: '500',
+        fontWeight: '300',
         margin: 15,
         // marginLeft: '15%',
     },

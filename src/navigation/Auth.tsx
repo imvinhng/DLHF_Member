@@ -16,11 +16,11 @@ function Auth(): JSX.Element {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
-                name="LoginTab"
+                name="Login"
                 component={LoginTab}
             />
             <Stack.Screen
-                name="RegisterTab"
+                name="Register"
                 component={RegisterTab}
             />
 

@@ -73,7 +73,7 @@ export const PromotionButton = (props) => {
                 { backgroundColor: pressed ? '#ddd' : '#fff' },
                 props.style,
             ]}
-            onPress={() => navigation.navigate('Promotions', { screen: 'PromotionsScreen' })}
+            onPress={() => navigation.navigate('Promotions', { screen: 'PromotionsPopup' })}
         >
 
             <FontAwesome5 name={'gift'} size={25} color={'#eb9f1c'} />

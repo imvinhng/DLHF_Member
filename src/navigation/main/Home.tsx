@@ -13,6 +13,7 @@ function Home(): JSX.Element {
             <Stack.Screen
                 name='HomeScreen'
                 component={HomeScreen}
+                initialParams={{ loggedIn: false }}
             />
         </Stack.Navigator>
     )

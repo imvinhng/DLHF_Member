@@ -124,7 +124,7 @@ function Register_PasswordSet(props) {
                         setConfirmNewPassword(text)
                     }} onSubmitEditing={() => {
                         if (registerSuccessful()) {
-                            navigation.navigate('Register_PersonalInfo')
+                            navigation.navigate('RegisterPersonalInfoScreen')
                         }
                     }}
                 />
@@ -170,7 +170,7 @@ function Register_PasswordSet(props) {
                     textStyle={styles.button_text}
                     onPressFunction={() => {
                         if (registerSuccessful()) {
-                            navigation.navigate('Register_PersonalInfo')
+                            navigation.navigate('RegisterPersonalInfoScreen')
                         }
                     }}
                 />

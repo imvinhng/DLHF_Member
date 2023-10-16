@@ -13,6 +13,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { convertViToEn } from '../../utils/functions';
 import SearchBar from '../../utils/SearchBar';
 import { WAREHOUSE_REPORT } from '../../db/ttp_report_warehouse';
+import GlobalStyle from '../../assets/style/GlobalStyle';
 
 function Store(props) {
     const navigation = useNavigation();
@@ -42,7 +43,7 @@ function Store(props) {
             <View style={styles.header}>
                 <View style={styles.top_header}>
                     <View style={styles.sub_header_left}>
-                        <Text style={styles.text_large}>Store</Text>
+                        <Text style={[styles.title_margin, GlobalStyle.screen_title]}>Store</Text>
                     </View>
                     <View style={styles.sub_header_right}>
                         <PromotionButton />
@@ -156,9 +157,7 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         marginTop: -5,
     },
-    text_large: {
-        fontSize: 24,
-        fontWeight: '600',
+    title_margin: {
         marginLeft: 20,
     },
     text_subtitle: {

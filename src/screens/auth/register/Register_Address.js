@@ -161,7 +161,7 @@ function Register_Address(props) {
                         buttonColor={'#F58831'}
                         buttonStyle={styles.button}
                         onPressFunction={() => {
-                            navigation.navigate('Register_Complete')
+                            navigation.navigate('RegisterCompleteScreen')
                         }}
                     />
                 </View>

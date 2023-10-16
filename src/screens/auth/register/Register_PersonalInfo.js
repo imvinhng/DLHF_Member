@@ -191,7 +191,7 @@ const Register_PersonalInfo = (props) => {
                     buttonColor={'#F58831'}
                     buttonStyle={styles.button}
                     onPressFunction={() => {
-                        navigation.navigate('Register_Address');
+                        navigation.navigate('RegisterAddressScreen');
                     }}
                 />
             </View>

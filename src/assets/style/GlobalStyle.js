@@ -15,6 +15,11 @@ const GlobalStyle = StyleSheet.create({
     },
     column_wrapper: {
         flexDirection: 'column',
+    },
+    screen_title: {
+        fontSize: 25,
+        fontWeight: '500',
+        fontFamily: 'PlayfairDisplay-SemiBold',
     }
 })
 

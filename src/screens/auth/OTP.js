@@ -39,7 +39,7 @@ export const OTP_Login = ({ navigation, route }) => {
                     autoFocus
                     handleTextChange={(code) => {
                         if (code == otpValue) {
-                            navigation.navigate('BottomTab', { screen: 'Home', params: { loggedIn: true } })
+                            navigation.navigate('Main', { screen: 'Home', params: { loggedIn: true } })
                         }
                     }}
                 />
@@ -82,7 +82,7 @@ export function OTP_Register({ navigation, route }) {
                     autoFocus
                     handleTextChange={(code) => {
                         if (code == otpValue) {
-                            navigation.navigate('Register_PasswordSet')
+                            navigation.navigate('RegisterPasswordSetScreen')
                         }
                     }}
                 />

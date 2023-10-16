@@ -16,18 +16,17 @@ const Stack = createStackNavigator();
 
 function Register(): JSX.Element {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator
+            initialRouteName='RegisterScreen'
+            screenOptions={{ headerShown: false }}
+        >
             <Stack.Screen
                 name="RegisterScreen"
                 component={RegisterScreen}
             />
             <Stack.Screen
-                name="RegisterAddressScreen"
-                component={RegisterAddressScreen}
-            />
-            <Stack.Screen
-                name="RegisterCompleteScreen"
-                component={RegisterCompleteScreen}
+                name="OTPRegisterScreen"
+                component={OTP_Register}
             />
             <Stack.Screen
                 name="RegisterPasswordSetScreen"
@@ -38,8 +37,12 @@ function Register(): JSX.Element {
                 component={RegisterPersonalInfoScreen}
             />
             <Stack.Screen
-                name="OTPRegisterScreen"
-                component={OTP_Register}
+                name="RegisterAddressScreen"
+                component={RegisterAddressScreen}
+            />
+            <Stack.Screen
+                name="RegisterCompleteScreen"
+                component={RegisterCompleteScreen}
             />
         </Stack.Navigator>
     )
