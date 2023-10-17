@@ -55,7 +55,7 @@ function OrderHistory(props) {
 
             <View style={styles.header}>
                 <View style={styles.sub_header_left}>
-                    <Text style={styles.title}>Order History</Text>
+                    <Text style={[styles.title, GlobalStyle.screen_title]}>Order History</Text>
                 </View>
 
                 <View style={styles.sub_header_right}>

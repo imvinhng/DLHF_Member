@@ -14,6 +14,7 @@ import { convertViToEn } from '../../utils/functions';
 import SearchBar from '../../utils/SearchBar';
 import { WAREHOUSE_REPORT } from '../../db/ttp_report_warehouse';
 import GlobalStyle from '../../assets/style/GlobalStyle';
+import { white } from '../../assets/style/Colors';
 
 function Store(props) {
     const navigation = useNavigation();
@@ -62,7 +63,7 @@ function Store(props) {
                         iconName={'map'}
                         iconSize={23}
                         textColor={'#000'}
-                        buttonColor={'#f8f8f6'}
+                        buttonColor={white}
                         buttonStyle={styles.map_btn}
                         textStyle={[styles.text_map, GlobalStyle.text]}
                         text={'Map'}
@@ -98,7 +99,7 @@ export default Store;
 const styles = StyleSheet.create({
     home: {
         flex: 1,
-        backgroundColor: '#f8f8f6'
+        backgroundColor: white,
     },
     body: {
         backgroundColor: '#efefef',
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     bottom_header: {
-        backgroundColor: '#f8f8f6',
+        // backgroundColor: '#f8f8f6',
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 10,

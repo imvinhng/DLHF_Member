@@ -6,6 +6,7 @@ import { DATA } from '../../../db/Database';
 import { WAREHOUSE_REPORT } from '../../../db/ttp_report_warehouse';
 import SearchBar from '../../../utils/SearchBar';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
+import { white } from '../../../assets/style/Colors';
 
 export default function Map({ route, navigation }) {
 
@@ -38,7 +39,7 @@ export default function Map({ route, navigation }) {
                 <LongButton_Icon
                     iconName={'bars'}
                     iconSize={23}
-                    buttonColor={'#f8f8f6'}
+                    buttonColor={white}
                     buttonStyle={styles.map_btn}
                     textStyle={[styles.text_map, GlobalStyle.text]}
                     text={'List'}
@@ -78,7 +79,7 @@ export default function Map({ route, navigation }) {
 const styles = StyleSheet.create({
     home: {
         flex: 1,
-        backgroundColor: '#f8f8f6'
+        backgroundColor: white
     },
     body: {
         backgroundColor: '#d8d8d8',
@@ -86,7 +87,6 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'column',
-        backgroundColor: '#f7f0af',
         paddingTop: Platform.OS == 'ios' ? 56 : 0,
     },
     top_header: {
@@ -94,7 +94,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     bottom_header: {
-        backgroundColor: '#f8f8f6',
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 10,

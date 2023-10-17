@@ -10,6 +10,7 @@ import { StyleSheet, Text, View, Dimensions, ScrollView } from 'react-native';
 import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import GlobalStyle from '../../assets/style/GlobalStyle';
+import { white } from '../../assets/style/Colors';
 
 function More(props) {
     const navigation = useNavigation();
@@ -190,7 +191,7 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#f8f8f6',
+        backgroundColor: white,
         paddingTop: Platform.OS == 'ios' ? 56 : 10,
         paddingBottom: 10,
     },

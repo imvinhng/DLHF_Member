@@ -11,7 +11,7 @@ import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, Notifica
 import { useNavigation } from '@react-navigation/native';
 import PersonalInfo from './PersonalInfo';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
-import { darkorange, white, backgroundGray } from '../../../assets/style/Colors';
+import { darkorange, white, backgroundGray, yellow, green, blue, black } from '../../../assets/style/Colors';
 import { GrayLine_Full, GrayLine_Full_Thick } from '../../../utils/CustomComponents';
 import { DATA_ORDER_HISTORY } from '../../../db/Database';
 import DatePicker from 'react-native-date-picker';
@@ -31,53 +31,89 @@ function Analytics(props) {
     const [openStartDate, setOpenStartDate] = useState(false);
     const [openEndDate, setOpenEndDate] = useState(false);
 
-    const [data, setData] = useState(DATA_ORDER_HISTORY);
+    const [dataIndex, setDataIndex] = useState(0);
+    const [barPercentage, setBarPercentage] = useState(1);
 
     const chartConfig = {
-        backgroundGradientFrom: "#1E2923",
+        backgroundGradientFrom: "#fff",
         backgroundGradientFromOpacity: 0,
-        backgroundGradientTo: "#08130D",
-        backgroundGradientToOpacity: 0.1,
+        backgroundGradientTo: "#fff",
+        backgroundGradientToOpacity: 0,
         // height: 500,
-        color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+        color: (opacity = 0.8) => `rgba(0, 0, 255, ${opacity})`,
+        labelColor: (opacity = 0.8) => `rgba(0, 0, 0, ${opacity})`,
         strokeWidth: 2, // optional, default 3
-        barPercentage: 1,
+        barPercentage: barPercentage,
         useShadowColorFromDataset: false // optional
     };
 
-    const barChartData = {
-        labels: ["2020", '2021', '2022', '2023'],
-        datasets: [
+    const data = [
+        {
+            name: "ARR",
+            product_type: 7,
+            color: blue,
+            legendFontColor: black,
+            legendFontSize: 15
+        },
+        {
+            name: "Cut Flower",
+            product_type: 3,
+            color: yellow,
+            legendFontColor: black,
+            legendFontSize: 15
+        },
+        {
+            name: "Pot Plant",
+            product_type: 2,
+            color: green,
+            legendFontColor: black,
+            legendFontSize: 15
+        },
+    ];
+
+    const barChartData =
+        [
             {
-                data: [1.5, 2, 3, 0]
-            }
-        ]
-    };
+                labels: ["2020", '2021', '2022', '2023'],
+                datasets: [
+                    {
+                        data: [1.5, 2, 3, 0]
+                    }
+                ],
+            },
+            {
+                labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+                datasets: [
+                    {
+                        data: [1.5, 1.8, 2, 1.2, 0.5, .2, 1.7, 1.1, 0.6, 1, 1.2, 2]
+                    }
+                ]
+            },
+            {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+                datasets: [
+                    {
+                        data: [1.5, 2, 0.8, 1.7, 1.9]
+                    }
+                ]
+            },
+            {
+                labels: ['10/10', '11/10', '12/10', '13/10', '14/10', '15/10', '16/10'],
+                datasets: [
+                    {
+                        data: [1.5, 1.8, 2, 1, 0.8, 1, 1.8]
+                    }
+                ]
+            },
 
-    function filterItems() {
-        setData(DATA_ORDER_HISTORY.filter(item => item.delivery_date >= valueStartDate && item.delivery_date <= valueEndDate))
-    }
-
-    const Item = ({ id, store, delivery_date, order_id, amount }) => {
-        return (
-            <TouchableOpacity onPress={() => navigation.navigate('More', { screen: 'OrderDetailScreen', params: { id: id } })}>
-                <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginVertical: 10 }]}>
-                    <Text style={styles.item}>{store}</Text>
-                    <Text style={styles.item}>{delivery_date}</Text>
-                    <Text style={styles.item}>{order_id}</Text>
-                    <Text style={[styles.item, { paddingLeft: 20 }]}>{amount}</Text>
-                </View>
-                <GrayLine_Full />
-            </TouchableOpacity>
-        )
-    }
+        ];
 
     return (
         <ScrollView style={styles.home}>
 
             <View style={styles.header}>
                 <View style={styles.sub_header_left}>
-                    <Text style={styles.title}>Analytics</Text>
+                    <Text style={[styles.title, GlobalStyle.screen_title]}>Analytics</Text>
                 </View>
 
                 <View style={styles.sub_header_right}>
@@ -171,38 +207,43 @@ function Analytics(props) {
 
 
                     {/* need to change this to dynamic image */}
-                    <Image style={styles.piechart} source={require('../../../assets/images/extras/piechart.png')} />
-
-                    {/* pie chart details */}
-                    <View style={styles.piechart_description}>
-                        <View style={[GlobalStyle.row_wrapper, styles.piechart_description_item]}>
-                            <View style={[styles.piechart_square, { backgroundColor: 'blue' }]} />
-                            <Text style={{ fontSize: 15 }}>ARR</Text>
-                        </View>
-                        <View style={[GlobalStyle.row_wrapper, styles.piechart_description_item]}>
-                            <View style={[styles.piechart_square, { backgroundColor: 'yellow' }]} />
-                            <Text style={{ fontSize: 15 }}>Cut Flower</Text>
-                        </View>
-                        <View style={[GlobalStyle.row_wrapper, styles.piechart_description_item]}>
-                            <View style={[styles.piechart_square, { backgroundColor: 'green' }]} />
-                            <Text style={{ fontSize: 15 }}>Pot Plant</Text>
-                        </View>
-                    </View>
+                    {/* <Image style={styles.piechart} source={require('../../../assets/images/extras/piechart.png')} /> */}
+                    <PieChart
+                        data={data}
+                        width={ScreenWidth}
+                        height={220}
+                        chartConfig={chartConfig}
+                        accessor={"product_type"}
+                        backgroundColor={"transparent"}
+                        paddingLeft={"-15"}
+                        // paddingTop={'-30'}
+                        center={[10, -10]}
+                        absolute
+                    />
                 </View>
 
                 {/* insert graphs */}
                 <View style={styles.graph_container}>
                     <Text style={styles.container_title}>Spending Analytics</Text>
-                    <RadioPeriodCustom />
+
+                    {/* TODO: Add dropdown menu to select different data (see Figma) */}
+                    <RadioPeriodCustom
+                        onPressFunctionOne={() => { setDataIndex(0), setBarPercentage(0.8) }}
+                        onPressFunctionTwo={() => { setDataIndex(1), setBarPercentage(0.5) }}
+                        onPressFunctionThree={() => { setDataIndex(2), setBarPercentage(0.8) }}
+                        onPressFunctionFour={() => { setDataIndex(3), setBarPercentage(0.8) }}
+                    />
 
                     <BarChart
                         style={styles.graphStyle}
-                        data={barChartData}
+                        data={barChartData[dataIndex]}
                         width={graphContainerWidth}
-                        height={170}
-                        yAxisLabel="$"
+                        height={250}
+                        yAxisLabel='$'
+                        yAxisSuffix='M'
                         chartConfig={chartConfig}
-                    // verticalLabelRotation={30}
+                        fromZero
+                    // verticalLabelRotation={5}
                     />
                 </View>
             </View>
@@ -217,7 +258,7 @@ const calendarBtnWidth = (ScreenWidth / 2) - 20;
 const headingWidth = (ScreenWidth / 4) - 10;
 const summaryContainerHeight = 240;
 const piechartContainerHeight = 240;
-const graphContainerHeight = 240;
+const graphContainerHeight = 330;
 const graphContainerWidth = ScreenWidth - 10;
 
 const styles = StyleSheet.create({

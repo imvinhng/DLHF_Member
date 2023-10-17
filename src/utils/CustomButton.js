@@ -316,7 +316,7 @@ export const RadioHeaderCustom = () => {
     )
 }
 
-export const RadioPeriodCustom = () => {
+export const RadioPeriodCustom = (props) => {
     const [focusedOne, setFocusedOne] = useState(true);
     const [focusedTwo, setFocusedTwo] = useState(false);
     const [focusedThree, setFocusedThree] = useState(false);
@@ -354,28 +354,28 @@ export const RadioPeriodCustom = () => {
                 text={'Year'}
                 buttonStyle={styles.grid4_button}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => onFocusRadio('1')}
+                onPressFunction={() => { onFocusRadio('1'), props.onPressFunctionOne() }}
             />
             <LongButton
                 buttonColor={focusedTwo ? '#fff' : 'lightgray'}
                 text={'Month'}
                 buttonStyle={styles.grid4_button}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => onFocusRadio('2')}
+                onPressFunction={() => { onFocusRadio('2'), props.onPressFunctionTwo() }}
             />
             <LongButton
                 buttonColor={focusedThree ? '#fff' : 'lightgray'}
                 text={'Week'}
                 buttonStyle={styles.grid4_button}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => onFocusRadio('3')}
+                onPressFunction={() => { onFocusRadio('3'), props.onPressFunctionThree() }}
             />
             <LongButton
                 buttonColor={focusedFour ? '#fff' : 'lightgray'}
                 text={'Day'}
                 buttonStyle={styles.grid4_button}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => onFocusRadio('4')}
+                onPressFunction={() => { onFocusRadio('4'), props.onPressFunctionFour() }}
             />
         </View>
     )
@@ -484,7 +484,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     grid_btn_txt: {
-        fontFamily: 'Merriweather-Regular',
+        fontFamily: 'Merriweather-Light',
+        fontSize: 14,
     }
 
 })
