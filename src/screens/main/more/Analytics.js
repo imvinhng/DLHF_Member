@@ -7,13 +7,13 @@
 
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, ScrollView, FlatList, TouchableOpacity, Image } from 'react-native';
-import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton, LongButton, RadioPeriodCustom } from '../../utils/CustomButton';
+import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton, LongButton, RadioPeriodCustom } from '../../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
-import PersonalInfo from '../main/PersonalInfo';
-import GlobalStyle from '../../assets/style/GlobalStyle';
-import { darkorange, white, backgroundGray } from '../../assets/style/Colors';
-import { GrayLine_Full, GrayLine_Full_Thick } from '../../utils/CustomComponents';
-import { DATA_ORDER_HISTORY } from '../../db/Database';
+import PersonalInfo from './PersonalInfo';
+import GlobalStyle from '../../../assets/style/GlobalStyle';
+import { darkorange, white, backgroundGray } from '../../../assets/style/Colors';
+import { GrayLine_Full, GrayLine_Full_Thick } from '../../../utils/CustomComponents';
+import { DATA_ORDER_HISTORY } from '../../../db/Database';
 import DatePicker from 'react-native-date-picker';
 import { BarChart, PieChart } from 'react-native-chart-kit';
 
@@ -171,7 +171,7 @@ function Analytics(props) {
 
 
                     {/* need to change this to dynamic image */}
-                    <Image style={styles.piechart} source={require('../../assets/images/extras/piechart.png')} />
+                    <Image style={styles.piechart} source={require('../../../assets/images/extras/piechart.png')} />
 
                     {/* pie chart details */}
                     <View style={styles.piechart_description}>

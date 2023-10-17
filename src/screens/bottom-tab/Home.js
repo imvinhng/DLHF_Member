@@ -10,6 +10,7 @@ import { View, StyleSheet, Text, Platform, Image, Dimensions, FlatList, Touchabl
 import { LongButton_Icon } from '../../utils/CustomButton';
 import { HomeHeader, HomeHeader_LoggedIn, HomeBody } from '../../utils/HomeComponents';
 import { DATA_SPECIAL_OFFER } from '../../db/Database';
+import GlobalStyle from '../../assets/style/GlobalStyle';
 
 
 const Item = ({ msg, image_uri, exp_date }) => {
@@ -23,14 +24,14 @@ const Item = ({ msg, image_uri, exp_date }) => {
                     />
                 </TouchableOpacity>
 
-                <Text style={styles.text_grid}>{msg}</Text>
+                <Text style={[GlobalStyle.item_title, styles.text_grid]}>{msg}</Text>
                 <LongButton_Icon
                     iconName={'calendar'}
                     iconSize={20}
                     bgColor={'#fff'}
                     text={exp_date}
                     buttonStyle={styles.voucher_expiration_btn}
-                    textStyle={styles.voucher_expiration_text}
+                    textStyle={[GlobalStyle.item_footer, styles.voucher_expiration_text]}
                 />
             </View>
         </View>
@@ -92,7 +93,8 @@ const styles = StyleSheet.create({
     },
 
     text_grid: {
-        paddingLeft: 8,
+        fontSize: 13,
+        paddingLeft: 10,
         marginTop: 5,
     },
     grid_btn_txt: {
@@ -117,6 +119,9 @@ const styles = StyleSheet.create({
     voucher_expiration_text: {
         color: 'gray',
         fontWeight: '400',
+        fontSize: 13,
+        // textAlignVertical: 'center',
+        paddingTop: 2,
         marginLeft: 7,
     },
     grid_button: {

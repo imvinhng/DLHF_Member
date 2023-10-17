@@ -4,12 +4,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import MoreScreen from '../../screens/bottom-tab/More';
-import PersonalInfoScreen from '../../screens/main/PersonalInfo';
-import OrderHistoryScreen from '../../screens/main/OrderHistory';
-import OrderDetailScreen from '../../screens/main/OrderDetail';
-import Analytics from '../../screens/main/Analytics';
+import PersonalInfoScreen from '../../screens/main/more/PersonalInfo';
+import OrderHistoryScreen from '../../screens/main/more/OrderHistory';
+import OrderDetailScreen from '../../screens/main/more/OrderDetail';
+import Analytics from '../../screens/main/more/Analytics';
 
-import NotificationScreen from '../../screens/main/Notification';
+import NotificationScreen from '../../screens/main/utils/Notification';
 
 const Stack = createStackNavigator();
 

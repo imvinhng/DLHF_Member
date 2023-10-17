@@ -230,9 +230,10 @@ const styles = StyleSheet.create({
 
     },
     text_longbutton_icon: {
-        fontSize: 16,
+        fontSize: 15,
         marginLeft: 5,
-        fontWeight: '600'
+        fontWeight: '500',
+        fontFamily: 'Merriweather-Regular'
     },
     icon_longbutton: {
         width: 30,

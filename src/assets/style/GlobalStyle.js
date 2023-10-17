@@ -28,17 +28,17 @@ const GlobalStyle = StyleSheet.create({
     item_title: {
         fontSize: 16,
         fontWeight: '600',
-        // fontFamily: 'Mukta-Bold'
+        fontFamily: 'Merriweather-Bold'
     },
     item_subtitle: {
         fontSize: 12,
         fontWeight: '300',
-        // fontFamily: 'Mukta-Light',
+        fontFamily: 'Merriweather-Light',
     },
     item_footer: {
-        fontSize: 12,
+        fontSize: 11,
         fontWeight: '300',
-        // fontFamily: 'Mukta-Light'
+        fontFamily: 'Merriweather-Light',
     },
     text: {
         fontFamily: 'Merriweather-Regular'

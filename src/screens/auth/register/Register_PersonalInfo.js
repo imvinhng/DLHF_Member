@@ -59,7 +59,6 @@ const Register_PersonalInfo = (props) => {
                                     iconName={'information-circle-outline'}
                                     iconSize={15}
                                     buttonStyle={{ position: 'absolute', left: 155, height: 20, width: 20 }}
-                                    // TODO: Add in onPressFunction
                                     onPressFunction={() => setHiddenInfo(!hiddenInfo)}
                                 />
                             </View>

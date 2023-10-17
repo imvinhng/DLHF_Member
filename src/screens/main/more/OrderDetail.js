@@ -7,14 +7,14 @@
 
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, ScrollView, FlatList, TextInput, Image } from 'react-native';
-import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton, LongButton, TouchableOpacity } from '../../utils/CustomButton';
+import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton, LongButton, TouchableOpacity } from '../../../utils/CustomButton';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import GlobalStyle from '../../assets/style/GlobalStyle';
-import { darkorange, white, backgroundGray } from '../../assets/style/Colors';
-import { GrayLine_Full, GrayLine_Full_Thick } from '../../utils/CustomComponents';
-import { RoundButton } from '../../utils/CustomButton';
+import GlobalStyle from '../../../assets/style/GlobalStyle';
+import { darkorange, white, backgroundGray } from '../../../assets/style/Colors';
+import { GrayLine_Full, GrayLine_Full_Thick } from '../../../utils/CustomComponents';
+import { RoundButton } from '../../../utils/CustomButton';
 import DatePicker from 'react-native-date-picker';
-import { DATA_ORDER_HISTORY, DATA_ORDER_DETAIL } from '../../db/Database';
+import { DATA_ORDER_HISTORY, DATA_ORDER_DETAIL } from '../../../db/Database';
 
 
 
@@ -55,7 +55,7 @@ function OrderDetail(props) {
                 <View style={[styles.item, { borderWidth: 0.5, borderRadius: 5, width: columnOneWidth, alignItems: 'center' }]}>
                     <Image
                         style={[styles.flower_img]}
-                        source={require('../../assets/images/icons/red-flower-icon.png')}
+                        source={require('../../../assets/images/icons/red-flower-icon.png')}
                     />
                 </View>
 

@@ -65,40 +65,6 @@ export function Promotions_Main(props) {
         </SafeAreaView>
     );
 }
-export function Promotions_PopUp(props) {
-    const navigation = useNavigation();
-    return (
-        <SafeAreaView style={styles.home}>
-
-            <View style={styles.header}>
-                <RoundButton
-                    bgColor={'#fff'}
-                    iconName={'angle-left'}
-                    iconSize={25}
-                    onPressFunction={() => navigation.navigate('Home')}
-                />
-                <Text style={styles.title}>Your Vouchers</Text>
-            </View>
-
-            <View style={styles.body}>
-                <Text style={[styles.heading_margin, GlobalStyle.heading]}>Ready-to-use</Text>
-
-                <FlatList
-                    data={DATA_VOUCHERS}
-                    renderItem={({ item }) =>
-                        <Item
-                            description={item.description}
-                            expiration_date={item.expiration_date}
-                            image_uri={item.image_uri}
-                        />
-                    }
-                    keyExtractor={item => item.id}
-                />
-            </View>
-
-        </SafeAreaView>
-    );
-}
 
 
 const styles = StyleSheet.create({

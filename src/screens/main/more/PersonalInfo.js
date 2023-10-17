@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button, Dimensions } from 'react-native';
-import { RoundButton } from '../../utils/CustomButton';
-import { dataCity, dataWard, dataDistrict, dataGender } from '../../db/Database';
-import { BlackLine } from '../../utils/CustomComponents';
-import PasswordChange from '../auth/PasswordChange';
+import { RoundButton } from '../../../utils/CustomButton';
+import { dataCity, dataWard, dataDistrict, dataGender } from '../../../db/Database';
+import { BlackLine } from '../../../utils/CustomComponents';
+import PasswordChange from '../../auth/PasswordChange';
 import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
 import { useNavigation } from '@react-navigation/native';
-import { darkorange, white } from '../../assets/style/Colors';
+import { darkorange, white } from '../../../assets/style/Colors';
 
 
 function PersonalInfo(props) {
@@ -102,7 +102,7 @@ function PersonalInfo(props) {
                 </View>
 
 
-                <Image source={require('../../assets/images/extras/barcode_personal_info.png')} style={styles.barcode} />
+                <Image source={require('../../../assets/images/extras/barcode_personal_info.png')} style={styles.barcode} />
                 <Text style={styles.footnote}>The date of your membership ranking evaluation is on 24/12/2023.</Text>
             </View>
 

@@ -24,7 +24,6 @@ function Store(props) {
         <TouchableOpacity
             style={styles.item}
             onPress={() => {
-                setClickedID(id)
                 navigation.navigate('Store', { screen: 'ShopDetailScreen', params: { clicked_id: id } })
             }}>
             <Image style={styles.image} source={require('../../assets/images/extras/storefront.png')} />
@@ -65,7 +64,7 @@ function Store(props) {
                         textColor={'#000'}
                         buttonColor={'#f8f8f6'}
                         buttonStyle={styles.map_btn}
-                        textStyle={styles.text_map}
+                        textStyle={[styles.text_map, GlobalStyle.text]}
                         text={'Map'}
                         onPressFunction={() => navigation.navigate('Store', { screen: 'MapScreen' })}
                     />

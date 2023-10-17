@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { LongButton_Icon, PromotionButton, NotificationButton } from '../../utils/CustomButton';
+import { LongButton_Icon, PromotionButton, NotificationButton } from '../../../utils/CustomButton';
 import MapView, { Marker } from 'react-native-maps';
-import { DATA } from '../../db/Database';
-import { WAREHOUSE_REPORT } from '../../db/ttp_report_warehouse';
-import SearchBar from '../../utils/SearchBar';
+import { DATA } from '../../../db/Database';
+import { WAREHOUSE_REPORT } from '../../../db/ttp_report_warehouse';
+import SearchBar from '../../../utils/SearchBar';
+import GlobalStyle from '../../../assets/style/GlobalStyle';
 
 export default function Map({ route, navigation }) {
 
@@ -39,7 +40,7 @@ export default function Map({ route, navigation }) {
                     iconSize={23}
                     buttonColor={'#f8f8f6'}
                     buttonStyle={styles.map_btn}
-                    textStyle={styles.text_map}
+                    textStyle={[styles.text_map, GlobalStyle.text]}
                     text={'List'}
                     onPressFunction={() => navigation.navigate('Store', { screen: 'StoreScreen' })}
                 />

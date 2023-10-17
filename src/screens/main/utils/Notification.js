@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
-import { RoundButton } from '../../utils/CustomButton';
+import { RoundButton } from '../../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
 const DATA = [

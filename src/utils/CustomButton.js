@@ -6,6 +6,7 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native';
 import { black, lightorange } from '../assets/style/Colors';
+import GlobalStyle from '../assets/style/GlobalStyle';
 
 export const RoundButton = (props) => {
     return (
@@ -122,7 +123,7 @@ export const SquareButton_ImageIcon_Text = (props) => {
             <View style={styles.image_icon_wrapper}>
                 <Image source={props.image_uri} style={props.imageStyle} />
             </View>
-            <Text style={styles.text_square_button_image_icon}>{props.text}</Text>
+            <Text style={[styles.text_square_button_image_icon, GlobalStyle.text]}>{props.text}</Text>
         </Pressable>
     );
 }
@@ -429,9 +430,8 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     text_square_button_image_icon: {
-        fontSize: 15,
-        color: '#000',
-        // fontWeight: '600',
+        fontSize: 13,
+        fontWeight: '500',
         marginTop: 12,
         // fontFamily: 'Mukta-Bold',
     },
@@ -482,6 +482,9 @@ const styles = StyleSheet.create({
     grid4_button: {
         width: (ScreenWidth - 10) / 4 - 20,
         borderRadius: 10,
+    },
+    grid_btn_txt: {
+        fontFamily: 'Merriweather-Regular',
     }
 
 })

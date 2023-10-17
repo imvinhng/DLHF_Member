@@ -4,8 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import StoreScreen from '../../screens/bottom-tab/Store';
-import MapScreen from '../../screens/main/Map'
-import ShopDetailScreen from '../../screens/main/ShopDetail'
+import MapScreen from '../../screens/main/store/Map'
+import ShopDetailScreen from '../../screens/main/store/ShopDetail'
 
 const Stack = createStackNavigator();
 

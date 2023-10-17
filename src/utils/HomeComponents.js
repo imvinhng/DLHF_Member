@@ -14,7 +14,7 @@ const TopHeader = () => {
                     bgColor={'#FEF7E5'}
                     iconStyle={styles.icon_image}
                 />
-                <Text style={styles.text_small_center}>Hello friend</Text>
+                <Text style={[styles.text_small_center, GlobalStyle.text]}>Hello friend</Text>
                 <RoundButton_Image
                     image_uri={require('../assets/images/icons/hello-icon.png')}
                     bgColor={'#FEF7E5'}
@@ -128,7 +128,7 @@ export const HomeBody = (props) => {
                             iconStyle={styles.icon_image_large}
                             buttonStyle={styles.roundbutton_large}
                         />
-                        <Text>Home Delivery</Text>
+                        <Text style={[GlobalStyle.text, { fontSize: 13 }]}>Home Delivery</Text>
                     </View>
                     <View style={{ height: 100, width: 2, backgroundColor: 'lightgray' }} />
                     <View style={styles.body_top_right}>
@@ -138,7 +138,7 @@ export const HomeBody = (props) => {
                             iconStyle={styles.icon_image_large}
                             buttonStyle={styles.roundbutton_large}
                         />
-                        <Text>Store Pickup</Text>
+                        <Text style={[GlobalStyle.text, { fontSize: 13 }]}>Store Pickup</Text>
                     </View>
                 </View>
 
@@ -190,7 +190,7 @@ export const HomeBody = (props) => {
             </View>
 
             <View>
-                <Text style={styles.text_large}>Explore</Text>
+                <Text style={[styles.text_large, GlobalStyle.screen_title]}>Explore</Text>
                 <RadioHeaderCustom />
             </View>
         </View>
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     text_small_center: {
-        fontSize: 15,
+        fontSize: 13,
         fontWeight: '600',
         marginLeft: -10,
         marginRight: -6,
