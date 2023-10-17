@@ -1,8 +1,8 @@
-const LevelOneMembers = [
+export const LevelOneMembers = [
 
 ]
 
-const LevelTwoMembers = [
+export const LevelTwoMembers = [
     {
         member_id: 'L19079509',
         phone_number: '0989181123',
@@ -10,10 +10,11 @@ const LevelTwoMembers = [
         level_point: 96,
         reward_point: 61,
         full_name: 'Nguyễn Thế Đông',
+        ranking: 'Silver'
 
     }
 ]
 
-const LevelThreeMembers = [
+export const LevelThreeMembers = [
 
 ]

@@ -53,6 +53,7 @@ function More(props) {
                         text={'Member Policy'}
                         buttonStyle={styles.image_grid}
                         bgColor={'#fff'}
+                        onPressFunction={() => navigation.navigate('More', { screen: 'MemberPolicyScreen' })}
                     />
                     <SquareButton_ImageIcon_Text
                         image_uri={require('../../assets/images/icons/red-flower-icon.png')}

@@ -9,6 +9,8 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
 import { RoundButton } from '../../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import GlobalStyle from '../../../assets/style/GlobalStyle';
+import { backgroundGray } from '../../../assets/style/Colors';
 
 const DATA = [
     {
@@ -20,7 +22,7 @@ const DATA = [
     {
         id: 2,
         title: 'Congrats on your new ranking - Silver',
-        // need to find a replacement word for members (instead of florist)
+        // TODO: Need to find a replacement word for members (instead of florist)
         message: 'Hey Dong! Every successful order accrue reward points. You can use it to upgrade your membership ranking.',
         date: '11/12',
     },
@@ -64,11 +66,11 @@ const Item = ({ title, message, date }) => {
 
             <View style={styles.column_wrapper_custom}>
                 <View style={styles.row_wrapper}>
-                    <Text style={styles.noti_title}>{title}</Text>
-                    <Text style={styles.noti_date}>{date}</Text>
+                    <Text style={[GlobalStyle.item_title, styles.noti_title]}>{title}</Text>
+                    <Text style={[GlobalStyle.item_footer, styles.noti_date]}>{date}</Text>
                 </View>
 
-                <Text style={styles.noti_message}>{message}</Text>
+                <Text style={[GlobalStyle.item_subtitle, styles.noti_message]}>{message}</Text>
             </View>
         </View>
     )
@@ -88,7 +90,7 @@ function Notification(props) {
                     iconSize={25}
                     onPressFunction={() => navigation.navigate('Home')}
                 />
-                <Text style={styles.title}>Notifications</Text>
+                <Text style={[styles.title, GlobalStyle.screen_title]}>Notifications</Text>
             </View>
 
             <View style={styles.body}>
@@ -118,7 +120,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     body: {
-        backgroundColor: '#d8d8d8',
+        backgroundColor: backgroundGray,
         flex: 1,
     },
     header: {
@@ -155,7 +157,7 @@ const styles = StyleSheet.create({
         margin: -10,
     },
     item: {
-        backgroundColor: '#f8f8f6',
+        backgroundColor: '#fff',
         padding: 20,
         height: 100,
         width: '100%',

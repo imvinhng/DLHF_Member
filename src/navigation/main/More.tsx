@@ -7,7 +7,8 @@ import MoreScreen from '../../screens/bottom-tab/More';
 import PersonalInfoScreen from '../../screens/main/more/PersonalInfo';
 import OrderHistoryScreen from '../../screens/main/more/OrderHistory';
 import OrderDetailScreen from '../../screens/main/more/OrderDetail';
-import Analytics from '../../screens/main/more/Analytics';
+import AnalyticsScreen from '../../screens/main/more/Analytics';
+import MemberPolicyScreen from '../../screens/main/more/MemberPolicy';
 
 import NotificationScreen from '../../screens/main/utils/Notification';
 
@@ -34,11 +35,15 @@ function More(): JSX.Element {
             />
             <Stack.Screen
                 name='AnalyticsScreen'
-                component={Analytics}
+                component={AnalyticsScreen}
             />
             <Stack.Screen
                 name='NotificationScreen'
                 component={NotificationScreen}
+            />
+            <Stack.Screen
+                name='MemberPolicyScreen'
+                component={MemberPolicyScreen}
             />
         </Stack.Navigator>
     )
