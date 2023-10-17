@@ -29,8 +29,8 @@ const Item = ({ description, expiration_date, image_uri }) => {
             />
 
             <View style={styles.column_wrapper_custom}>
-                <Text style={styles.text_above}>{description}</Text>
-                <Text style={styles.text_below}>Expires on {expiration_date}</Text>
+                <Text style={[GlobalStyle.item_title]}>{description}</Text>
+                <Text style={[GlobalStyle.item_footer, { marginTop: 30 }]}>Expires on {expiration_date}</Text>
             </View>
             <View style={{ height: 20, width: 15, borderRadius: 20, backgroundColor: '#efefef', position: 'absolute', top: 95, left: 95 }} />
         </TouchableOpacity>
@@ -119,15 +119,6 @@ const styles = StyleSheet.create({
     heading_margin: {
         margin: 15,
     },
-    text_above: {
-        fontSize: 15,
-        fontWeight: '500',
-    },
-    text_below: {
-        fontSize: 12,
-        fontWeight: '500',
-        marginTop: 22,
-    },
     image: {
         height: 80,
         width: 80,
@@ -148,7 +139,7 @@ const styles = StyleSheet.create({
         // backgroundColor: 'red',
         width: 250,
         marginLeft: 35,
-        marginTop: -5,
+        marginTop: -10,
     },
     vertical_dashed_line: {
         width: 5,

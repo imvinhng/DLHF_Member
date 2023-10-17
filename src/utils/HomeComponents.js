@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Image, ImageBackground, ScrollView, Dimensions,
 import { RoundButton_Image, LoginButton, PromotionButton, NotificationButton, RadioHeaderCustom } from './CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { lightorange } from '../assets/style/Colors';
+import GlobalStyle from '../assets/style/GlobalStyle';
 
 const TopHeader = () => {
     return (
@@ -35,8 +36,8 @@ const BottomHeader = () => {
 
     return (
         <View style={styles.bottom_header}>
-            <Text style={styles.text_subtitle}>Log In</Text>
-            <Text style={styles.text_description}>Use the app to gain points and redeem offers exclusively for Dalat Hasfarm member!</Text>
+            <Text style={[styles.text_subtitle, GlobalStyle.screen_title]}>Log In</Text>
+            <Text style={[styles.description, GlobalStyle.text]}>Use the app to gain points and redeem offers exclusively for Dalat Hasfarm member!</Text>
             <LoginButton
                 bgColor={'#eb9f1c'}
                 textColor={'#fff'}
@@ -45,8 +46,8 @@ const BottomHeader = () => {
             />
 
             <View style={styles.row_wrapper}>
-                <Text style={styles.text_small}>Not registered?</Text>
-                <Text style={styles.text_hyperlink} onPress={() => navigation.navigate('Auth', { screen: 'Register' })}>Register here</Text>
+                <Text style={[styles.text_small, GlobalStyle.text]}>Not registered?</Text>
+                <Text style={[styles.text_hyperlink, GlobalStyle.text]} onPress={() => navigation.navigate('Auth', { screen: 'Register' })}>Register here</Text>
             </View>
         </View>
     )
@@ -278,20 +279,21 @@ const styles = StyleSheet.create({
         marginLeft: -10,
         marginRight: -6,
     },
-    text_description: {
-        fontSize: 15,
+    description: {
+        fontSize: 13,
         margin: 10,
         paddingTop: 10,
+        width: 300,
         textAlign: 'center',
     },
     text_small: {
-        fontSize: 15,
+        fontSize: 13,
         margin: 5,
         paddingTop: 10,
         textAlign: 'center',
     },
     text_hyperlink: {
-        fontSize: 15,
+        fontSize: 13,
         margin: 5,
         paddingTop: 10,
         textAlign: 'center',

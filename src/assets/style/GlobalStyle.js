@@ -24,6 +24,24 @@ const GlobalStyle = StyleSheet.create({
     heading: {
         fontSize: 22,
         fontFamily: 'Mohave-Light'
+    },
+    item_title: {
+        fontSize: 16,
+        fontWeight: '600',
+        // fontFamily: 'Mukta-Bold'
+    },
+    item_subtitle: {
+        fontSize: 12,
+        fontWeight: '300',
+        // fontFamily: 'Mukta-Light',
+    },
+    item_footer: {
+        fontSize: 12,
+        fontWeight: '300',
+        // fontFamily: 'Mukta-Light'
+    },
+    text: {
+        fontFamily: 'Merriweather-Regular'
     }
 })
 

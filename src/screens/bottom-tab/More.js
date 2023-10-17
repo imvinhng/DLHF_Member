@@ -231,8 +231,8 @@ const styles = StyleSheet.create({
     },
     text_longbutton_icon: {
         fontSize: 16,
-        fontWeight: '600',
         marginLeft: 5,
+        fontWeight: '600'
     },
     icon_longbutton: {
         width: 30,

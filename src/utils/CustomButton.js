@@ -142,7 +142,7 @@ export const LoginButton = (props) => {
             hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}
             android_ripple={{ color: '#e5ed8a' }}
         >
-            <Text style={[styles.text, { color: props.textColor, fontWeight: 'bold', fontSize: 20 }]}>
+            <Text style={[styles.text, { color: props.textColor, fontSize: 20 }]}>
                 Log In
             </Text>
         </Pressable>
@@ -420,6 +420,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         margin: 10,
         textAlign: 'center',
+        fontFamily: 'Roboto-Bold'
     },
     text_long_button: {
         fontSize: 15,
@@ -430,8 +431,9 @@ const styles = StyleSheet.create({
     text_square_button_image_icon: {
         fontSize: 15,
         color: '#000',
-        fontWeight: '600',
+        // fontWeight: '600',
         marginTop: 12,
+        // fontFamily: 'Mukta-Bold',
     },
     login_button: {
         height: 50,

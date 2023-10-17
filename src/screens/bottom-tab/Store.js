@@ -30,9 +30,9 @@ function Store(props) {
             <Image style={styles.image} source={require('../../assets/images/extras/storefront.png')} />
 
             <View style={styles.column_wrapper_custom}>
-                <Text style={styles.text_smaller}>Dalat Hasfarm {location}</Text>
-                <Text style={styles.text_small_bold}>{address}</Text>
-                <Text style={styles.text_light}>0.2 km away</Text>
+                <Text style={GlobalStyle.item_subtitle}>Dalat Hasfarm {location}</Text>
+                <Text style={[GlobalStyle.item_title, { width: 250, fontSize: 12 }]}>{address}</Text>
+                <Text style={[GlobalStyle.item_footer, { position: 'absolute', top: 70 }]}>0.2 km away</Text>
             </View>
         </TouchableOpacity>
     );
@@ -73,7 +73,7 @@ function Store(props) {
             </View>
 
             <View style={styles.body}>
-                <Text style={styles.text_small}>Dalat Hasfarm's Flower Shop Locations</Text>
+                <Text style={[GlobalStyle.heading, styles.text_small]}>Dalat Hasfarm's Flower Shop Locations</Text>
 
                 <FlatList
                     data={WAREHOUSE_REPORT}
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     column_wrapper_custom: {
         flexDirection: 'column',
         marginLeft: 20,
-        marginTop: -5,
+        marginTop: -15,
     },
     title_margin: {
         marginLeft: 20,
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     text_small: {
-        fontSize: 15,
+        fontSize: 16,
         margin: 5,
         padding: 10,
     },
