@@ -9,6 +9,7 @@ import OrderHistoryScreen from '../../screens/main/more/OrderHistory';
 import OrderDetailScreen from '../../screens/main/more/OrderDetail';
 import AnalyticsScreen from '../../screens/main/more/Analytics';
 import MemberPolicyScreen from '../../screens/main/more/MemberPolicy';
+import PointHistoryScreen from '../../screens/main/more/PointHistory';
 
 import NotificationScreen from '../../screens/main/utils/Notification';
 
@@ -44,6 +45,10 @@ function More(): JSX.Element {
             <Stack.Screen
                 name='MemberPolicyScreen'
                 component={MemberPolicyScreen}
+            />
+            <Stack.Screen
+                name='PointHistoryScreen'
+                component={PointHistoryScreen}
             />
         </Stack.Navigator>
     )

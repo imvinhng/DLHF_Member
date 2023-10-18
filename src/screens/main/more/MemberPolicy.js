@@ -5,9 +5,9 @@ import GlobalStyle from '../../../assets/style/GlobalStyle';
 import { backgroundGray, black, blue, darkorange, green, lightorange, red, tan, white, yellow } from '../../../assets/style/Colors';
 import { LevelTwoMembers } from '../../../db/Users';
 import { OrangeLine, Triangle } from '../../../utils/CustomComponents';
-import { MemberRankingChart, RankEvaluationChart } from '../../../utils/Charts';
+import { MemberRankingChart, RankUpChart, RankEvaluationChart } from '../../../utils/Charts';
 
-function MemberPolicy({ props, navigation }) {
+function MemberPolicy({ navigation }) {
 
 
     const USER_PROFILE = LevelTwoMembers[0];
@@ -57,7 +57,12 @@ function MemberPolicy({ props, navigation }) {
                             />
                         </View>
                         <Text style={styles.point}>{USER_PROFILE.level_point}</Text>
-                        <Text>Point History</Text>
+                        <Text
+                            style={styles.text_hyperlink}
+                            onPress={() => navigation.navigate('More', { screen: 'PointHistoryScreen' })}
+                        >
+                            {`Point History >>`}
+                        </Text>
                     </View>
 
                     <View style={styles.item_container}>
@@ -133,14 +138,15 @@ function MemberPolicy({ props, navigation }) {
                     </Text>
                 </View>
 
-                <Text style={styles.title}>Rank Up</Text>
-                <Text style={{ marginLeft: 10 }}>After your level point reach a new milestone, system will automatically rank you up according to this chart:</Text>
+                <Text style={styles.title}>Rank Up!</Text>
+                <Text style={{ margin: 10, marginTop: 0 }}>After your level point reach a new milestone, system will automatically rank you up according to this chart:</Text>
+                <RankUpChart />
+
+                <Text style={styles.title}>Rank Evaluation</Text>
+                <Text style={{ margin: 10, marginTop: 0 }}>On the evaluation date for member's ranking (each member will have unique evaluation date), system will calculate your next rank based on your current ranking. What's next?</Text>
                 {/* TODO: Insert ranking chart */}
                 <RankEvaluationChart />
 
-                <Text style={styles.title}>Rank Evaluation</Text>
-                <Text>...</Text>
-                {/* TODO: Insert ranking chart */}
 
             </View>
 
@@ -224,6 +230,8 @@ const styles = StyleSheet.create({
         marginTop: 25,
         alignItems: 'center',
         justifyContent: 'center'
-
+    },
+    text_hyperlink: {
+        textDecorationLine: 'underline',
     },
 });
