@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Dimensions, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { NotificationButton, PromotionButton, RoundButton, RoundButton_Ionicons } from '../../../utils/CustomButton';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
-import { backgroundGray, darkorange, green, tan, yellow } from '../../../assets/style/Colors';
+import { backgroundGray, black, blue, darkorange, green, lightorange, red, tan, white, yellow } from '../../../assets/style/Colors';
 import { LevelTwoMembers } from '../../../db/Users';
 import { OrangeLine, Triangle } from '../../../utils/CustomComponents';
+import { MemberRankingChart, RankEvaluationChart } from '../../../utils/Charts';
 
 function MemberPolicy({ props, navigation }) {
 
@@ -99,62 +100,51 @@ function MemberPolicy({ props, navigation }) {
 
                 <Text style={styles.title}>Member Ranking & Exclusives</Text>
                 {/* TODO: Insert ranking chart */}
-                <View style={{ backgroundColor: 'lightgray', width: ScreenWidth, height: memberRankingContainerHeight }}>
-                    <View style={[GlobalStyle.row_wrapper, { backgroundColor: 'lightgray', width: ScreenWidth, height: memberRankingContainerRowHeight + 10, alignItems: 'center' }]}>
-                        <Text style={{ width: ScreenWidth / 3 + 70, textAlign: 'center', padding: 5 }}>Member rank and level point</Text>
-                        <Text style={{ width: ScreenWidth / 3 - 70, textAlign: 'center', padding: 5 }}>Direct discount</Text>
-                        <Text style={{ width: ScreenWidth / 3, textAlign: 'center', padding: 5 }}>Redeeming reward points on purchase</Text>
-                    </View>
-                    <View style={[GlobalStyle.row_wrapper, { backgroundColor: tan, width: ScreenWidth, alignItems: 'center', height: memberRankingContainerRowHeight }]}>
-                        <View style={[{ width: ScreenWidth / 3 - 50, textAlign: 'center', padding: 5, alignItems: 'center' }, GlobalStyle.row_wrapper]}>
-                            <Image source={require('../../../assets/images/icons/bronze.png')} />
-                            <Text style={{ marginLeft: 5 }}>Bronze*</Text>
-                        </View>
-                        <Text style={{ width: ScreenWidth / 3 - 20, textAlign: 'left', padding: 5, color: 'red' }}>Under 60 pts</Text>
-                        <Text style={{ width: ScreenWidth / 3 - 70, textAlign: 'center', padding: 5, color: 'red' }}>0%</Text>
-                        <Text style={{ width: ScreenWidth / 3, textAlign: 'center', paddingRight: 5 }}>1 point equates to 1,000 VND</Text>
-                    </View>
-                    <View style={[GlobalStyle.row_wrapper, { backgroundColor: tan, width: ScreenWidth, alignItems: 'center', height: memberRankingContainerRowHeight * 2 }]}>
-                        <View style={GlobalStyle.column_wrapper}>
-                            <View style={[{ width: ScreenWidth / 3 - 50, textAlign: 'center', padding: 5, alignItems: 'center' }, GlobalStyle.row_wrapper]}>
-                                <Image source={require('../../../assets/images/icons/silver.png')} />
-                                <Text style={{ marginLeft: 5 }}>Silver</Text>
-                            </View>
-                            <View style={[{ width: ScreenWidth / 3 - 50, textAlign: 'center', padding: 5, alignItems: 'center' }, GlobalStyle.row_wrapper]}>
-                                <Image source={require('../../../assets/images/icons/gold.png')} />
-                                <Text style={{ marginLeft: 5 }}>Gold</Text>
-                            </View>
+                <MemberRankingChart />
 
-                        </View>
-                        <View style={[GlobalStyle.column_wrapper, { alignItems: 'center' }]}>
-                            <Text style={{ width: ScreenWidth / 3 - 20, textAlign: 'left', padding: 5 }}>From 60 to 400</Text>
-                            <Text style={{ width: ScreenWidth / 3 - 20, textAlign: 'left', padding: 5 }}>Above 400 pt</Text>
-                        </View>
-                        <View style={GlobalStyle.column_wrapper}>
-                            <Text style={{ width: ScreenWidth / 3 - 70, textAlign: 'center', padding: 5 }}>5%</Text>
-                            <Text style={{ width: ScreenWidth / 3 - 70, textAlign: 'center', padding: 5 }}>7%</Text>
-                        </View>
+                <View style={styles.black_textbox}>
+                    <View style={[GlobalStyle.row_wrapper, { width: ScreenWidth - 40 }]}>
 
-                        <Text style={{ width: ScreenWidth / 3 - 10, textAlign: 'center', padding: 5, color: 'red' }}>Cannot earn or redeem reward points at this level</Text>
+                        <Text style={{ color: white }}>
+                            <Text style={{ color: red, paddingLeft: 5, paddingTop: 5 }}>*</Text>
+                            Bronze members do not get direct discount on purchase (like Silver and Gold members),
+                            but are able to accumulate reward points and redeem them as cash for their orders.
+                            Every reward point has the value of <Text style={{ fontWeight: '700' }}>1.000 VND.</Text></Text>
                     </View>
                 </View>
 
-                <Text style={styles.title}>Level Point & Reward Point</Text>
-                <Text>Level Point: ...</Text>
-
-                <Text>Reward Point: ...</Text>
+                <Text style={styles.title}>Level Points & Reward Points</Text>
+                <View style={[GlobalStyle.row_wrapper, { paddingHorizontal: 10, marginBottom: 10 }]}>
+                    <Image source={require('../../../assets/images/icons/ribbons.png')} />
+                    <Text style={{ width: ScreenWidth - 50, marginHorizontal: 7 }}>
+                        <Text style={{ fontWeight: '700' }}>Level Points (LP): </Text>
+                        Used for evaluating DLHF member's ranking annually. {'\n'}{'\n'}
+                        With every <Text style={{ fontWeight: '700' }}>50.000 VND</Text> spent (via POS of our shop), you will be rewarded 1 level point.
+                    </Text>
+                </View>
+                <View style={[GlobalStyle.row_wrapper, { paddingHorizontal: 10, marginVertical: 10 }]}>
+                    <Image source={require('../../../assets/images/icons/giftbox.png')} />
+                    <Text style={{ width: ScreenWidth - 50, marginHorizontal: 7 }}>
+                        <Text style={{ fontWeight: '700' }}>Reward Points (RP): </Text>
+                        Are points that DLHF members can convert to cash on purchase.
+                        The reward point balance will be zeroed out if members do not make any purchase within a yearly period. {'\n'}{'\n'}
+                        With every <Text style={{ fontWeight: '700' }}>50.000 VND</Text> spent (via POS of our shop), you will be rewarded 1 reward point.
+                        <Text style={{ color: red }}>(only apply for level 1 members. Level 2 and above no longer allow accumulating reward points)</Text>
+                    </Text>
+                </View>
 
                 <Text style={styles.title}>Rank Up</Text>
-                <Text>After your level point reach a new milestone, system will automatically rank you up according to this chart</Text>
+                <Text style={{ marginLeft: 10 }}>After your level point reach a new milestone, system will automatically rank you up according to this chart:</Text>
                 {/* TODO: Insert ranking chart */}
+                <RankEvaluationChart />
 
                 <Text style={styles.title}>Rank Evaluation</Text>
                 <Text>...</Text>
-                {/* Insert ranking chart */}
+                {/* TODO: Insert ranking chart */}
 
             </View>
 
-        </ScrollView>
+        </ScrollView >
     );
 }
 
@@ -222,5 +212,18 @@ const styles = StyleSheet.create({
         left: 210,
         width: pointItemWidth,
         zIndex: 999,
+    },
+
+    black_textbox: {
+        backgroundColor: '#303030',
+        height: 90,
+        width: ScreenWidth - 20,
+        borderRadius: 10,
+        alignSelf: 'center',
+        margin: 15,
+        marginTop: 25,
+        alignItems: 'center',
+        justifyContent: 'center'
+
     },
 });

@@ -42,6 +42,9 @@ const GlobalStyle = StyleSheet.create({
     },
     text: {
         fontFamily: 'Merriweather-Regular'
+    },
+    textCenter: {
+        textAlign: 'center',
     }
 })
 

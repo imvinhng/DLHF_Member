@@ -287,12 +287,12 @@ export const RadioHeaderCustom = () => {
     }
 
     return (
-        <View style={styles.row_wrapper}>
+        <View style={[GlobalStyle.row_wrapper, { justifyContent: 'center' }]}>
             <LongButton
                 buttonColor={focusedOne ? '#FEF7E5' : '#fff'}
                 textColor={textOneColor}
                 text={'Special Offer'}
-                buttonStyle={styles.grid_button}
+                buttonStyle={styles.grid3_button}
                 textStyle={styles.grid_btn_txt}
                 onPressFunction={() => onFocusRadio('1')}
             />
@@ -300,7 +300,7 @@ export const RadioHeaderCustom = () => {
                 buttonColor={focusedTwo ? '#FEF7E5' : '#fff'}
                 textColor={textTwoColor}
                 text={'#FlowerCare'}
-                buttonStyle={styles.grid_button}
+                buttonStyle={styles.grid3_button}
                 textStyle={styles.grid_btn_txt}
                 onPressFunction={() => onFocusRadio('2')}
             />
@@ -308,7 +308,7 @@ export const RadioHeaderCustom = () => {
                 buttonColor={focusedThree ? '#FEF7E5' : '#fff'}
                 textColor={textThreeColor}
                 text={'#FlowerLover'}
-                buttonStyle={styles.grid_button}
+                buttonStyle={styles.grid3_button}
                 textStyle={styles.grid_btn_txt}
                 onPressFunction={() => onFocusRadio('3')}
             />
@@ -486,6 +486,10 @@ const styles = StyleSheet.create({
     grid_btn_txt: {
         fontFamily: 'Merriweather-Light',
         fontSize: 14,
+    },
+    grid3_button: {
+        margin: 0,
+        width: ScreenWidth / 3 - 4,
     }
 
 })

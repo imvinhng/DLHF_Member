@@ -15,3 +15,5 @@ export const green = '#1e9e05'
 export const blue = '#4966e6'
 
 export const tan = '#FEF7E5'
+
+export const red = '#f50505'
