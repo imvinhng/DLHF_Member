@@ -1,18 +1,21 @@
-import React from 'react';
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Dimensions, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { NotificationButton, PromotionButton, RoundButton, RoundButton_Ionicons } from '../../../utils/CustomButton';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
-import { backgroundGray, darkorange, green, tan } from '../../../assets/style/Colors';
+import { backgroundGray, darkorange, green, tan, yellow } from '../../../assets/style/Colors';
 import { LevelTwoMembers } from '../../../db/Users';
-import { OrangeLine } from '../../../utils/CustomComponents';
+import { OrangeLine, Triangle } from '../../../utils/CustomComponents';
 
-function MemberPolicy(props) {
+function MemberPolicy({ props, navigation }) {
+
 
     const USER_PROFILE = LevelTwoMembers[0];
+    const [showLevelPointInfo, setShowLevelPointInfo] = useState(false);
+    const [showRewardPointInfo, setShowRewardPointInfo] = useState(false);
 
     return (
 
-        <View style={styles.home}>
+        <ScrollView style={styles.home}>
 
             <View style={styles.header}>
                 <RoundButton
@@ -44,9 +47,12 @@ function MemberPolicy(props) {
                             <Text style={styles.item_title}>Level Point</Text>
                             <RoundButton_Ionicons
                                 iconName={'information-circle-outline'}
-                                iconSize={15}
-                                buttonStyle={{ position: 'absolute', left: 155, height: 20, width: 20 }}
-                                onPressFunction={() => setHiddenInfo(!hiddenInfo)}
+                                iconSize={20}
+                                buttonStyle={{ position: 'absolute', left: 95, top: -3, height: 20, width: 20 }}
+                                onPressFunction={() => {
+                                    if (showRewardPointInfo) { setShowLevelPointInfo(!showLevelPointInfo) }
+                                    setShowLevelPointInfo(!showLevelPointInfo)
+                                }}
                             />
                         </View>
                         <Text style={styles.point}>{USER_PROFILE.level_point}</Text>
@@ -58,15 +64,37 @@ function MemberPolicy(props) {
                             <Text style={styles.item_title}>Reward Point</Text>
                             <RoundButton_Ionicons
                                 iconName={'information-circle-outline'}
-                                iconSize={15}
-                                buttonStyle={{ position: 'absolute', left: 155, height: 20, width: 20 }}
-                                onPressFunction={() => setHiddenInfo(!hiddenInfo)}
+                                iconSize={20}
+                                buttonStyle={{ position: 'absolute', left: 110, top: -3, height: 20, width: 20 }}
+                                onPressFunction={() => {
+                                    if (showLevelPointInfo) { setShowLevelPointInfo(!showLevelPointInfo) }
+                                    setShowRewardPointInfo(!showRewardPointInfo)
+                                }}
                             />
                         </View>
                         <Text style={styles.point}>{USER_PROFILE.reward_point}</Text>
                         <Text>Valid until: 24/12/2023</Text>
                     </View>
                 </View>
+                {showLevelPointInfo && <View style={styles.hiddenLPInfo}>
+                    <Triangle style={{ borderBottomColor: yellow, position: 'absolute', top: -10, left: 150 }} />
+                    <View style={{ padding: 7, alignItems: 'center' }}>
+                        <Text > Level Point (LP): </Text>
+                        <Text style={{ margin: 3, marginBottom: 7, textAlign: 'center' }}>Use to evaluate member's ranking every year</Text>
+                        <Text style={{ textAlign: 'center' }}>Every successful transaction worth 50K VND earns you 1 Level Point</Text>
+                    </View>
+
+                </View>}
+                {showRewardPointInfo && <View style={styles.hiddenRPInfo}>
+                    <Triangle style={{ borderBottomColor: yellow, position: 'absolute', top: -10, left: 170 }} />
+                    <View style={{ padding: 7, alignItems: 'center' }}>
+                        <Text > Reward Point (RP): </Text>
+                        <Text style={{ marginBottom: 7, textAlign: 'center' }}>They're points that customer can redeem as real cash on purchase. The left-over points will be zeroed out if member do not make any purchase within 1 year period. </Text>
+                        <Text style={{ textAlign: 'center' }}>Every successful transaction worth 50K VND earns you 1 Reward Point (only apply for Bronze member. Silver member or higher do not accumulate Reward Points)</Text>
+                    </View>
+
+                </View>}
+
                 <Text style={{ textAlign: 'center' }}>To rank up to Gold, you need an additional 244 points</Text>
 
                 <Text style={styles.title}>Member Ranking & Exclusives</Text>
@@ -107,7 +135,7 @@ function MemberPolicy(props) {
                             <Text style={{ width: ScreenWidth / 3 - 70, textAlign: 'center', padding: 5 }}>7%</Text>
                         </View>
 
-                        <Text style={{ width: ScreenWidth / 3, textAlign: 'center', padding: 5, color: 'red' }}>TBD</Text>
+                        <Text style={{ width: ScreenWidth / 3 - 10, textAlign: 'center', padding: 5, color: 'red' }}>Cannot earn or redeem reward points at this level</Text>
                     </View>
                 </View>
 
@@ -126,7 +154,7 @@ function MemberPolicy(props) {
 
             </View>
 
-        </View>
+        </ScrollView>
     );
 }
 
@@ -136,6 +164,7 @@ const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 const headerPaddingTop = Platform.OS == 'ios' ? 56 : 10;
 const memberRankingContainerHeight = 180;
 const memberRankingContainerRowHeight = memberRankingContainerHeight / 4;
+const pointItemWidth = (ScreenWidth / 2) - 4;
 
 const styles = StyleSheet.create({
     home: {
@@ -159,7 +188,7 @@ const styles = StyleSheet.create({
     },
     item_container: {
         backgroundColor: 'lightgray',
-        width: (ScreenWidth / 2) - 4,
+        width: pointItemWidth,
         margin: 2,
         alignItems: 'center',
         padding: 10,
@@ -177,5 +206,21 @@ const styles = StyleSheet.create({
         color: green,
         fontSize: 25,
         margin: 10,
-    }
+    },
+    hiddenLPInfo: {
+        backgroundColor: yellow,
+        position: 'absolute',
+        top: 230,
+        left: 10,
+        width: pointItemWidth,
+        zIndex: 999,
+    },
+    hiddenRPInfo: {
+        backgroundColor: yellow,
+        position: 'absolute',
+        top: 230,
+        left: 210,
+        width: pointItemWidth,
+        zIndex: 999,
+    },
 });
