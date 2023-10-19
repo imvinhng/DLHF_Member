@@ -8,6 +8,7 @@ import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
 import { useNavigation } from '@react-navigation/native';
 import { darkorange, white } from '../../../assets/style/Colors';
+import { LevelTwoMembers } from '../../../db/Users';
 
 
 function PersonalInfo(props) {
@@ -17,6 +18,8 @@ function PersonalInfo(props) {
     const showPassword = false;
 
     const inputEmail = useRef(null)
+
+    const userData = LevelTwoMembers[0];
 
     const [showAdditionalAddress, setShowAdditionalAddress] = useState(false);
     const [editAddressIcon, setEditAddressIcon] = useState('pen');
@@ -89,14 +92,14 @@ function PersonalInfo(props) {
                     iconSize={15}
                     bgColor={darkorange}
                     buttonStyle={styles.close_btn}
-                    onPressFunction={() => navigation.navigate('BottomTab', { screen: 'More' })}
+                    onPressFunction={() => navigation.goBack()}
                 />
                 <View style={styles.row_wrapper}>
                     <RoundButton iconName='user' iconSize={40} bgColor='lightgray' buttonStyle={styles.icon_user} />
                     <RoundButton iconName='pen' iconSize={10} iconColor='#fff' bgColor='#000' buttonStyle={styles.profile_edit} />
 
                     <View style={styles.column_wrapper_custom}>
-                        <Text style={styles.name}>Nguyễn Thế Đông</Text>
+                        <Text style={styles.name}>{userData.full_name}</Text>
                         <Text style={styles.membership}>Silver member - 0 vouchers</Text>
                     </View>
                 </View>
@@ -108,15 +111,15 @@ function PersonalInfo(props) {
 
             <View style={styles.body}>
                 <Text style={styles.title}>Member ID</Text>
-                <TextInput style={styles.input} value={'L19079509'} editable={false} />
+                <TextInput style={styles.input} value={userData.member_id} editable={false} />
                 <BlackLine />
 
                 <Text style={styles.title}>Full Name</Text>
-                <TextInput style={styles.input} value={'Nguyễn Thế Đông'} editable={false} />
+                <TextInput style={styles.input} value={userData.full_name} editable={false} />
                 <BlackLine />
 
                 <Text style={styles.title}>Citizenship</Text>
-                <TextInput style={styles.input} value={'VN'} editable={false} />
+                <TextInput style={styles.input} value={userData.citzenship} editable={false} />
                 <BlackLine />
 
                 {/* Only shown when address edit icon is clicked */}
@@ -204,7 +207,7 @@ function PersonalInfo(props) {
                 <BlackLine />
 
                 <Text style={styles.title}>Phone number</Text>
-                <TextInput style={styles.input} value={'0989181123'} editable={false} />
+                <TextInput style={styles.input} value={userData.phone_number} editable={false} />
                 <BlackLine />
 
                 <Text style={styles.title}>Password</Text>

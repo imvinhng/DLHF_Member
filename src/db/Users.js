@@ -10,7 +10,8 @@ export const LevelTwoMembers = [
         level_point: 96,
         reward_point: 61,
         full_name: 'Nguyễn Thế Đông',
-        ranking: 'Silver'
+        ranking: 'Silver',
+        citzenship: 'VN',
 
     }
 ]

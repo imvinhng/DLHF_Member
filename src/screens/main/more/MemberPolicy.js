@@ -16,7 +16,7 @@ function MemberPolicy({ navigation }) {
 
     return (
 
-        <ScrollView style={styles.home}>
+        <View style={styles.home}>
 
             <View style={styles.header}>
                 <RoundButton
@@ -33,7 +33,7 @@ function MemberPolicy({ navigation }) {
                 </View>
             </View>
 
-            <View style={styles.body}>
+            <ScrollView style={styles.body}>
                 {/* TODO: Fill in the body */}
                 <View style={{ margin: 10 }}>
                     <Text style={styles.full_name}>{USER_PROFILE.full_name}</Text>
@@ -146,11 +146,9 @@ function MemberPolicy({ navigation }) {
                 <Text style={{ margin: 10, marginTop: 0 }}>On the evaluation date for member's ranking (each member will have unique evaluation date), system will calculate your next rank based on your current ranking. What's next?</Text>
                 {/* TODO: Insert ranking chart */}
                 <RankEvaluationChart />
+            </ScrollView>
 
-
-            </View>
-
-        </ScrollView >
+        </View >
     );
 }
 
