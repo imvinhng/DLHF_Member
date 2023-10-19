@@ -354,28 +354,28 @@ export const RadioPeriodCustom = (props) => {
                 text={'Year'}
                 buttonStyle={styles.grid4_button}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => { onFocusRadio('1'), props.onPressFunctionOne() }}
+                onPressFunction={() => { onFocusRadio('1'), props.onPressFunctionYear() }}
             />
             <LongButton
                 buttonColor={focusedTwo ? '#fff' : 'lightgray'}
                 text={'Month'}
                 buttonStyle={styles.grid4_button}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => { onFocusRadio('2'), props.onPressFunctionTwo() }}
+                onPressFunction={() => { onFocusRadio('2'), props.onPressFunctionMonth() }}
             />
             <LongButton
                 buttonColor={focusedThree ? '#fff' : 'lightgray'}
                 text={'Week'}
                 buttonStyle={styles.grid4_button}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => { onFocusRadio('3'), props.onPressFunctionThree() }}
+                onPressFunction={() => { onFocusRadio('3'), props.onPressFunctionWeek() }}
             />
             <LongButton
                 buttonColor={focusedFour ? '#fff' : 'lightgray'}
                 text={'Day'}
                 buttonStyle={styles.grid4_button}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => { onFocusRadio('4'), props.onPressFunctionFour() }}
+                onPressFunction={() => { onFocusRadio('4'), props.onPressFunctionMonth() }}
             />
         </View>
     )

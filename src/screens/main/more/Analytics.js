@@ -7,7 +7,7 @@
 
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, ScrollView, FlatList, TouchableOpacity, Image } from 'react-native';
-import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton, LongButton, RadioPeriodCustom } from '../../../utils/CustomButton';
+import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton, LongButton, RadioPeriodCustom, RoundButton } from '../../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import PersonalInfo from './PersonalInfo';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
@@ -16,6 +16,7 @@ import { GrayLine_Full, GrayLine_Full_Thick } from '../../../utils/CustomCompone
 import { DATA_ORDER_HISTORY } from '../../../db/Database';
 import DatePicker from 'react-native-date-picker';
 import { BarChart, PieChart } from 'react-native-chart-kit';
+import { barChartYear, barChartMonth, barChartWeek, barChartDay } from '../../../db/PurchaseHistory';
 
 
 function Analytics(props) {
@@ -33,6 +34,8 @@ function Analytics(props) {
 
     const [dataIndex, setDataIndex] = useState(0);
     const [barPercentage, setBarPercentage] = useState(1);
+
+    const [barChartData, setBarChartData] = useState(barChartYear);
 
     const chartConfig = {
         backgroundGradientFrom: "#fff",
@@ -71,48 +74,18 @@ function Analytics(props) {
         },
     ];
 
-    const barChartData =
-        [
-            {
-                labels: ["2020", '2021', '2022', '2023'],
-                datasets: [
-                    {
-                        data: [1.5, 2, 3, 0]
-                    }
-                ],
-            },
-            {
-                labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-                datasets: [
-                    {
-                        data: [1.5, 1.8, 2, 1.2, 0.5, .2, 1.7, 1.1, 0.6, 1, 1.2, 2]
-                    }
-                ]
-            },
-            {
-                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
-                datasets: [
-                    {
-                        data: [1.5, 2, 0.8, 1.7, 1.9]
-                    }
-                ]
-            },
-            {
-                labels: ['10/10', '11/10', '12/10', '13/10', '14/10', '15/10', '16/10'],
-                datasets: [
-                    {
-                        data: [1.5, 1.8, 2, 1, 0.8, 1, 1.8]
-                    }
-                ]
-            },
-
-        ];
 
     return (
         <ScrollView style={styles.home}>
 
             <View style={styles.header}>
                 <View style={styles.sub_header_left}>
+                    <RoundButton
+                        bgColor={'#fff'}
+                        iconName={'angle-left'}
+                        iconSize={25}
+                        onPressFunction={() => navigation.navigate('Home')}
+                    />
                     <Text style={[styles.title, GlobalStyle.screen_title]}>Analytics</Text>
                 </View>
 
@@ -228,11 +201,16 @@ function Analytics(props) {
 
                     {/* TODO: Add dropdown menu to select different data (see Figma) */}
                     <RadioPeriodCustom
-                        onPressFunctionOne={() => { setDataIndex(0), setBarPercentage(0.8) }}
-                        onPressFunctionTwo={() => { setDataIndex(1), setBarPercentage(0.5) }}
-                        onPressFunctionThree={() => { setDataIndex(2), setBarPercentage(0.8) }}
-                        onPressFunctionFour={() => { setDataIndex(3), setBarPercentage(0.8) }}
+                        onPressFunctionYear={() => { setBarChartData(barChartYear), setBarPercentage(0.8) }}
+                        onPressFunctionMonth={() => { setBarChartData(barChartMonth), setBarPercentage(0.5) }}
+                        onPressFunctionWeek={() => { setBarChartData(barChartWeek), setBarPercentage(0.8) }}
+                        onPressFunctionDay={() => { setBarChartData(barChartDay), setBarPercentage(0.8) }}
                     />
+
+                    {/* Add Dropdown Picker for Years */}
+                    {/* Add Dropdown Picker for Months */}
+                    {/* Add Dropdown Picker for Weeks */}
+                    {/* Add Dropdown Picker for Days */}
 
                     <BarChart
                         style={styles.graphStyle}

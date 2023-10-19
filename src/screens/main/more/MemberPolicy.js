@@ -25,7 +25,7 @@ function MemberPolicy({ navigation }) {
                     iconSize={25}
                     onPressFunction={() => navigation.navigate('Home')}
                 />
-                <Text style={[styles.title, GlobalStyle.screen_title]}>Member Policy</Text>
+                <Text style={[GlobalStyle.screen_title, { margin: 10 }]}>Member Policy</Text>
 
                 <View style={[GlobalStyle.row_wrapper, { position: 'absolute', top: headerPaddingTop, left: ScreenWidth - 130 }]}>
                     <PromotionButton />
