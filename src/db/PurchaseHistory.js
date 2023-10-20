@@ -4,7 +4,39 @@ export const barChartYear =
             labels: ["2020", '2021', '2022', '2023'],
             datasets: [
                 {
-                    data: [1.5, 2, 3, 0]
+                    data: [1.8, 6, 8.2, 5],
+                },
+            ],
+        },
+        {
+            labels: ['2023'],
+            datasets: [
+                {
+                    data: [5]
+                }
+            ],
+        },
+        {
+            labels: ['2022'],
+            datasets: [
+                {
+                    data: [8.2]
+                }
+            ],
+        },
+        {
+            labels: ['2021'],
+            datasets: [
+                {
+                    data: [6]
+                }
+            ],
+        },
+        {
+            labels: ["2020"],
+            datasets: [
+                {
+                    data: [1.8]
                 }
             ],
         },
@@ -45,3 +77,11 @@ export const barChartDay =
         },
 
     ];
+
+export const yearSelector = [
+    { label: 'All the years', value: 'All the years' },
+    { label: '2023', value: '2023' },
+    { label: '2022', value: '2022' },
+    { label: '2021', value: '2021' },
+    { label: '2020', value: '2020' },
+]

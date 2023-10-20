@@ -375,7 +375,7 @@ export const RadioPeriodCustom = (props) => {
                 text={'Day'}
                 buttonStyle={styles.grid4_button}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => { onFocusRadio('4'), props.onPressFunctionMonth() }}
+                onPressFunction={() => { onFocusRadio('4'), props.onPressFunctionDay() }}
             />
         </View>
     )
