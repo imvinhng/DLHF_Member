@@ -130,9 +130,8 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 25,
-        textAlign: 'center',
-        margin: 10,
-        marginLeft: '15%',
+        marginLeft: '5%',
+        marginTop: -5,
     },
     noti_title: {
         fontSize: 14,

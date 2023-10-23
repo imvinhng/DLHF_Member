@@ -87,6 +87,7 @@ function PersonalInfo(props) {
     return (
         <View style={styles.home}>
             <View style={styles.header}>
+                {/* TODO: fix close button currently not working on IOS */}
                 <RoundButton
                     iconName='times'
                     iconSize={15}
