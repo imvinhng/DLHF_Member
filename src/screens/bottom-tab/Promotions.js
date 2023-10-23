@@ -29,7 +29,7 @@ const Item = ({ description, expiration_date, image_uri }) => {
             />
 
             <View style={styles.column_wrapper_custom}>
-                <Text style={[GlobalStyle.item_title]}>{description}</Text>
+                <Text style={[GlobalStyle.item_title, { width: 270 }]}>{description}</Text>
                 <Text style={[GlobalStyle.item_footer, { marginTop: 30 }]}>Expires on {expiration_date}</Text>
             </View>
             <View style={{ height: 20, width: 15, borderRadius: 20, backgroundColor: '#efefef', position: 'absolute', top: 95, left: 95 }} />
@@ -42,8 +42,42 @@ export function Promotions_Main(props) {
     return (
         <SafeAreaView style={styles.home}>
 
-            <View style={styles.header}>
+            <View style={[styles.header, { padding: 20, paddingBottom: 20 }]}>
                 <Text style={GlobalStyle.screen_title}>Your Vouchers</Text>
+            </View>
+
+            <View style={styles.body}>
+                <Text style={[styles.heading_margin, GlobalStyle.heading]}>Ready-to-use</Text>
+
+                <FlatList
+                    data={DATA_VOUCHERS}
+                    renderItem={({ item }) =>
+                        <Item
+                            description={item.description}
+                            expiration_date={item.expiration_date}
+                            image_uri={item.image_uri}
+                        />
+                    }
+                    keyExtractor={item => item.id}
+                />
+            </View>
+
+        </SafeAreaView>
+    );
+}
+export function Promotions_Popup(props) {
+    const navigation = useNavigation();
+    return (
+        <SafeAreaView style={styles.home}>
+
+            <View style={[styles.header, GlobalStyle.row_wrapper]}>
+                <RoundButton
+                    bgColor={'#fff'}
+                    iconName={'angle-left'}
+                    iconSize={25}
+                    onPressFunction={() => navigation.navigate('Home')}
+                />
+                <Text style={[{ marginLeft: '3%', marginTop: -5 }, GlobalStyle.screen_title]}>Your Vouchers</Text>
             </View>
 
             <View style={styles.body}>
@@ -78,9 +112,9 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        // alignSelf: 'center',
-        padding: 20,
+        alignItems: 'center',
         backgroundColor: '#fff',
+        paddingBottom: 5,
     },
     heading_margin: {
         margin: 15,
