@@ -17,7 +17,7 @@ import { DATA_ORDER_HISTORY } from '../../../db/Database';
 import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
 import { BarChart, PieChart } from 'react-native-chart-kit';
-import { barChartYear, barChartMonth, barChartWeek, barChartDay, yearSelector } from '../../../db/PurchaseHistory';
+import { barChartYear, barChartMonth, barChartWeek, barChartDay, yearSelector, monthSelector, weekSelector } from '../../../db/PurchaseHistory';
 import { baseGestureHandlerWithMonitorProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlerCommon';
 
 
@@ -44,13 +44,15 @@ function Analytics(props) {
 
     const [dataIndex, setDataIndex] = useState(0);
     const [barPercentage, setBarPercentage] = useState(1);
+    const [barChartMax, setBarChartMax] = useState(10);
 
     const [barChartData, setBarChartData] = useState(barChartYear);
 
-    const [showFullYearSelector, setShowFullYearSelector] = useState(true);
-    const [showHalfYearSelector, setShowHalfYearSelector] = useState(false);
-    const [showMonthSelector, setShowMonthSelector] = useState(false);
-    const [showWeekSelector, setShowWeekSelector] = useState(false);
+    const [showFullYearDropdown, setShowFullYearDropdown] = useState(true);
+    const [showHalfYearDropdown, setShowHalfYearDropdown] = useState(false);
+    const [showMonthDropdown, setShowMonthDropdown] = useState(false);
+    const [showWeekDropdown, setShowWeekDropdown] = useState(false);
+    const [showDayNavigation, setShowDayNavigation] = useState(false);
 
     const chartConfig = {
         backgroundGradientFrom: "#fff",
@@ -88,6 +90,18 @@ function Analytics(props) {
             legendFontSize: 15
         },
     ];
+
+    const movePreviousWeek = () => {
+        if (dataIndex - 1 >= 0) {
+            setDataIndex(dataIndex - 1)
+        }
+    }
+
+    const moveNextWeek = () => {
+        if (dataIndex + 1 < weekSelector.length) {
+            setDataIndex(dataIndex + 1)
+        }
+    }
 
 
     return (
@@ -218,48 +232,140 @@ function Analytics(props) {
                     <RadioPeriodCustom
                         onPressFunctionYear={() => {
                             setBarChartData(barChartYear)
+                            setDataIndex(0)
                             setBarPercentage(1.5)
+                            setBarChartMax(10)
 
-                            setShowFullYearSelector(true)
-                            setShowHalfYearSelector(false)
-                            setShowMonthSelector(false)
-                            setShowWeekSelector(false)
-
+                            setShowFullYearDropdown(true)
+                            setShowHalfYearDropdown(false)
+                            setShowMonthDropdown(false)
+                            setShowWeekDropdown(false)
+                            setShowDayNavigation(false)
                         }}
                         onPressFunctionMonth={() => {
-                            setBarChartData(barChartMonth),
-                                setBarPercentage(0.5)
+                            setBarChartData(barChartMonth)
+                            setDataIndex(0)
+                            setBarPercentage(0.5)
+                            setBarChartMax(3.2)
 
-                            setShowFullYearSelector(true)
-                            setShowHalfYearSelector(false)
-                            setShowMonthSelector(false)
-                            setShowWeekSelector(false)
+                            setShowFullYearDropdown(false)
+                            setShowHalfYearDropdown(false)
+                            setShowMonthDropdown(true)
+                            setShowWeekDropdown(false)
+                            setShowDayNavigation(false)
                         }}
                         onPressFunctionWeek={() => {
                             setBarChartData(barChartWeek)
+                            setDataIndex(0)
                             setBarPercentage(0.8)
+                            setBarChartMax(2)
 
-                            setShowFullYearSelector(false)
-                            setShowHalfYearSelector(true)
-                            setShowMonthSelector(true)
-                            setShowWeekSelector(false)
+                            setShowFullYearDropdown(false)
+                            setShowHalfYearDropdown(true)
+                            setShowMonthDropdown(false)
+                            setShowWeekDropdown(true)
+                            setShowDayNavigation(false)
                         }}
                         onPressFunctionDay={() => {
-                            setBarChartData(barChartDay),
-                                setBarPercentage(0.8)
+                            setBarChartData(barChartDay)
+                            setDataIndex(0)
+                            setBarPercentage(0.8)
+                            setBarChartMax(1.2)
 
-                            setShowFullYearSelector(false)
-                            setShowHalfYearSelector(false)
-                            setShowMonthSelector(false)
-                            setShowWeekSelector(true)
+                            setShowFullYearDropdown(false)
+                            setShowHalfYearDropdown(false)
+                            setShowMonthDropdown(false)
+                            setShowWeekDropdown(false)
+                            setShowDayNavigation(true)
                         }}
                     />
 
-                    {/* Dropdown Picker for Years, Month */}
-                    <View style={{ width: graphContainerWidth, alignItems: 'center', marginVertical: 10, zIndex: 10 }}>
-                        {showFullYearSelector &&
+                    {/* Dropdown Picker for Years */}
+                    {showFullYearDropdown && <View style={{ width: graphContainerWidth, alignItems: 'center', marginVertical: 10, zIndex: 10 }}>
+                        <Dropdown
+                            style={[styles.dropdown, { backgroundColor: '#fff', width: graphContainerWidth - 30 }]}
+                            textStyle={styles.input}
+                            open={openYear}
+                            value={valueYear}
+                            items={yearSelector}
+                            // key={barChartYear[dataIndex].labels}
+                            setOpen={setOpenYear}
+                            setValue={setValueYear}
+                            placeholder={'Select.'}
+                            listMode='SCROLLVIEW'
+                            containerProps={{
+                                width: graphContainerWidth - 30
+                            }}
+                            onChangeValue={(value) => {
+                                setBarChartData(barChartYear) // just to be sure we're selecting from the years data
+                                setBarChartMax(10)
+                                if (value == 'All the years') {
+                                    setDataIndex(0)
+                                    setBarPercentage(0.8)
+                                } else if (value == '2023') {
+                                    setDataIndex(1)
+                                    setBarPercentage(5)
+                                } else if (value == '2022') {
+                                    setDataIndex(2)
+                                    setBarPercentage(5)
+                                } else if (value == '2021') {
+                                    setDataIndex(3)
+                                    setBarPercentage(5)
+                                } else if (value == '2020') {
+                                    setDataIndex(4)
+                                    setBarPercentage(5)
+                                }
+                            }}
+                        />
+                    </View>}
+
+                    {showMonthDropdown && <View style={{ width: graphContainerWidth, alignItems: 'center', marginVertical: 10, zIndex: 10 }}>
+                        <Dropdown
+                            style={[styles.dropdown, { backgroundColor: '#fff', width: graphContainerWidth - 30 }]}
+                            textStyle={styles.input}
+                            open={openYear}
+                            value={valueYear}
+                            items={yearSelector}
+                            // key={barChartYear[dataIndex].labels}
+                            setOpen={setOpenYear}
+                            setValue={setValueYear}
+                            placeholder={'Select.'}
+                            listMode='SCROLLVIEW'
+                            containerProps={{
+                                width: graphContainerWidth - 30
+                            }}
+                            onChangeValue={(value) => {
+                                setBarChartData(barChartMonth) // just to be sure we're selecting from the months data
+                                if (value == 'All the years') {
+                                    setDataIndex(0)
+                                    setBarPercentage(0.5)
+                                    setBarChartMax(3.2)
+                                } else if (value == '2023') {
+                                    setDataIndex(1)
+                                    setBarPercentage(0.5)
+                                    setBarChartMax(3.2)
+                                } else if (value == '2022') {
+                                    setDataIndex(2)
+                                    setBarPercentage(0.5)
+                                    setBarChartMax(3.2)
+                                } else if (value == '2021') {
+                                    setDataIndex(3)
+                                    setBarPercentage(0.5)
+                                    setBarChartMax(2.4)
+                                } else if (value == '2020') {
+                                    setDataIndex(4)
+                                    setBarPercentage(0.5)
+                                    setBarChartMax(1)
+                                }
+                            }}
+                        />
+                    </View>}
+
+                    {/* Add Dropdown Picker for Weeks */}
+                    <View style={[GlobalStyle.row_wrapper, { justifyContent: 'center', zIndex: 99 }]}>
+                        {showHalfYearDropdown && <View style={{ width: graphContainerWidth / 2, marginVertical: 10, alignItems: 'center' }}>
                             <Dropdown
-                                style={[styles.dropdown, { backgroundColor: '#fff', width: graphContainerWidth - 30 }]}
+                                style={[styles.dropdown, { backgroundColor: '#fff', width: graphContainerWidth / 2 - 10 }]}
                                 textStyle={styles.input}
                                 open={openYear}
                                 value={valueYear}
@@ -267,30 +373,53 @@ function Analytics(props) {
                                 // key={barChartYear[dataIndex].labels}
                                 setOpen={setOpenYear}
                                 setValue={setValueYear}
-                                placeholder={'Select.'}
+                                placeholder={'Select year'}
                                 listMode='SCROLLVIEW'
                                 containerProps={{
-                                    width: graphContainerWidth - 30
+                                    width: graphContainerWidth / 2 - 10
                                 }}
-                                onChangeValue={(value) => {
-                                    setBarChartData(barChartYear) // just to be sure we're selecting from the years data
-                                    if (value = 'All the years') {
-                                        setDataIndex(0)
-                                    } else if (value == '2023') {
-                                        setDataIndex(1)
-                                    } else if (value == '2022') {
-                                        setDataIndex(2)
-                                    } else if (value == '2021') {
-                                        setDataIndex(3)
-                                    } else if (value == '2020') {
-                                        setDataIndex(4)
-                                    }
+                            />
+                        </View>}
+
+                        {showWeekDropdown && <View style={{ width: graphContainerWidth / 2, marginVertical: 10, alignItems: 'center' }}>
+                            <Dropdown
+                                style={[styles.dropdown, { backgroundColor: '#fff', width: graphContainerWidth / 2 - 10 }]}
+                                textStyle={styles.input}
+                                open={openMonth}
+                                value={valueMonth}
+                                items={monthSelector}
+                                // key={barChartYear[dataIndex].labels}
+                                setOpen={setOpenMonth}
+                                setValue={setValueMonth}
+                                placeholder={'Select month'}
+                                listMode='SCROLLVIEW'
+                                containerProps={{
+                                    width: graphContainerWidth / 2 - 10
                                 }}
-                            />}
+                            />
+                        </View>}
                     </View>
 
-                    {/* Add Dropdown Picker for Weeks */}
                     {/* Add Dropdown Picker for Days */}
+                    {showDayNavigation &&
+                        <View style={[GlobalStyle.row_wrapper, {
+                            width: graphContainerWidth / 2,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            alignSelf: 'center'
+                        }]}>
+                            <RoundButton
+                                iconName={'chevron-left'}
+                                iconSize={25}
+                                onPressFunction={movePreviousWeek}
+                            />
+                            <Text>{weekSelector[dataIndex].label}</Text>
+                            <RoundButton
+                                iconName={'chevron-right'}
+                                iconSize={25}
+                                onPressFunction={moveNextWeek}
+                            />
+                        </View>}
 
                     <BarChart
                         style={styles.graphStyle}
@@ -301,7 +430,7 @@ function Analytics(props) {
                         yAxisSuffix='M'
                         chartConfig={chartConfig}
                         fromZero    // min: 0
-                        fromNumber={10}     // max : 10
+                        fromNumber={barChartMax}     // max : 10
                     // verticalLabelRotation={5}
                     />
                 </View>
@@ -411,7 +540,7 @@ const styles = StyleSheet.create({
     },
     graph_container: {
         width: graphContainerWidth,
-        height: graphContainerHeight,
+        height: 'auto',
         marginVertical: 10,
         backgroundColor: 'lightgray',
         margin: 5,
