@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button, Dimensions } from 'react-native';
+import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button, Dimensions, Alert } from 'react-native';
 import { LongButton, GenderRadioButton, RoundButton, RoundButton_Ionicons } from '../../../utils/CustomButton';
 import { dataGender, dataPaperwork, dataCitizenship } from '../../../db/Database';
 import { GrayLine_Full, OrangeLine_Full, Triangle } from '../../../utils/Line';
@@ -20,6 +20,7 @@ const Register_PersonalInfo = (props) => {
     const [openPaperwork, setOpenPaperwork] = useState(false);
     const [openCitizenship, setOpenCitizenship] = useState(false);
 
+    const [valueFullName, setValueFullName] = useState('');
     const [valueGender, setValueGender] = useState('');
     const [valueBirthDate, setValueBirthDate] = useState(new Date());
     const [valueEmail, setValueEmail] = useState('');
@@ -44,7 +45,14 @@ const Register_PersonalInfo = (props) => {
                     <Text style={styles.title}>Full Name</Text>
                     <Text style={{ color: 'red' }}>*</Text>
                 </View>
-                <TextInput style={styles.input} placeholder={'Enter your full name'} editable autoCorrect={false} />
+                <TextInput
+                    style={styles.input}
+                    placeholder={'Enter your full name'}
+                    value={valueFullName}
+                    editable
+                    autoCorrect={false}
+                    onChangeText={(value) => setValueFullName(value)}
+                />
 
                 <GrayLine_Full />
 
@@ -54,7 +62,6 @@ const Register_PersonalInfo = (props) => {
 
                             <View style={[styles.row_wrapper, { alignItems: 'center', zIndex: 999 }]}>
                                 <Text style={styles.title}>Identification Document</Text>
-                                <Text style={{ color: 'red' }}>*</Text>
                                 <RoundButton_Ionicons
                                     iconName={'information-circle-outline'}
                                     iconSize={15}
@@ -96,7 +103,6 @@ const Register_PersonalInfo = (props) => {
 
                             <View style={[styles.row_wrapper, { alignItems: 'center' }]}>
                                 <Text style={styles.title}>Paperwork Number</Text>
-                                <Text style={{ color: 'red' }}>*</Text>
                             </View>
 
                             <TextInput style={[styles.input, { height: Platform.OS == 'ios' ? 23 : 56 }]} placeholder='No.' />
@@ -107,7 +113,6 @@ const Register_PersonalInfo = (props) => {
                 <View style={{ zIndex: 50 }}>
                     <View style={[styles.row_wrapper, { alignItems: 'center' }]}>
                         <Text style={styles.title}>Citizenship</Text>
-                        <Text style={{ color: 'red' }}>*</Text>
                     </View>
                     <Dropdown
                         style={styles.dropdown_long}
@@ -191,7 +196,7 @@ const Register_PersonalInfo = (props) => {
                     buttonColor={'#F58831'}
                     buttonStyle={styles.button}
                     onPressFunction={() => {
-                        navigation.navigate('RegisterAddressScreen');
+                        valueFullName != '' ? navigation.navigate('RegisterAddressScreen') : Alert.alert('You must enter your full name!')
                     }}
                 />
             </View>

@@ -7,6 +7,22 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 const otpValue = '000000';
 
 export const OTP_Login = ({ navigation, route }) => {
+    const [time, setTime] = React.useState(120);
+    const timerRef = React.useRef(time);
+
+    React.useEffect(() => {
+        const timerId = setInterval(() => {
+            timerRef.current -= 1;
+            if (timerRef.current < 0) {
+                clearInterval(timerId);
+            } else {
+                setTime(timerRef.current);
+            }
+        }, 1000);
+        return () => {
+            clearInterval(timerId);
+        };
+    }, []);
 
     return (
         <View style={styles.home}>
@@ -44,12 +60,28 @@ export const OTP_Login = ({ navigation, route }) => {
                     }}
                 />
 
-                <Text style={styles.footer}>Didn't receive the code? Resend (170s)</Text>
+                <Text style={styles.footer}>Didn't receive the code? Resend ({time}s)</Text>
             </View>
         </View>
     );
 }
 export function OTP_Register({ navigation, route }) {
+    const [time, setTime] = React.useState(120);
+    const timerRef = React.useRef(time);
+
+    React.useEffect(() => {
+        const timerId = setInterval(() => {
+            timerRef.current -= 1;
+            if (timerRef.current < 0) {
+                clearInterval(timerId);
+            } else {
+                setTime(timerRef.current);
+            }
+        }, 1000);
+        return () => {
+            clearInterval(timerId);
+        };
+    }, []);
 
     return (
         <View style={styles.home}>
@@ -87,7 +119,7 @@ export function OTP_Register({ navigation, route }) {
                     }}
                 />
 
-                <Text style={styles.footer}>Didn't receive the code? Resend (170s)</Text>
+                <Text style={styles.footer}>Didn't receive the code? Resend ({time}s)</Text>
             </View>
         </View>
     );

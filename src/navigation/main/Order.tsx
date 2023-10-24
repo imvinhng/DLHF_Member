@@ -3,20 +3,20 @@ import { SafeAreaView, StyleSheet, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import OrdersScreen from '../../screens/bottom-tab/Orders';
+import OrderScreen from '../../screens/bottom-tab/Order';
 
 const Stack = createStackNavigator();
 
-function Orders(): JSX.Element {
+function Order(): JSX.Element {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
                 name='OrdersScreen'
-                component={OrdersScreen}
+                component={OrderScreen}
             />
         </Stack.Navigator>
     )
 }
 
-export default Orders;
+export default Order;
 

@@ -21,12 +21,11 @@ function MemberPolicy({ navigation }) {
             <HeaderPNBack title={'Member Policy'} />
 
             <ScrollView style={styles.body}>
-                {/* TODO: Fill in the body */}
-                <View style={{ margin: 10 }}>
+                <View style={[{ margin: 10, alignItems: 'center' }]}>
                     <Text style={styles.full_name}>{USER_PROFILE.full_name}</Text>
                     <Text style={{ fontSize: 15, marginVertical: 5 }}>Ranking: {USER_PROFILE.ranking} - Member ID: {USER_PROFILE.member_id}</Text>
                     <Image source={require('../../../assets/images/extras/barcode_personal_info.png')} />
-                    <Text style={{ textAlign: 'center', margin: 10 }}>Your next ranking date is on 24/12/2023</Text>
+                    <Text style={{ margin: 10 }}>Your next ranking date is on 24/12/2023</Text>
                 </View>
 
                 <View style={GlobalStyle.row_wrapper}>

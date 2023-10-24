@@ -6,11 +6,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { lightorange, white } from '../assets/style/Colors';
 
-import HomeTab from './main/Home';
-import OrdersTab from './main/Orders';
-import StoreTab from './main/Store';
-import PromotionsTab from './main/Promotions';
-import MoreTab from './main/More';
+import Home from './main/Home';
+import Order from './main/Order';
+import Store from './main/Store';
+import Promotion from './main/Promotion';
+import More from './main/More';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,11 +24,11 @@ function Main(): JSX.Element {
                     size = focused ? 25 : 20;
                     if (route.name === 'Home') {
                         iconName = 'home';
-                    } else if (route.name === 'Orders') {
+                    } else if (route.name === 'Order') {
                         iconName = 'shopping-cart';
                     } else if (route.name === 'Store') {
                         iconName = 'map-marker-alt';
-                    } else if (route.name === 'Promotions') {
+                    } else if (route.name === 'Promotion') {
                         iconName = 'gift';
                     } else if (route.name === 'More') {
                         iconName = 'bars';
@@ -42,29 +42,29 @@ function Main(): JSX.Element {
                 tabBarActiveBackgroundColor: white,
                 tabBarInactiveBackgroundColor: white,
                 tabBarShowLabel: true,
-                fontSize: 14,
+                fontSize: 18,
                 headerShown: false,
             })}>
             <Tab.Screen
                 name="Home"
-                component={HomeTab}
+                component={Home}
             />
             <Tab.Screen
-                name="Orders"
-                component={OrdersTab}
+                name="Order"
+                component={Order}
             />
             <Tab.Screen
                 name="Store"
-                component={StoreTab}
+                component={Store}
             />
 
             <Tab.Screen
-                name="Promotions"
-                component={PromotionsTab}
+                name="Promotion"
+                component={Promotion}
             />
             <Tab.Screen
                 name="More"
-                component={MoreTab}
+                component={More}
             />
         </Tab.Navigator>)
 }

@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Image, Dimensions } from 'react-native';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
 import { NotificationButton, PromotionButton, RoundButton } from '../../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import { HeaderPNBack } from '../../../utils/Header';
 
 const RANKING_MESSAGES = [
     {
@@ -27,20 +28,7 @@ function PointHistory(props) {
 
     return (
         <View style={styles.home}>
-            <View style={styles.header}>
-                <RoundButton
-                    bgColor={'#fff'}
-                    iconName={'angle-left'}
-                    iconSize={25}
-                    onPressFunction={() => navigation.goBack()}
-                />
-                <Text style={[styles.title, GlobalStyle.screen_title]}>Point History</Text>
-
-                <View style={[GlobalStyle.row_wrapper, { position: 'absolute', top: headerPaddingTop, left: ScreenWidth - 130 }]}>
-                    <PromotionButton />
-                    <NotificationButton />
-                </View>
-            </View>
+            <HeaderPNBack title={'Point History'} />
 
             <View style={styles.body}>
                 <Image source={require('../../../assets/images/extras/ranking.png')} style={{ margin: 10 }} />

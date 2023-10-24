@@ -39,7 +39,7 @@ const Item = ({ description, expiration_date, image_uri }) => {
     )
 };
 
-export function Promotions_Main(props) {
+export function Promotion_Main(props) {
     const navigation = useNavigation();
     return (
         <View style={styles.home}>
@@ -65,7 +65,7 @@ export function Promotions_Main(props) {
         </View>
     );
 }
-export function Promotions_Popup(props) {
+export function Promotion_Popup(props) {
     const navigation = useNavigation();
     return (
         <View style={styles.home}>

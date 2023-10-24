@@ -6,21 +6,21 @@
  */
 
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import GlobalStyle from '../../assets/style/GlobalStyle';
 
-function Orders(props) {
+function Order(props) {
     return (
-        <SafeAreaView style={styles.body}>
+        <View style={styles.body}>
 
             <Text style={[styles.text, GlobalStyle.screen_title]}>Orders</Text>
             <Text style={[{ marginTop: 50 }]}>(Coming Soon)</Text>
 
-        </SafeAreaView>
+        </View>
     );
 }
 
-export default Orders;
+export default Order;
 
 const styles = StyleSheet.create({
     body: {
