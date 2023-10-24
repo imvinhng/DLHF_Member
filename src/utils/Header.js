@@ -66,7 +66,6 @@ export const HeaderPNBack = (props) => {
             </View>
         </View>
     )
-
 }
 
 const styles = StyleSheet.create({
@@ -75,7 +74,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: white,
         paddingTop: Platform.OS == 'ios' ? 56 : 10,
-        padding: 10,
+        paddingLeft: 0,
+        paddingBottom: 20,
     },
     header_with_buttons: {
         ...GlobalStyle.row_wrapper,
@@ -100,5 +100,4 @@ const styles = StyleSheet.create({
     title_no_margin: {
         fontSize: 25,
     },
-
 })
