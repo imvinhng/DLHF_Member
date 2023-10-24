@@ -12,9 +12,10 @@ import { useNavigation } from '@react-navigation/native';
 import PersonalInfo from './PersonalInfo';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
 import { darkorange, white, backgroundGray } from '../../../assets/style/Colors';
-import { GrayLine_Full, GrayLine_Full_Thick } from '../../../utils/CustomComponents';
+import { GrayLine_Full, GrayLine_Full_Thick } from '../../../utils/Line';
 import { DATA_ORDER_HISTORY } from '../../../db/Database';
 import DatePicker from 'react-native-date-picker';
+import { HeaderPN, HeaderPNBack } from '../../../utils/Header';
 
 
 function OrderHistory(props) {
@@ -53,16 +54,7 @@ function OrderHistory(props) {
     return (
         <View style={styles.home}>
 
-            <View style={styles.header}>
-                <View style={styles.sub_header_left}>
-                    <Text style={[styles.title, GlobalStyle.screen_title]}>Order History</Text>
-                </View>
-
-                <View style={styles.sub_header_right}>
-                    <PromotionButton />
-                    <NotificationButton />
-                </View>
-            </View>
+            <HeaderPNBack title={'Order History'} />
 
             <View style={styles.body}>
                 <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginTop: 15 }]}>

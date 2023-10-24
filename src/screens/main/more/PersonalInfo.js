@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button, Dimensions } from 'react-native';
 import { RoundButton } from '../../../utils/CustomButton';
 import { dataCity, dataWard, dataDistrict, dataGender } from '../../../db/Database';
-import { BlackLine } from '../../../utils/CustomComponents';
+import { BlackLine } from '../../../utils/Line';
 import PasswordChange from '../../auth/PasswordChange';
 import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';

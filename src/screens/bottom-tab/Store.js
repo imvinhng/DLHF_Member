@@ -15,6 +15,7 @@ import SearchBar from '../../utils/SearchBar';
 import { WAREHOUSE_REPORT } from '../../db/ttp_report_warehouse';
 import GlobalStyle from '../../assets/style/GlobalStyle';
 import { white } from '../../assets/style/Colors';
+import { HeaderPN } from '../../utils/Header';
 
 function Store(props) {
     const navigation = useNavigation();
@@ -39,17 +40,9 @@ function Store(props) {
 
 
     return (
-        <SafeAreaView style={styles.home}>
+        <View style={styles.home}>
             <View style={styles.header}>
-                <View style={styles.top_header}>
-                    <View style={styles.sub_header_left}>
-                        <Text style={[styles.title_margin, GlobalStyle.screen_title]}>Store</Text>
-                    </View>
-                    <View style={styles.sub_header_right}>
-                        <PromotionButton />
-                        <NotificationButton />
-                    </View>
-                </View>
+                <HeaderPN title={'Store'} style={{ paddingBottom: -10 }} />
 
                 <View style={styles.bottom_header}>
                     <SearchBar
@@ -90,7 +83,7 @@ function Store(props) {
                     keyExtractor={item => item.ID}
                 />
             </View>
-        </SafeAreaView>
+        </View>
     );
 }
 

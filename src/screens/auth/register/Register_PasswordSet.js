@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, Image, TouchableOpacity, Alert } from 'react-native';
 import { LongButton, RoundButton, RoundButton_Octicons } from '../../../utils/CustomButton';
-import Register_PersonalInfo from './Register_PersonalInfo';
-import { OrangeLine } from '../../../utils/CustomComponents';
+import { OrangeLine } from '../../../utils/Line';
 import { useNavigation } from '@react-navigation/native';
 
 

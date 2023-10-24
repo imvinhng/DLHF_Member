@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button, Dimensions } from 'react-native';
 import { LongButton, GenderRadioButton, RoundButton, RoundButton_Ionicons } from '../../../utils/CustomButton';
 import { dataGender, dataPaperwork, dataCitizenship } from '../../../db/Database';
-import { GrayLine_Full, OrangeLine_Full, Triangle } from '../../../utils/CustomComponents';
+import { GrayLine_Full, OrangeLine_Full, Triangle } from '../../../utils/Line';
 import Register_Address from './Register_Address';
 import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
@@ -141,6 +141,7 @@ const Register_PersonalInfo = (props) => {
                 </View>
                 <GrayLine_Full />
 
+                {/* TODO: Set default birthdate value to placeholder on start */}
                 <Text style={styles.title}>Date of Birth</Text>
                 <View style={styles.row_wrapper}>
                     <TextInput

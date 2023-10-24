@@ -11,26 +11,18 @@ import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, Notifica
 import { useNavigation } from '@react-navigation/native';
 import GlobalStyle from '../../assets/style/GlobalStyle';
 import { white } from '../../assets/style/Colors';
+import { HeaderPN } from '../../utils/Header';
 
 function More(props) {
     const navigation = useNavigation();
 
 
     return (
-        <ScrollView style={styles.home}>
+        <View style={styles.home}>
 
-            <View style={styles.header}>
-                <View style={styles.sub_header_left}>
-                    <Text style={[styles.title_margin, GlobalStyle.screen_title]}>More</Text>
-                </View>
+            <HeaderPN title={'More'} />
 
-                <View style={styles.sub_header_right}>
-                    <PromotionButton />
-                    <NotificationButton />
-                </View>
-            </View>
-
-            <View style={styles.body}>
+            <ScrollView style={styles.body}>
                 <Text style={[styles.heading_margin, GlobalStyle.heading]}>Utilities</Text>
 
                 <View style={styles.grid}>
@@ -131,9 +123,8 @@ function More(props) {
                     }
                 />
 
-            </View>
-
-        </ScrollView>
+            </ScrollView>
+        </View>
     );
 }
 
@@ -149,9 +140,6 @@ const styles = StyleSheet.create({
     body: {
         backgroundColor: '#efefef',
         height: '100%',
-    },
-    title_margin: {
-        marginLeft: '7%',
     },
     heading_margin: {
         margin: 15,
@@ -188,22 +176,6 @@ const styles = StyleSheet.create({
         width: 280,
         marginLeft: 20,
         marginTop: -5,
-    },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: white,
-        paddingTop: Platform.OS == 'ios' ? 56 : 10,
-        paddingBottom: 10,
-    },
-    sub_header_left: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-    },
-    sub_header_right: {
-        flexDirection: 'row',
     },
     grid: {
         flexDirection: 'row',

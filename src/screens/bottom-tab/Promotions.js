@@ -6,13 +6,15 @@
  */
 
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image, TouchableOpacity } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { RoundButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import Dash from 'react-native-dash';
 import LinearGradient from 'react-native-linear-gradient';
 import { DATA_VOUCHERS } from '../../db/Database';
 import GlobalStyle from '../../assets/style/GlobalStyle';
+import { Header, HeaderBack, HeaderPN, HeaderPNBack } from '../../utils/Header';
+import { backgroundGray, white } from '../../assets/style/Colors';
 
 const Item = ({ description, expiration_date, image_uri }) => {
     return (
@@ -40,11 +42,9 @@ const Item = ({ description, expiration_date, image_uri }) => {
 export function Promotions_Main(props) {
     const navigation = useNavigation();
     return (
-        <SafeAreaView style={styles.home}>
+        <View style={styles.home}>
 
-            <View style={[styles.header, { padding: 20, paddingBottom: 20 }]}>
-                <Text style={GlobalStyle.screen_title}>Your Vouchers</Text>
-            </View>
+            <Header title={'Your Vouchers'} />
 
             <View style={styles.body}>
                 <Text style={[styles.heading_margin, GlobalStyle.heading]}>Ready-to-use</Text>
@@ -62,23 +62,15 @@ export function Promotions_Main(props) {
                 />
             </View>
 
-        </SafeAreaView>
+        </View>
     );
 }
 export function Promotions_Popup(props) {
     const navigation = useNavigation();
     return (
-        <SafeAreaView style={styles.home}>
+        <View style={styles.home}>
 
-            <View style={[styles.header, GlobalStyle.row_wrapper]}>
-                <RoundButton
-                    bgColor={'#fff'}
-                    iconName={'angle-left'}
-                    iconSize={25}
-                    onPressFunction={() => navigation.navigate('Home')}
-                />
-                <Text style={[{ marginLeft: '3%', marginTop: -5 }, GlobalStyle.screen_title]}>Your Vouchers</Text>
-            </View>
+            <HeaderBack title={'Your Vouchers'} navDest={'Home'} />
 
             <View style={styles.body}>
                 <Text style={[styles.heading_margin, GlobalStyle.heading]}>Ready-to-use</Text>
@@ -96,7 +88,7 @@ export function Promotions_Popup(props) {
                 />
             </View>
 
-        </SafeAreaView>
+        </View>
     );
 }
 
@@ -104,16 +96,16 @@ export function Promotions_Popup(props) {
 const styles = StyleSheet.create({
     home: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: white
     },
     body: {
-        backgroundColor: '#efefef',
+        backgroundColor: backgroundGray,
         flex: 1,
     },
     header: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: white,
         paddingBottom: 5,
     },
     heading_margin: {
@@ -126,7 +118,7 @@ const styles = StyleSheet.create({
         margin: -10,
     },
     item: {
-        backgroundColor: '#fff',
+        backgroundColor: white,
         padding: 20,
         marginVertical: 3,
         marginHorizontal: 12,

@@ -11,10 +11,11 @@ import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, Notifica
 import { useNavigation, useRoute } from '@react-navigation/native';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
 import { darkorange, white, backgroundGray } from '../../../assets/style/Colors';
-import { GrayLine_Full, GrayLine_Full_Thick } from '../../../utils/CustomComponents';
+import { GrayLine_Full, GrayLine_Full_Thick } from '../../../utils/Line';
 import { RoundButton } from '../../../utils/CustomButton';
 import DatePicker from 'react-native-date-picker';
 import { DATA_ORDER_HISTORY, DATA_ORDER_DETAIL } from '../../../db/Database';
+import { HeaderPNBack } from '../../../utils/Header';
 
 
 
@@ -33,28 +34,12 @@ function OrderDetail(props) {
 
     const Item = ({ image, product_name, product_code, product_price, quantity, amount }) => {
         return (
-            // <TouchableOpacity>
-            //     <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginVertical: 10 }]}>
-            //         {/* <Image style={styles.item} source={image} /> */}
-
-            //         <View style={[GlobalStyle.column_wrapper, styles.item]}>
-            //             <Text style={styles.item}>{product_name}</Text>
-            //             <Text style={styles.item}>{product_code}</Text>
-            //         </View>
-
-            //         <View style={[GlobalStyle.column_wrapper, styles.item]}>
-            //             <Text>{product_price}</Text>
-            //             <Text> SL: {quantity}</Text>
-            //         </View>
-
-            //         <Text style={styles.item}>{amount}</Text>
-            //     </View>
-            //     <GrayLine_Full />
-            // </TouchableOpacity>
             <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-between', marginVertical: 5 }]}>
                 <View style={[styles.item, { borderWidth: 0.5, borderRadius: 5, width: columnOneWidth, alignItems: 'center' }]}>
                     <Image
                         style={[styles.flower_img]}
+
+                        // TODO: Need to add proper image from source here
                         source={require('../../../assets/images/icons/red-flower-icon.png')}
                     />
                 </View>
@@ -78,19 +63,7 @@ function OrderDetail(props) {
 
     return (
         <View style={styles.home} >
-            <View style={styles.header}>
-                <RoundButton
-                    bgColor={'#fff'}
-                    iconName={'angle-left'}
-                    iconSize={25}
-                    onPressFunction={() => navigation.navigate('More', { screen: 'OrderHistoryScreen' })}
-                />
-
-                <View style={styles.sub_header_right}>
-                    <PromotionButton />
-                    <NotificationButton />
-                </View>
-            </View>
+            <HeaderPNBack />
 
             <ScrollView horizontal={false}>
                 <ScrollView horizontal={true}>

@@ -65,37 +65,7 @@ export const RoundButton_Image = (props) => {
         </Pressable>
     );
 }
-export const PromotionButton = (props) => {
-    const navigation = useNavigation();
-    return (
-        <Pressable
-            style={({ pressed }) => [
-                styles.shadow_round_button,
-                { backgroundColor: pressed ? '#ddd' : '#fff' },
-                props.style,
-            ]}
-            onPress={() => navigation.navigate('Promotions', { screen: 'PromotionsPopup' })}
-        >
 
-            <FontAwesome5 name={'gift'} size={25} color={'#eb9f1c'} />
-        </Pressable>
-    );
-}
-export const NotificationButton = (props) => {
-    const navigation = useNavigation();
-    return (
-        <Pressable
-            style={({ pressed }) => [
-                styles.shadow_round_button,
-                { backgroundColor: pressed ? '#ddd' : '#fff' },
-                props.style,
-            ]}
-            onPress={() => navigation.navigate('More', { screen: 'NotificationScreen' })}
-        >
-            <FontAwesome5 name={'bell'} size={25} />
-        </Pressable>
-    );
-}
 export const SquareButton = (props) => {
     return (
         <Pressable
@@ -181,6 +151,38 @@ export const LongButton_Icon = (props) => {
                 <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
             </View>
             <Text style={[{ color: props.textColor }, props.textStyle]}>{props.text}</Text>
+        </Pressable>
+    );
+}
+
+export const PromotionButton = (props) => {
+    const navigation = useNavigation();
+    return (
+        <Pressable
+            style={({ pressed }) => [
+                styles.shadow_round_button,
+                { backgroundColor: pressed ? '#ddd' : '#fff' },
+                props.style,
+            ]}
+            onPress={() => navigation.navigate('Promotions', { screen: 'PromotionsPopup' })}
+        >
+
+            <FontAwesome5 name={'gift'} size={25} color={'#eb9f1c'} />
+        </Pressable>
+    );
+}
+export const NotificationButton = (props) => {
+    const navigation = useNavigation();
+    return (
+        <Pressable
+            style={({ pressed }) => [
+                styles.shadow_round_button,
+                { backgroundColor: pressed ? '#ddd' : '#fff' },
+                props.style,
+            ]}
+            onPress={() => navigation.navigate('More', { screen: 'NotificationScreen' })}
+        >
+            <FontAwesome5 name={'bell'} size={25} />
         </Pressable>
     );
 }

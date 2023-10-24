@@ -7,6 +7,7 @@ import { WAREHOUSE_REPORT } from '../../../db/ttp_report_warehouse';
 import SearchBar from '../../../utils/SearchBar';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
 import { white } from '../../../assets/style/Colors';
+import { HeaderPN } from '../../../utils/Header';
 
 export default function Map({ route, navigation }) {
 
@@ -14,17 +15,9 @@ export default function Map({ route, navigation }) {
     const [searchPhrase, setSearchPhrase] = useState('');
 
     return (
-        <SafeAreaView style={styles.home}>
+        <View style={styles.home}>
 
-            <View style={styles.top_header}>
-                <View style={styles.sub_header_left}>
-                    <Text style={styles.text_large}>Store</Text>
-                </View>
-                <View style={styles.sub_header_right}>
-                    <PromotionButton />
-                    <NotificationButton />
-                </View>
-            </View>
+            <HeaderPN title={'Store'} style={{ paddingBottom: -10 }} />
 
             <View style={styles.bottom_header}>
                 <SearchBar
@@ -70,7 +63,7 @@ export default function Map({ route, navigation }) {
                 </MapView>
             </View>
 
-        </SafeAreaView>
+        </View>
 
     );
 }

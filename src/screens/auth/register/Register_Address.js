@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, Modal, View, Text, Image, TextInput, ScrollView, Platform, Button, Dimensions } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, Image, TextInput, ScrollView, Platform, Button, Dimensions } from 'react-native';
 import { LongButton, RoundButton } from '../../../utils/CustomButton';
 import { dataCity, dataDistrict, dataWard, dataStreet, dataCountry } from '../../../db/Database';
-import { BlackLine_Full, OrangeLine_Full } from '../../../utils/CustomComponents';
-import Register_Complete from './Register_Complete';
+import { BlackLine_Full, OrangeLine_Full } from '../../../utils/Line';
 import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
 import { useNavigation } from '@react-navigation/native';

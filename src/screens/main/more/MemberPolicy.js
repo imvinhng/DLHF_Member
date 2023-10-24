@@ -6,9 +6,9 @@ import { backgroundGray, black, blue, darkorange, green, lightorange, red, tan, 
 import { LevelTwoMembers } from '../../../db/Users';
 import { OrangeLine, Triangle } from '../../../utils/CustomComponents';
 import { MemberRankingChart, RankUpChart, RankEvaluationChart } from '../../../utils/Charts';
+import { HeaderPNBack } from '../../../utils/Header';
 
 function MemberPolicy({ navigation }) {
-
 
     const USER_PROFILE = LevelTwoMembers[0];
     const [showLevelPointInfo, setShowLevelPointInfo] = useState(false);
@@ -18,20 +18,7 @@ function MemberPolicy({ navigation }) {
 
         <View style={styles.home}>
 
-            <View style={styles.header}>
-                <RoundButton
-                    bgColor={'#fff'}
-                    iconName={'angle-left'}
-                    iconSize={25}
-                    onPressFunction={() => navigation.navigate('Home')}
-                />
-                <Text style={[GlobalStyle.screen_title, { margin: 10 }]}>Member Policy</Text>
-
-                <View style={[GlobalStyle.row_wrapper, { position: 'absolute', top: headerPaddingTop, left: ScreenWidth - 130 }]}>
-                    <PromotionButton />
-                    <NotificationButton />
-                </View>
-            </View>
+            <HeaderPNBack title={'Member Policy'} />
 
             <ScrollView style={styles.body}>
                 {/* TODO: Fill in the body */}

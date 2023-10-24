@@ -12,13 +12,13 @@ import { useNavigation } from '@react-navigation/native';
 import PersonalInfo from './PersonalInfo';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
 import { darkorange, white, backgroundGray, yellow, green, blue, black } from '../../../assets/style/Colors';
-import { GrayLine_Full, GrayLine_Full_Thick } from '../../../utils/CustomComponents';
+import { GrayLine_Full, GrayLine_Full_Thick } from '../../../utils/Line';
 import { DATA_ORDER_HISTORY } from '../../../db/Database';
 import Dropdown from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
 import { BarChart, PieChart } from 'react-native-chart-kit';
 import { barChartYear, barChartMonth, barChartWeek, barChartDay, yearSelector, monthSelector, weekSelector } from '../../../db/PurchaseHistory';
-import { baseGestureHandlerWithMonitorProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlerCommon';
+import { HeaderPNBack } from '../../../utils/Header';
 
 
 function Analytics(props) {
@@ -107,22 +107,7 @@ function Analytics(props) {
     return (
         <View style={styles.home}>
 
-            <View style={styles.header}>
-                <View style={styles.sub_header_left}>
-                    <RoundButton
-                        bgColor={'#fff'}
-                        iconName={'angle-left'}
-                        iconSize={25}
-                        onPressFunction={() => navigation.navigate('Home')}
-                    />
-                    <Text style={[styles.title, GlobalStyle.screen_title]}>Analytics</Text>
-                </View>
-
-                <View style={styles.sub_header_right}>
-                    <PromotionButton />
-                    <NotificationButton />
-                </View>
-            </View>
+            <HeaderPNBack title={'Analytics'} />
 
             <ScrollView style={styles.body}>
                 <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginTop: 15 }]}>
@@ -492,23 +477,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 80,
     },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: white,
-        paddingTop: Platform.OS == 'ios' ? 56 : 10,
-        paddingBottom: 10,
-    },
-    sub_header_left: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-    },
-    sub_header_right: {
-        flexDirection: 'row',
-    },
-
     calendar_btn: {
         justifyContent: 'center',
         alignItems: 'center',

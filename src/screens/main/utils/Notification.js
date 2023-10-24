@@ -11,6 +11,7 @@ import { RoundButton } from '../../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
 import { backgroundGray } from '../../../assets/style/Colors';
+import { HeaderBack } from '../../../utils/Header';
 
 const DATA = [
     {
@@ -81,17 +82,9 @@ function Notification(props) {
 
     return (
 
-        <SafeAreaView style={styles.home}>
+        <View style={styles.home}>
 
-            <View style={styles.header}>
-                <RoundButton
-                    bgColor={'#fff'}
-                    iconName={'angle-left'}
-                    iconSize={25}
-                    onPressFunction={() => navigation.navigate('Home')}
-                />
-                <Text style={[styles.title, GlobalStyle.screen_title]}>Notifications</Text>
-            </View>
+            <HeaderBack title={'Notifications'} />
 
             <View style={styles.body}>
 
@@ -108,7 +101,7 @@ function Notification(props) {
                 />
             </View>
 
-        </SafeAreaView>
+        </View>
     );
 }
 
