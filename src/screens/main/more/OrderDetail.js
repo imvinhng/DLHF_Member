@@ -12,8 +12,6 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
 import { darkorange, white, backgroundGray } from '../../../assets/style/Colors';
 import { GrayLine_Full, GrayLine_Full_Thick } from '../../../utils/Line';
-import { RoundButton } from '../../../utils/CustomButton';
-import DatePicker from 'react-native-date-picker';
 import { DATA_ORDER_HISTORY, DATA_ORDER_DETAIL } from '../../../db/Database';
 import { HeaderPNBack } from '../../../utils/Header';
 

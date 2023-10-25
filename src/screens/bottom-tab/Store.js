@@ -6,7 +6,7 @@
  */
 
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, Text, View, FlatList, Image } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, FlatList, Image, Dimensions } from 'react-native';
 import { LongButton_Icon, PromotionButton, NotificationButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -30,10 +30,10 @@ function Store(props) {
             }}>
             <Image style={styles.image} source={require('../../assets/images/extras/storefront.png')} />
 
-            <View style={styles.column_wrapper_custom}>
+            <View style={styles.item_textbox}>
                 <Text style={GlobalStyle.item_subtitle}>DALAT HASFARM {location}</Text>
-                <Text style={[GlobalStyle.item_title, { width: 250, fontSize: 12 }]}>{address}</Text>
-                <Text style={[GlobalStyle.item_footer, { position: 'absolute', top: 70 }]}>0.2 km away</Text>
+                <Text style={[GlobalStyle.item_title, styles.item_title]}>{address}</Text>
+                <Text style={[GlobalStyle.item_footer, styles.item_footer]}>0.2 km away</Text>
             </View>
         </TouchableOpacity>
     );
@@ -66,7 +66,7 @@ function Store(props) {
             </View>
 
             <View style={styles.body}>
-                <Text style={[GlobalStyle.heading, styles.text_small]}>Dalat Hasfarm's Flower Shop Locations</Text>
+                <Text style={[GlobalStyle.heading, styles.flatlist_heading]}>Dalat Hasfarm's Flower Shop Locations</Text>
 
                 <FlatList
                     data={WAREHOUSE_REPORT}
@@ -89,6 +89,14 @@ function Store(props) {
 
 export default Store;
 
+const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
+const imageWidth = 80; const imageHeight = 80;
+const imageMargin = 10;
+const itemMargin = 10
+const itemHeight = 100; const itemWidth = ScreenWidth - (itemMargin * 2);
+const textboxWidth = itemWidth - (imageWidth + imageMargin * 2) - 10;
+const textBoxHeight = imageHeight;
+
 const styles = StyleSheet.create({
     home: {
         flex: 1,
@@ -110,94 +118,50 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         flexDirection: 'row',
     },
-    header: {
-        paddingTop: Platform.OS == 'ios' ? 0 : 10,
-    },
     grid: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         margin: 5,
     },
-    sub_header_left: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-    },
-    sub_header_right: {
-        flexDirection: 'row',
-        marginRight: 15,
-    },
-    body1_top: {
-        height: 150,
-        width: 350,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        borderWidth: 2,
-        borderRadius: 10,
-        borderColor: '#bfbaba',
-        margin: 20,
-    },
-    body1_top_left: {
-        alignItems: 'center',
-    },
-    body1_top_right: {
-        alignItems: 'center',
-    },
-    column_wrapper_custom: {
-        flexDirection: 'column',
-        marginLeft: 20,
-        marginTop: -15,
-    },
-    title_margin: {
-        marginLeft: 20,
-    },
-    text_subtitle: {
-        fontSize: 20,
-        fontWeight: '600',
-        textAlign: 'center',
-    },
-    text_small: {
-        fontSize: 16,
-        margin: 5,
-        padding: 10,
-    },
-    text_smaller: {
-        fontSize: 12,
-        fontWeight: '300',
-    },
-    text_small_bold: {
-        fontSize: 11,
-        fontWeight: '600',
-        marginTop: 5,
-        width: 250,
-    },
-    text_light: {
-        fontSize: 13,
-        fontWeight: '200',
-        position: 'absolute',
-        top: 60,
-    },
     text_map: {
         marginLeft: 10,
     },
     image: {
-        height: 80,
-        width: 80,
-        borderRadius: 10,
+        height: imageHeight,
+        width: imageWidth,
+        borderRadius: 5,
         margin: -10,
+    },
+    flatlist_heading: {
+        margin: 15,
+        fontSize: 15,
     },
     item: {
         backgroundColor: white,
         padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
-        height: 100,
+        marginVertical: 3,
+        marginHorizontal: 10,
+        height: itemHeight,
         flexDirection: 'row',
         borderRadius: 10,
 
         ...GlobalStyle.box_shadow,
+    },
+    item_textbox: {
+        flexDirection: 'column',
+        width: textboxWidth,
+        height: textBoxHeight,
+        position: 'absolute',
+        left: imageWidth + imageMargin * 2,
+        top: imageMargin,
+        // backgroundColor: 'yellow'
+    },
+    item_title: {
+        fontSize: 15,
+    },
+    item_footer: {
+        position: 'absolute',
+        top: imageHeight - imageMargin - 3,  // not sure why it's 3, but it matches the image size
     },
     map_btn: {
         justifyContent: 'center',

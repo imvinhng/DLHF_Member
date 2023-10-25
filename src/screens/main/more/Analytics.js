@@ -209,11 +209,9 @@ function Analytics(props) {
                     />
                 </View>
 
-                {/* insert graphs */}
                 <View style={styles.graph_container}>
                     <Text style={styles.container_title}>Spending Analytics</Text>
 
-                    {/* TODO: Add dropdown menu to select different data (see Figma) */}
                     <RadioPeriodCustom
                         onPressFunctionYear={() => {
                             setBarChartData(barChartYear)

@@ -5,6 +5,9 @@ import { PromotionButton, NotificationButton, RoundButton } from '../../../utils
 import { LongButton_Icon } from '../../../utils/CustomButton';
 import { DATA } from '../../../db/Database';
 import { WAREHOUSE_REPORT } from '../../../db/ttp_report_warehouse';
+import GlobalStyle from '../../../assets/style/GlobalStyle';
+import { backgroundGray } from '../../../assets/style/Colors';
+import { HeaderPN } from '../../../utils/Header';
 
 
 function Shop_Detail(props) {
@@ -17,54 +20,47 @@ function Shop_Detail(props) {
 
     return (
         <View style={styles.home}>
-            <View style={styles.top_header}>
-                <View style={styles.sub_header_left}>
-                    <Text style={styles.text_large}>Store</Text>
-                </View>
-                <View style={styles.sub_header_right}>
-                    <PromotionButton />
-                    <NotificationButton />
-                </View>
-            </View>
+            <HeaderPN title={'Store'} />
 
             <ScrollView style={styles.body}>
                 <Image source={require('../../../assets/images/extras/storefront-large.png')} />
                 <RoundButton
-                    buttonStyle={styles.roundbutton}
+                    buttonStyle={styles.close_btn}
                     iconName={'times-circle'}
                     iconSize={25}
-                    onPressFunction={() => navigation.navigate('Store', { screen: 'StoreScreen' })}
+                    onPressFunction={() => navigation.goBack()}
                 />
+                <View style={styles.info_textbox}>
+                    <Text style={styles.location}>DALAT HASFARM</Text>
+                    <Text style={styles.address}>{WAREHOUSE_REPORT[store_index].Title}</Text>
+                    <Text style={styles.hours}>Operation Hours: {WAREHOUSE_REPORT[store_index].Open}</Text>
+                </View>
 
-                <Text style={styles.location}>Dalat Hasfarm {WAREHOUSE_REPORT[store_index].Title}</Text>
-                <Text style={styles.address}>{WAREHOUSE_REPORT[store_index].Address}</Text>
-                <Text style={styles.hours}>Operation Hours: {WAREHOUSE_REPORT[store_index].Open}</Text>
-
-                <View style={styles.center_wrapper_custom}>
+                <View style={styles.buttonContainer}>
                     <LongButton_Icon
                         iconName='location-arrow'
-                        iconSize={15}
+                        iconSize={iconSize}
                         text={WAREHOUSE_REPORT[store_index].Address}
                         buttonStyle={styles.longbutton}
                         textStyle={styles.text_button}
                     />
                     <LongButton_Icon
                         iconName='heart'
-                        iconSize={15}
+                        iconSize={iconSize}
                         text='Add to favorites'
                         buttonStyle={styles.longbutton}
                         textStyle={styles.text_button}
                     />
                     <LongButton_Icon
                         iconName='phone-alt'
-                        iconSize={15}
+                        iconSize={iconSize}
                         text='Call Us'
                         buttonStyle={styles.longbutton}
                         textStyle={styles.text_button}
                     />
                     <LongButton_Icon
                         iconName='share-alt'
-                        iconSize={15}
+                        iconSize={iconSize}
                         text='Share with friends'
                         buttonStyle={styles.longbutton}
                         textStyle={styles.text_button}
@@ -78,6 +74,7 @@ function Shop_Detail(props) {
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('screen');
 const bodyHeight = .97 * screenHeight;
+const iconSize = 16;
 
 const styles = StyleSheet.create({
     home: {
@@ -89,16 +86,6 @@ const styles = StyleSheet.create({
         marginTop: screenHeight - bodyHeight,
         // backgroundColor: 'red'
     },
-    backdrop_top: {
-        height: Platform.OS == 'ios' ? '13%' : '8%',
-        // backgroundColor: 'rgba(0,0,0,0.2)',
-        margin: 0,
-    },
-    backdrop_bottom: {
-        height: Platform.OS == 'ios' ? '28%' : '8%',
-        // backgroundColor: 'rgba(0,0,0,0.2)',
-        margin: 0,
-    },
     sub_header_left: {
         flexDirection: 'row',
         justifyContent: 'center',
@@ -108,45 +95,45 @@ const styles = StyleSheet.create({
     sub_header_right: {
         flexDirection: 'row',
     },
-    center_wrapper_custom: {
-        // justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: -20,
-        marginLeft: -30,
-    },
     title: {
         fontSize: 25,
         marginLeft: '7%',
     },
     location: {
-        fontWeight: '500',
-        margin: 10,
+        // color: 'gray',
+        fontWeight: '400',
     },
     address: {
         fontWeight: 'bold',
-        margin: 10,
+        fontSize: 18,
+        marginVertical: 5,
     },
     hours: {
         fontWeight: '300',
-        // color: 'gray',
-        margin: 10,
-        marginBottom: 35,
     },
-
+    info_textbox: {
+        padding: 20,
+    },
     text_button: {
-        marginLeft: 20,
-        fontSize: 13,
+        marginLeft: 30,
+        width: screenWidth * 0.75,
+        fontSize: 15,
+    },
+    buttonContainer: {
+        alignItems: 'center',
     },
     longbutton: {
         height: 'auto',
-        width: 250,
-        paddingVertical: 12,
+        width: screenWidth - 20,
+        paddingVertical: 15,
         paddingHorizontal: 5,
-        // marginBottom: Platform.OS == 'ios' ? 0 : 15,
+        borderColor: 'lightgray',
+        borderWidth: 0.5,
+        paddingHorizontal: 20,
+        margin: 5,
         alignItems: 'center',
-        // backgroundColor: 'yellow'
     },
-    roundbutton: {
+    close_btn: {
         position: 'absolute',
         top: -10,
         left: Platform.OS == 'ios' ? 370 : 360,

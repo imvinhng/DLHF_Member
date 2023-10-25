@@ -17,7 +17,6 @@ export const MemberRankingChart = () => {
                     <Image source={require('../assets/images/icons/bronze.png')} />
                     <Text style={{ marginLeft: 5 }}>Bronze*</Text>
                 </View>
-                {/* TODO: Change red to Colors.red color */}
                 <View style={{ width: ScreenWidth / 3 * 0.8, color: red }}>
                     <Text style={[styles.left_padding, { color: red }]}>Under 60 pts</Text>
                 </View>

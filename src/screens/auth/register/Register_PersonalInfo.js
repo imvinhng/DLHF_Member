@@ -151,7 +151,7 @@ const Register_PersonalInfo = (props) => {
                 <View style={styles.row_wrapper}>
                     <TextInput
                         style={styles.input}
-                        value={valueBirthDate.toLocaleDateString('vi')}
+                        // value={valueBirthDate.toLocaleDateString('vi')}
                         placeholder={'Enter your birthdate'}
                         ref={e => this.birthDateInput = e}
                         editable

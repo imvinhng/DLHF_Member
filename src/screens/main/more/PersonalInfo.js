@@ -88,7 +88,8 @@ function PersonalInfo(props) {
     return (
         <View style={styles.home}>
             <View style={styles.header}>
-                <CloseButton buttonStyle={styles.close_btn} buttonColor={darkorange} onPressFunction={() => navigation.goBack()} />
+                {/* TODO: Fix close button currently not sending user back to More */}
+                <CloseButton buttonStyle={styles.close_btn} buttonColor={darkorange} />
                 <View style={styles.row_wrapper}>
                     <RoundButton iconName='user' iconSize={40} bgColor='lightgray' buttonStyle={styles.icon_user} />
                     <RoundButton iconName='pen' iconSize={10} iconColor='#fff' bgColor='#000' buttonStyle={styles.profile_edit} />
@@ -227,7 +228,8 @@ function PersonalInfo(props) {
                     <View style={styles.column_wrapper_left}>
                         <Text style={styles.title}>Date of Birth</Text>
                         <View style={styles.row_wrapper}>
-                            <TextInput style={styles.input} value={valueBirthDate.toLocaleDateString('vi')} editable={false} />
+                            {/* TODO: Make datepicker functional with placeholder value on start */}
+                            <TextInput style={styles.input} placeholder={'Enter your birthdate'} editable={false} />
                             <RoundButton
                                 iconName={editAddressIcon}
                                 iconSize={10}
