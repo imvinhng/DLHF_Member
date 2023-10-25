@@ -6,11 +6,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { lightorange, white } from '../assets/style/Colors';
 
-import Home from './main/Home';
-import Order from './main/Order';
-import Store from './main/Store';
-import Promotion from './main/Promotion';
-import More from './main/More';
+import HomeTab from './main/Home';
+import OrderTab from './main/Order';
+import StoreTab from './main/Store';
+import PromotionTab from './main/Promotion';
+import MoreTab from './main/More';
 
 const Tab = createBottomTabNavigator();
 
@@ -47,24 +47,24 @@ function Main(): JSX.Element {
             })}>
             <Tab.Screen
                 name="Home"
-                component={Home}
+                component={HomeTab}
             />
             <Tab.Screen
                 name="Order"
-                component={Order}
+                component={OrderTab}
             />
             <Tab.Screen
                 name="Store"
-                component={Store}
+                component={StoreTab}
             />
 
             <Tab.Screen
                 name="Promotion"
-                component={Promotion}
+                component={PromotionTab}
             />
             <Tab.Screen
                 name="More"
-                component={More}
+                component={MoreTab}
             />
         </Tab.Navigator>)
 }

@@ -449,10 +449,9 @@ const styles = StyleSheet.create({
         width: 130,
         backgroundColor: '#68ede9',
         alignItems: 'center',
-        justifyContent: 'left',
+        justifyContent: 'center',
         borderRadius: 5,
         margin: 5,
-        paddingLeft: 10,
         flexDirection: 'row',
     },
     long_button_icon: {
