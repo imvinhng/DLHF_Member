@@ -4,9 +4,9 @@ import { LongButton, RoundButton } from '../../utils/CustomButton';
 import { backgroundGray, darkorange, tan, white } from '../../assets/style/Colors';
 import GlobalStyle from '../../assets/style/GlobalStyle';
 import { useNavigation } from '@react-navigation/native';
+import { CloseButton } from '../../utils/CustomComponents';
 
 function PasswordChange(props) {
-    const navigation = useNavigation();
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
@@ -16,7 +16,7 @@ function PasswordChange(props) {
             <View style={styles.home}>
                 <View style={styles.body}>
                     <Text style={styles.title}>Password</Text>
-                    <RoundButton iconName='times' iconSize={15} buttonStyle={styles.close_btn} onPressFunction={() => props.setModalVisible(false)} />
+                    <CloseButton buttonStyle={styles.close_btn} buttonColor={tan} onPressFunction={() => props.setModalVisible(false)} />
 
 
                     <View style={styles.container}>

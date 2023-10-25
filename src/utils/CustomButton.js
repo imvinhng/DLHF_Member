@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { StyleSheet, Pressable, Text, Image, View, TouchableOpacity, Dimensions } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native';
-import { black, lightorange } from '../assets/style/Colors';
+import { black, lightorange, tan } from '../assets/style/Colors';
 import GlobalStyle from '../assets/style/GlobalStyle';
+
 
 export const RoundButton = (props) => {
     return (

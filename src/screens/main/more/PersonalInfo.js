@@ -9,6 +9,7 @@ import DatePicker from 'react-native-date-picker';
 import { useNavigation } from '@react-navigation/native';
 import { darkorange, white } from '../../../assets/style/Colors';
 import { LevelTwoMembers } from '../../../db/Users';
+import { CloseButton } from '../../../utils/CustomComponents';
 
 
 function PersonalInfo(props) {
@@ -87,14 +88,7 @@ function PersonalInfo(props) {
     return (
         <View style={styles.home}>
             <View style={styles.header}>
-                {/* TODO: fix close button currently not working on IOS */}
-                <RoundButton
-                    iconName='times'
-                    iconSize={15}
-                    bgColor={darkorange}
-                    buttonStyle={styles.close_btn}
-                    onPressFunction={() => navigation.goBack()}
-                />
+                <CloseButton buttonStyle={styles.close_btn} buttonColor={darkorange} onPressFunction={() => navigation.goBack()} />
                 <View style={styles.row_wrapper}>
                     <RoundButton iconName='user' iconSize={40} bgColor='lightgray' buttonStyle={styles.icon_user} />
                     <RoundButton iconName='pen' iconSize={10} iconColor='#fff' bgColor='#000' buttonStyle={styles.profile_edit} />
@@ -351,6 +345,7 @@ const styles = StyleSheet.create({
         top: Platform.OS == 'ios' ? 45 : 15,
         height: 20,
         width: 20,
+        zIndex: 999,
     },
     barcode: {
         width: '92%',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { StyleSheet, View, Text, Image, Modal, TouchableOpacity, Platform, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, Image, Modal, TouchableOpacity, Platform, Dimensions, ScrollView } from 'react-native';
 import { PromotionButton, NotificationButton, RoundButton } from '../../../utils/CustomButton';
 import { LongButton_Icon } from '../../../utils/CustomButton';
 import { DATA } from '../../../db/Database';
@@ -27,7 +27,7 @@ function Shop_Detail(props) {
                 </View>
             </View>
 
-            <View style={styles.body}>
+            <ScrollView style={styles.body}>
                 <Image source={require('../../../assets/images/extras/storefront-large.png')} />
                 <RoundButton
                     buttonStyle={styles.roundbutton}
@@ -70,7 +70,7 @@ function Shop_Detail(props) {
                         textStyle={styles.text_button}
                     />
                 </View>
-            </View>
+            </ScrollView>
         </View>
 
     );

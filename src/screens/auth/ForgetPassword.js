@@ -3,6 +3,7 @@ import { StyleSheet, Image, View, Text, TextInput, ScrollView } from 'react-nati
 import { LoginButton, LongButton_Icon, RoundButton } from '../../utils/CustomButton';
 import { OTP_Login } from './OTP';
 import { useNavigation } from '@react-navigation/native';
+import { CloseButton } from '../../utils/CustomComponents';
 
 
 function ForgetPassword(props) {
@@ -30,7 +31,7 @@ function ForgetPassword(props) {
                 style={styles.image}
                 source={require('../../assets/images/background/dutch-windmill.png')}
             />
-            <RoundButton iconName='times' iconSize={15} buttonStyle={styles.close_btn} onPressFunction={() => navigation.navigate('Home')} />
+            <CloseButton style={styles.close_btn} />
             <View style={[styles.body, { alignItems: 'center' }]}>
                 <Text style={styles.title}>Welcome to</Text>
                 <Image source={require('../../assets/images/extras/DLHF-logo.png')} />

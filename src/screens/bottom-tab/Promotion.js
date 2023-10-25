@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import { RoundButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import Dash from 'react-native-dash';
@@ -20,21 +20,21 @@ const Item = ({ description, expiration_date, image_uri }) => {
     return (
 
         <TouchableOpacity style={styles.item}>
-            <View style={{ height: 20, width: 15, borderRadius: 20, backgroundColor: '#efefef', position: 'absolute', top: -12, left: 95 }} />
+            <View style={{ height: 20, width: 15, borderRadius: 20, backgroundColor: backgroundGray, position: 'absolute', top: -12, left: 95 }} />
             <Image style={styles.image} source={image_uri} />
             <Dash
                 style={styles.vertical_dashed_line}
                 dashGap={3}
-                dashColor={'#efefef'}
+                dashColor={backgroundGray}
                 dashThickness={4}
                 dashStyle={{ borderRadius: 100 }}
             />
 
             <View style={styles.column_wrapper_custom}>
-                <Text style={[GlobalStyle.item_title, { width: 270 }]}>{description}</Text>
+                <Text style={[GlobalStyle.item_title, { width: itemWidth * 0.7 }]}>{description}</Text>
                 <Text style={[GlobalStyle.item_footer, { marginTop: 30 }]}>Expires on {expiration_date}</Text>
             </View>
-            <View style={{ height: 20, width: 15, borderRadius: 20, backgroundColor: '#efefef', position: 'absolute', top: 95, left: 95 }} />
+            <View style={{ height: 20, width: 15, borderRadius: 20, backgroundColor: backgroundGray, position: 'absolute', top: 95, left: 95 }} />
         </TouchableOpacity>
     )
 };
@@ -66,7 +66,6 @@ export function Promotion_Main(props) {
     );
 }
 export function Promotion_Popup(props) {
-    const navigation = useNavigation();
     return (
         <View style={styles.home}>
 
@@ -92,6 +91,10 @@ export function Promotion_Popup(props) {
     );
 }
 
+const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
+const itemWidth = ScreenWidth - (10 * 2); const itemHeight = 100;
+const imageWidth = 80; const imageHeight = 80;
+
 
 const styles = StyleSheet.create({
     home: {
@@ -112,8 +115,8 @@ const styles = StyleSheet.create({
         margin: 15,
     },
     image: {
-        height: 80,
-        width: 80,
+        height: imageHeight,
+        width: imageWidth,
         borderRadius: 10,
         margin: -10,
     },
@@ -121,8 +124,10 @@ const styles = StyleSheet.create({
         backgroundColor: white,
         padding: 20,
         marginVertical: 3,
-        marginHorizontal: 12,
-        height: 100,
+        marginHorizontal: 10,
+        height: itemHeight,
+        width: itemWidth,
+
         flexDirection: 'row',
         borderRadius: 13,
     },

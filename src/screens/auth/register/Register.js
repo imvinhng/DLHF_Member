@@ -3,6 +3,7 @@ import { StyleSheet, Image, View, Text, TextInput, ScrollView, Alert, Dimensions
 import { LoginButton, LongButton, LongButton_Icon, RoundButton } from '../../../utils/CustomButton';
 import { OTP_Register } from '../OTP';
 import { useNavigation } from '@react-navigation/native';
+import { CloseButton } from '../../../utils/CustomComponents';
 
 
 function Register(props) {
@@ -38,7 +39,7 @@ function Register(props) {
                 style={styles.image}
                 source={require('../../../assets/images/background/dutch-windmill.png')}
             />
-            <RoundButton iconName='times' iconSize={15} buttonStyle={styles.close_btn} onPressFunction={() => navigation.navigate('Home')} />
+            <CloseButton buttonStyle={styles.close_btn} />
             <ScrollView style={styles.body} contentContainerStyle={{ alignItems: 'center' }}>
                 <Text style={styles.title}>Register new member</Text>
                 <View style={styles.text_container}>

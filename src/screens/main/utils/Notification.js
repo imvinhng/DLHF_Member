@@ -12,6 +12,7 @@ import { useNavigation } from '@react-navigation/native';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
 import { backgroundGray } from '../../../assets/style/Colors';
 import { HeaderBack } from '../../../utils/Header';
+import { GrayLine_Full } from '../../../utils/Line';
 
 const DATA = [
     {
@@ -84,7 +85,7 @@ function Notification(props) {
 
         <View style={styles.home}>
 
-            <HeaderBack title={'Notifications'} />
+            <HeaderBack title={'Notifications'} navDest={'Home'} />
 
             <View style={styles.body}>
 

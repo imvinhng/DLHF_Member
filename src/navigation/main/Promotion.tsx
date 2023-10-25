@@ -9,13 +9,13 @@ const Stack = createStackNavigator();
 
 function Promotion(): JSX.Element {
     return (
-        <Stack.Navigator initialRouteName='PromotionsScreen' screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName='PromotionScreen' screenOptions={{ headerShown: false }}>
             <Stack.Screen
-                name='PromotionsScreen'
+                name='PromotionScreen'
                 component={Promotion_Main}
             />
             <Stack.Screen
-                name='PromotionsPopup'
+                name='PromotionPopup'
                 component={Promotion_Popup}
             />
         </Stack.Navigator>

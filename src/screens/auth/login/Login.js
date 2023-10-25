@@ -3,9 +3,10 @@ import { StyleSheet, Image, View, Text, TextInput, ScrollView, Dimensions } from
 import { LoginButton, LongButton_Icon, RoundButton } from '../../../utils/CustomButton';
 import { OTP_Login } from '../OTP';
 import { useNavigation } from '@react-navigation/native';
+import { CloseButton } from '../../../utils/CustomComponents';
 
 
-function Login(props) {
+const Login = (props) => {
     const [loginBtnColor, setLoginBtnColor] = useState('#eb9f1c');
     const [loginBtnBorderColor, setLoginBtnBorderColor] = useState('#000');
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -22,7 +23,7 @@ function Login(props) {
                 style={styles.image}
                 source={require('../../../assets/images/background/dutch-windmill.png')}
             />
-            <RoundButton iconName='times' iconSize={15} buttonStyle={styles.close_btn} onPressFunction={() => navigation.navigate('Home')} />
+            <CloseButton buttonStyle={styles.close_btn} />
             <ScrollView style={styles.body} contentContainerStyle={{ alignItems: 'center' }}>
                 <Text style={styles.title}>Welcome to</Text>
                 <Image source={require('../../../assets/images/extras/DLHF-logo.png')} />

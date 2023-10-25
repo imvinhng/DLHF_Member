@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, ImageBackground, ScrollView, Dimensions, TextInput } from 'react-native';
 import { RoundButton_Image, LoginButton, PromotionButton, NotificationButton, RadioHeaderCustom } from './CustomButton';
 import { useNavigation } from '@react-navigation/native';
-import { lightorange } from '../assets/style/Colors';
+import { lightorange, tan } from '../assets/style/Colors';
 import GlobalStyle from '../assets/style/GlobalStyle';
 
 const TopHeader = () => {
@@ -41,13 +41,17 @@ const BottomHeader = () => {
             <LoginButton
                 bgColor={'#eb9f1c'}
                 textColor={'#fff'}
-                style
-                onPressFunction={() => navigation.navigate('Auth', { screen: 'Login' })}
+                onPressFunction={() => { navigation.navigate('Auth', { screen: 'Login' }) }}
             />
 
             <View style={styles.row_wrapper}>
                 <Text style={[styles.text_small, GlobalStyle.text]}>Not registered?</Text>
-                <Text style={[styles.text_hyperlink, GlobalStyle.text]} onPress={() => navigation.navigate('Auth', { screen: 'Register' })}>Register here</Text>
+                <Text
+                    style={[styles.text_hyperlink, GlobalStyle.text]}
+                    onPress={() => navigation.navigate('Auth', { screen: 'Register' })}
+                >
+                    Register here
+                </Text>
             </View>
         </View>
     )
@@ -119,12 +123,11 @@ export const HomeBody = (props) => {
             </View>
 
             <View style={styles.body}>
-                {/* <Text style={styles.text_large}>Home</Text> */}
                 <View style={styles.body_top}>
                     <View style={styles.body_top_left}>
                         <RoundButton_Image
                             image_uri={require('../assets/images/icons/scooter-icon.png')}
-                            bgColor={'#FEF7E5'}
+                            bgColor={tan}
                             iconStyle={styles.icon_image_large}
                             buttonStyle={styles.roundbutton_large}
                         />
@@ -134,7 +137,7 @@ export const HomeBody = (props) => {
                     <View style={styles.body_top_right}>
                         <RoundButton_Image
                             image_uri={require('../assets/images/icons/shop-icon.png')}
-                            bgColor={'#FEF7E5'}
+                            bgColor={tan}
                             iconStyle={styles.icon_image_large}
                             buttonStyle={styles.roundbutton_large}
                         />
@@ -226,7 +229,7 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'column',
-        backgroundColor: '#FEF7E5',
+        backgroundColor: tan,
         paddingTop: Platform.OS == 'ios' ? 56 : 0,
     },
     top_header: {
@@ -340,14 +343,15 @@ const styles = StyleSheet.create({
 
     body_top: {
         height: 130,
-        width: 350,
+        width: screenWidth - (10 * 2),
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         alignItems: 'center',
         borderWidth: 2,
         borderRadius: 10,
         borderColor: 'lightgray',
-        margin: 20,
+        margin: 10,
+        marginBottom: 20,
     },
     body_top_left: {
         alignItems: 'center',

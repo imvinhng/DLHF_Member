@@ -14,7 +14,7 @@ import { convertViToEn } from '../../utils/functions';
 import SearchBar from '../../utils/SearchBar';
 import { WAREHOUSE_REPORT } from '../../db/ttp_report_warehouse';
 import GlobalStyle from '../../assets/style/GlobalStyle';
-import { white } from '../../assets/style/Colors';
+import { backgroundGray, white } from '../../assets/style/Colors';
 import { HeaderPN } from '../../utils/Header';
 
 function Store(props) {
@@ -31,7 +31,7 @@ function Store(props) {
             <Image style={styles.image} source={require('../../assets/images/extras/storefront.png')} />
 
             <View style={styles.column_wrapper_custom}>
-                <Text style={GlobalStyle.item_subtitle}>Dalat Hasfarm {location}</Text>
+                <Text style={GlobalStyle.item_subtitle}>DALAT HASFARM {location}</Text>
                 <Text style={[GlobalStyle.item_title, { width: 250, fontSize: 12 }]}>{address}</Text>
                 <Text style={[GlobalStyle.item_footer, { position: 'absolute', top: 70 }]}>0.2 km away</Text>
             </View>
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
         backgroundColor: white,
     },
     body: {
-        backgroundColor: '#efefef',
+        backgroundColor: backgroundGray,
         flex: 1,
     },
     top_header: {
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     bottom_header: {
-        // backgroundColor: '#f8f8f6',
+        backgroundColor: white,
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 10,
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
         margin: -10,
     },
     item: {
-        backgroundColor: '#f8f8f6',
+        backgroundColor: white,
         padding: 20,
         marginVertical: 8,
         marginHorizontal: 16,
@@ -197,14 +197,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderRadius: 10,
 
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
+        ...GlobalStyle.box_shadow,
     },
     map_btn: {
         justifyContent: 'center',

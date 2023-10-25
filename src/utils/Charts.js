@@ -7,21 +7,21 @@ export const MemberRankingChart = () => {
     return (
         <View style={{ backgroundColor: 'lightgray', width: ScreenWidth, height: memberRankingContainerHeight }}>
             <View style={[GlobalStyle.row_wrapper, { backgroundColor: 'lightgray', width: ScreenWidth, height: memberRankingRowHeight + 10, alignItems: 'center' }]}>
-                <Text style={[{ width: ScreenWidth / 3 + 70 }, styles.center_padding]}>Member rank and level point</Text>
-                <Text style={[styles.center_padding, { width: ScreenWidth / 3 - 70 }]}>Direct discount</Text>
+                <Text style={[{ width: ScreenWidth / 3 * 1.5 }, styles.center_padding]}>Member rank and level point</Text>
+                <Text style={[styles.center_padding, { width: ScreenWidth / 3 * 0.5 }]}>Direct discount</Text>
                 <Text style={[styles.center_padding, { width: ScreenWidth / 3 }]}>Redeeming reward points on purchase</Text>
             </View>
 
             <View style={[GlobalStyle.row_wrapper, { backgroundColor: tan, width: ScreenWidth, alignItems: 'center', height: memberRankingRowHeight }]}>
-                <View style={[{ width: ScreenWidth / 3 - 50, textAlign: 'center', padding: 5, alignItems: 'center' }, GlobalStyle.row_wrapper]}>
+                <View style={[{ width: ScreenWidth / 3 * 0.7, textAlign: 'center', padding: 5, alignItems: 'center' }, GlobalStyle.row_wrapper]}>
                     <Image source={require('../assets/images/icons/bronze.png')} />
                     <Text style={{ marginLeft: 5 }}>Bronze*</Text>
                 </View>
                 {/* TODO: Change red to Colors.red color */}
-                <View style={{ width: ScreenWidth / 3 - 20, color: red }}>
+                <View style={{ width: ScreenWidth / 3 * 0.8, color: red }}>
                     <Text style={[styles.left_padding, { color: red }]}>Under 60 pts</Text>
                 </View>
-                <View style={{ width: ScreenWidth / 3 - 70 }}>
+                <View style={{ width: ScreenWidth / 3 * 0.5 }}>
                     <Text style={[styles.center_padding, { color: red }]}>0%</Text>
                 </View>
                 <View style={{ width: ScreenWidth / 3, height: memberRankingRowHeight, justifyContent: 'center', marginTop: 10 }}>
@@ -31,29 +31,29 @@ export const MemberRankingChart = () => {
 
             <View style={[GlobalStyle.row_wrapper, { backgroundColor: tan, width: ScreenWidth, alignItems: 'center', height: memberRankingRowHeight * 2 }]}>
                 <View style={GlobalStyle.column_wrapper}>
-                    <View style={[styles.center_padding, , GlobalStyle.row_wrapper, { width: ScreenWidth / 3 - 50, height: memberRankingRowHeight, alignItems: 'center' }]}>
+                    <View style={[styles.center_padding, , GlobalStyle.row_wrapper, { width: ScreenWidth / 3 * 0.7, height: memberRankingRowHeight, alignItems: 'center' }]}>
                         <Image source={require('../assets/images/icons/silver.png')} />
                         <Text style={{ marginLeft: 5 }}>Silver</Text>
                     </View>
-                    <View style={[styles.center_padding, , GlobalStyle.row_wrapper, { width: ScreenWidth / 3 - 50, height: memberRankingRowHeight, alignItems: 'center' }]}>
+                    <View style={[styles.center_padding, , GlobalStyle.row_wrapper, { width: ScreenWidth / 3 * 0.7, height: memberRankingRowHeight, alignItems: 'center' }]}>
                         <Image source={require('../assets/images/icons/gold.png')} />
                         <Text style={{ marginLeft: 5 }}>Gold</Text>
                     </View>
 
                 </View>
                 <View style={[GlobalStyle.column_wrapper]}>
-                    <View style={[styles.item_standard, { width: ScreenWidth / 3 - 20 }]}>
+                    <View style={[styles.item_standard, { width: ScreenWidth / 3 * 0.8 }]}>
                         <Text style={styles.left_padding}>From 60 to 400</Text>
                     </View>
-                    <View style={[styles.item_standard, { width: ScreenWidth / 3 - 20 }]}>
+                    <View style={[styles.item_standard, { width: ScreenWidth / 3 * 0.8 }]}>
                         <Text style={styles.left_padding}>Above 400</Text>
                     </View>
                 </View>
                 <View style={GlobalStyle.column_wrapper}>
-                    <View style={[styles.item_standard, { width: ScreenWidth / 3 - 70 }]}>
+                    <View style={[styles.item_standard, { width: ScreenWidth / 3 * 0.5 }]}>
                         <Text style={styles.center_padding}>5%</Text>
                     </View>
-                    <View style={[styles.item_standard, { width: ScreenWidth / 3 - 70 }]}>
+                    <View style={[styles.item_standard, { width: ScreenWidth / 3 * 0.5 }]}>
                         <Text style={styles.center_padding}>7%</Text>
                     </View>
                 </View>

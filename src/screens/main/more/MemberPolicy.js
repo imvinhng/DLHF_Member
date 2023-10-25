@@ -90,7 +90,6 @@ function MemberPolicy({ navigation }) {
                 <Text style={{ textAlign: 'center' }}>To rank up to Gold, you need an additional 244 points</Text>
 
                 <Text style={styles.title}>Member Ranking & Exclusives</Text>
-                {/* TODO: Insert ranking chart */}
                 <MemberRankingChart />
 
                 <View style={styles.black_textbox}>
@@ -130,7 +129,6 @@ function MemberPolicy({ navigation }) {
 
                 <Text style={styles.title}>Rank Evaluation</Text>
                 <Text style={{ margin: 10, marginTop: 0 }}>On the evaluation date for member's ranking (each member will have unique evaluation date), system will calculate your next rank based on your current ranking. What's next?</Text>
-                {/* TODO: Insert ranking chart */}
                 <RankEvaluationChart />
             </ScrollView>
 
