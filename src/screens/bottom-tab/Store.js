@@ -7,7 +7,7 @@
 
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View, FlatList, Image, Dimensions } from 'react-native';
-import { LongButton_Icon, PromotionButton, NotificationButton } from '../../utils/CustomButton';
+import { LongButton_Icon5, PromotionButton, NotificationButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { convertViToEn } from '../../utils/functions';
@@ -31,8 +31,8 @@ function Store(props) {
             <Image style={styles.image} source={require('../../assets/images/extras/storefront.png')} />
 
             <View style={styles.item_textbox}>
-                <Text style={GlobalStyle.item_subtitle}>DALAT HASFARM {location}</Text>
-                <Text style={[GlobalStyle.item_title, styles.item_title]}>{address}</Text>
+                <Text style={GlobalStyle.item_subtitle}>DALAT HASFARM </Text>
+                <Text style={[GlobalStyle.item_title, styles.item_title]}>{location}</Text>
                 <Text style={[GlobalStyle.item_footer, styles.item_footer]}>0.2 km away</Text>
             </View>
         </TouchableOpacity>
@@ -52,7 +52,7 @@ function Store(props) {
                         closeBtnStyle={styles.search_close}
                     />
 
-                    <LongButton_Icon
+                    <LongButton_Icon5
                         iconName={'map'}
                         iconSize={23}
                         textColor={'#000'}
@@ -71,13 +71,14 @@ function Store(props) {
                 <FlatList
                     data={WAREHOUSE_REPORT}
                     renderItem={({ item }) => {
-                        // if no input, show all
-                        if (searchPhrase === '') {
-                            return <Item id={item.ID} location={item.Title} address={item.Address} />
-                        } else if (convertViToEn(item.name_nps, true).includes(convertViToEn(searchPhrase, true))) {
-                            return <Item id={item.ID} location={item.Title} address={item.Address} />
-                        } else if (convertViToEn(item.Address, true).includes(convertViToEn(searchPhrase, true))) {
-                            return <Item id={item.ID} location={item.Title} address={item.Address} />
+                        if (!item.Title.includes('ONLINE')) {
+                            if (searchPhrase === '') {
+                                return <Item id={item.ID} location={item.Title} address={item.Address} />
+                            } else if (convertViToEn(item.name_nps, true).includes(convertViToEn(searchPhrase, true))) {
+                                return <Item id={item.ID} location={item.Title} address={item.Address} />
+                            } else if (convertViToEn(item.Address, true).includes(convertViToEn(searchPhrase, true))) {
+                                return <Item id={item.ID} location={item.Title} address={item.Address} />
+                            }
                         }
                     }}
                     keyExtractor={item => item.ID}
@@ -94,7 +95,7 @@ const imageWidth = 80; const imageHeight = 80;
 const imageMargin = 10;
 const itemMargin = 10
 const itemHeight = 100; const itemWidth = ScreenWidth - (itemMargin * 2);
-const textboxWidth = itemWidth - (imageWidth + imageMargin * 2) - 10;
+const textboxWidth = itemWidth - (imageWidth + imageMargin * 2) - 20;
 const textBoxHeight = imageHeight;
 
 const styles = StyleSheet.create({
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
     item: {
         backgroundColor: white,
         padding: 20,
-        marginVertical: 3,
+        marginVertical: 7,
         marginHorizontal: 10,
         height: itemHeight,
         flexDirection: 'row',
@@ -157,7 +158,8 @@ const styles = StyleSheet.create({
         // backgroundColor: 'yellow'
     },
     item_title: {
-        fontSize: 15,
+        fontSize: 16,
+        marginVertical: 5
     },
     item_footer: {
         position: 'absolute',

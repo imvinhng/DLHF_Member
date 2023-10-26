@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Pressable, Text, Image, View, TouchableOpacity, Dimensions } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native';
@@ -138,6 +139,23 @@ export const LongButton = (props) => {
 }
 
 export const LongButton_Icon = (props) => {
+    return (
+        <Pressable
+            style={({ pressed }) => [
+                styles.long_button_icon,
+                { backgroundColor: pressed ? '#ddd' : props.buttonColor },
+                props.buttonStyle
+            ]}
+            onPress={props.onPressFunction}
+        >
+            <View style={props.iconStyle}>
+                <FontAwesome name={props.iconName} size={props.iconSize} color={props.iconColor} />
+            </View>
+            <Text style={[{ color: props.textColor }, props.textStyle]}>{props.text}</Text>
+        </Pressable>
+    );
+}
+export const LongButton_Icon5 = (props) => {
     return (
         <Pressable
             style={({ pressed }) => [

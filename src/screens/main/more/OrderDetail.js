@@ -7,7 +7,7 @@
 
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, ScrollView, FlatList, TextInput, Image } from 'react-native';
-import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton, LongButton, TouchableOpacity } from '../../../utils/CustomButton';
+import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon5, NotificationButton, LongButton, TouchableOpacity } from '../../../utils/CustomButton';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
 import { darkorange, white, backgroundGray } from '../../../assets/style/Colors';

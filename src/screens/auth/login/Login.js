@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, View, Text, TextInput, ScrollView, Dimensions } from 'react-native';
-import { LoginButton, LongButton_Icon, RoundButton } from '../../../utils/CustomButton';
+import { LoginButton } from '../../../utils/CustomButton';
 import { OTP_Login } from '../OTP';
 import { useNavigation } from '@react-navigation/native';
 import { CloseButton } from '../../../utils/CustomComponents';
+import { black } from '../../../assets/style/Colors';
 
 
 const Login = (props) => {
@@ -18,70 +19,80 @@ const Login = (props) => {
     }
 
     return (
-        <View style={styles.background}>
+        <View style={styles.home}>
             <Image
                 style={styles.image}
                 source={require('../../../assets/images/background/dutch-windmill.png')}
             />
             <CloseButton buttonStyle={styles.close_btn} />
-            <ScrollView style={styles.body} contentContainerStyle={{ alignItems: 'center' }}>
-                <Text style={styles.title}>Welcome to</Text>
-                <Image source={require('../../../assets/images/extras/DLHF-logo.png')} />
+            <ScrollView style={styles.body}>
+                <View style={{ alignItems: 'center', height: bodyHeight }}>
+                    <Text style={styles.title}>Welcome to</Text>
+                    <Image source={require('../../../assets/images/extras/DLHF-logo.png')} />
 
-                <TextInput
-                    style={[
-                        styles.text_input,
-                        { borderColor: loginBtnBorderColor }
-                    ]}
-                    keyboardType='number-pad'
-                    placeholder={'Enter your phone number'}
-                />
-                <TextInput
-                    style={[
-                        styles.text_input,
-                        { borderColor: loginBtnBorderColor }
-                    ]}
-                    secureTextEntry
-                    placeholder={'Enter password'}
-                    onSubmitEditing={passwordCheck}
-                />
-                <LoginButton
-                    style={styles.login_btn}
-                    bgColor={loginBtnColor}
-                    textColor={'#fff'}
-                    onPressFunction={passwordCheck}
-                />
+                    <TextInput
+                        style={[
+                            styles.text_input,
+                            { borderColor: loginBtnBorderColor }
+                        ]}
+                        keyboardType='number-pad'
+                        placeholder={'Enter your phone number'}
+                    />
+                    <TextInput
+                        style={[
+                            styles.text_input,
+                            { borderColor: loginBtnBorderColor }
+                        ]}
+                        secureTextEntry
+                        placeholder={'Enter password'}
+                        onSubmitEditing={passwordCheck}
+                    />
+                    <LoginButton
+                        style={styles.login_btn}
+                        bgColor={loginBtnColor}
+                        textColor={'#fff'}
+                        onPressFunction={passwordCheck}
+                    />
 
-                <Text style={styles.text_small} onPress={() => navigation.navigate('Auth', { screen: 'ForgetPassword' })}> Forget password?</Text>
-                <View style={{ height: 50 }} />
+                    <Text style={styles.text_small} onPress={() => navigation.navigate('Auth', { screen: 'ForgetPassword' })}> Forget password?</Text>
+                    <View style={{ height: 30 }} />
 
-                <View style={styles.row_wrapper}>
-                    <Text style={styles.text_small}>Not registered?</Text>
-                    <Text style={styles.text_hyperlink} onPress={() => navigation.navigate('Auth', { screen: 'Register' })}>Register here</Text>
+                    <View style={styles.row_wrapper}>
+                        <Text style={styles.text_small}>Not registered?</Text>
+                        <Text style={styles.text_hyperlink} onPress={() => navigation.navigate('Auth', { screen: 'Register' })}>Register here</Text>
+                    </View>
+
+
+                    {/* <View style={{ height: 30 }} /> */}
+                    <Text style={styles.footer}>Vietnamese</Text>
                 </View>
-
-
-                <View style={{ height: 30 }} />
-                <Text style={styles.subtext}>Vietnamese</Text>
-
             </ScrollView>
         </View>
 
     );
 }
 
-const { width: screenWidth } = Dimensions.get('screen');
+const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
+const bodyHeight = ScreenHeight * 0.7;
+const imageHeight = ScreenHeight * 0.4;
 
 const styles = StyleSheet.create({
-    background: {
-        flex: 1,
+    home: {
+        // flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        // backgroundColor: '#fff',
+        backgroundColor: black,
+    },
+    body: {
+        backgroundColor: '#fff',
+        width: '100%',
+        height: bodyHeight,
+        borderRadius: 20,
+        marginTop: -(ScreenHeight * 0.1),
     },
     image: {
-        width: '100%',
-        height: '40%',
+        width: ScreenWidth,
+        height: imageHeight,
     },
     title: {
         fontSize: 25,
@@ -92,9 +103,10 @@ const styles = StyleSheet.create({
         fontSize: 15,
         margin: 20,
     },
-    subtext: {
+    footer: {
         fontSize: 15,
-        marginTop: 40,
+        position: 'absolute',
+        top: Platform.OS == 'ios' ? bodyHeight * 0.9 : bodyHeight * 0.85,
     },
     alt_login_text: {
         paddingLeft: 10,
@@ -103,14 +115,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    body: {
-        backgroundColor: '#fff',
-        // alignItems: 'center',
-        width: '100%',
-        height: '70%',
-        borderRadius: 20,
-        marginTop: -80,
     },
     text_input: {
         width: "90%",
@@ -123,7 +127,6 @@ const styles = StyleSheet.create({
     },
     login_btn: {
         width: '90%',
-
     },
     apple_btn: {
         width: '90%',
@@ -149,7 +152,7 @@ const styles = StyleSheet.create({
     },
     close_btn: {
         position: 'absolute',
-        left: screenWidth - 40,
+        left: ScreenWidth - 40,
         top: Platform.OS == 'ios' ? 45 : 15,
         height: 20,
         width: 20,

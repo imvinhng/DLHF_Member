@@ -7,7 +7,7 @@
 
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, ScrollView } from 'react-native';
-import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton } from '../../utils/CustomButton';
+import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon5, NotificationButton } from '../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import GlobalStyle from '../../assets/style/GlobalStyle';
 import { white } from '../../assets/style/Colors';
@@ -56,67 +56,67 @@ function More(props) {
                 </View>
 
                 <Text style={[styles.heading_margin, GlobalStyle.heading]}>Support</Text>
-                <LongButton_Icon
+                <LongButton_Icon5
                     iconName={'star'}
                     iconSize={20}
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Order Review'}
-                    buttonStyle={[styles.longbutton_icon, GlobalStyle.box_shadow]}
-                    textStyle={styles.text_longbutton_icon}
+                    buttonStyle={[styles.LongButton_Icon5, GlobalStyle.box_shadow]}
+                    textStyle={styles.text_LongButton_Icon5}
                     iconStyle={styles.icon_longbutton}
                 />
-                <LongButton_Icon
+                <LongButton_Icon5
                     iconName={'comment-alt'}
                     iconSize={20}
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Contact Us'}
-                    buttonStyle={[styles.longbutton_icon, GlobalStyle.box_shadow]}
-                    textStyle={styles.text_longbutton_icon}
+                    buttonStyle={[styles.LongButton_Icon5, GlobalStyle.box_shadow]}
+                    textStyle={styles.text_LongButton_Icon5}
                     iconStyle={styles.icon_longbutton}
                 />
 
                 <Text style={[styles.heading_margin, GlobalStyle.heading]}>Account</Text>
-                <LongButton_Icon
+                <LongButton_Icon5
                     iconName={'user'}
                     iconSize={20}
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Personal Information'}
-                    buttonStyle={[styles.longbutton_icon, GlobalStyle.box_shadow]}
-                    textStyle={styles.text_longbutton_icon}
+                    buttonStyle={[styles.LongButton_Icon5, GlobalStyle.box_shadow]}
+                    textStyle={styles.text_LongButton_Icon5}
                     iconStyle={styles.icon_longbutton}
                     onPressFunction={() => navigation.navigate('More', { screen: 'PersonalInfoScreen' })}
                 />
-                <LongButton_Icon
+                <LongButton_Icon5
                     iconName={'map-marker-alt'}
                     iconSize={20}
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Saved Address'}
-                    buttonStyle={[styles.longbutton_icon, GlobalStyle.box_shadow]}
-                    textStyle={styles.text_longbutton_icon}
+                    buttonStyle={[styles.LongButton_Icon5, GlobalStyle.box_shadow]}
+                    textStyle={styles.text_LongButton_Icon5}
                     iconStyle={styles.icon_longbutton}
                 />
-                <LongButton_Icon
+                <LongButton_Icon5
                     iconName={'cog'}
                     iconSize={20}
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Settings'}
-                    buttonStyle={[styles.longbutton_icon, GlobalStyle.box_shadow]}
-                    textStyle={styles.text_longbutton_icon}
+                    buttonStyle={[styles.LongButton_Icon5, GlobalStyle.box_shadow]}
+                    textStyle={styles.text_LongButton_Icon5}
                     iconStyle={styles.icon_longbutton}
                 />
-                <LongButton_Icon
+                <LongButton_Icon5
                     iconName={'door-open'}
                     iconSize={20}
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Logout'}
-                    buttonStyle={[styles.longbutton_icon, GlobalStyle.box_shadow]}
-                    textStyle={styles.text_longbutton_icon}
+                    buttonStyle={[styles.LongButton_Icon5, GlobalStyle.box_shadow]}
+                    textStyle={styles.text_LongButton_Icon5}
                     iconStyle={styles.icon_longbutton}
                     onPressFunction={() =>
                         navigation.navigate('Home', { screen: 'HomeScreen', params: { loggedIn: false } })
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingTop: 10,
     },
-    longbutton_icon: {
+    LongButton_Icon5: {
         marginLeft: 20,
         margin: 0,
         height: 50,
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
         borderColor: 'lightgray',
 
     },
-    text_longbutton_icon: {
+    text_LongButton_Icon5: {
         fontSize: 15,
         marginLeft: 5,
         fontWeight: '500',

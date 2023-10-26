@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, View, Text, TextInput, ScrollView, Alert, Dimensions } from 'react-native';
-import { LoginButton, LongButton, LongButton_Icon, RoundButton } from '../../../utils/CustomButton';
+import { LongButton } from '../../../utils/CustomButton';
 import { OTP_Register } from '../OTP';
 import { useNavigation } from '@react-navigation/native';
 import { CloseButton } from '../../../utils/CustomComponents';

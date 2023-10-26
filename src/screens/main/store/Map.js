@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { LongButton_Icon, PromotionButton, NotificationButton } from '../../../utils/CustomButton';
+import { LongButton_Icon5, PromotionButton, NotificationButton } from '../../../utils/CustomButton';
 import MapView, { Marker } from 'react-native-maps';
 import { DATA } from '../../../db/Database';
 import { WAREHOUSE_REPORT } from '../../../db/ttp_report_warehouse';
@@ -29,7 +29,7 @@ export default function Map({ route, navigation }) {
                     closeBtnStyle={styles.search_close}
                 />
 
-                <LongButton_Icon
+                <LongButton_Icon5
                     iconName={'bars'}
                     iconSize={23}
                     buttonColor={white}

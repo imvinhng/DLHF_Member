@@ -1,9 +1,10 @@
 import React from "react"
 import { StyleSheet } from "react-native"
+import { darkgray, lightgray } from "./Colors";
 
 const GlobalStyle = StyleSheet.create({
     box_shadow: {
-        shadowColor: '#000',
+        shadowColor: darkgray,
         shadowOffset: { width: 1, height: 3 },
         shadowOpacity: 0.2,
         shadowRadius: 3,
@@ -23,22 +24,20 @@ const GlobalStyle = StyleSheet.create({
     },
     heading: {
         fontSize: 22,
-        fontFamily: 'Mohave-Light'
+        fontFamily: 'Ubuntu-Regular',
     },
     item_title: {
         fontSize: 16,
-        fontWeight: '600',
-        // fontFamily: 'Merriweather-Bold'
+        fontFamily: 'Merriweather-Bold'
     },
     item_subtitle: {
         fontSize: 12,
-        fontWeight: '300',
-        // fontFamily: 'Merriweather-Light',
+        fontFamily: 'Roboto-Light',
     },
     item_footer: {
         fontSize: 11,
         fontWeight: '300',
-        // fontFamily: 'Merriweather-Light',
+        fontFamily: 'Merriweather-Light',
     },
     text: {
         // fontFamily: 'Merriweather-Regular'

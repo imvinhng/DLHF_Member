@@ -7,7 +7,7 @@
 
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, ScrollView, FlatList, TouchableOpacity } from 'react-native';
-import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, NotificationButton, LongButton } from '../../../utils/CustomButton';
+import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon5, NotificationButton, LongButton } from '../../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import PersonalInfo from './PersonalInfo';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
@@ -58,7 +58,7 @@ function OrderHistory(props) {
 
             <View style={styles.body}>
                 <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-evenly', marginTop: 15 }]}>
-                    <LongButton_Icon
+                    <LongButton_Icon5
                         text={valueStartDate.toLocaleDateString('vi')}
                         iconSize={18}
                         iconName={'calendar'}
@@ -86,7 +86,7 @@ function OrderHistory(props) {
                         }}
                     />
 
-                    <LongButton_Icon
+                    <LongButton_Icon5
                         text={valueEndDate.toLocaleDateString('vi')}
                         iconSize={18}
                         iconName={'calendar'}

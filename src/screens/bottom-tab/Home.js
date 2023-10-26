@@ -7,7 +7,7 @@
 
 import React, { useRef } from 'react';
 import { View, StyleSheet, Text, Platform, Image, Dimensions, FlatList, TouchableOpacity, Animated } from 'react-native';
-import { LongButton_Icon } from '../../utils/CustomButton';
+import { LongButton_Icon5 } from '../../utils/CustomButton';
 import { HomeHeader, HomeHeader_LoggedIn, HomeBody } from '../../utils/HomeComponents';
 import { DATA_SPECIAL_OFFER } from '../../db/Database';
 import GlobalStyle from '../../assets/style/GlobalStyle';
@@ -25,7 +25,7 @@ const Item = ({ msg, image_uri, exp_date }) => {
                 </TouchableOpacity>
 
                 <Text style={[GlobalStyle.item_title, styles.text_grid]}>{msg}</Text>
-                <LongButton_Icon
+                <LongButton_Icon5
                     iconName={'calendar'}
                     iconSize={20}
                     bgColor={'#fff'}
