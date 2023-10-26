@@ -17,7 +17,7 @@ const Stack = createStackNavigator();
 
 function More(): JSX.Element {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName={'MoreScreen'} screenOptions={{ headerShown: false }}>
             <Stack.Screen
                 name='MoreScreen'
                 component={MoreScreen}

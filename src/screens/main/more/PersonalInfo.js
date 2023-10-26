@@ -10,6 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 import { darkorange, white } from '../../../assets/style/Colors';
 import { LevelTwoMembers } from '../../../db/Users';
 import { CloseButton } from '../../../utils/CustomComponents';
+import GlobalStyle from '../../../assets/style/GlobalStyle';
 
 
 function PersonalInfo(props) {
@@ -96,16 +97,17 @@ function PersonalInfo(props) {
 
                     <View style={styles.column_wrapper_custom}>
                         <Text style={styles.name}>{userData.full_name}</Text>
-                        <Text style={styles.membership}>Silver member - 0 vouchers</Text>
+                        <Text style={styles.membership}>Silver member</Text>
                     </View>
                 </View>
 
-
-                <Image source={require('../../../assets/images/extras/barcode_personal_info.png')} style={styles.barcode} />
-                <Text style={styles.footnote}>The date of your membership ranking evaluation is on 24/12/2023.</Text>
+                <View style={styles.barcodeContainer}>
+                    <Image source={require('../../../assets/images/extras/barcode_personal_info.png')} style={styles.barcode} />
+                    <Text style={styles.footnote}>L19079509</Text>
+                </View>
             </View>
 
-            <View style={styles.body}>
+            <ScrollView style={styles.body}>
                 <Text style={styles.title}>Member ID</Text>
                 <TextInput style={styles.input} value={userData.member_id} editable={false} />
                 <BlackLine />
@@ -264,6 +266,7 @@ function PersonalInfo(props) {
                             <Dropdown
                                 style={[styles.dropdown, { backgroundColor: '#fff' }]}
                                 textStyle={styles.input}
+                                listMode='SCROLLVIEW'
                                 open={openGender}
                                 value={valueGender}
                                 items={dataGender}
@@ -287,7 +290,7 @@ function PersonalInfo(props) {
                 </View>
 
 
-            </View>
+            </ScrollView>
         </View>
     );
 }
@@ -304,20 +307,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     header: {
-        height: Platform.OS == 'ios' ? '30%' : '28%',
-        width: '100%',
+        height: 'auto',
+        width: 'auto',
         backgroundColor: darkorange,
         paddingTop: Platform.OS == 'ios' ? 50 : 20,
         justifyContent: 'center',
 
-        //ios
-        shadowColor: '#000',
-        shadowOpacity: 0.5,
-        shadowRadius: 3,
-        shadowOffset: { width: 1, height: 10 },
-
-        //android
-        elevation: 7,
+        ...GlobalStyle.box_shadow,
     },
     body: {
         paddingLeft: 10,
@@ -352,6 +348,7 @@ const styles = StyleSheet.create({
     barcode: {
         width: '92%',
         alignSelf: 'center',
+        marginVertical: 15,
     },
     row_wrapper: {
         flexDirection: 'row',
@@ -393,11 +390,21 @@ const styles = StyleSheet.create({
         marginVertical: Platform.OS == 'ios' ? 7 : -10,
         marginRight: -11,
         width: '90%',
-        fontWeight: 'bold',
+        fontWeight: '300',
         color: 'black',
     },
+    barcodeContainer: {
+        backgroundColor: white,
+        padding: 10,
+        //  paddingVertical: 15,
+        justifyContent: 'space-between',
+        margin: 15,
+        borderRadius: 10,
+        alignItems: 'center',
+
+    },
     title: {
-        fontWeight: '300',
+        fontWeight: '600',
         marginTop: 10,
     },
     name: {
@@ -409,7 +416,6 @@ const styles = StyleSheet.create({
         margin: 5,
     },
     footnote: {
-        margin: 10,
-        marginLeft: 15,
+        // marginLeft: 15,
     },
 })

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Dimensions } from 'react-native';
 import { SquareButton, RoundButton } from './CustomButton';
+import { backgroundGray } from '../assets/style/Colors';
 
 function SearchBar(props) {
     const [clicked, setClicked] = useState(false);
@@ -42,7 +43,7 @@ const searchbarWidth = .60 * screenWidth;
 
 const styles = StyleSheet.create({
     searchbar: {
-        backgroundColor: '#f1f1f0',
+        backgroundColor: backgroundGray,
         width: searchbarWidth,
         height: 40,
         borderRadius: 10,
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
         marginLeft: -12,
     },
     searchbar_icon: {
-        backgroundColor: '#f1f1f0',
+        backgroundColor: backgroundGray,
         width: 40,
         height: 40,
     },

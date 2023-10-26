@@ -78,7 +78,8 @@ function OrderDetail(props) {
                         </View>
                         <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
                             <Text style={styles.text}>Delivery Address: </Text>
-                            <TextInput value={DATA_ORDER_HISTORY[orderIndex].delivery_address} style={styles.input} />
+                            {/* TODO: Figure out another way to hide overflow text on Android */}
+                            <TextInput value={DATA_ORDER_HISTORY[orderIndex].delivery_address} style={styles.input} maxLength={30} />
                         </View>
                         <View style={[GlobalStyle.row_wrapper, { marginVertical: 5 }]}>
                             <Text style={styles.text}>Receiver Name: </Text>
@@ -175,9 +176,7 @@ function OrderDetail(props) {
                                         <Text style={styles.summary_text}>{status}</Text>
 
                                     </View>
-
                                 </View>
-                                <GrayLine_Full_Thick />
                             </View>
                         </View>
 
@@ -209,7 +208,7 @@ const styles = StyleSheet.create({
     },
     body: {
         backgroundColor: backgroundGray,
-        height: ScreenHeight * 1.5,  // to be changed
+        height: 'auto',
         width: ScreenWidth,
     },
     header: {
@@ -286,13 +285,16 @@ const styles = StyleSheet.create({
         borderWidth: 0.2,
         borderColor: 'gray',
         paddingLeft: 10,
+        // textAlign: 'auto',  //add ellipsize at the end of text input if overflow
     },
     status_container: {
         marginVertical: 10,
-        height: '20%',
+        height: 'auto',
         width: '95%',
         backgroundColor: '#fff',
         alignSelf: 'center',
+        borderRadius: 5,
+        ...GlobalStyle.box_shadow,
     },
     item_text: {
         fontSize: 12,
@@ -303,10 +305,12 @@ const styles = StyleSheet.create({
     },
     order_detail_container: {
         marginVertical: 10,
-        height: '38%', // original: '60%'
+        height: 'auto',
         width: '95%',
         backgroundColor: '#fff',
         alignSelf: 'center',
+        borderRadius: 5,
+        ...GlobalStyle.box_shadow,
     },
     flower_img: {
         height: flowerWidth,

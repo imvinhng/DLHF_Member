@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, TextInput, FlatList, Image, Dimensions } from 'react-native';
 import { RoundButton } from '../../../utils/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
@@ -64,15 +64,17 @@ const Item = ({ title, message, date }) => {
     return (
 
         <View style={styles.item}>
-            <RoundButton iconName={'bell'} bgColor={'lightgray'} iconSize={25} buttonStyle={styles.bell_btn} />
+            <View style={styles.iconContainer}>
+                <RoundButton iconName={'bell'} bgColor={'lightgray'} iconSize={25} buttonStyle={styles.bell_btn} />
+            </View>
 
-            <View style={styles.column_wrapper_custom}>
+            <View style={styles.textboxContainer}>
                 <View style={styles.row_wrapper}>
                     <Text style={[GlobalStyle.item_title, styles.noti_title]}>{title}</Text>
                     <Text style={[GlobalStyle.item_footer, styles.noti_date]}>{date}</Text>
                 </View>
 
-                <Text style={[GlobalStyle.item_subtitle, styles.noti_message]}>{message}</Text>
+                <Text style={[GlobalStyle.item_subtitle, styles.noti_message]} numberOfLines={2}>{message}</Text>
             </View>
         </View>
     )
@@ -108,6 +110,13 @@ function Notification(props) {
 
 export default Notification;
 
+const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
+const itemHeight = 100; const itemWidth = ScreenWidth;
+const iconContainerWidth = itemWidth * 0.2;
+const iconContainerHeight = itemHeight;
+const textboxContainerWidth = itemWidth * 0.8;
+const textboxContainerHeight = itemHeight;
+
 const styles = StyleSheet.create({
     home: {
         flex: 1,
@@ -125,23 +134,28 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 25,
         marginLeft: '5%',
-        marginTop: -5,
+        // marginTop: -5,
     },
     noti_title: {
         fontSize: 14,
         fontWeight: '700',
+        position: 'absolute',
+        top: textboxContainerHeight * 0.18,
     },
     noti_message: {
         fontSize: 13,
         fontWeight: '500',
-        marginTop: 22,
+        position: 'absolute',
+        bottom: textboxContainerHeight * 0.18,
+        width: textboxContainerWidth * 0.9,
         lineHeight: 19,
     },
     noti_date: {
         fontSize: 13,
         fontWeight: '500',
         position: 'absolute',
-        right: -25,
+        right: 10,
+        top: 10,
     },
     image: {
         height: 80,
@@ -151,20 +165,24 @@ const styles = StyleSheet.create({
     },
     item: {
         backgroundColor: '#fff',
-        padding: 20,
-        height: 100,
-        width: '100%',
+        height: itemHeight,
+        width: itemWidth,
         flexDirection: 'row',
         borderWidth: 0.5,
         borderColor: 'lightgray',
         justifyContent: 'left',
         alignItems: 'center',
     },
-    column_wrapper_custom: {
-        flexDirection: 'column',
-        width: 280,
-        marginLeft: 20,
-        marginTop: -5,
+    iconContainer: {
+        height: iconContainerHeight,
+        width: iconContainerWidth,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textboxContainer: {
+        width: textboxContainerWidth,
+        height: textboxContainerHeight,
+        // backgroundColor: 'yellow'
     },
     row_wrapper: {
         flexDirection: 'row',

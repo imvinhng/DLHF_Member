@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     text_small_center: {
-        fontSize: 13,
+        fontSize: 14,
         fontWeight: '600',
         marginLeft: -10,
         marginRight: -6,

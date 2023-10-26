@@ -11,7 +11,7 @@ import { PromotionButton, SquareButton_ImageIcon_Text, LongButton_Icon, Notifica
 import { useNavigation } from '@react-navigation/native';
 import PersonalInfo from './PersonalInfo';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
-import { darkorange, white, backgroundGray, yellow, green, blue, black } from '../../../assets/style/Colors';
+import { darkorange, white, backgroundGray, yellow, green, blue, black, darkgray, lightgray } from '../../../assets/style/Colors';
 import { GrayLine_Full, GrayLine_Full_Thick } from '../../../utils/Line';
 import { DATA_ORDER_HISTORY } from '../../../db/Database';
 import Dropdown from 'react-native-dropdown-picker';
@@ -60,9 +60,9 @@ function Analytics(props) {
         backgroundGradientTo: "#fff",
         backgroundGradientToOpacity: 0,
         // height: 500,
-        color: (opacity = 0.8) => `rgba(0, 0, 255, ${opacity})`,
-        labelColor: (opacity = 0.8) => `rgba(0, 0, 0, ${opacity})`,
-        strokeWidth: 2, // optional, default 3
+        color: (opacity = 1) => `rgba(245, 136, 49, ${opacity})`,
+        labelColor: (opacity = 0.8) => `rgba(128, 128, 128, ${opacity})`,
+        strokeWidth: 3, // optional, default 3
         barPercentage: barPercentage,
         useShadowColorFromDataset: false // optional
     };
@@ -168,7 +168,6 @@ function Analytics(props) {
                     />
                 </View>
 
-                {/* insert 4 rectangles statistics */}
                 <View style={styles.summary_container}>
                     <View style={styles.summary_item}>
                         <Text style={styles.summary_text}>10</Text>
@@ -266,7 +265,7 @@ function Analytics(props) {
                     {/* Dropdown Picker for Years */}
                     {showFullYearDropdown && <View style={{ width: graphContainerWidth, alignItems: 'center', marginVertical: 10, zIndex: 10 }}>
                         <Dropdown
-                            style={[styles.dropdown, { backgroundColor: '#fff', width: graphContainerWidth - 30 }]}
+                            style={[styles.dropdown, { width: dropdownFullWidth }]}
                             textStyle={styles.input}
                             open={openYear}
                             value={valueYear}
@@ -276,9 +275,8 @@ function Analytics(props) {
                             setValue={setValueYear}
                             placeholder={'Select.'}
                             listMode='SCROLLVIEW'
-                            containerProps={{
-                                width: graphContainerWidth - 30
-                            }}
+                            containerProps={{ width: dropdownFullWidth }}
+                            dropDownContainerStyle={{ borderColor: darkorange }}
                             onChangeValue={(value) => {
                                 setBarChartData(barChartYear) // just to be sure we're selecting from the years data
                                 setBarChartMax(10)
@@ -302,53 +300,53 @@ function Analytics(props) {
                         />
                     </View>}
 
-                    {showMonthDropdown && <View style={{ width: graphContainerWidth, alignItems: 'center', marginVertical: 10, zIndex: 10 }}>
-                        <Dropdown
-                            style={[styles.dropdown, { backgroundColor: '#fff', width: graphContainerWidth - 30 }]}
-                            textStyle={styles.input}
-                            open={openYear}
-                            value={valueYear}
-                            items={yearSelector}
-                            // key={barChartYear[dataIndex].labels}
-                            setOpen={setOpenYear}
-                            setValue={setValueYear}
-                            placeholder={'Select.'}
-                            listMode='SCROLLVIEW'
-                            containerProps={{
-                                width: graphContainerWidth - 30
-                            }}
-                            onChangeValue={(value) => {
-                                setBarChartData(barChartMonth) // just to be sure we're selecting from the months data
-                                if (value == 'All the years') {
-                                    setDataIndex(0)
-                                    setBarPercentage(0.5)
-                                    setBarChartMax(3.2)
-                                } else if (value == '2023') {
-                                    setDataIndex(1)
-                                    setBarPercentage(0.5)
-                                    setBarChartMax(3.2)
-                                } else if (value == '2022') {
-                                    setDataIndex(2)
-                                    setBarPercentage(0.5)
-                                    setBarChartMax(3.2)
-                                } else if (value == '2021') {
-                                    setDataIndex(3)
-                                    setBarPercentage(0.5)
-                                    setBarChartMax(2.4)
-                                } else if (value == '2020') {
-                                    setDataIndex(4)
-                                    setBarPercentage(0.5)
-                                    setBarChartMax(1)
-                                }
-                            }}
-                        />
-                    </View>}
+                    {showMonthDropdown &&
+                        <View style={{ width: graphContainerWidth, alignItems: 'center', marginVertical: 10, zIndex: 10 }}>
+                            <Dropdown
+                                style={[styles.dropdown, { width: dropdownFullWidth }]}
+                                textStyle={styles.input}
+                                open={openYear}
+                                value={valueYear}
+                                items={yearSelector}
+                                // key={barChartYear[dataIndex].labels}
+                                setOpen={setOpenYear}
+                                setValue={setValueYear}
+                                placeholder={'Select.'}
+                                listMode='SCROLLVIEW'
+                                containerProps={{ width: dropdownFullWidth }}
+                                dropDownContainerStyle={{ borderColor: darkorange }}
+                                onChangeValue={(value) => {
+                                    setBarChartData(barChartMonth) // just to be sure we're selecting from the months data
+                                    if (value == 'All the years') {
+                                        setDataIndex(0)
+                                        setBarPercentage(0.5)
+                                        setBarChartMax(3.2)
+                                    } else if (value == '2023') {
+                                        setDataIndex(1)
+                                        setBarPercentage(0.5)
+                                        setBarChartMax(3.2)
+                                    } else if (value == '2022') {
+                                        setDataIndex(2)
+                                        setBarPercentage(0.5)
+                                        setBarChartMax(3.2)
+                                    } else if (value == '2021') {
+                                        setDataIndex(3)
+                                        setBarPercentage(0.5)
+                                        setBarChartMax(2.4)
+                                    } else if (value == '2020') {
+                                        setDataIndex(4)
+                                        setBarPercentage(0.5)
+                                        setBarChartMax(1)
+                                    }
+                                }}
+                            />
+                        </View>}
 
                     {/* Add Dropdown Picker for Weeks */}
                     <View style={[GlobalStyle.row_wrapper, { justifyContent: 'center', zIndex: 99 }]}>
                         {showHalfYearDropdown && <View style={{ width: graphContainerWidth / 2, marginVertical: 10, alignItems: 'center' }}>
                             <Dropdown
-                                style={[styles.dropdown, { backgroundColor: '#fff', width: graphContainerWidth / 2 - 10 }]}
+                                style={[styles.dropdown, { backgroundColor: '#fff', width: dropdownHalfWidth }]}
                                 textStyle={styles.input}
                                 open={openYear}
                                 value={valueYear}
@@ -358,29 +356,28 @@ function Analytics(props) {
                                 setValue={setValueYear}
                                 placeholder={'Select year'}
                                 listMode='SCROLLVIEW'
-                                containerProps={{
-                                    width: graphContainerWidth / 2 - 10
-                                }}
+                                containerProps={{ width: dropdownHalfWidth }}
+                                dropDownContainerStyle={{ borderColor: darkorange }}
                             />
                         </View>}
 
-                        {showWeekDropdown && <View style={{ width: graphContainerWidth / 2, marginVertical: 10, alignItems: 'center' }}>
-                            <Dropdown
-                                style={[styles.dropdown, { backgroundColor: '#fff', width: graphContainerWidth / 2 - 10 }]}
-                                textStyle={styles.input}
-                                open={openMonth}
-                                value={valueMonth}
-                                items={monthSelector}
-                                // key={barChartYear[dataIndex].labels}
-                                setOpen={setOpenMonth}
-                                setValue={setValueMonth}
-                                placeholder={'Select month'}
-                                listMode='SCROLLVIEW'
-                                containerProps={{
-                                    width: graphContainerWidth / 2 - 10
-                                }}
-                            />
-                        </View>}
+                        {showWeekDropdown &&
+                            <View style={{ width: graphContainerWidth / 2, marginVertical: 10, alignItems: 'center' }}>
+                                <Dropdown
+                                    style={[styles.dropdown, { width: dropdownHalfWidth }]}
+                                    textStyle={styles.input}
+                                    open={openMonth}
+                                    value={valueMonth}
+                                    items={monthSelector}
+                                    // key={barChartYear[dataIndex].labels}
+                                    setOpen={setOpenMonth}
+                                    setValue={setValueMonth}
+                                    placeholder={'Select month'}
+                                    listMode='SCROLLVIEW'
+                                    containerProps={{ width: dropdownHalfWidth }}
+                                    dropDownContainerStyle={{ borderColor: darkorange }}
+                                />
+                            </View>}
                     </View>
 
                     {/* Add Dropdown Picker for Days */}
@@ -394,12 +391,14 @@ function Analytics(props) {
                             <RoundButton
                                 iconName={'chevron-left'}
                                 iconSize={25}
+                                iconColor={darkorange}
                                 onPressFunction={movePreviousWeek}
                             />
-                            <Text>{weekSelector[dataIndex].label}</Text>
+                            <Text style={{ color: darkgray }}>{weekSelector[dataIndex].label}</Text>
                             <RoundButton
                                 iconName={'chevron-right'}
                                 iconSize={25}
+                                iconColor={darkorange}
                                 onPressFunction={moveNextWeek}
                             />
                         </View>}
@@ -427,10 +426,18 @@ export default Analytics;
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 const calendarBtnWidth = (ScreenWidth / 2) - 20;
 const headingWidth = (ScreenWidth / 4) - 10;
+
 const summaryContainerHeight = 240;
+const summaryContainerWidth = ScreenWidth - 10;
+
 const piechartContainerHeight = 240;
+const piechartContainerWidth = ScreenWidth - 20;
+
 const graphContainerHeight = 400;
-const graphContainerWidth = ScreenWidth - 10;
+const graphContainerWidth = ScreenWidth - 20;
+
+const dropdownFullWidth = graphContainerWidth - 20;
+const dropdownHalfWidth = graphContainerWidth / 2 - 10;
 
 const styles = StyleSheet.create({
     home: {
@@ -470,6 +477,7 @@ const styles = StyleSheet.create({
         color: 'green',
         fontSize: 30,
         fontWeight: '500',
+        marginTop: -20,
     },
     summary_subtext: {
         position: 'absolute',
@@ -491,33 +499,40 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     summary_container: {
-        width: ScreenWidth,
+        width: summaryContainerWidth,
         height: summaryContainerHeight,
         flexDirection: 'row',
         flexWrap: 'wrap',
+        alignSelf: 'center',
         marginVertical: 10,
     },
     piechart_container: {
-        width: ScreenWidth - 10,
+        width: piechartContainerWidth,
         height: piechartContainerHeight,
         marginVertical: 10,
-        backgroundColor: 'lightgray',
-        margin: 5,
+        backgroundColor: white,
+        margin: 10,
+        borderRadius: 5,
+        ...GlobalStyle.box_shadow,
     },
     graph_container: {
         width: graphContainerWidth,
         height: 'auto',
         marginVertical: 10,
-        backgroundColor: 'lightgray',
-        margin: 5,
+        backgroundColor: white,
+        margin: 10,
+        borderRadius: 5,
+        ...GlobalStyle.box_shadow,
     },
     summary_item: {
-        width: (ScreenWidth / 2) - 10,
+        width: ((summaryContainerWidth) / 2) - 10,
         height: (summaryContainerHeight / 2) - 10,
-        backgroundColor: 'lightgray',
+        backgroundColor: white,
         margin: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        borderRadius: 5,
+        ...GlobalStyle.box_shadow,
     },
     piechart: {
         height: ScreenWidth / 2 - 20,
@@ -544,10 +559,20 @@ const styles = StyleSheet.create({
         borderColor: '#fff',
     },
     container_title: {
-        color: 'green', fontWeight: '500', textAlign: 'center', marginTop: 5,
+        ...GlobalStyle.text,
+        color: darkorange,
+        textAlign: 'center',
+        fontSize: 16,
+        marginTop: 5,
+        fontFamily: 'Roboto-Medium'
     },
     dropdown: {
-        // borderRadius: 20,
-        // height: 10,
-    }
+        borderColor: darkorange,
+        backgroundColor: white,
+        alignSelf: 'center',
+        height: 50,
+    },
+    input: {
+        color: darkgray,
+    },
 });

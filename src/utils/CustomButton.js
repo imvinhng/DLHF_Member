@@ -4,7 +4,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native';
-import { black, lightorange, tan } from '../assets/style/Colors';
+import { black, darkgray, darkorange, lightgray, lightorange, offwhite, tan, white } from '../assets/style/Colors';
 import GlobalStyle from '../assets/style/GlobalStyle';
 
 
@@ -350,32 +350,36 @@ export const RadioPeriodCustom = (props) => {
     }
 
     return (
-        <View style={styles.row_wrapper}>
+        <View style={[GlobalStyle.row_wrapper, styles.periodButtonContainer]}>
             <LongButton
-                buttonColor={focusedOne ? '#fff' : 'lightgray'}
+                buttonColor={focusedOne ? darkorange : offwhite}
                 text={'Year'}
                 buttonStyle={styles.grid4_button}
+                textColor={focusedOne ? white : darkgray}
                 textStyle={styles.grid_btn_txt}
                 onPressFunction={() => { onFocusRadio('1'), props.onPressFunctionYear() }}
             />
             <LongButton
-                buttonColor={focusedTwo ? '#fff' : 'lightgray'}
+                buttonColor={focusedTwo ? darkorange : offwhite}
                 text={'Month'}
                 buttonStyle={styles.grid4_button}
+                textColor={focusedTwo ? white : darkgray}
                 textStyle={styles.grid_btn_txt}
                 onPressFunction={() => { onFocusRadio('2'), props.onPressFunctionMonth() }}
             />
             <LongButton
-                buttonColor={focusedThree ? '#fff' : 'lightgray'}
+                buttonColor={focusedThree ? darkorange : offwhite}
                 text={'Week'}
                 buttonStyle={styles.grid4_button}
+                textColor={focusedThree ? white : darkgray}
                 textStyle={styles.grid_btn_txt}
                 onPressFunction={() => { onFocusRadio('3'), props.onPressFunctionWeek() }}
             />
             <LongButton
-                buttonColor={focusedFour ? '#fff' : 'lightgray'}
+                buttonColor={focusedFour ? darkorange : offwhite}
                 text={'Day'}
                 buttonStyle={styles.grid4_button}
+                textColor={focusedFour ? white : darkgray}
                 textStyle={styles.grid_btn_txt}
                 onPressFunction={() => { onFocusRadio('4'), props.onPressFunctionDay() }}
             />
@@ -384,6 +388,7 @@ export const RadioPeriodCustom = (props) => {
 }
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
+const periodButtonHeight = 30;
 
 const styles = StyleSheet.create({
     round_button: {
@@ -483,6 +488,7 @@ const styles = StyleSheet.create({
     grid4_button: {
         width: (ScreenWidth - 10) / 4 - 20,
         borderRadius: 10,
+        margin: 0,
     },
     grid_btn_txt: {
         fontFamily: 'Merriweather-Light',
@@ -491,6 +497,14 @@ const styles = StyleSheet.create({
     grid3_button: {
         margin: 0,
         width: ScreenWidth / 3 - 4,
+    },
+    periodButtonContainer: {
+        justifyContent: 'space-between',
+        borderColor: tan,
+        borderWidth: 0.5,
+        backgroundColor: offwhite,
+        borderRadius: 10,
+        margin: 10
     }
 
 })
