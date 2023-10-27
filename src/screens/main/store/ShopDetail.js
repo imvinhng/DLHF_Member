@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { StyleSheet, View, Text, Image, Modal, TouchableOpacity, Platform, Dimensions, ScrollView } from 'react-native';
 import { PromotionButton, NotificationButton, RoundButton, LongButton_Icon } from '../../../utils/CustomButton';
@@ -9,16 +9,75 @@ import GlobalStyle from '../../../assets/style/GlobalStyle';
 import { backgroundGray, black, lightgray, offwhite, tan, white } from '../../../assets/style/Colors';
 import { HeaderPN } from '../../../utils/Header';
 import MapView, { Marker } from 'react-native-maps';
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
 
 function Shop_Detail(props) {
     const route = useRoute();
     const navigation = useNavigation();
+    const mapRef = useRef(null);
 
     const { clicked_id } = route.params;
 
     const store_index = clicked_id - 1;
+    const MIN_ZOOM_LEVEL = 3;
+    const MAX_ZOOM_LEVEL = 20;
+
     const [favoriteAdded, setFavoriteAdded] = useState(false);
+    const [zoom, setZoom] = useState(15);
+
+    const [selectedRegion, setSelectedRegion] = useState({
+        latitude: parseFloat(WAREHOUSE_REPORT[store_index].Lat),
+        longitude: parseFloat(WAREHOUSE_REPORT[store_index].Long),
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+    })
+
+    const handleZoom = (isZoomIn = false) => {
+        let currentZoomLevel = zoom;
+        // if zoomlevel set to max value and user click on minus icon, first decrement the level before checking threshold value
+        if (!isZoomIn && currentZoomLevel === MAX_ZOOM_LEVEL) {
+            currentZoomLevel -= 1;
+        }
+        // if zoomlevel set to min value and user click on plus icon, first increment the level before checking threshold value
+        else if (isZoomIn && currentZoomLevel === MIN_ZOOM_LEVEL) {
+            currentZoomLevel += 1;
+        }
+        if (
+            currentZoomLevel >= MAX_ZOOM_LEVEL ||
+            currentZoomLevel <= MIN_ZOOM_LEVEL
+        ) {
+            return;
+        }
+
+        currentZoomLevel = isZoomIn ? currentZoomLevel + 1 : currentZoomLevel - 1;
+        const zoomedInRegion = {
+            ...selectedRegion,
+            latitudeDelta: getLatLongDelta(
+                currentZoomLevel,
+                selectedRegion.latitude
+            )[1],
+            longitudeDelta: getLatLongDelta(
+                currentZoomLevel,
+                selectedRegion.latitude
+            )[0]
+        };
+
+        setSelectedRegion(zoomedInRegion);
+        setZoom(currentZoomLevel);
+        mapRef?.current?.animateToRegion(zoomedInRegion, 100);
+    };
+
+    const getLatLongDelta = (zoom, latitude) => {
+        const LONGITUDE_DELTA = Math.exp(Math.log(360) - zoom * Math.LN2);
+        const ONE_LATITUDE_DEGREE_IN_METERS = 111.32 * 1000;
+        const accurateRegion =
+            LONGITUDE_DELTA *
+            (ONE_LATITUDE_DEGREE_IN_METERS * Math.cos(latitude * (Math.PI / 180)));
+        const LATITUDE_DELTA = accurateRegion / ONE_LATITUDE_DEGREE_IN_METERS;
+
+        return [LONGITUDE_DELTA, LATITUDE_DELTA];
+    };
 
 
     return (
@@ -78,18 +137,17 @@ function Shop_Detail(props) {
                         />
                     </View>
 
-                    {/* TODO: Need to add marker and set correct location */}
                     <View style={styles.mapContainer}>
                         <MapView
                             style={styles.map}
-                            initialRegion={{
-                                latitude: WAREHOUSE_REPORT[store_index].Lat,
-                                longitude: WAREHOUSE_REPORT[store_index].Long,
-                                latitudeDelta: 0.0922,
-                                longitudeDelta: 0.0421,
+                            ref={mapRef}
+                            initialRegion={selectedRegion}
+                            onRegionChangeComplete={region => {
+                                setSelectedRegion(region);
                             }}
                             zoomEnabled
                             minZoomLevel={5}
+
                         >
                             <Marker
                                 coordinate={{ latitude: parseFloat(WAREHOUSE_REPORT[store_index].Lat), longitude: parseFloat(WAREHOUSE_REPORT[store_index].Long) }}
@@ -99,7 +157,26 @@ function Shop_Detail(props) {
                                 key={store_index}
                             />
                         </MapView>
+
+
+                        <View style={styles.zoomControlContainer}>
+                            <LongButton_Icon
+                                iconName={'plus'}
+                                iconSize={15}
+                                buttonColor={white}
+                                buttonStyle={[styles.zoomControlButton, { opacity: zoom === MAX_ZOOM_LEVEL ? 0.2 : 1 }]}
+                                onPressFunction={() => handleZoom(true)}
+                            />
+                            <LongButton_Icon
+                                iconName={'minus'}
+                                iconSize={15}
+                                buttonColor={white}
+                                buttonStyle={[styles.zoomControlButton, { opacity: zoom === MIN_ZOOM_LEVEL ? 0.2 : 1 }]}
+                                onPressFunction={() => handleZoom(false)}
+                            />
+                        </View>
                     </View>
+
                 </View>
             </ScrollView>
         </View>
@@ -113,6 +190,8 @@ const iconSize = 16;
 const buttonWidth = ScreenWidth - 40;
 const mapHeight = 300; const mapWidth = ScreenWidth * 0.9;
 const bodyMarginTop = 0.03 * ScreenHeight;
+const zoomControlContainerHeight = mapHeight * 0.1;
+const zoomControlContainerWidth = mapWidth * 0.2;
 
 const styles = StyleSheet.create({
     home: {
@@ -207,6 +286,23 @@ const styles = StyleSheet.create({
         margin: 10,
         marginVertical: 20,
     },
+    zoomControlContainer: {
+        // ...GlobalStyle.row_wrapper,
+        width: zoomControlContainerWidth,
+        height: zoomControlContainerHeight,
+        position: 'absolute',
+        bottom: zoomControlContainerHeight + 10,
+        right: -30,
+
+    },
+    zoomControlButton: {
+        margin: 0,
+        width: zoomControlContainerWidth / 2,
+        height: zoomControlContainerHeight,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 0,
+    }
 })
 
 export default Shop_Detail;

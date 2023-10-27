@@ -114,6 +114,7 @@ export const HomeHeader = () => {
 
 
 export const HomeBody = (props) => {
+    const carousel_image = props.loggedIn ? require('../assets/images/promotions/20_10.png') : require('../assets/images/promotions/super-sale.png');
 
     return (
 
@@ -148,43 +149,43 @@ export const HomeBody = (props) => {
                 <ScrollView contentContainerStyle={styles.scrollViewContainerStyle} horizontal pagingEnabled showsHorizontalScrollIndicator>
                     <View style={{ width: screenWidth }}>
                         <Image
-                            source={require('../assets/images/extras/super-sale.png')}
+                            source={carousel_image}
                             style={styles.image}
                         />
                     </View>
                     <View style={{ width: screenWidth }}>
                         <Image
-                            source={require('../assets/images/extras/super-sale.png')}
+                            source={carousel_image}
                             style={styles.image}
                         />
                     </View>
                     <View style={{ width: screenWidth }}>
                         <Image
-                            source={require('../assets/images/extras/super-sale.png')}
+                            source={carousel_image}
                             style={styles.image}
                         />
                     </View>
                     <View style={{ width: screenWidth }}>
                         <Image
-                            source={require('../assets/images/extras/super-sale.png')}
+                            source={carousel_image}
                             style={styles.image}
                         />
                     </View>
                     <View style={{ width: screenWidth }}>
                         <Image
-                            source={require('../assets/images/extras/super-sale.png')}
+                            source={carousel_image}
                             style={styles.image}
                         />
                     </View>
                     <View style={{ width: screenWidth }}>
                         <Image
-                            source={require('../assets/images/extras/super-sale.png')}
+                            source={carousel_image}
                             style={styles.image}
                         />
                     </View>
                     <View style={{ width: screenWidth }}>
                         <Image
-                            source={require('../assets/images/extras/super-sale.png')}
+                            source={carousel_image}
                             style={styles.image}
                         />
                     </View>

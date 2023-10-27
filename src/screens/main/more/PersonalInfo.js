@@ -90,8 +90,7 @@ function PersonalInfo(props) {
     return (
         <View style={styles.home}>
             <View style={styles.header}>
-                {/* TODO: Fix close button currently not sending user back to More */}
-                <CloseButton buttonStyle={styles.close_btn} buttonColor={darkorange} />
+                <CloseButton buttonStyle={styles.close_btn} buttonColor={darkorange} navDest={'MoreScreen'} />
                 <View style={styles.row_wrapper}>
                     <RoundButton iconName='user' iconSize={40} bgColor='lightgray' buttonStyle={styles.icon_user} />
                     <RoundButton iconName='pen' iconSize={10} iconColor='#fff' bgColor='#000' buttonStyle={styles.profile_edit} />
