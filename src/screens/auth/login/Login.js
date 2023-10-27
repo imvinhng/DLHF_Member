@@ -4,12 +4,12 @@ import { LoginButton } from '../../../utils/CustomButton';
 import { OTP_Login } from '../OTP';
 import { useNavigation } from '@react-navigation/native';
 import { CloseButton } from '../../../utils/CustomComponents';
-import { black } from '../../../assets/style/Colors';
+import { black, darkgray, white } from '../../../assets/style/Colors';
 
 
 const Login = (props) => {
     const [loginBtnColor, setLoginBtnColor] = useState('#eb9f1c');
-    const [loginBtnBorderColor, setLoginBtnBorderColor] = useState('#000');
+
     const [phoneNumber, setPhoneNumber] = useState('');
 
     const navigation = useNavigation();
@@ -29,20 +29,13 @@ const Login = (props) => {
                 <View style={{ alignItems: 'center', height: bodyHeight }}>
                     <Text style={styles.title}>Welcome to</Text>
                     <Image source={require('../../../assets/images/extras/DLHF-logo.png')} />
-
                     <TextInput
-                        style={[
-                            styles.text_input,
-                            { borderColor: loginBtnBorderColor }
-                        ]}
+                        style={styles.text_input}
                         keyboardType='number-pad'
                         placeholder={'Enter your phone number'}
                     />
                     <TextInput
-                        style={[
-                            styles.text_input,
-                            { borderColor: loginBtnBorderColor }
-                        ]}
+                        style={styles.text_input}
                         secureTextEntry
                         placeholder={'Enter password'}
                         onSubmitEditing={passwordCheck}
@@ -54,7 +47,7 @@ const Login = (props) => {
                         onPressFunction={passwordCheck}
                     />
 
-                    <Text style={styles.text_small} onPress={() => navigation.navigate('Auth', { screen: 'ForgetPassword' })}> Forget password?</Text>
+                    <Text style={styles.text_small} onPress={() => navigation.navigate('Login', { screen: 'ForgetPasswordScreen' })}> Forget password?</Text>
                     <View style={{ height: 30 }} />
 
                     <View style={styles.row_wrapper}>
@@ -120,8 +113,9 @@ const styles = StyleSheet.create({
         width: "90%",
         height: 60,
         marginTop: 20,
-        borderWidth: 1,
+        borderWidth: 0.5,
         borderRadius: 6,
+        borderColor: darkgray,
         fontSize: 18,
         padding: 15,
     },
@@ -154,8 +148,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: ScreenWidth - 40,
         top: Platform.OS == 'ios' ? 45 : 15,
-        height: 20,
-        width: 20,
     },
     text_small: {
         fontSize: 15,
