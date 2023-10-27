@@ -145,7 +145,6 @@ const styles = StyleSheet.create({
         height: itemHeight,
         flexDirection: 'row',
         borderRadius: 10,
-
         ...GlobalStyle.box_shadow,
     },
     item_textbox: {

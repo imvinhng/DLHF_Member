@@ -5,6 +5,7 @@ const Stack = createStackNavigator();
 
 import LoginScreen from '../../screens/auth/login/Login';
 import { OTP_Login } from '../../screens/auth/OTP';
+import ForgetPasswordScreen from '../../screens/auth/login/ForgetPassword';
 
 function Login(): JSX.Element {
     return (
@@ -16,6 +17,10 @@ function Login(): JSX.Element {
             <Stack.Screen
                 name="OTPLoginScreen"
                 component={OTP_Login}
+            />
+            <Stack.Screen
+                name='ForgetPasswordScreen'
+                component={ForgetPasswordScreen}
             />
         </Stack.Navigator>
     )

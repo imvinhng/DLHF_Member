@@ -5,7 +5,7 @@ import { darkgray, lightgray } from "./Colors";
 const GlobalStyle = StyleSheet.create({
     box_shadow: {
         shadowColor: darkgray,
-        shadowOffset: { width: 1, height: 3 },
+        shadowOffset: { width: 1, height: 1.5 },
         shadowOpacity: 0.2,
         shadowRadius: 3,
 
@@ -40,7 +40,7 @@ const GlobalStyle = StyleSheet.create({
         fontFamily: 'Merriweather-Light',
     },
     text: {
-        // fontFamily: 'Merriweather-Regular'
+        fontFamily: 'Merriweather-Regular'
     },
     textCenter: {
         textAlign: 'center',

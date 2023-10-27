@@ -127,7 +127,6 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         height: itemHeight,
         width: itemWidth,
-
         flexDirection: 'row',
         borderRadius: 13,
     },

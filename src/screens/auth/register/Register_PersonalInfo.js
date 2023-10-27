@@ -23,6 +23,7 @@ const Register_PersonalInfo = (props) => {
     const [valueFullName, setValueFullName] = useState('');
     const [valueGender, setValueGender] = useState('');
     const [valueBirthDate, setValueBirthDate] = useState(new Date());
+    const [valueBirthDateString, setValueBirthDateString] = useState('');
     const [valueEmail, setValueEmail] = useState('');
     const [valuePaperwork, setValuePaperwork] = useState('');
     const [valueCitizenship, setValueCitizenship] = useState('');
@@ -146,12 +147,11 @@ const Register_PersonalInfo = (props) => {
                 </View>
                 <GrayLine_Full />
 
-                {/* TODO: Set default birthdate value to placeholder on start */}
                 <Text style={styles.title}>Date of Birth</Text>
                 <View style={styles.row_wrapper}>
                     <TextInput
                         style={styles.input}
-                        // value={valueBirthDate.toLocaleDateString('vi')}
+                        value={valueBirthDateString}
                         placeholder={'Enter your birthdate'}
                         ref={e => this.birthDateInput = e}
                         editable
@@ -170,6 +170,7 @@ const Register_PersonalInfo = (props) => {
                         date={valueBirthDate}
                         onConfirm={(date) => {
                             setValueBirthDate(date)
+                            setValueBirthDateString(date.toLocaleDateString('vi'))
                             setOpenBirthDate(false)
                         }}
                         onCancel={() => {

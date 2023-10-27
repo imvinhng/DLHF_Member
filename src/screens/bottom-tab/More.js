@@ -62,7 +62,7 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Order Review'}
-                    buttonStyle={[styles.LongButton_Icon5, GlobalStyle.box_shadow]}
+                    buttonStyle={styles.LongButton_Icon5}
                     textStyle={styles.text_LongButton_Icon5}
                     iconStyle={styles.icon_longbutton}
                 />
@@ -72,7 +72,7 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Contact Us'}
-                    buttonStyle={[styles.LongButton_Icon5, GlobalStyle.box_shadow]}
+                    buttonStyle={styles.LongButton_Icon5}
                     textStyle={styles.text_LongButton_Icon5}
                     iconStyle={styles.icon_longbutton}
                 />
@@ -84,7 +84,7 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Personal Information'}
-                    buttonStyle={[styles.LongButton_Icon5, GlobalStyle.box_shadow]}
+                    buttonStyle={styles.LongButton_Icon5}
                     textStyle={styles.text_LongButton_Icon5}
                     iconStyle={styles.icon_longbutton}
                     onPressFunction={() => navigation.navigate('More', { screen: 'PersonalInfoScreen' })}
@@ -95,7 +95,7 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Saved Address'}
-                    buttonStyle={[styles.LongButton_Icon5, GlobalStyle.box_shadow]}
+                    buttonStyle={styles.LongButton_Icon5}
                     textStyle={styles.text_LongButton_Icon5}
                     iconStyle={styles.icon_longbutton}
                 />
@@ -105,7 +105,7 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Settings'}
-                    buttonStyle={[styles.LongButton_Icon5, GlobalStyle.box_shadow]}
+                    buttonStyle={styles.LongButton_Icon5}
                     textStyle={styles.text_LongButton_Icon5}
                     iconStyle={styles.icon_longbutton}
                 />
@@ -115,7 +115,7 @@ function More(props) {
                     iconColor={'#000'}
                     buttonColor={'#fff'}
                     text={'Logout'}
-                    buttonStyle={[styles.LongButton_Icon5, GlobalStyle.box_shadow]}
+                    buttonStyle={styles.LongButton_Icon5}
                     textStyle={styles.text_LongButton_Icon5}
                     iconStyle={styles.icon_longbutton}
                     onPressFunction={() =>
@@ -190,6 +190,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: 10,
+        ...GlobalStyle.box_shadow,
     },
     LongButton_Icon5: {
         marginLeft: 20,
@@ -201,6 +202,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderWidth: 1,
         borderColor: 'lightgray',
+        ...GlobalStyle.box_shadow,
 
     },
     text_LongButton_Icon5: {

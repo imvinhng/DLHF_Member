@@ -55,7 +55,7 @@ export const OTP_Login = ({ navigation, route }) => {
                     autoFocus
                     handleTextChange={(code) => {
                         if (code == otpValue) {
-                            navigation.navigate('Main', { screen: 'Home', params: { loggedIn: true } })
+                            navigation.navigate('Home', { screen: 'HomeScreen', params: { loggedIn: true } })
                         }
                     }}
                 />

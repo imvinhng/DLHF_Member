@@ -1,40 +1,43 @@
 import React, { useState } from 'react';
-import { StyleSheet, Image, View, Text, TextInput, ScrollView } from 'react-native';
-import { LoginButton } from '../../utils/CustomButton';
-import { OTP_Login } from './OTP';
+import { StyleSheet, Image, View, Text, TextInput, ScrollView, Dimensions } from 'react-native';
+import { LoginButton } from '../../../utils/CustomButton';
+import { OTP_Login } from '../OTP';
 import { useNavigation } from '@react-navigation/native';
-import { CloseButton } from '../../utils/CustomComponents';
+import { CloseButton } from '../../../utils/CustomComponents';
+import { darkgray } from '../../../assets/style/Colors';
 
 
 function ForgetPassword(props) {
     const [loginBtnColor, setLoginBtnColor] = useState('gray');
-    const [loginBtnBorderColor, setLoginBtnBorderColor] = useState('#000');
+    const [loginBtnBorderColor, setLoginBtnBorderColor] = useState(darkgray);
     const [modalVisible, setModalVisible] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState('');
 
     const navigation = useNavigation();
 
-    const login = (value) => {
-        if (value != '') {
-            setLoginBtnColor('#eb9f1c');
-            setLoginBtnBorderColor('#eb9f1c');
-            setPhoneNumber(value);
-        } else {
-            setLoginBtnColor('gray');
-            setLoginBtnBorderColor('#000');
-        }
+    function orangeEffect() {
+        setLoginBtnColor('#eb9f1c');
+        setLoginBtnBorderColor('#eb9f1c');
+    }
+
+    function login(phone_number) {
+        setPhoneNumber(phone_number)
+    }
+
+    function promptOTP() {
+        navigation.navigate('Login', { screen: 'OTPLoginScreen', params: { phone_number: phoneNumber } })
     }
 
     return (
         <View style={styles.background}>
             <Image
                 style={styles.image}
-                source={require('../../assets/images/background/dutch-windmill.png')}
+                source={require('../../../assets/images/background/dutch-windmill.png')}
             />
-            <CloseButton style={styles.close_btn} />
-            <View style={[styles.body, { alignItems: 'center' }]}>
+            <CloseButton buttonStyle={styles.close_btn} />
+            <View style={styles.body}>
                 <Text style={styles.title}>Welcome to</Text>
-                <Image source={require('../../assets/images/extras/DLHF-logo.png')} />
+                <Image source={require('../../../assets/images/extras/DLHF-logo.png')} />
 
                 <TextInput
                     style={[
@@ -43,14 +46,15 @@ function ForgetPassword(props) {
                     ]}
                     keyboardType='number-pad'
                     placeholder={'Enter your phone number'}
-                    onChangeText={login}
-                    onSubmitEditing={() => navigation.navigate('OTP_Login', { phone_number: phoneNumber })}
+                    onFocus={orangeEffect}
+                    onChangeText={(phone_number) => login(phone_number)}
+                    onSubmitEditing={promptOTP}
                 />
                 <LoginButton
                     style={styles.login_btn}
                     bgColor={loginBtnColor}
                     textColor={'#fff'}
-                    onPressFunction={() => navigation.navigate('OTP_Login', { phone_number: phoneNumber })}
+                    onPressFunction={promptOTP}
                 />
 
             </View>
@@ -59,12 +63,24 @@ function ForgetPassword(props) {
     );
 }
 
+const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
+const bodyHeight = ScreenHeight;
+const bodyMarginTop = -0.1 * ScreenHeight;
+
 const styles = StyleSheet.create({
     background: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start',
         // backgroundColor: '#fff',
+    },
+    body: {
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        width: '100%',
+        height: bodyHeight,
+        borderRadius: 20,
+        marginTop: bodyMarginTop,
     },
     image: {
         width: '100%',
@@ -91,19 +107,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    body: {
-        backgroundColor: '#fff',
-        // alignItems: 'center',
-        width: '100%',
-        height: '70%',
-        borderRadius: 20,
-        marginTop: -80,
-    },
     text_input: {
         width: "90%",
         height: 60,
         marginTop: 20,
-        borderWidth: 1,
+        borderWidth: 0.5,
         borderRadius: 6,
         fontSize: 18,
         padding: 15,
@@ -136,11 +144,9 @@ const styles = StyleSheet.create({
     },
     close_btn: {
         position: 'absolute',
-        left: Platform.OS == 'ios' ? 350 : 370,
-        top: Platform.OS == 'ios' ? 45 : 15,
-        height: 20,
-        width: 20,
-    }
+        right: 10,
+        top: Platform.OS == 'ios' ? 35 : 10,
+    },
 })
 
 export default ForgetPassword;

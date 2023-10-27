@@ -47,6 +47,7 @@ function PersonalInfo(props) {
     const [valueWard, setValueWard] = useState('Bến Thành');
     const [valueGender, setValueGender] = useState('');
     const [valueBirthDate, setValueBirthDate] = useState(new Date());
+    const [valueBirthDateString, setValueBirthDateString] = useState('');
     const [valueEmail, setValueEmail] = useState('');
     const [valuePassword, setValuePassword] = useState('John Cena');
 
@@ -230,8 +231,12 @@ function PersonalInfo(props) {
                     <View style={styles.column_wrapper_left}>
                         <Text style={styles.title}>Date of Birth</Text>
                         <View style={styles.row_wrapper}>
-                            {/* TODO: Make datepicker functional with placeholder value on start */}
-                            <TextInput style={styles.input} placeholder={'Enter your birthdate'} editable={false} />
+                            <TextInput
+                                style={styles.input}
+                                placeholder={'Enter your birthdate'}
+                                value={valueBirthDateString}
+                                editable={false}
+                            />
                             <RoundButton
                                 iconName={editAddressIcon}
                                 iconSize={10}
@@ -251,6 +256,7 @@ function PersonalInfo(props) {
                                 onConfirm={(date) => {
                                     setOpenBirthDate(false)
                                     setValueBirthDate(date)
+                                    setValueBirthDateString(date.toLocaleDateString('vi'))
                                 }}
                                 onCancel={() => {
                                     setOpenBirthDate(false)

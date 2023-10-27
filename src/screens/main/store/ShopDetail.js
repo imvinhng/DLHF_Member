@@ -8,7 +8,7 @@ import { WAREHOUSE_REPORT } from '../../../db/ttp_report_warehouse';
 import GlobalStyle from '../../../assets/style/GlobalStyle';
 import { backgroundGray, black, lightgray, offwhite, tan, white } from '../../../assets/style/Colors';
 import { HeaderPN } from '../../../utils/Header';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
 
 function Shop_Detail(props) {
@@ -25,8 +25,8 @@ function Shop_Detail(props) {
         <View style={styles.home}>
             <HeaderPN title={'Store'} />
 
-            {/* TODO: Need to change to dynamic height */}
-            <ScrollView contentContainerStyle={{ height: 1150 }}>
+            {/* Need to add paddingBottom when using ScrollView with dynamic height */}
+            <ScrollView contentContainerStyle={{ height: bodyHeight, paddingBottom: 100 }}>
                 <View style={styles.body}>
                     <Image source={require('../../../assets/images/extras/storefront-large.png')} />
                     <RoundButton
@@ -79,18 +79,26 @@ function Shop_Detail(props) {
                     </View>
 
                     {/* TODO: Need to add marker and set correct location */}
-                    <View style={{ alignSelf: 'center', height: mapHeight, margin: 10 }}>
+                    <View style={styles.mapContainer}>
                         <MapView
                             style={styles.map}
                             initialRegion={{
-                                latitude: 10.769671,
-                                longitude: 106.678000,
+                                latitude: WAREHOUSE_REPORT[store_index].Lat,
+                                longitude: WAREHOUSE_REPORT[store_index].Long,
                                 latitudeDelta: 0.0922,
                                 longitudeDelta: 0.0421,
                             }}
                             zoomEnabled
-                            minZoomLevel={0}
-                        />
+                            minZoomLevel={5}
+                        >
+                            <Marker
+                                coordinate={{ latitude: parseFloat(WAREHOUSE_REPORT[store_index].Lat), longitude: parseFloat(WAREHOUSE_REPORT[store_index].Long) }}
+                                pinColor={WAREHOUSE_REPORT[store_index].Color} // any color
+                                title={WAREHOUSE_REPORT[store_index].Title}
+                                description={WAREHOUSE_REPORT[store_index].Address}
+                                key={store_index}
+                            />
+                        </MapView>
                     </View>
                 </View>
             </ScrollView>
@@ -99,19 +107,20 @@ function Shop_Detail(props) {
     );
 }
 
-const { width: screenWidth, height: screenHeight } = Dimensions.get('screen');
-const bodyHeight = .97 * screenHeight;
+const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
+const bodyHeight = 'auto';
 const iconSize = 16;
-const buttonWidth = screenWidth - 40;
-const mapHeight = 300; const mapWidth = screenWidth * 0.9;
+const buttonWidth = ScreenWidth - 40;
+const mapHeight = 300; const mapWidth = ScreenWidth * 0.9;
+const bodyMarginTop = 0.03 * ScreenHeight;
 
 const styles = StyleSheet.create({
     home: {
         backgroundColor: '#fff',
     },
     body: {
-        // height: 'auto',
-        marginTop: screenHeight - bodyHeight,
+        height: bodyHeight,
+        marginTop: bodyMarginTop,
     },
     sub_header_left: {
         flexDirection: 'row',
@@ -127,16 +136,17 @@ const styles = StyleSheet.create({
         marginLeft: '7%',
     },
     location: {
-        // color: 'gray',
-        fontWeight: '400',
+        ...GlobalStyle.item_subtitle,
+        fontSize: 15,
     },
     address: {
-        fontWeight: 'bold',
+        ...GlobalStyle.item_title,
         fontSize: 18,
         marginVertical: 5,
     },
     hours: {
-        fontWeight: '300',
+        ...GlobalStyle.item_footer,
+        fontSize: 13,
     },
     info_textbox: {
         padding: 20,
@@ -145,6 +155,7 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         width: (buttonWidth - iconSize) * 0.8,
         fontSize: 15,
+        fontFamily: 'Ubuntu-Regular'
     },
     buttonContainer: {
         alignItems: 'center',
@@ -152,7 +163,7 @@ const styles = StyleSheet.create({
     longbutton: {
         height: 'auto',
         width: buttonWidth,
-        paddingVertical: 15,
+        paddingVertical: 20,
         paddingHorizontal: 5,
         borderRadius: 5,
         paddingHorizontal: 20,
@@ -189,6 +200,12 @@ const styles = StyleSheet.create({
         width: mapWidth,
         height: mapHeight,
         borderRadius: 10
+    },
+    mapContainer: {
+        alignSelf: 'center',
+        height: mapHeight,
+        margin: 10,
+        marginVertical: 20,
     },
 })
 
