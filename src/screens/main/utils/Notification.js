@@ -24,7 +24,6 @@ const DATA = [
     {
         id: 2,
         title: 'Congrats on your new ranking - Silver',
-        // TODO: Need to find a replacement word for members (instead of florist)
         message: 'Hey Dong! Every successful order accrue reward points. You can use it to upgrade your membership ranking.',
         date: '11/12',
     },
